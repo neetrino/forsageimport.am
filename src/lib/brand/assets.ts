@@ -1,16 +1,34 @@
 /**
  * Brand assets live on Cloudflare R2 (WebP only).
- * Set NEXT_PUBLIC_R2_PUBLIC_URL to the public bucket/CDN base (no trailing slash).
+ * Prefer NEXT_PUBLIC_R2_PUBLIC_URL; fall back to the project public bucket URL
+ * so CI/local builds never fail when the env var is unset (public CDN, not a secret).
  */
 
-function assetsBaseUrl(): string {
-  const base = process.env.NEXT_PUBLIC_R2_PUBLIC_URL?.trim().replace(/\/$/, "");
-  if (!base) {
-    throw new Error(
-      "NEXT_PUBLIC_R2_PUBLIC_URL is required. Brand images are served from Cloudflare R2.",
-    );
+export const DEFAULT_R2_PUBLIC_URL =
+  "https://pub-a25eabdea077451bb669dbbc8035ab25.r2.dev";
+
+function normalizePublicBase(raw: string | undefined): string | null {
+  const trimmed = raw?.trim();
+  if (!trimmed || trimmed === "undefined" || trimmed === "null") {
+    return null;
   }
-  return base;
+
+  try {
+    const url = new URL(trimmed);
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return null;
+    }
+    return `${url.origin}${url.pathname}`.replace(/\/$/, "");
+  } catch {
+    return null;
+  }
+}
+
+function assetsBaseUrl(): string {
+  return (
+    normalizePublicBase(process.env.NEXT_PUBLIC_R2_PUBLIC_URL) ??
+    DEFAULT_R2_PUBLIC_URL
+  );
 }
 
 export function brandAsset(path: string): string {

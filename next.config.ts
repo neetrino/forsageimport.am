@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { DEFAULT_R2_PUBLIC_URL } from "@/lib/brand/assets";
 import {
   buildSecurityHeaders,
   withProductionHsts,
@@ -6,28 +7,33 @@ import {
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const r2PublicUrl = process.env.NEXT_PUBLIC_R2_PUBLIC_URL?.trim().replace(
-  /\/$/,
-  "",
-);
-
-let r2ImageOrigin: string | undefined;
-let r2Hostname: string | undefined;
-if (r2PublicUrl) {
-  try {
-    const parsed = new URL(r2PublicUrl);
-    r2ImageOrigin = parsed.origin;
-    r2Hostname = parsed.hostname;
-  } catch {
-    throw new Error(
-      `NEXT_PUBLIC_R2_PUBLIC_URL is invalid: ${process.env.NEXT_PUBLIC_R2_PUBLIC_URL}`,
-    );
+function resolveR2PublicUrl(): string {
+  const configured = process.env.NEXT_PUBLIC_R2_PUBLIC_URL?.trim();
+  if (
+    configured &&
+    configured !== "undefined" &&
+    configured !== "null"
+  ) {
+    try {
+      const url = new URL(configured);
+      if (url.protocol === "http:" || url.protocol === "https:") {
+        return `${url.origin}${url.pathname}`.replace(/\/$/, "");
+      }
+    } catch {
+      // fall through to default
+    }
   }
+  return DEFAULT_R2_PUBLIC_URL;
 }
+
+const r2PublicUrl = resolveR2PublicUrl();
+const parsed = new URL(r2PublicUrl);
+const r2ImageOrigin = parsed.origin;
+const r2Hostname = parsed.hostname;
 
 const headersToApply = withProductionHsts(
   buildSecurityHeaders({
-    imageOrigins: r2ImageOrigin ? [r2ImageOrigin] : [],
+    imageOrigins: [r2ImageOrigin],
   }),
   isProduction,
 );
@@ -42,15 +48,13 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [64, 96, 128, 256, 384],
-    remotePatterns: r2Hostname
-      ? [
-          {
-            protocol: "https",
-            hostname: r2Hostname,
-            pathname: "/**",
-          },
-        ]
-      : [],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: r2Hostname,
+        pathname: "/**",
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ["motion", "clsx"],
