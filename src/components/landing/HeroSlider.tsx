@@ -17,6 +17,7 @@ import { Container } from "@/components/ui/Container";
 import { HeroCarsCycle } from "@/components/landing/HeroCarsCycle";
 import {
   useIsMounted,
+  useMinWidth,
   useSafeReducedMotion,
 } from "@/hooks/useSafeReducedMotion";
 
@@ -39,6 +40,8 @@ type HeroSliderProps = {
 export function HeroSlider({ dict }: HeroSliderProps) {
   const slides = dict.hero.slides;
   const reduce = useSafeReducedMotion();
+  const isDesktop = useMinWidth(1024);
+  const scrollFxOff = reduce || !isDesktop;
   const mounted = useIsMounted();
   const rootRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -48,44 +51,68 @@ export function HeroSlider({ dict }: HeroSliderProps) {
   const applyCta = useSectionAnchor(LANDING_SECTION_IDS.apply);
 
   const { scrollYProgress } = useScroll({
-    target: mounted ? rootRef : undefined,
+    target: mounted && isDesktop ? rootRef : undefined,
     // Finish the exit while hero is still mostly on screen (~35% scrolled).
     offset: ["start start", "35% start"],
   });
 
-  const copyY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -72]);
+  const copyY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    scrollFxOff ? [0, 0] : [0, -72],
+  );
   const copyOpacity = useTransform(
     scrollYProgress,
     [0, 0.35, 0.7],
-    reduce ? [1, 1, 1] : [1, 0.55, 0],
+    scrollFxOff ? [1, 1, 1] : [1, 0.55, 0],
   );
-  const copyX = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -28]);
+  const copyX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    scrollFxOff ? [0, 0] : [0, -28],
+  );
 
-  const carsY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 120]);
-  const carsX = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 48]);
-  const carsScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 0.88]);
+  const carsY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    scrollFxOff ? [0, 0] : [0, 120],
+  );
+  const carsX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    scrollFxOff ? [0, 0] : [0, 48],
+  );
+  const carsScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    scrollFxOff ? [1, 1] : [1, 0.88],
+  );
   const carsOpacity = useTransform(
     scrollYProgress,
     [0, 0.4, 0.75],
-    reduce ? [1, 1, 1] : [1, 0.55, 0.12],
+    scrollFxOff ? [1, 1, 1] : [1, 0.55, 0.12],
   );
   const carsRotate = useTransform(
     scrollYProgress,
     [0, 1],
-    reduce ? [0, 0] : [0, -3],
+    scrollFxOff ? [0, 0] : [0, -3],
   );
 
-  const controlsY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 36]);
+  const controlsY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    scrollFxOff ? [0, 0] : [0, 36],
+  );
   const controlsOpacity = useTransform(
     scrollYProgress,
     [0, 0.18, 0.4],
-    reduce ? [1, 1, 1] : [1, 0.3, 0],
+    scrollFxOff ? [1, 1, 1] : [1, 0.3, 0],
   );
 
   const cueOpacity = useTransform(
     scrollYProgress,
     [0, 0.08, 0.18],
-    reduce ? [0, 0, 0] : [1, 0.25, 0],
+    reduce ? [0, 0, 0] : scrollFxOff ? [1, 1, 1] : [1, 0.25, 0],
   );
 
   const goTo = useCallback(
@@ -128,6 +155,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
       <HeroVelocityBackdrop
         active={index}
         reduceMotion={Boolean(reduce)}
+        scrollFxOff={scrollFxOff}
         progress={scrollYProgress}
       />
 
@@ -193,26 +221,25 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                   </motion.div>
                 </AnimatePresence>
               </div>
-            </div>
 
-            {/* Keep CTAs outside the 3D wall so hit-testing matches the visible buttons. */}
-            <div className="relative z-10 mt-10 flex flex-wrap gap-3">
-              <ButtonLink
-                href={calculatorCta.href}
-                onClick={calculatorCta.onClick}
-                className="!px-6 !py-3.5 !text-base"
-              >
-                {dict.hero.ctaCalculate}
-              </ButtonLink>
-              <ButtonLink
-                href={applyCta.href}
-                onClick={applyCta.onClick}
-                variant="secondary"
-                tone="dark"
-                className="!px-6 !py-3.5 !text-base"
-              >
-                {dict.hero.ctaApply}
-              </ButtonLink>
+              <div className="hero-cta-row mt-10 flex flex-wrap gap-3">
+                <ButtonLink
+                  href={calculatorCta.href}
+                  onClick={calculatorCta.onClick}
+                  className="hero-cta !px-6 !py-3.5 !text-base"
+                >
+                  {dict.hero.ctaCalculate}
+                </ButtonLink>
+                <ButtonLink
+                  href={applyCta.href}
+                  onClick={applyCta.onClick}
+                  variant="secondary"
+                  tone="dark"
+                  className="hero-cta !px-6 !py-3.5 !text-base"
+                >
+                  {dict.hero.ctaApply}
+                </ButtonLink>
+              </div>
             </div>
           </motion.div>
 
@@ -319,12 +346,14 @@ const fadeOnly = {
 type HeroVelocityBackdropProps = {
   active: number;
   reduceMotion: boolean;
+  scrollFxOff: boolean;
   progress: MotionValue<number>;
 };
 
 function HeroVelocityBackdrop({
   active,
   reduceMotion,
+  scrollFxOff,
   progress,
 }: HeroVelocityBackdropProps) {
   const [roadReady, setRoadReady] = useState(false);
@@ -358,37 +387,37 @@ function HeroVelocityBackdrop({
     };
   }, [reduceMotion]);
 
-  const layerY = useTransform(progress, [0, 1], reduceMotion ? [0, 0] : [0, 70]);
+  const layerY = useTransform(progress, [0, 1], scrollFxOff ? [0, 0] : [0, 70]);
   const layerScale = useTransform(
     progress,
     [0, 1],
-    reduceMotion ? [1, 1] : [1, 1.06],
+    scrollFxOff ? [1, 1] : [1, 1.06],
   );
-  const shardsY = useTransform(progress, [0, 1], reduceMotion ? [0, 0] : [0, -50]);
+  const shardsY = useTransform(progress, [0, 1], scrollFxOff ? [0, 0] : [0, -50]);
   const shardsOpacity = useTransform(
     progress,
     [0, 0.45, 0.75],
-    reduceMotion ? [0.5, 0.5, 0.5] : [0.5, 0.22, 0.05],
+    scrollFxOff ? [0.5, 0.5, 0.5] : [0.5, 0.22, 0.05],
   );
   const watermarkX = useTransform(
     progress,
     [0, 1],
-    reduceMotion ? [0, 0] : [0, -100],
+    scrollFxOff ? [0, 0] : [0, -100],
   );
   const watermarkY = useTransform(
     progress,
     [0, 1],
-    reduceMotion ? [0, 0] : [0, 44],
+    scrollFxOff ? [0, 0] : [0, 44],
   );
   const horizonY = useTransform(
     progress,
     [0, 1],
-    reduceMotion ? [0, 0] : [0, -30],
+    scrollFxOff ? [0, 0] : [0, -30],
   );
   const veilOpacity = useTransform(
     progress,
     [0, 0.35, 0.7],
-    reduceMotion ? [0, 0, 0] : [0, 0.4, 0.78],
+    scrollFxOff ? [0, 0, 0] : [0, 0.4, 0.78],
   );
 
   return (

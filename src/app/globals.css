@@ -165,10 +165,13 @@ body::before {
 }
 
 .site-header-brand {
+  z-index: 1;
   display: inline-flex;
+  max-width: min(100%, 15.5rem);
+  flex: 0 1 auto;
   align-items: center;
-  gap: 0.85rem;
-  min-width: 0;
+  gap: 0.75rem;
+  overflow: hidden;
   transition: opacity 0.2s ease;
 }
 
@@ -180,7 +183,7 @@ body::before {
   display: none;
   min-width: 0;
   flex-direction: column;
-  gap: 0.15rem;
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
@@ -190,6 +193,9 @@ body::before {
 }
 
 .site-header-brand-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
@@ -197,22 +203,23 @@ body::before {
   line-height: 1.1;
 }
 
-.site-header-brand-tag {
-  max-width: 14rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.62;
+.site-header-desktop {
+  display: none;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .site-header-desktop {
+    display: flex;
+  }
 }
 
 .site-header-nav {
-  display: none;
+  display: flex;
   align-items: center;
-  gap: 0.28rem;
+  gap: 0.2rem;
   border: 1px solid color-mix(in srgb, white 14%, transparent);
   border-radius: 999px;
   background:
@@ -221,17 +228,11 @@ body::before {
       color-mix(in srgb, white 8%, transparent),
       color-mix(in srgb, white 3%, transparent)
     );
-  padding: 0.35rem;
+  padding: 0.3rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 8%, transparent) inset,
     0 12px 28px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(12px);
-}
-
-@media (min-width: 1024px) {
-  .site-header-nav {
-    display: flex;
-  }
 }
 
 .site-header-nav.is-light {
@@ -252,9 +253,9 @@ body::before {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding: 0.62rem 1.05rem;
+  padding: 0.58rem 0.72rem;
   color: inherit;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1;
@@ -264,6 +265,13 @@ body::before {
     color 0.18s ease,
     box-shadow 0.18s ease,
     transform 0.18s ease;
+}
+
+@media (min-width: 1280px) {
+  .site-header-nav-link {
+    padding-inline: 0.95rem;
+    font-size: 0.88rem;
+  }
 }
 
 .site-header-nav-link.is-dark {
@@ -288,15 +296,29 @@ body::before {
 
 .site-header-actions {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
+}
+
+.site-header-mobile-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  margin-left: auto;
+}
+
+@media (min-width: 1024px) {
+  .site-header-mobile-actions {
+    display: none;
+  }
 }
 
 .site-header-cta {
-  min-height: 2.75rem !important;
-  padding-inline: 1.15rem !important;
-  padding-block: 0.7rem !important;
-  font-size: 0.92rem !important;
+  min-height: 2.55rem !important;
+  padding-inline: 1.2rem !important;
+  padding-block: 0.65rem !important;
+  font-size: 0.9rem !important;
 }
 
 .section-band {
@@ -628,6 +650,14 @@ body::before {
 
 .locale-switch--light .locale-switch-btn.is-active {
   color: #fff;
+}
+
+.locale-switch--compact .locale-switch-btn {
+  min-width: 2.35rem;
+  padding: 0.42rem 0.55rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
 .locale-switch-pill {
@@ -1553,6 +1583,40 @@ body::before {
 
 .btn-secondary-dark:active {
   transform: translateY(-1px) scale(0.99);
+}
+
+.hero-cta {
+  border-radius: 0.4rem;
+  transform: skewX(-14deg);
+}
+
+.hero-cta > span {
+  display: inline-block;
+  transform: skewX(14deg);
+}
+
+.hero-cta.btn-primary:hover,
+.hero-cta.btn-secondary-dark:hover {
+  transform: skewX(-14deg) translateY(-3px) scale(1.03);
+}
+
+.hero-cta.btn-primary:active,
+.hero-cta.btn-secondary-dark:active {
+  transform: skewX(-14deg) translateY(-1px) scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta,
+  .hero-cta.btn-primary:hover,
+  .hero-cta.btn-secondary-dark:hover,
+  .hero-cta.btn-primary:active,
+  .hero-cta.btn-secondary-dark:active {
+    transform: skewX(-14deg);
+  }
+
+  .hero-cta > span {
+    transform: skewX(14deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -10,6 +10,12 @@ export const localeLabels: Record<Locale, string> = {
   en: "English",
 };
 
+export const localeShortLabels: Record<Locale, string> = {
+  hy: "HY",
+  ru: "RU",
+  en: "EN",
+};
+
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }

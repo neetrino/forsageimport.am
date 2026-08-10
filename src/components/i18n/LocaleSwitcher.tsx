@@ -4,19 +4,26 @@ import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion } from "motion/react";
-import { localeLabels, locales, type Locale } from "@/lib/i18n/config";
+import {
+  localeLabels,
+  localeShortLabels,
+  locales,
+  type Locale,
+} from "@/lib/i18n/config";
 import { useIsMounted } from "@/hooks/useSafeReducedMotion";
 
 type LocaleSwitcherProps = {
   locale: Locale;
   label: string;
   variant?: "light" | "dark" | "footer";
+  compact?: boolean;
 };
 
 export function LocaleSwitcher({
   locale,
   label,
   variant = "light",
+  compact = false,
 }: LocaleSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
@@ -28,7 +35,10 @@ export function LocaleSwitcher({
     return segments.join("/") || `/${nextLocale}`;
   };
 
-  const goWithHash = (event: MouseEvent<HTMLAnchorElement>, nextLocale: Locale) => {
+  const goWithHash = (
+    event: MouseEvent<HTMLAnchorElement>,
+    nextLocale: Locale,
+  ) => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     if (!hash) return;
     event.preventDefault();
@@ -67,11 +77,13 @@ export function LocaleSwitcher({
 
   return (
     <div
-      className={`locale-switch locale-switch--${variant}`}
+      className={`locale-switch locale-switch--${variant}${
+        compact ? " locale-switch--compact" : ""
+      }`}
       role="navigation"
       aria-label={label}
     >
-      <span className="locale-switch-label">{label}</span>
+      <span className="sr-only">{label}</span>
       <ul className="locale-switch-rail">
         {locales.map((item) => {
           const active = item === locale;
@@ -81,6 +93,8 @@ export function LocaleSwitcher({
                 href={hrefFor(item)}
                 hrefLang={item}
                 aria-current={active ? "page" : undefined}
+                aria-label={localeLabels[item]}
+                title={localeLabels[item]}
                 className={
                   active ? "locale-switch-btn is-active" : "locale-switch-btn"
                 }
@@ -97,7 +111,9 @@ export function LocaleSwitcher({
                     <span className="locale-switch-pill" />
                   )
                 ) : null}
-                <span className="relative z-[1]">{localeLabels[item]}</span>
+                <span className="relative z-[1]">
+                  {compact ? localeShortLabels[item] : localeLabels[item]}
+                </span>
               </Link>
             </li>
           );
