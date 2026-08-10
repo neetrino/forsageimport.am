@@ -13,6 +13,10 @@ jobs:
   quality:
     name: Quality checks
     runs-on: ubuntu-latest
+    env:
+      # Public CDN base (not a secret). Keep in sync with `.env.example`.
+      NEXT_PUBLIC_R2_PUBLIC_URL: https://pub-a25eabdea077451bb669dbbc8035ab25.r2.dev
+      APP_URL: http://127.0.0.1:3000
     steps:
       - name: Checkout
         uses: actions/checkout@v4

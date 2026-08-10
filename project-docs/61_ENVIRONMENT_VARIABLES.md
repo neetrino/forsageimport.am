@@ -30,7 +30,7 @@ Source of names: `.env.example` (template). Application code currently does **no
 | `UPSTASH_REDIS_REST_TOKEN` | Template | No | Redis auth | Yes |
 | `RESEND_API_KEY` | Template | No | Email API | Yes |
 | `RESEND_FROM_EMAIL` | Template | No | From address | No |
-| `NEXT_PUBLIC_R2_PUBLIC_URL` | Brand assets / CSP / next/image | Yes (prod) | Public R2/CDN base for WebP images | No |
+| `NEXT_PUBLIC_R2_PUBLIC_URL` | Brand assets / CSP / next/image / CI build | Yes (build + runtime) | Public R2/CDN base for WebP images | No |
 | `R2_ACCOUNT_ID` | `pnpm assets:r2` | Upload only | R2 account | Yes |
 | `R2_ACCESS_KEY_ID` | `pnpm assets:r2` | Upload only | R2 access key | Yes |
 | `R2_SECRET_ACCESS_KEY` | `pnpm assets:r2` | Upload only | R2 secret | Yes |
