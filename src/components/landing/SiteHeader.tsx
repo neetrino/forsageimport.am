@@ -19,17 +19,26 @@ type SiteHeaderProps = {
 const DARK_SECTION_IDS = [
   LANDING_SECTION_IDS.hero,
   LANDING_SECTION_IDS.about,
+  LANDING_SECTION_IDS.services,
+  LANDING_SECTION_IDS.process,
   LANDING_SECTION_IDS.calculator,
+  LANDING_SECTION_IDS.whyUs,
+  LANDING_SECTION_IDS.apply,
+  LANDING_SECTION_IDS.contact,
 ] as const;
 
 export function SiteHeader({ locale, dict }: SiteHeaderProps) {
   const [lightText, setLightText] = useState(true);
 
   useEffect(() => {
+    let frame = 0;
+    let alive = true;
+
     const update = () => {
+      if (!alive) return;
       const headerEl = document.querySelector(".site-header");
       const probeY = Math.round(
-        (headerEl?.getBoundingClientRect().height || 68) * 0.55,
+        (headerEl?.getBoundingClientRect().height || 88) * 0.55,
       );
 
       const overDark = DARK_SECTION_IDS.some((id) => {
@@ -42,12 +51,27 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
       setLightText(overDark);
     };
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
+    const onScrollOrResize = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+
+    // Defer first paint probe past mount commit.
+    frame = window.requestAnimationFrame(() => {
+      frame = 0;
+      update();
+    });
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize, { passive: true });
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      alive = false;
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
     };
   }, []);
 
@@ -59,28 +83,41 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
     { href: sectionHref(LANDING_SECTION_IDS.apply), label: dict.nav.apply },
   ] as const;
 
+  const tone = lightText ? "dark" : "light";
+
   return (
     <header className="site-header fixed inset-x-0 top-0 z-40">
-      <Container className="relative flex h-[var(--header-height)] items-center justify-between gap-4">
+      <Container className="site-header-inner relative !pl-3 !pr-4 sm:!pl-4 sm:!pr-6 lg:!pl-5 lg:!pr-8 xl:!pl-6">
         <a
           href={localePath(locale)}
-          className={`inline-flex items-center gap-2.5 transition-colors ${
+          className={`site-header-brand ${
             lightText ? "text-white" : "text-[var(--ink)]"
           }`}
           aria-label={dict.site.brand}
         >
-          <BrandLogo size="sm" priority className="translate-y-px" />
+          <BrandLogo size="header" priority className="shrink-0" />
+          <span className="site-header-brand-copy">
+            <span className="site-header-brand-name">{dict.site.brand}</span>
+            <span
+              className={`site-header-brand-tag ${
+                lightText ? "text-white" : "text-[var(--muted)]"
+              }`}
+            >
+              {dict.site.tagline}
+            </span>
+          </span>
         </a>
 
-        <nav aria-label={dict.a11y.mainNav} className="hidden items-center gap-1 lg:flex">
+        <nav
+          aria-label={dict.a11y.mainNav}
+          className={`site-header-nav ${lightText ? "" : "is-light"}`}
+        >
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`rounded-[var(--radius-sm)] px-3 py-2 text-sm transition-colors ${
-                lightText
-                  ? "text-white/70 hover:bg-white/10 hover:text-white"
-                  : "text-[var(--muted)] hover:bg-[color-mix(in_srgb,var(--accent)_8%,transparent)] hover:text-[var(--ink)]"
+              className={`site-header-nav-link ${
+                lightText ? "is-dark" : "is-light"
               }`}
             >
               {link.label}
@@ -88,20 +125,24 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="site-header-actions">
           <div className="hidden md:block">
             <LocaleSwitcher
               locale={locale}
               label={dict.a11y.language}
-              variant={lightText ? "dark" : "light"}
+              variant={tone}
             />
           </div>
           <div className="hidden sm:block">
-            <ButtonLink href={sectionHref(LANDING_SECTION_IDS.calculator)} size="sm">
+            <ButtonLink
+              href={sectionHref(LANDING_SECTION_IDS.calculator)}
+              size="sm"
+              className="site-header-cta"
+            >
               {dict.nav.calculator}
             </ButtonLink>
           </div>
-          <MobileNav locale={locale} dict={dict} tone={lightText ? "dark" : "light"} />
+          <MobileNav locale={locale} dict={dict} tone={tone} />
         </div>
       </Container>
     </header>

@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "motion/react";
+import { useIsMounted } from "@/hooks/useSafeReducedMotion";
+
 export type AuctionValue = "iaai" | "copart" | "manheim";
 
 type AuctionPickerProps = {
@@ -21,11 +24,13 @@ export function AuctionPicker({
   value,
   onChange,
 }: AuctionPickerProps) {
+  const mounted = useIsMounted();
+
   return (
     <fieldset>
       <legend className="mb-2 text-sm font-medium text-[var(--calc-label)]">{label}</legend>
       <input type="hidden" name={name} value={value} />
-      <div className="grid grid-cols-3 gap-2">
+      <div className="calc-auction-rail relative grid grid-cols-3 gap-1.5 rounded-[var(--radius-md)] bg-[var(--calc-field-bg)] p-1.5">
         {auctions.map((auction) => {
           const selected = auction.value === value;
           return (
@@ -34,13 +39,24 @@ export function AuctionPicker({
               type="button"
               aria-pressed={selected}
               onClick={() => onChange(auction.value)}
-              className={`flex h-12 items-center justify-center rounded-[var(--radius-md)] border bg-white transition-colors ${
-                selected
-                  ? "border-[var(--calc-accent)] shadow-[0_0_0_1px_var(--calc-accent)]"
-                  : "border-[var(--calc-border)] hover:border-[var(--calc-border-strong)]"
+              className={`relative z-[1] flex h-11 items-center justify-center rounded-[calc(var(--radius-md)-2px)] transition-colors ${
+                selected ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]"
               }`}
             >
-              <AuctionMark mark={auction.mark} />
+              {selected ? (
+                mounted ? (
+                  <motion.span
+                    layoutId="auction-pill"
+                    className="absolute inset-0 rounded-[calc(var(--radius-md)-2px)] border border-[var(--calc-accent)] bg-white shadow-[0_8px_18px_rgba(240,90,24,0.18)]"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                  />
+                ) : (
+                  <span className="absolute inset-0 rounded-[calc(var(--radius-md)-2px)] border border-[var(--calc-accent)] bg-white shadow-[0_8px_18px_rgba(240,90,24,0.18)]" />
+                )
+              ) : null}
+              <span className="relative z-[1]">
+                <AuctionMark mark={auction.mark} />
+              </span>
             </button>
           );
         })}

@@ -4,10 +4,10 @@ import Image from "next/image";
 import {
   AnimatePresence,
   motion,
-  useReducedMotion,
   type Variants,
 } from "motion/react";
 import { HERO_CARS } from "@/lib/brand/assets";
+import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 
 const SWAP_DURATION = 0.2;
 
@@ -20,7 +20,7 @@ export function HeroCarsCycle({
   slideIndex,
   direction = 1,
 }: HeroCarsCycleProps) {
-  const reduce = useReducedMotion();
+  const reduce = useSafeReducedMotion();
   const index =
     ((slideIndex % HERO_CARS.length) + HERO_CARS.length) % HERO_CARS.length;
   const car = HERO_CARS[index] ?? HERO_CARS[0];
@@ -41,7 +41,7 @@ export function HeroCarsCycle({
             animate="center"
             exit="exit"
             transition={{
-              duration: reduce ? 0.25 : SWAP_DURATION,
+              duration: reduce ? 0.12 : SWAP_DURATION,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
@@ -50,7 +50,8 @@ export function HeroCarsCycle({
               alt={car.alt}
               width={car.width}
               height={car.height}
-              priority
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
               sizes="(max-width: 768px) 92vw, 860px"
               className="hero-car-image h-auto max-h-full w-full max-w-full object-contain object-center"
               draggable={false}

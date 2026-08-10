@@ -16,7 +16,7 @@ export function SiteShell({ locale, dict, children }: SiteShellProps) {
     <>
       <SkipToContent label={dict.a11y.skipToContent} />
       <SiteHeader locale={locale} dict={dict} />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 bg-[var(--landing-canvas)]">
         {children}
       </main>
       <SiteFooter locale={locale} dict={dict} />

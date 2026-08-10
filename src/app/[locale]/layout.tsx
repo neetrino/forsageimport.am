@@ -11,38 +11,44 @@ import { locales, type Locale, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { SiteShell } from "@/components/layout/SiteShell";
 
-/** Modern geometric Armenian sans — body copy */
 const bodyHy = Noto_Sans_Armenian({
-  variable: "--font-body-hy",
+  variable: "--font-body",
   subsets: ["armenian", "latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
-/** Same family, heavier optical role for headlines (no serif) */
 const displayHy = Noto_Sans_Armenian({
-  variable: "--font-display-hy",
+  variable: "--font-display",
   subsets: ["armenian", "latin"],
-  weight: ["600", "700", "800", "900"],
+  weight: ["700", "800"],
+  display: "swap",
+  preload: true,
 });
 
-/** Clean geometric UI sans with Cyrillic */
 const bodyIntl = Rubik({
-  variable: "--font-body-intl",
+  variable: "--font-body",
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
-/** Automotive / kinetic display with Cyrillic */
 const displayIntl = Exo_2({
-  variable: "--font-display-intl",
+  variable: "--font-display",
   subsets: ["latin", "cyrillic"],
-  weight: ["600", "700", "800"],
+  weight: ["700", "800"],
+  display: "swap",
+  preload: true,
 });
 
 const monoFont = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
+  preload: false,
 });
 
 type LocaleLayoutProps = {
@@ -85,6 +91,14 @@ export async function generateMetadata({
   };
 }
 
+function fontClassName(locale: Locale): string {
+  const pair =
+    locale === "hy"
+      ? `${bodyHy.variable} ${displayHy.variable}`
+      : `${bodyIntl.variable} ${displayIntl.variable}`;
+  return `${pair} ${monoFont.variable}`;
+}
+
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale: rawLocale } = await params;
   if (!isLocale(rawLocale)) {
@@ -97,7 +111,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html
       lang={locale}
-      className={`${bodyHy.variable} ${bodyIntl.variable} ${displayHy.variable} ${displayIntl.variable} ${monoFont.variable} h-full antialiased`}
+      className={`${fontClassName(locale)} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <SiteShell locale={locale} dict={dict}>

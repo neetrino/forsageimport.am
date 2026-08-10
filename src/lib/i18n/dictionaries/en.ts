@@ -25,7 +25,7 @@ export const en: Dictionary = {
   nav: {
     about: "About",
     services: "Services",
-    process: "How it works",
+    process: "Process",
     calculator: "Calculator",
     whyUs: "Why us",
     apply: "Apply",
@@ -113,6 +113,7 @@ export const en: Dictionary = {
     ],
   },
   calculator: {
+    eyebrow: "Estimate",
     title: "Cost calculator",
     subtitle:
       "Approximate estimate before customs. Final totals activate after fee tables are confirmed.",
@@ -206,8 +207,15 @@ export const en: Dictionary = {
     ],
   },
   apply: {
+    eyebrow: "Contact",
     title: "Submit a request",
     subtitle: "Leave your name, phone, and a short message. We will get back to you.",
+    responseNote: "We usually reply within 1 business day",
+    steps: [
+      "Share your name and phone",
+      "Add a short message",
+      "We get back to you",
+    ],
     name: "Name",
     phone: "Phone",
     message: "Message",
@@ -232,5 +240,9 @@ export const en: Dictionary = {
     contactsPending: "Contact details will be added",
     socialPending: "Social links will be added",
     rights: "Forsage Import",
+    copyrightRights: "All rights reserved",
+    creditBefore: "Created by",
+    creditAfter: "",
+    creditCompany: "Neetrino IT Company",
   },
 };

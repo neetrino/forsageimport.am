@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, type FormEvent } from "react";
+import { motion } from "motion/react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/config";
 import {
@@ -121,124 +122,140 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
 
   return (
     <>
-      <form
-        className="calc-card rounded-[var(--radius-lg)] bg-white p-5 sm:p-7"
-        onSubmit={onSubmit}
-        noValidate
-      >
-        <div className="grid gap-5 sm:grid-cols-2">
-          <MoneyField
-            id="vehiclePrice"
-            name="vehiclePrice"
-            label={calculator.fields.vehiclePrice}
-            value={form.vehiclePrice}
-            onChange={(value) => updateField("vehiclePrice", value)}
-            error={errors.vehiclePrice}
-          />
-          <SelectField
-            id="engineType"
-            name="engineType"
-            label={calculator.fields.engineType}
-            placeholder={calculator.selectPlaceholder}
-            options={calculator.options.engineTypes}
-            value={form.engineType}
-            onChange={(value) => updateField("engineType", value)}
-            error={errors.engineType}
-          />
-
+      <form className="calc-card" onSubmit={onSubmit} noValidate>
+        <header className="calc-card-head">
           <div>
-            <AuctionPicker
-              label={calculator.fields.auction}
-              value={auction}
-              onChange={(value) => {
-                setAuction(value);
-                setResult(null);
-              }}
-            />
-            {errors.auction ? (
-              <p className="mt-1.5 text-xs text-[var(--danger)]">{errors.auction}</p>
-            ) : null}
+            <p className="font-mono text-[0.68rem] tracking-[0.22em] text-[var(--calc-accent)] uppercase">
+              {calculator.eyebrow}
+            </p>
+            <p className="mt-1 text-sm text-[var(--muted)]">{calculator.subtitle}</p>
           </div>
+          <span className="calc-status-chip">DRAFT</span>
+        </header>
 
-          <div className="grid grid-cols-2 gap-3">
-            <SelectField
-              id="ageGroup"
-              name="ageGroup"
-              label={calculator.fields.ageGroup}
-              placeholder={calculator.selectPlaceholder}
-              options={calculator.options.ageGroups}
-              value={form.ageGroup}
-              onChange={(value) => updateField("ageGroup", value)}
-              error={errors.ageGroup}
+        <div className="calc-card-body">
+          <div className="grid gap-5 sm:grid-cols-2">
+            <MoneyField
+              id="vehiclePrice"
+              name="vehiclePrice"
+              label={calculator.fields.vehiclePrice}
+              value={form.vehiclePrice}
+              onChange={(value) => updateField("vehiclePrice", value)}
+              error={errors.vehiclePrice}
             />
             <SelectField
-              id="year"
-              name="year"
-              label={calculator.fields.year}
+              id="engineType"
+              name="engineType"
+              label={calculator.fields.engineType}
               placeholder={calculator.selectPlaceholder}
-              options={yearOptions}
-              value={form.year}
-              onChange={(value) => updateField("year", value)}
-              error={errors.year}
+              options={calculator.options.engineTypes}
+              value={form.engineType}
+              onChange={(value) => updateField("engineType", value)}
+              error={errors.engineType}
+            />
+
+            <div>
+              <AuctionPicker
+                label={calculator.fields.auction}
+                value={auction}
+                onChange={(value) => {
+                  setAuction(value);
+                  setResult(null);
+                }}
+              />
+              {errors.auction ? (
+                <p className="mt-1.5 text-xs text-[var(--danger)]">{errors.auction}</p>
+              ) : null}
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <SelectField
+                id="ageGroup"
+                name="ageGroup"
+                label={calculator.fields.ageGroup}
+                placeholder={calculator.selectPlaceholder}
+                options={calculator.options.ageGroups}
+                value={form.ageGroup}
+                onChange={(value) => updateField("ageGroup", value)}
+                error={errors.ageGroup}
+              />
+              <SelectField
+                id="year"
+                name="year"
+                label={calculator.fields.year}
+                placeholder={calculator.selectPlaceholder}
+                options={yearOptions}
+                value={form.year}
+                onChange={(value) => updateField("year", value)}
+                error={errors.year}
+              />
+            </div>
+
+            <SelectField
+              id="auctionLocation"
+              name="auctionLocation"
+              label={calculator.fields.auctionLocation}
+              placeholder={calculator.selectPlaceholder}
+              options={calculator.options.auctionLocations}
+              value={form.auctionLocation}
+              onChange={(value) => updateField("auctionLocation", value)}
+              error={errors.auctionLocation}
+            />
+            <NumberField
+              id="engineVolume"
+              name="engineVolume"
+              label={calculator.fields.engineVolume}
+              value={form.engineVolumeCm3}
+              onChange={(value) => updateField("engineVolumeCm3", value)}
+              min={0}
+              step="1"
+              error={errors.engineVolumeCm3}
+            />
+
+            <MoneyField
+              id="transportFee"
+              name="transportFee"
+              label={calculator.fields.transportFee}
+              value={form.transportFee}
+              onChange={(value) => updateField("transportFee", value)}
+              error={errors.transportFee}
+            />
+            <SelectField
+              id="vehicleType"
+              name="vehicleType"
+              label={calculator.fields.vehicleType}
+              placeholder={calculator.selectPlaceholder}
+              options={calculator.options.vehicleTypes}
+              value={form.vehicleType}
+              onChange={(value) => updateField("vehicleType", value)}
+              error={errors.vehicleType}
             />
           </div>
 
-          <SelectField
-            id="auctionLocation"
-            name="auctionLocation"
-            label={calculator.fields.auctionLocation}
-            placeholder={calculator.selectPlaceholder}
-            options={calculator.options.auctionLocations}
-            value={form.auctionLocation}
-            onChange={(value) => updateField("auctionLocation", value)}
-            error={errors.auctionLocation}
-          />
-          <NumberField
-            id="engineVolume"
-            name="engineVolume"
-            label={calculator.fields.engineVolume}
-            value={form.engineVolumeCm3}
-            onChange={(value) => updateField("engineVolumeCm3", value)}
-            min={0}
-            step="1"
-            error={errors.engineVolumeCm3}
-          />
+          <label className="calc-toggle mt-6">
+            <span className="calc-toggle-track" data-on={form.insuranceEnabled}>
+              <span className="calc-toggle-thumb" />
+            </span>
+            <input
+              type="checkbox"
+              className="sr-only"
+              checked={form.insuranceEnabled}
+              onChange={(event) =>
+                updateField("insuranceEnabled", event.target.checked)
+              }
+            />
+            <span>{calculator.insurance}</span>
+          </label>
 
-          <MoneyField
-            id="transportFee"
-            name="transportFee"
-            label={calculator.fields.transportFee}
-            value={form.transportFee}
-            onChange={(value) => updateField("transportFee", value)}
-            error={errors.transportFee}
-          />
-          <SelectField
-            id="vehicleType"
-            name="vehicleType"
-            label={calculator.fields.vehicleType}
-            placeholder={calculator.selectPlaceholder}
-            options={calculator.options.vehicleTypes}
-            value={form.vehicleType}
-            onChange={(value) => updateField("vehicleType", value)}
-            error={errors.vehicleType}
-          />
+          <motion.button
+            type="submit"
+            className="calc-submit mt-7 w-full"
+            whileTap={{ scale: 0.985 }}
+            transition={{ duration: 0.12 }}
+          >
+            <span>{calculator.submit}</span>
+          </motion.button>
         </div>
-
-        <label className="mt-5 flex items-center gap-3 text-sm text-[var(--calc-label)]">
-          <input
-            type="checkbox"
-            checked={form.insuranceEnabled}
-            onChange={(event) =>
-              updateField("insuranceEnabled", event.target.checked)
-            }
-            className="size-4 accent-[var(--calc-accent)]"
-          />
-          {calculator.insurance}
-        </label>
-
-        <button type="submit" className="calc-submit mt-7 w-full">
-          {calculator.submit}
-        </button>
       </form>
 
       <CalculatorResults

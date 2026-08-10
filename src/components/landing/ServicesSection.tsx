@@ -1,8 +1,7 @@
 import type { Dictionary } from "@/lib/i18n/types";
 import { LANDING_SECTION_IDS } from "@/types/landing";
 import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 
 type ServicesSectionProps = {
   dict: Dictionary;
@@ -12,38 +11,54 @@ export function ServicesSection({ dict }: ServicesSectionProps) {
   return (
     <Section
       id={LANDING_SECTION_IDS.services}
-      className="section-band bg-[var(--surface)]"
+      className="relative"
       ariaLabelledBy="services-title"
+      curvedTop
     >
-      <Reveal>
-        <SectionHeading
-          id="services-title"
-          eyebrow={dict.services.eyebrow}
-          title={dict.services.title}
-          subtitle={dict.services.subtitle}
-        />
+      <Reveal variant="clip">
+        <div className="grid gap-6 border-b border-white/15 pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-12 lg:pb-12">
+          <div>
+            <p className="inline-flex items-center gap-3 font-mono text-[0.72rem] tracking-[0.28em] text-[var(--accent)] uppercase">
+              <span className="h-px w-10 bg-[var(--accent)]" aria-hidden="true" />
+              {dict.services.eyebrow}
+            </p>
+            <h2
+              id="services-title"
+              className="mt-4 font-display text-[2.6rem] leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem]"
+            >
+              {dict.services.title}
+            </h2>
+          </div>
+          <p className="max-w-xl text-lg font-medium leading-8 text-white/65 sm:text-xl sm:leading-9 lg:justify-self-end lg:text-right">
+            {dict.services.subtitle}
+          </p>
+        </div>
       </Reveal>
-      <ul className="mt-14 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+
+      <Stagger as="ol" className="mt-0" stagger={0.06} delayChildren={0.06}>
         {dict.services.items.map((item, index) => (
-          <Reveal key={item.title} delay={0.04 * index} className="h-full">
-            <li className="group relative h-full overflow-hidden border-t-2 border-[var(--accent)]/30 pt-5 transition-colors hover:border-[var(--accent)]">
-              <div
-                className="pointer-events-none absolute -right-6 -top-8 size-24 rounded-full bg-[color-mix(in_srgb,var(--brand-blue)_8%,transparent)] transition-transform group-hover:scale-125"
-                aria-hidden="true"
-              />
-              <p className="font-mono text-xs tracking-[0.2em] text-[var(--accent)] uppercase">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-3 font-display text-xl text-[var(--ink)] sm:text-2xl">
-                {item.title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-[var(--muted)] sm:text-base">
-                {item.text}
-              </p>
-            </li>
-          </Reveal>
+          <StaggerItem
+            key={item.title}
+            as="li"
+            variant="up"
+            className="group relative grid gap-3 border-b border-white/10 py-7 sm:grid-cols-[5.5rem_minmax(0,0.9fr)_minmax(0,1.2fr)] sm:items-baseline sm:gap-8 sm:py-8 lg:gap-12"
+          >
+            <span className="font-mono text-sm tracking-[0.22em] text-[var(--accent)] tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="font-display text-xl text-white transition-colors duration-300 group-hover:text-[var(--accent)] sm:text-2xl">
+              {item.title}
+            </h3>
+            <p className="text-base leading-7 text-white/60 sm:text-lg sm:leading-8">
+              {item.text}
+            </p>
+            <span
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-[var(--accent)] transition-transform duration-500 group-hover:scale-x-100 sm:col-span-3"
+              aria-hidden="true"
+            />
+          </StaggerItem>
         ))}
-      </ul>
+      </Stagger>
     </Section>
   );
 }

@@ -60,6 +60,7 @@ export type Dictionary = {
     steps: readonly string[];
   };
   calculator: {
+    eyebrow: string;
     title: string;
     subtitle: string;
     submit: string;
@@ -112,8 +113,11 @@ export type Dictionary = {
     items: readonly { title: string; text: string }[];
   };
   apply: {
+    eyebrow: string;
     title: string;
     subtitle: string;
+    responseNote: string;
+    steps: readonly string[];
     name: string;
     phone: string;
     message: string;
@@ -138,5 +142,9 @@ export type Dictionary = {
     contactsPending: string;
     socialPending: string;
     rights: string;
+    copyrightRights: string;
+    creditBefore: string;
+    creditAfter: string;
+    creditCompany: string;
   };
 };

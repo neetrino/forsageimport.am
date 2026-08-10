@@ -25,7 +25,7 @@ export const ru: Dictionary = {
   nav: {
     about: "О нас",
     services: "Услуги",
-    process: "Как это работает",
+    process: "Процесс",
     calculator: "Калькулятор",
     whyUs: "Почему мы",
     apply: "Заявка",
@@ -113,6 +113,7 @@ export const ru: Dictionary = {
     ],
   },
   calculator: {
+    eyebrow: "Расчёт",
     title: "Калькулятор стоимости",
     subtitle:
       "Приблизительный расчёт до растаможки. Итоговые суммы активируются после утверждения тарифов.",
@@ -206,9 +207,16 @@ export const ru: Dictionary = {
     ],
   },
   apply: {
+    eyebrow: "Контакт",
     title: "Оставить заявку",
     subtitle:
       "Заполните короткую заявку: имя, телефон и сообщение. Мы свяжемся с вами.",
+    responseNote: "Обычно отвечаем в течение 1 рабочего дня",
+    steps: [
+      "Укажите имя и телефон",
+      "Напишите короткое сообщение",
+      "Мы свяжемся с вами",
+    ],
     name: "Имя",
     phone: "Телефон",
     message: "Сообщение",
@@ -233,5 +241,9 @@ export const ru: Dictionary = {
     contactsPending: "Контактные данные будут добавлены",
     socialPending: "Ссылки на соцсети будут добавлены",
     rights: "Forsage Import",
+    copyrightRights: "Все права защищены",
+    creditBefore: "Создано",
+    creditAfter: "",
+    creditCompany: "Neetrino IT Company",
   },
 };

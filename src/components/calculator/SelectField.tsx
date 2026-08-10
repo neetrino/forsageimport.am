@@ -46,9 +46,17 @@ export function SelectField({
         </select>
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-[var(--calc-placeholder)]"
+          className="pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2 text-[var(--calc-placeholder)]"
         >
-          ▾
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path
+              d="M1 1.5L6 6.5L11 1.5"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </span>
       </div>
       {error ? (

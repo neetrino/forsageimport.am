@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/config";
 import { LANDING_SECTION_IDS } from "@/types/landing";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
+import { ApplyRoutePanel } from "@/components/landing/ApplyRoutePanel";
 import { validateLeadInput } from "@/lib/leads/validate";
 import type { LeadErrors } from "@/lib/leads/types";
-
-const fieldClass =
-  "mt-1.5 w-full rounded-[var(--radius-md)] border border-[var(--line-strong)] bg-[color-mix(in_srgb,white_70%,var(--paper))] px-3.5 py-2.5 text-sm text-[var(--ink)] outline-none transition-[border-color,box-shadow,background] focus-visible:border-[color-mix(in_srgb,var(--accent)_45%,var(--line-strong))] focus-visible:bg-white focus-visible:ring-2 focus-visible:ring-[var(--accent)]/25";
 
 type ApplicationSectionProps = {
   dict: Dictionary;
@@ -107,118 +107,204 @@ export function ApplicationSection({ dict, locale }: ApplicationSectionProps) {
   return (
     <Section
       id={LANDING_SECTION_IDS.apply}
-      className="section-band bg-[var(--surface)]"
+      className="relative"
       ariaLabelledBy="apply-title"
+      curvedTop
     >
-      <SectionHeading
-        id="apply-title"
-        title={dict.apply.title}
-        subtitle={dict.apply.subtitle}
-      />
+      <Reveal variant="blur" className="relative z-[1]">
+        <SectionHeading
+          id="apply-title"
+          eyebrow={dict.apply.eyebrow}
+          title={dict.apply.title}
+          subtitle={dict.apply.subtitle}
+          tone="dark"
+        />
+      </Reveal>
 
-      <form
-        className="mt-10 grid max-w-xl gap-4 rounded-[var(--radius-lg)] border border-[var(--line)] bg-[color-mix(in_srgb,white_72%,transparent)] p-5 shadow-[0_18px_40px_rgba(14,16,20,0.06)] backdrop-blur-sm sm:p-7"
-        onSubmit={onSubmit}
-        noValidate
-      >
-        <div>
-          <label className="block text-sm font-medium text-[var(--ink)]" htmlFor="lead-name">
-            {dict.apply.name}
-          </label>
-          <input
-            id="lead-name"
-            className={`${fieldClass} ${errors.name ? "border-[var(--danger)]" : ""}`}
-            type="text"
-            name="name"
-            autoComplete="name"
-            value={form.name}
-            onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
-            aria-invalid={Boolean(errors.name)}
+      <div className="relative z-[1] mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8 xl:gap-10">
+        <Reveal variant="up" delay={0.06}>
+          <div className="apply-shell">
+            <div className="apply-shell-glow" aria-hidden="true" />
+            <form className="apply-card relative" onSubmit={onSubmit} noValidate>
+              <header className="apply-card-head">
+                <div>
+                  <p className="font-mono text-[0.68rem] tracking-[0.22em] text-[var(--accent)] uppercase">
+                    {dict.apply.eyebrow}
+                  </p>
+                  <p className="mt-1 text-sm text-white/55">{dict.apply.responseNote}</p>
+                </div>
+                <span className="apply-status-chip">LEAD</span>
+              </header>
+
+              <div className="apply-card-body">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Field
+                    id="lead-name"
+                    label={dict.apply.name}
+                    error={errors.name}
+                    input={
+                      <input
+                        id="lead-name"
+                        className={`apply-input ${errors.name ? "apply-input-error" : ""}`}
+                        type="text"
+                        name="name"
+                        autoComplete="name"
+                        value={form.name}
+                        onChange={(event) =>
+                          setForm((prev) => ({ ...prev, name: event.target.value }))
+                        }
+                        aria-invalid={Boolean(errors.name)}
+                      />
+                    }
+                  />
+                  <Field
+                    id="lead-phone"
+                    label={dict.apply.phone}
+                    error={errors.phone}
+                    input={
+                      <input
+                        id="lead-phone"
+                        className={`apply-input ${errors.phone ? "apply-input-error" : ""}`}
+                        type="tel"
+                        name="phone"
+                        autoComplete="tel"
+                        value={form.phone}
+                        onChange={(event) =>
+                          setForm((prev) => ({ ...prev, phone: event.target.value }))
+                        }
+                        aria-invalid={Boolean(errors.phone)}
+                      />
+                    }
+                  />
+                  <div className="sm:col-span-2">
+                    <Field
+                      id="lead-message"
+                      label={dict.apply.message}
+                      error={errors.message}
+                      input={
+                        <textarea
+                          id="lead-message"
+                          className={`apply-input min-h-32 resize-y ${
+                            errors.message ? "apply-input-error" : ""
+                          }`}
+                          name="message"
+                          rows={4}
+                          value={form.message}
+                          onChange={(event) =>
+                            setForm((prev) => ({
+                              ...prev,
+                              message: event.target.value,
+                            }))
+                          }
+                          aria-invalid={Boolean(errors.message)}
+                        />
+                      }
+                    />
+                  </div>
+                </div>
+
+                <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+                  <label htmlFor="lead-website">Website</label>
+                  <input
+                    id="lead-website"
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={(event) =>
+                      setForm((prev) => ({ ...prev, website: event.target.value }))
+                    }
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className="calc-submit mt-6 w-full sm:w-auto sm:min-w-[14rem]"
+                  whileTap={{ scale: 0.985 }}
+                  transition={{ duration: 0.12 }}
+                >
+                  <span>
+                    {status === "submitting" ? dict.apply.submitting : dict.apply.submit}
+                  </span>
+                </motion.button>
+
+                <StatusMessage status={status} dict={dict} />
+              </div>
+            </form>
+          </div>
+        </Reveal>
+
+        <Reveal variant="right" delay={0.1} className="hidden lg:block">
+          <ApplyRoutePanel
+            eyebrow={dict.apply.eyebrow}
+            responseNote={dict.apply.responseNote}
+            steps={dict.apply.steps}
           />
-          {errors.name ? (
-            <p className="mt-1.5 text-xs text-[var(--danger)]">{errors.name}</p>
-          ) : null}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-[var(--ink)]" htmlFor="lead-phone">
-            {dict.apply.phone}
-          </label>
-          <input
-            id="lead-phone"
-            className={`${fieldClass} ${errors.phone ? "border-[var(--danger)]" : ""}`}
-            type="tel"
-            name="phone"
-            autoComplete="tel"
-            value={form.phone}
-            onChange={(event) => setForm((prev) => ({ ...prev, phone: event.target.value }))}
-            aria-invalid={Boolean(errors.phone)}
-          />
-          {errors.phone ? (
-            <p className="mt-1.5 text-xs text-[var(--danger)]">{errors.phone}</p>
-          ) : null}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-[var(--ink)]" htmlFor="lead-message">
-            {dict.apply.message}
-          </label>
-          <textarea
-            id="lead-message"
-            className={`${fieldClass} min-h-28 resize-y ${errors.message ? "border-[var(--danger)]" : ""}`}
-            name="message"
-            rows={4}
-            value={form.message}
-            onChange={(event) =>
-              setForm((prev) => ({ ...prev, message: event.target.value }))
-            }
-            aria-invalid={Boolean(errors.message)}
-          />
-          {errors.message ? (
-            <p className="mt-1.5 text-xs text-[var(--danger)]">{errors.message}</p>
-          ) : null}
-        </div>
-
-        {/* Honeypot — hidden from users */}
-        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-          <label htmlFor="lead-website">Website</label>
-          <input
-            id="lead-website"
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            value={form.website}
-            onChange={(event) =>
-              setForm((prev) => ({ ...prev, website: event.target.value }))
-            }
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="btn-primary justify-self-start px-5 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {status === "submitting" ? dict.apply.submitting : dict.apply.submit}
-        </button>
-
-        {status === "success" ? (
-          <p className="text-sm text-[var(--accent)]" role="status">
-            {dict.apply.success}
-          </p>
-        ) : null}
-        {status === "error" ? (
-          <p className="text-sm text-[var(--danger)]" role="alert">
-            {dict.apply.errorGeneric}
-          </p>
-        ) : null}
-        {status === "rate_limited" ? (
-          <p className="text-sm text-[var(--danger)]" role="alert">
-            {dict.apply.errorRateLimited}
-          </p>
-        ) : null}
-      </form>
+        </Reveal>
+      </div>
     </Section>
+  );
+}
+
+type FieldProps = {
+  id: string;
+  label: string;
+  error?: string;
+  input: ReactNode;
+};
+
+function Field({ id, label, error, input }: FieldProps) {
+  return (
+    <div>
+      <label className="apply-label" htmlFor={id}>
+        {label}
+      </label>
+      {input}
+      {error ? <p className="mt-1.5 text-xs text-[var(--danger)]">{error}</p> : null}
+    </div>
+  );
+}
+
+function StatusMessage({
+  status,
+  dict,
+}: {
+  status: SubmitState;
+  dict: Dictionary;
+}) {
+  const map = {
+    success: { text: dict.apply.success, kind: "ok" as const, role: "status" as const },
+    error: { text: dict.apply.errorGeneric, kind: "err" as const, role: "alert" as const },
+    rate_limited: {
+      text: dict.apply.errorRateLimited,
+      kind: "err" as const,
+      role: "alert" as const,
+    },
+  };
+
+  const active =
+    status === "success" || status === "error" || status === "rate_limited"
+      ? map[status]
+      : null;
+
+  return (
+    <AnimatePresence mode="wait">
+      {active ? (
+        <motion.p
+          key={status}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          className={`apply-feedback ${
+            active.kind === "ok" ? "apply-feedback-ok" : "apply-feedback-err"
+          }`}
+          role={active.role}
+        >
+          {active.text}
+        </motion.p>
+      ) : null}
+    </AnimatePresence>
   );
 }

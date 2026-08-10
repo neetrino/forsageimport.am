@@ -1,11 +1,13 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   motion,
-  useReducedMotion,
+  useScroll,
+  useTransform,
+  type MotionValue,
 } from "motion/react";
 import type { Dictionary } from "@/lib/i18n/types";
 import { LANDING_SECTION_IDS } from "@/types/landing";
@@ -13,13 +15,17 @@ import { sectionHref } from "@/lib/i18n/paths";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { HeroCarsCycle } from "@/components/landing/HeroCarsCycle";
+import {
+  useIsMounted,
+  useSafeReducedMotion,
+} from "@/hooks/useSafeReducedMotion";
 
 const HeroRoad3D = dynamic(
   () =>
     import("@/components/landing/HeroRoad3D").then((mod) => mod.HeroRoad3D),
   {
     ssr: false,
-    loading: () => <div className="absolute inset-0 bg-[#07090e]" />,
+    loading: () => <div className="absolute inset-0 bg-[var(--landing-canvas)]" />,
   },
 );
 
@@ -32,10 +38,53 @@ type HeroSliderProps = {
 
 export function HeroSlider({ dict }: HeroSliderProps) {
   const slides = dict.hero.slides;
-  const reduce = useReducedMotion();
+  const reduce = useSafeReducedMotion();
+  const mounted = useIsMounted();
+  const rootRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [direction, setDirection] = useState(1);
+
+  const { scrollYProgress } = useScroll({
+    target: mounted ? rootRef : undefined,
+    // Finish the exit while hero is still mostly on screen (~35% scrolled).
+    offset: ["start start", "35% start"],
+  });
+
+  const copyY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -72]);
+  const copyOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.35, 0.7],
+    reduce ? [1, 1, 1] : [1, 0.55, 0],
+  );
+  const copyX = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -28]);
+
+  const carsY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 120]);
+  const carsX = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 48]);
+  const carsScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 0.88]);
+  const carsOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.75],
+    reduce ? [1, 1, 1] : [1, 0.55, 0.12],
+  );
+  const carsRotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduce ? [0, 0] : [0, -3],
+  );
+
+  const controlsY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 36]);
+  const controlsOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.18, 0.4],
+    reduce ? [1, 1, 1] : [1, 0.3, 0],
+  );
+
+  const cueOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.18],
+    reduce ? [0, 0, 0] : [1, 0.25, 0],
+  );
 
   const goTo = useCallback(
     (next: number, dir: number) => {
@@ -61,7 +110,8 @@ export function HeroSlider({ dict }: HeroSliderProps) {
 
   return (
     <div
-      className="hero-slider relative min-h-svh overflow-hidden bg-[#090b10] text-white"
+      ref={rootRef}
+      className="hero-slider relative min-h-svh overflow-hidden bg-[var(--landing-canvas)] text-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -73,11 +123,18 @@ export function HeroSlider({ dict }: HeroSliderProps) {
     >
       <span className="sr-only">{dict.a11y.heroVisual}</span>
 
-      <HeroVelocityBackdrop active={index} reduceMotion={Boolean(reduce)} />
+      <HeroVelocityBackdrop
+        active={index}
+        reduceMotion={Boolean(reduce)}
+        progress={scrollYProgress}
+      />
 
       <Container className="relative z-30 flex min-h-svh flex-col !pl-3 !pr-4 pb-16 pt-[calc(var(--header-height)+1.25rem)] sm:!pl-4 sm:!pr-6 sm:pb-20 sm:pt-[calc(var(--header-height)+1.75rem)] lg:!pl-5 lg:!pr-8 lg:pb-24 xl:!pl-6">
         <div className="grid flex-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-4 xl:gap-6">
-          <div className="hero-copy-stage order-2 w-full max-w-2xl justify-self-start lg:order-1 lg:max-w-3xl lg:-translate-x-2 xl:-translate-x-4">
+          <motion.div
+            className="hero-copy-stage order-2 w-full max-w-2xl justify-self-start lg:order-1 lg:max-w-3xl lg:-translate-x-2 xl:-translate-x-4"
+            style={{ y: copyY, x: copyX, opacity: copyOpacity }}
+          >
             <div className="hero-copy-wall">
               <p className="inline-flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.22em] text-[var(--accent)] uppercase sm:text-[0.85rem]">
                 <span className="h-px w-10 bg-[var(--accent)]" aria-hidden="true" />
@@ -152,20 +209,30 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                 </ButtonLink>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="order-1 flex justify-center overflow-visible lg:order-2 lg:justify-end">
+          <motion.div
+            className="order-1 flex justify-center overflow-visible lg:order-2 lg:justify-end"
+            style={{
+              y: carsY,
+              x: carsX,
+              scale: carsScale,
+              opacity: carsOpacity,
+              rotate: carsRotate,
+            }}
+          >
             <div id="hero-brand" className="relative w-full max-w-[900px] overflow-visible">
               <HeroCarsCycle slideIndex={index} direction={direction} />
               <span className="sr-only">{dict.hero.brand}</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div
+        <motion.div
           className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5"
           role="group"
           aria-label={dict.a11y.heroSlider}
+          style={{ y: controlsY, opacity: controlsOpacity }}
         >
           <div className="flex items-center gap-2">
             <button
@@ -220,8 +287,20 @@ export function HeroSlider({ dict }: HeroSliderProps) {
           <p className="font-mono text-xs tracking-[0.18em] text-white/45 tabular-nums">
             {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
           </p>
-        </div>
+        </motion.div>
       </Container>
+
+      {!reduce ? (
+        <motion.div
+          className="pointer-events-none absolute inset-x-0 bottom-5 z-40 flex justify-center sm:bottom-7"
+          style={{ opacity: cueOpacity }}
+          aria-hidden="true"
+        >
+          <div className="hero-scroll-cue">
+            <span />
+          </div>
+        </motion.div>
+      ) : null}
     </div>
   );
 }
@@ -235,60 +314,152 @@ const fadeOnly = {
 type HeroVelocityBackdropProps = {
   active: number;
   reduceMotion: boolean;
+  progress: MotionValue<number>;
 };
 
-function HeroVelocityBackdrop({ active, reduceMotion }: HeroVelocityBackdropProps) {
+function HeroVelocityBackdrop({
+  active,
+  reduceMotion,
+  progress,
+}: HeroVelocityBackdropProps) {
+  const [roadReady, setRoadReady] = useState(false);
   const scene =
     active === 0 ? "route" : active === 1 ? "cost" : "handover";
 
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    let cancelled = false;
+    let idleId = 0;
+    let timeoutId = 0;
+
+    const enable = () => {
+      if (!cancelled) setRoadReady(true);
+    };
+
+    // Defer past mount commit to avoid pre-mount setState warnings.
+    timeoutId = window.setTimeout(() => {
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(enable, { timeout: 900 });
+      } else {
+        enable();
+      }
+    }, 0);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      if (idleId) window.cancelIdleCallback(idleId);
+    };
+  }, [reduceMotion]);
+
+  const layerY = useTransform(progress, [0, 1], reduceMotion ? [0, 0] : [0, 70]);
+  const layerScale = useTransform(
+    progress,
+    [0, 1],
+    reduceMotion ? [1, 1] : [1, 1.06],
+  );
+  const shardsY = useTransform(progress, [0, 1], reduceMotion ? [0, 0] : [0, -50]);
+  const shardsOpacity = useTransform(
+    progress,
+    [0, 0.45, 0.75],
+    reduceMotion ? [0.5, 0.5, 0.5] : [0.5, 0.22, 0.05],
+  );
+  const watermarkX = useTransform(
+    progress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, -100],
+  );
+  const watermarkY = useTransform(
+    progress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, 44],
+  );
+  const horizonY = useTransform(
+    progress,
+    [0, 1],
+    reduceMotion ? [0, 0] : [0, -30],
+  );
+  const veilOpacity = useTransform(
+    progress,
+    [0, 0.35, 0.7],
+    reduceMotion ? [0, 0, 0] : [0, 0.4, 0.78],
+  );
+
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-0 bg-[#07090e]" />
+      <div className="absolute inset-0 bg-[var(--landing-canvas)]" />
 
-      {reduceMotion ? <StaticRoadFallback /> : <HeroRoad3D active={active} />}
+      <motion.div
+        className="absolute inset-0 origin-center"
+        style={{ y: layerY, scale: layerScale }}
+      >
+        {reduceMotion || !roadReady ? (
+          <StaticRoadFallback />
+        ) : (
+          <HeroRoad3D active={active} />
+        )}
+      </motion.div>
 
-      <div
-        className={`hero-horizon-band absolute inset-x-[-10%] top-[6%] h-[36%] mix-blend-screen transition-all duration-700 ${
-          scene === "cost"
-            ? "opacity-70 translate-y-[-4%]"
-            : scene === "handover"
-              ? "opacity-65 translate-y-[6%]"
-              : "opacity-75"
-        }`}
-      />
+      <motion.div className="absolute inset-x-[-10%] top-[6%] h-[36%]" style={{ y: horizonY }}>
+        <div
+          className={`hero-horizon-band absolute inset-0 mix-blend-screen transition-all duration-700 ${
+            scene === "cost"
+              ? "opacity-70 translate-y-[-4%]"
+              : scene === "handover"
+                ? "opacity-65 translate-y-[6%]"
+                : "opacity-75"
+          }`}
+        />
+      </motion.div>
 
-      <div className="absolute inset-0 opacity-50">
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: shardsY, opacity: shardsOpacity }}
+      >
         <div className="hero-shard hero-shard-a" />
         <div className="hero-shard hero-shard-b" />
         <div className="hero-shard hero-shard-c" />
-      </div>
+      </motion.div>
 
       {!reduceMotion ? (
-        <div className="hero-streaks absolute inset-0 opacity-40">
+        <motion.div
+          className="hero-streaks absolute inset-0 opacity-40"
+          style={{ y: layerY }}
+        >
           <span />
           <span />
           <span />
           <span />
           <span />
           <span />
-        </div>
+        </motion.div>
       ) : null}
 
-      <p
-        className={`hero-watermark absolute left-[-4%] top-[18%] select-none font-display text-[clamp(4.5rem,18vw,14rem)] font-black leading-none tracking-[-0.07em] text-white/[0.05] transition-transform duration-700 ${
-          scene === "cost"
-            ? "translate-x-[-2%] rotate-[-2deg]"
-            : scene === "handover"
-              ? "translate-x-[3%] rotate-[1.5deg]"
-              : "rotate-[-4deg]"
-        }`}
+      <motion.div
+        className="absolute left-[-4%] top-[18%]"
+        style={{ x: watermarkX, y: watermarkY }}
       >
-        FORSAGE
-      </p>
+        <p
+          className={`hero-watermark select-none font-display text-[clamp(4.5rem,18vw,14rem)] font-black leading-none tracking-[-0.07em] text-white/[0.05] transition-transform duration-700 ${
+            scene === "cost"
+              ? "translate-x-[-2%] rotate-[-2deg]"
+              : scene === "handover"
+                ? "translate-x-[3%] rotate-[1.5deg]"
+                : "rotate-[-4deg]"
+          }`}
+        >
+          FORSAGE
+        </p>
+      </motion.div>
 
-      <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_70%_40%,transparent_18%,rgba(7,9,14,0.4)_72%,rgba(7,9,14,0.82)_100%)]" />
-      <div className="absolute inset-y-0 left-0 w-[52%] bg-gradient-to-r from-[#07090e]/88 via-[#07090e]/35 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#07090e] to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(90%_70%_at_70%_40%,transparent_18%,color-mix(in_srgb,var(--landing-canvas)_40%,transparent)_72%,color-mix(in_srgb,var(--landing-canvas)_82%,transparent)_100%)]" />
+      <div className="absolute inset-y-0 left-0 w-[52%] bg-gradient-to-r from-[color-mix(in_srgb,var(--landing-canvas)_88%,transparent)] via-[color-mix(in_srgb,var(--landing-canvas)_35%,transparent)] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[var(--landing-canvas)] via-[color-mix(in_srgb,var(--landing-canvas)_88%,transparent)] to-transparent" />
+      <motion.div
+        className="absolute inset-0 bg-[var(--landing-canvas)]"
+        style={{ opacity: veilOpacity }}
+      />
     </div>
   );
 }

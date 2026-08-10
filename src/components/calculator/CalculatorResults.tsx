@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatePresence, motion } from "motion/react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { CalculatorResult, CostBreakdown } from "@/lib/calculator/types";
 import { formatUsd } from "@/lib/calculator/format";
@@ -19,43 +22,61 @@ export function CalculatorResults({
   onDownload,
   isDownloading,
 }: CalculatorResultsProps) {
-  if (!result) {
-    return (
-      <div className="mt-6 rounded-2xl border border-white/15 bg-white/5 p-5 sm:p-6">
-        <h3 className="font-display text-xl text-white">{dict.calculator.resultsTitle}</h3>
-        <p className="mt-2 text-sm leading-6 text-white/65 sm:text-base">
-          {dict.calculator.resultsPending}
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <div className="mt-6 space-y-4">
-      <p className="rounded-xl border border-[color-mix(in_srgb,var(--accent)_45%,transparent)] bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] px-4 py-3 text-sm text-[color-mix(in_srgb,var(--accent-ink)_88%,var(--accent))]">
-        {dict.calculator.disclaimer}
-      </p>
+    <div className="mt-6">
+      <AnimatePresence mode="wait">
+        {!result ? (
+          <motion.div
+            key="pending"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="calc-results-pending"
+          >
+            <p className="font-mono text-[0.68rem] tracking-[0.2em] text-[var(--accent)] uppercase">
+              {dict.calculator.resultsTitle}
+            </p>
+            <h3 className="mt-2 font-display text-xl text-white sm:text-2xl">
+              {dict.calculator.resultsPending}
+            </h3>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="ready"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-4"
+          >
+            <p className="calc-disclaimer">{dict.calculator.disclaimer}</p>
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        <ResultCard
-          title={dict.calculator.results.physicalTitle}
-          labels={dict.calculator.results}
-          breakdown={result.physical}
-          locale={locale}
-          downloadLabel={dict.calculator.downloadPdf}
-          downloading={isDownloading === "physical"}
-          onDownload={() => onDownload("physical")}
-        />
-        <ResultCard
-          title={dict.calculator.results.legalTitle}
-          labels={dict.calculator.results}
-          breakdown={result.legal}
-          locale={locale}
-          downloadLabel={dict.calculator.downloadPdf}
-          downloading={isDownloading === "legal"}
-          onDownload={() => onDownload("legal")}
-        />
-      </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <ResultCard
+                title={dict.calculator.results.physicalTitle}
+                labels={dict.calculator.results}
+                breakdown={result.physical}
+                locale={locale}
+                downloadLabel={dict.calculator.downloadPdf}
+                downloading={isDownloading === "physical"}
+                onDownload={() => onDownload("physical")}
+                delay={0}
+              />
+              <ResultCard
+                title={dict.calculator.results.legalTitle}
+                labels={dict.calculator.results}
+                breakdown={result.legal}
+                locale={locale}
+                downloadLabel={dict.calculator.downloadPdf}
+                downloading={isDownloading === "legal"}
+                onDownload={() => onDownload("legal")}
+                delay={0.06}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -68,6 +89,7 @@ type ResultCardProps = {
   downloadLabel: string;
   downloading: boolean;
   onDownload: () => void;
+  delay: number;
 };
 
 function ResultCard({
@@ -78,6 +100,7 @@ function ResultCard({
   downloadLabel,
   downloading,
   onDownload,
+  delay,
 }: ResultCardProps) {
   const rows: { label: string; value: number; emphasize?: boolean }[] = [
     { label: labels.vehiclePrice, value: breakdown.vehiclePrice },
@@ -91,20 +114,35 @@ function ResultCard({
   ];
 
   return (
-    <article className="rounded-[var(--radius-lg)] border border-white/15 bg-white p-5 text-[var(--ink)] sm:p-6">
-      <h3 className="font-display text-xl">{title}</h3>
+    <motion.article
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="calc-result-card"
+    >
+      <h3 className="font-display text-xl text-[var(--ink)]">{title}</h3>
       <dl className="mt-4 space-y-2.5">
         {rows.map((row) => (
           <div
             key={row.label}
             className={`flex items-center justify-between gap-4 text-sm ${
-              row.emphasize ? "border-t border-[var(--calc-border)] pt-3 text-base font-semibold" : ""
+              row.emphasize
+                ? "mt-1 border-t border-[var(--calc-border)] pt-3 text-base font-semibold"
+                : ""
             }`}
           >
             <dt className={row.emphasize ? "text-[var(--ink)]" : "text-[var(--muted)]"}>
               {row.label}
             </dt>
-            <dd>{formatUsd(row.value, locale)}</dd>
+            <dd
+              className={
+                row.emphasize
+                  ? "font-mono text-[var(--calc-accent)] tabular-nums"
+                  : "font-mono tabular-nums text-[var(--ink)]"
+              }
+            >
+              {formatUsd(row.value, locale)}
+            </dd>
           </div>
         ))}
       </dl>
@@ -114,8 +152,8 @@ function ResultCard({
         onClick={onDownload}
         disabled={downloading}
       >
-        {downloadLabel}
+        <span>{downloadLabel}</span>
       </button>
-    </article>
+    </motion.article>
   );
 }

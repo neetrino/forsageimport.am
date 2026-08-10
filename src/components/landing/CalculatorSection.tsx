@@ -17,32 +17,31 @@ export function CalculatorSection({ dict, locale }: CalculatorSectionProps) {
   return (
     <Section
       id={LANDING_SECTION_IDS.calculator}
-      className="relative overflow-hidden bg-[var(--ink)]"
+      className="relative"
       ariaLabelledBy="calculator-title"
+      curvedTop
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-80"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "radial-gradient(55% 45% at 10% 0%, rgba(240,90,24,0.28), transparent 60%), radial-gradient(45% 40% at 95% 20%, rgba(26,74,120,0.3), transparent 55%)",
-        }}
-      />
-      <div className="relative">
-        <Reveal>
+      <Reveal variant="clip">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             id="calculator-title"
+            eyebrow={dict.calculator.eyebrow}
             title={dict.calculator.title}
             subtitle={dict.calculator.subtitle}
             tone="dark"
           />
-        </Reveal>
-        <Reveal delay={0.08}>
-          <div className="calc-shell mt-10 p-1 sm:p-1.5">
-            <CalculatorForm dict={dict} locale={locale} />
-          </div>
-        </Reveal>
-      </div>
+          <p className="max-w-xs font-mono text-[0.7rem] leading-5 tracking-[0.14em] text-white/40 uppercase lg:pb-1 lg:text-right">
+            USD · Copart / IAAI / Manheim
+          </p>
+        </div>
+      </Reveal>
+
+      <Reveal variant="scale" delay={0.06} className="mt-10">
+        <div className="calc-shell">
+          <div className="calc-shell-glow" aria-hidden="true" />
+          <CalculatorForm dict={dict} locale={locale} />
+        </div>
+      </Reveal>
     </Section>
   );
 }

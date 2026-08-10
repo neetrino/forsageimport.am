@@ -25,7 +25,7 @@ export const hy: Dictionary = {
   nav: {
     about: "Մեր մասին",
     services: "Ծառայություններ",
-    process: "Ինչպես է աշխատում",
+    process: "Գործընթաց",
     calculator: "Հաշվիչ",
     whyUs: "Ինչու մենք",
     apply: "Հայտ",
@@ -113,6 +113,7 @@ export const hy: Dictionary = {
     ],
   },
   calculator: {
+    eyebrow: "Հաշվարկ",
     title: "Արժեքի հաշվիչ",
     subtitle:
       "Մոտավոր հաշվարկ՝ մինչև մաքսազերծում։ Վերջնական գումարները կակտիվանան սակագների հաստատումից հետո։",
@@ -206,8 +207,15 @@ export const hy: Dictionary = {
     ],
   },
   apply: {
+    eyebrow: "Կապ",
     title: "Հայտ թողնել",
     subtitle: "Լրացրեք կարճ հայտը՝ անուն, հեռախոս և հաղորդագրություն։ Մենք կապ կհաստատենք ձեզ հետ։",
+    responseNote: "Պատասխանում ենք սովորաբար 1 աշխատանքային օրվա ընթացքում",
+    steps: [
+      "Լրացրեք անունը և հեռախոսը",
+      "Գրեք կարճ հաղորդագրություն",
+      "Մենք կապ ենք հաստատում",
+    ],
     name: "Անուն",
     phone: "Հեռախոս",
     message: "Հաղորդագրություն",
@@ -232,5 +240,9 @@ export const hy: Dictionary = {
     contactsPending: "Կոնտակտային տվյալները կլրացվեն",
     socialPending: "Սոցիալական հղումները կլրացվեն",
     rights: "Forsage Import",
+    copyrightRights: "Բոլոր իրավունքները պաշտպանված են",
+    creditBefore: "Ստեղծվել է",
+    creditAfter: "կողմից",
+    creditCompany: "Neetrino IT Company",
   },
 };

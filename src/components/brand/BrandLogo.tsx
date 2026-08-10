@@ -4,6 +4,7 @@ import { BRAND_LOGO } from "@/lib/brand/assets";
 const sizeMap = {
   xs: 28,
   sm: 40,
+  header: 52,
   md: 72,
   lg: 128,
   hero: 220,

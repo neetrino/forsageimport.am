@@ -14,9 +14,9 @@ type HeroRoad3DProps = {
 };
 
 const sceneTint = [
-  { fog: "#07090e", accent: "#f05a18", rim: "#1a4a78" },
-  { fog: "#0a0c12", accent: "#ff6a28", rim: "#245f96" },
-  { fog: "#080a10", accent: "#e85a1a", rim: "#163d66" },
+  { fog: "#090b10", accent: "#f05a18", rim: "#1a4a78" },
+  { fog: "#090b10", accent: "#ff6a28", rim: "#245f96" },
+  { fog: "#090b10", accent: "#e85a1a", rim: "#163d66" },
 ] as const;
 
 export function HeroRoad3D({ active }: HeroRoad3DProps) {
@@ -25,9 +25,15 @@ export function HeroRoad3D({ active }: HeroRoad3DProps) {
   return (
     <div className="absolute inset-0">
       <Canvas
-        dpr={[1, 1.6]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-        camera={{ position: [0, 2.4, 8.5], fov: 55, near: 0.1, far: 160 }}
+        dpr={[1, 1.25]}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: "high-performance",
+          stencil: false,
+          depth: true,
+        }}
+        camera={{ position: [0, 2.4, 8.5], fov: 55, near: 0.1, far: 120 }}
         style={{ width: "100%", height: "100%" }}
       >
         <color attach="background" args={[tint.fog]} />
