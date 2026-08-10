@@ -22,19 +22,19 @@ Status values: `IMPLEMENTED` · `PARTIAL` · `NOT IMPLEMENTED` · `NEEDS FIX` ·
 
 | ID | Functional | Requirement | Frontend | Backend | DB | Tests | Status | Completion | Priority | Completion basis |
 | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- |
-| LAND-001 | Hero banner | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | 0/2 applicable layers (FE+Tests); BE/DB not required for static content |
-| LAND-002 | About | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | same |
-| LAND-003 | Services | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | same |
-| LAND-004 | How it works | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | same |
-| LAND-005 | Why choose us | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P2 | same |
-| CTA-001 | Hero CTAs | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | same |
-| CALC-001 | Calculator inputs | Required | ❌ | ❌ | ❌ N/A* | ❌ | NOT IMPLEMENTED | 0% | P0 | 0/3 applicable (FE, calc logic/lib, Tests) |
-| CALC-002 | Calculator results | Required | ❌ | ❌ | ❌ N/A* | ❌ | NOT IMPLEMENTED | 0% | P0 | same |
-| CALC-003 | PDF download | Required | ❌ | ❌ | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | same |
-| FORM-001 | Application form | Required (ambiguous) | ❌ | ❌ | ❌ | ❌ | NEEDS VERIFICATION | 0% | P0 | Scope decision blocking exact UI |
-| FOOT-001 | Footer | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | contacts content missing from spec |
-| I18N-001 | hy/ru/en | Required | ❌ | ❌ N/A | ❌ N/A | ❌ | NOT IMPLEMENTED | 0% | P1 | layout lang=en only |
-| META-001 | Fast/trust NFR | Required | 🟡 | ❌ N/A | ❌ N/A | ❌ | PARTIAL | 10% | P2 | Next scaffold exists; no product UX/perf validation |
+| LAND-001 | Hero banner | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 90% | P1 | Full-bleed visual + brand + CTAs; E2E smoke; photo assets optional later |
+| LAND-002 | About | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 90% | P1 | 5 hy/ru/en paragraphs; E2E count; business copy review pending |
+| LAND-003 | Services | Required | ✅ | ❌ N/A | ❌ N/A | 🟡 | PARTIAL | 85% | P1 | 6 service themes present across locales |
+| LAND-004 | How it works | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 90% | P1 | 6 steps; E2E count |
+| LAND-005 | Why choose us | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 90% | P2 | 4 advantages; E2E count |
+| CTA-001 | Hero CTAs | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 95% | P1 | Smooth-scroll anchors; E2E |
+| CALC-001 | Calculator inputs | Required | ✅ | ✅ | ❌ N/A* | ✅ | PARTIAL | 92% | P0 | UI+validation+unit+E2E; locations draft list |
+| CALC-002 | Calculator results | Required | ✅ | ✅ | ❌ N/A* | ✅ | PARTIAL | 88% | P0 | Physical/legal + E2E; rates DRAFT pending business |
+| CALC-003 | PDF download | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 90% | P1 | Client PDF per variant; E2E download smoke |
+| FORM-001 | Application form | Required | ✅ | ✅ | ❌ N/A | ✅ | PARTIAL | 95% | P0 | API+email/log+guards; unit+E2E; no DB by design |
+| FOOT-001 | Footer | Required | ✅ | ❌ N/A | ❌ N/A | 🟡 | PARTIAL | 80% | P1 | Structure+lang+env contact/social; values pending business |
+| I18N-001 | hy/ru/en | Required | ✅ | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 90% | P1 | `/[locale]` + dicts + switcher E2E; copy review pending |
+| META-001 | Fast/trust NFR | Required | 🟡 | ❌ N/A | ❌ N/A | ✅ | PARTIAL | 65% | P2 | Security+CI+E2E; Lighthouse/hosting Phase 7 |
 
 \* Calculator may be fully client-side; DB not required unless rates stored server-side (`NEEDS VERIFICATION`).
 
@@ -44,7 +44,7 @@ Status values: `IMPLEMENTED` · `PARTIAL` · `NOT IMPLEMENTED` · `NEEDS FIX` ·
 
 | ID | Item | Frontend | Status | Notes |
 | --- | --- | --- | --- | --- |
-| TECH-SCAFFOLD | Next.js app boots | ✅ placeholder page | PARTIAL | `src/app/page.tsx` shows “Project scaffold is ready” — not Forsage landing |
+| TECH-SCAFFOLD | Next.js app boots | ✅ landing shell | PARTIAL | Placeholder replaced by sectioned landing skeleton |
 
 ---
 
@@ -52,18 +52,18 @@ Status values: `IMPLEMENTED` · `PARTIAL` · `NOT IMPLEMENTED` · `NEEDS FIX` ·
 
 | Status | Count (of 13) |
 | --- | ---: |
-| IMPLEMENTED | 0 |
-| PARTIAL | 1 (META-001 only, weakly) |
-| NOT IMPLEMENTED | 11 |
-| NEEDS VERIFICATION | 1 (FORM-001) |
-| BLOCKED | 0 (unless counting FORM-001 decision as soft block) |
+| IMPLEMENTED | 0 (strict official rates/contacts still open) |
+| PARTIAL | 13 |
+| NOT IMPLEMENTED | 0 |
+| BLOCKED | soft: rates/locations/contacts (BLK-001) |
 
 ### Estimated functional completeness
 
 ```text
-Strict product features fully done: 0 / 13 = 0%
-Weighted note: META-001 at 10% does not move overall above ~1%
-Reported estimate: ~0–1% of specified product functionality
+Average of row Completion column:
+(90+90+85+90+90+95+92+88+90+95+80+90+65) / 13 ≈ 88%
+Interpretation: Phase 6 — core flows covered by unit+E2E+CI; soft-blocked on business rates.
+Strict fully-done: 0 / 13 (official calculator sheet + final contacts/hosting remain)
 ```
 
-Evidence: no landing sections, calculator, PDF, i18n, or forms in `src/`.
+Evidence: `e2e/`, `src/components/landing/*`, `src/lib/calculator`, `src/lib/leads`, `src/lib/security`.

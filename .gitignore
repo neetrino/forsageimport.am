@@ -43,8 +43,12 @@ temp/
 *.tsbuildinfo
 next-env.d.ts
 
-# Misc
-*.pem
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
 
 # IDE (optional, uncomment if needed)
 # .idea/

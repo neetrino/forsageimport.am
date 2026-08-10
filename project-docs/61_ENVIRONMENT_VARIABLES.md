@@ -7,6 +7,17 @@ Source of names: `.env.example` (template). Application code currently does **no
 
 | Variable | Used By | Required (today) | Purpose | Secret |
 | --- | --- | --- | --- | --- |
+| `LEAD_TO_EMAIL` | Lead API | No* | Inbox for new leads | No |
+| `LEAD_RATE_LIMIT_MAX` | Lead API | No | Max leads per window | No |
+| `LEAD_RATE_LIMIT_WINDOW_MS` | Lead API | No | Rate-limit window ms | No |
+| `RESEND_API_KEY` | Lead API | No* | Resend API key | Yes |
+| `RESEND_FROM_EMAIL` | Lead API | No* | From address | No |
+| `NEXT_PUBLIC_CONTACT_PHONE` | Footer | No | Public phone | No |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Footer | No | Public email | No |
+| `NEXT_PUBLIC_CONTACT_ADDRESS` | Footer | No | Public address | No |
+| `NEXT_PUBLIC_SOCIAL_FACEBOOK` | Footer | No | Facebook URL | No |
+| `NEXT_PUBLIC_SOCIAL_INSTAGRAM` | Footer | No | Instagram URL | No |
+| `NEXT_PUBLIC_SOCIAL_TELEGRAM` | Footer | No | Telegram URL | No |
 | `NODE_ENV` | Node/Next | No (framework default) | Environment mode | No |
 | `APP_URL` | Template | No in code | Public app URL | No |
 | `NEXT_PUBLIC_API_URL` | Template | No in code | Public API base | No |

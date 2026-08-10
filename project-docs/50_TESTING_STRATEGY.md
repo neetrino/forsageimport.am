@@ -1,56 +1,59 @@
 # 50 — Testing Strategy
 
-Audit date: 2026-08-10
+Audit date: 2026-08-10 (Phase 6)
 
 ---
 
 ## Current tests
 
-| Type | Status |
-| --- | --- |
-| Unit | `NOT FOUND` |
-| Integration | `NOT FOUND` |
-| API | `NOT FOUND` |
-| E2E | `NOT FOUND` |
-| Visual | `NOT FOUND` |
-| CI test job | `NOT FOUND` |
+| Type | Status | Location |
+| --- | --- | --- |
+| Unit | ✅ | `src/lib/calculator/__tests__`, `src/lib/leads/__tests__`, `src/lib/security/__tests__` |
+| Integration | 🟡 | Lead API exercised via Playwright `request` + route unit paths |
+| API | ✅ | Content-type / validation covered in unit + E2E request smoke |
+| E2E | ✅ | `e2e/*.spec.ts` (Playwright) |
+| Visual | `NOT FOUND` | Optional later |
+| CI test job | ✅ | `.github/workflows/ci.yml` — lint, typecheck, unit, audit, build, Playwright |
 
-Scripts available: `lint`, `typecheck`, `build` — quality gates, not functional tests.
-
----
-
-## Recommended strategy for this project
-
-### Unit (P0 for calculator)
-
-- Pure functions for fees, customs variants, totals
-- Fixtures provided by business (golden files)
-
-### Component
-
-- Calculator form validation messages
-- Results rendering for both person types
-- Locale switcher
-
-### E2E (smoke)
-
-- Load `/`
-- Fill calculator happy path
-- See results
-- Download PDF
-- Switch language
-- Submit lead (when exists)
-
-### Security / abuse
-
-- Lead endpoint rate limit tests (if API)
-
-### Regression
-
-- Snapshot key copy for hy/ru/en critical strings
+Scripts: `test`, `test:e2e`, `qa:smoke`, `lint`, `typecheck`, `build`, `audit:deps`
 
 ---
 
-## Missing tests (gap)
+## Strategy in use
 
-Everything product-related — track as debt until Phase 5 in roadmap.
+### Unit (P0 calculator + leads + security)
+
+- Pure fee/customs/totals functions with golden fixtures
+- Lead validation + spam honeypot behavior
+- Request guards / rate-limit helpers
+
+### E2E smoke (Phase 6)
+
+- `/` → `/hy` redirect + core sections
+- Hero CTAs to calculator/apply
+- Calculator empty-submit blocked + happy path + PDF download
+- Lead invalid/valid submit + API 415
+- Locale switch hy → ru → en
+
+Default Playwright port: **3100** (avoids clash with `pnpm dev` on 3000).
+
+### Automated QA gate
+
+`pnpm qa:smoke` runs: lint → typecheck → unit → audit → build → Playwright.
+
+Maps to executable items in `52_QA_CHECKLIST.md`.
+
+### Still manual / deferred
+
+- Real-device mobile layout walkthrough
+- Visual regression
+- Multi-instance rate-limit behavior (needs shared store)
+- Lighthouse / perf budgets (Phase 7)
+
+---
+
+## Gap (remaining)
+
+- No visual snapshots
+- Mobile viewport E2E project not configured yet
+- Official rate golden files pending business (BLK-001)

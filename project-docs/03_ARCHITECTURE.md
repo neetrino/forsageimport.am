@@ -7,36 +7,35 @@ Statuses: current architecture = `CONFIRMED`; target MVP architecture = proposed
 
 ## Current architecture (code reality)
 
-Single Next.js App Router application. No separate backend service, no database, no API routes, no auth.
+Single Next.js App Router application with locale segment routing. No separate backend service, no database, no API routes, no auth.
 
 ```mermaid
 flowchart LR
-  Browser --> NextApp
-  subgraph NextApp["Next.js 16 (Forsage)"]
-    Layout["src/app/layout.tsx"]
-    Page["src/app/page.tsx"]
-    CSS["globals.css + Tailwind 4"]
-  end
+  Browser -->|"/ → /hy"| Proxy["src/proxy.ts"]
+  Proxy --> LocaleApp["app/[locale]"]
+  LocaleApp --> Dict["lib/i18n dictionaries"]
+  LocaleApp --> Landing["Landing sections"]
 ```
 
 ### Request lifecycle (current)
 
-1. Browser requests `/`
-2. Next.js serves App Router `layout.tsx` + `page.tsx`
-3. Placeholder content rendered
-4. No data fetching, no mutations, no external calls (`CONFIRMED` by code inspection)
+1. Browser requests `/` (or path without locale)
+2. `src/proxy.ts` redirects to `/hy...`
+3. `[locale]/layout` validates locale, sets `html[lang]`, loads dictionary into `SiteShell`
+4. `[locale]/page` renders `LandingPage` with localized copy
+5. No mutations / external API calls yet
 
 ### Evidence
 
-- `package.json` — `next`, `react`, `react-dom` only runtime deps
-- `src/app/*` — only layout/page/css/favicon
-- `src/components`, `src/lib`, `src/types` — empty
-- No `src/app/api/**`
-- No Prisma / Drizzle / SQL files
+- `src/app/[locale]/layout.tsx`, `page.tsx`
+- `src/lib/i18n/**`
+- `src/proxy.ts`
+- `.github/workflows/ci.yml`
+- No Prisma / NestJS / auth modules
 
 ---
 
-## Target MVP architecture (proposed for implementation — not built)
+## Target MVP architecture (in progress)
 
 Aligned to DOCX: marketing SPA/SSR page + client calculator + optional email for leads + client or server PDF.
 

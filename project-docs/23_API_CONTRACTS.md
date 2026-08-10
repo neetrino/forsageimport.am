@@ -1,43 +1,37 @@
 # 23 — API Contracts
 
-Audit date: 2026-08-10
+Audit date: 2026-08-10 (updated Phase 4)
 
 ---
 
 ## Rule
 
-Document **only real endpoints**. Do not invent APIs.
+Document **only real endpoints**.
 
 ---
 
-## Current endpoints
-
-**None found.**
-
-Searched for:
-
-- `src/app/api/**`
-- Route Handler exports
-- Server Actions used as HTTP API
-
-Result: `NOT FOUND`
-
----
-
-## Next.js page routes (UI only)
+## UI routes
 
 | Method | Path | Auth | Role | Notes |
 | --- | --- | --- | --- | --- |
-| GET | `/` | Public | Visitor | Renders placeholder home — not a JSON API |
+| GET | `/` | Public | Visitor | Redirects to `/hy` via `src/proxy.ts` |
+| GET | `/[locale]` | Public | Visitor | Landing page (`hy` \| `ru` \| `en`) |
 
 ---
 
-## Future endpoints
+## `POST /api/leads`
 
-Will be added here **only after** implementation. Candidates under discussion (not contracts yet):
+| Field | Value |
+| --- | --- |
+| AUTH | Public |
+| ROLE | Visitor |
+| REQUEST | JSON `{ name, phone, message?, locale, website?, openedAt }` |
+| VALIDATION | name/phone required; phone 8–15 digits; message ≤2000; locale ∈ hy\|ru\|en; honeypot empty; openedAt ≥ ~1.2s age |
+| RESPONSE | `200 { ok: true, delivery: "email" \| "log" \| "ignored" }` |
+| ERRORS | `400`, `403 FORBIDDEN_ORIGIN`, `413 BODY_TOO_LARGE`, `415 UNSUPPORTED_MEDIA_TYPE`, `429 RATE_LIMITED`, `502 DELIVERY_FAILED`, `405` on GET |
+| SIDE EFFECTS | Sends email via Resend when configured; otherwise structured server log |
+| USED BY | `ApplicationSection` |
+| RATE LIMIT | IP + phone keys (`LEAD_RATE_LIMIT_*`) |
+| ABUSE CONTROLS | Origin allowlist, honeypot, fast-submit guard, body size cap |
 
-- `POST /api/leads` — if FORM-001 stores/emails leads
-- `POST /api/calculate` — if server-side rates required
-- `POST /api/calculate/pdf` — if server PDF required
-
-Until then, calculator is expected to be client-side (`NEEDS VERIFICATION` of formula secrecy).
+Evidence: `src/app/api/leads/route.ts`

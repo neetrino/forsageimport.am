@@ -1,34 +1,11 @@
 import type { ReactNode } from "react";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Forsage",
-  description: "Forsage — Next.js application",
+type RootLayoutProps = {
+  children: ReactNode;
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
-  return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col">{children}</body>
-    </html>
-  );
+/** Root pass-through — html/body live in `[locale]/layout` for correct `lang`. */
+export default function RootLayout({ children }: RootLayoutProps) {
+  return children;
 }

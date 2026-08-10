@@ -18,6 +18,10 @@ Rule: versions only when confirmed from package/config.
 | Prettier | present via `prettier.config.cjs` | Format | root config | No |
 | Turbopack | via Next scripts | Dev/build bundler | `package.json` scripts | Yes |
 | Geist / Geist Mono | next/font Google | Typography | `layout.tsx` | No |
+| Vitest | `^4.1.10` | Unit tests | `package.json`, `src/lib/**/__tests__` | Yes |
+| Playwright | `^1.62.1` | E2E smoke | `package.json`, `e2e/`, `playwright.config.ts` | Yes |
+| jspdf | `^4.2.1` | Calculator PDF export | `package.json`, calculator download | Yes |
+| Resend | via env + API route | Lead email delivery | `src/lib/leads`, `.env.example` | Optional |
 
 ---
 
@@ -27,14 +31,11 @@ Rule: versions only when confirmed from package/config.
 | --- | --- | --- |
 | Prisma / Drizzle / SQL DB | Persistence | `NOT FOUND` |
 | Auth.js / Clerk / JWT app logic | Authentication | `NOT FOUND` in code |
-| Upstash Redis | Cache/rate limit | `NOT FOUND` in code |
-| Resend | Email | `NOT FOUND` in code |
+| Upstash Redis | Cache/rate limit | `NOT FOUND` in code (in-process rate limit used) |
 | Cloudflare R2 | File storage | `NOT FOUND` in code |
 | Stripe / local payment gateways | Payments | `NOT FOUND` (payment docs under `docs/reference` are template KB only) |
 | Docker | Containers | `NOT FOUND` |
-| Playwright / Vitest / Jest | Tests | `NOT FOUND` |
-| i18n library (`next-intl`, etc.) | Localization | `NOT FOUND` |
-| PDF library (`jspdf`, `@react-pdf`, etc.) | PDF export | `NOT FOUND` |
+| i18n library (`next-intl`, etc.) | Localization | Custom dictionaries (`src/lib/i18n`) — no next-intl |
 
 ---
 
@@ -47,6 +48,10 @@ Rule: versions only when confirmed from package/config.
 | `start` | `next start` | Run production server |
 | `lint` | `eslint` | Lint |
 | `typecheck` | `tsc --noEmit` | Typecheck |
+| `test` | `vitest run` | Unit tests |
+| `test:e2e` | `pnpm build && playwright test` | E2E smoke |
+| `qa:smoke` | `node scripts/qa-smoke.mjs` | Full automated QA gate |
+| `audit:deps` | `pnpm audit --audit-level=high` | Dependency audit |
 
 ---
 
@@ -55,7 +60,7 @@ Rule: versions only when confirmed from package/config.
 | Tool | Status |
 | --- | --- |
 | Vercel | Common for this template; **not confirmed** configured for this product |
-| GitHub Actions workflows | `NOT FOUND` |
+| GitHub Actions workflows | `.github/workflows/ci.yml` (lint/typecheck/unit/audit/build/e2e) |
 | Dependabot | `.github/dependabot.yml` present (template) |
 
 ---

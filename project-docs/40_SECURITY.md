@@ -1,56 +1,61 @@
 # 40 — Security
 
-Audit date: 2026-08-10  
-Scope: current scaffold + foreseeable MVP risks.
+Audit date: 2026-08-10 (updated Phase 5)
+
+---
+
+## Controls implemented
+
+| Control | Status | Evidence |
+| --- | --- | --- |
+| Security headers | ✅ | `next.config.ts` + `src/lib/security/headers.ts` |
+| `X-Powered-By` disabled | ✅ | `poweredByHeader: false` |
+| Lead origin allowlist | ✅ | `isAllowedLeadOrigin` |
+| JSON content-type enforcement | ✅ | `assertJsonContentType` |
+| Body size limit (8KB) | ✅ | `readJsonBodyLimited` |
+| Honeypot | ✅ | `website` field |
+| Fast-submit bot guard | ✅ | `openedAt` min 1.2s |
+| IP rate limit | ✅ | `consumeRateLimit` |
+| Phone rate limit | ✅ | `phoneRateLimitKey` |
+| Dependency audit in CI | ✅ | `pnpm audit:deps` |
+| `.env` gitignored | ✅ | `.gitignore` |
 
 ---
 
 ## Findings
 
-### SEC-001 — No product attack surface yet beyond static page
+### SEC-001 — Public marketing surface
 
 - **Severity:** Info  
-- **Location:** `src/app/page.tsx`  
-- **Risk:** Low currently  
-- **Exploit scenario:** N/A beyond typical static Next site  
-- **Recommended fix:** Keep dependencies updated; add security headers at deploy time  
+- **Status:** Accepted for MVP  
+- **Mitigation:** Headers + CSP baseline  
 
-### SEC-002 — Template secrets placeholders in `.env.example`
+### SEC-002 — Template secrets leftovers
 
-- **Severity:** Medium (process risk)  
-- **Location:** `.env.example` (`JWT_SECRET` placeholder text)  
-- **Risk:** Developers copying weak secrets to production if auth added  
-- **Exploit scenario:** Token forgery if JWT later enabled with example secret  
-- **Recommended fix:** Document that values are fake; rotate any real secrets; don’t commit `.env`  
+- **Severity:** Low (process)  
+- **Status:** Mitigated  
+- **Evidence:** `.env.example` comments unused JWT/DB/R2 vars; `auditEnv` warns on unused JWT in prod  
 
-### SEC-003 — Future lead API spam / abuse
+### SEC-003 — Lead API spam / abuse
 
-- **Severity:** High (when FORM-001 API exists)  
-- **Location:** N/A (not built)  
-- **Risk:** Inbox flood, cost abuse  
-- **Exploit scenario:** Automated POST to lead endpoint  
-- **Recommended fix:** Rate limiting, bot protection, server validation  
+- **Severity:** High (residual)  
+- **Status:** Mitigated for single-instance MVP  
+- **Residual risk:** In-memory rate limit resets per instance; upgrade to Upstash for multi-region  
 
-### SEC-004 — XSS via rich content / user inputs
+### SEC-004 — XSS
 
-- **Severity:** Medium (future)  
-- **Location:** Future calculator/lead UI  
-- **Risk:** Script injection if unsafe HTML rendering  
-- **Recommended fix:** React text defaults; sanitize any markdown/HTML  
+- **Severity:** Low  
+- **Status:** Mitigated by React text rendering; no `dangerouslySetInnerHTML` in app code  
 
-### SEC-005 — PDF generation resource abuse
+### SEC-005 — PDF abuse
 
-- **Severity:** Medium (future CALC-003 server-side)  
-- **Location:** N/A  
-- **Risk:** CPU/memory DoS  
-- **Recommended fix:** Prefer client PDF or rate-limit server generation  
+- **Severity:** Low  
+- **Status:** Client-side PDF only  
 
 ### SEC-006 — Dependency / supply chain
 
 - **Severity:** Low–Medium  
-- **Location:** `package.json` / lockfile  
-- **Risk:** Vulnerable transitive deps  
-- **Recommended fix:** Keep Dependabot; run audit before production  
+- **Status:** CI runs `pnpm audit --audit-level=high`  
 
 ---
 
@@ -60,12 +65,7 @@ Scope: current scaffold + foreseeable MVP risks.
 | --- | --- |
 | Authentication | N/A for MVP product |
 | Authorization | N/A |
-| Password storage | N/A |
-| SQL injection | N/A (no DB) |
-| CSRF | N/A until mutating APIs |
-| CORS | Default Next; no custom API |
-| File upload | `NOT FOUND` |
-| Rate limiting | `NOT FOUND` |
-| Secret exposure in repo | No real secrets found in tracked source (`CONFIRMED` for scanned app files); do not commit `.env` |
-
-**Note:** No secret values are copied into documentation.
+| CSRF-ish (mutating API) | Origin/Referer allowlist on `/api/leads` |
+| CORS | Same-origin form posts; cross-origin blocked by origin guard |
+| Rate limiting | IP + phone |
+| Secret exposure in repo | `.env` ignored; examples contain no real secrets |

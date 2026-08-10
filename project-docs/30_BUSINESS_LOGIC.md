@@ -1,7 +1,7 @@
 # 30 — Business Logic
 
 Audit date: 2026-08-10  
-Note: Logic below is from **specification intent**. Runtime implementation = `NOT IMPLEMENTED`.
+Note: Logic below is from **specification intent**. Runtime engine is **IMPLEMENTED** with **DRAFT** rates (`src/lib/calculator/rates.ts`).
 
 ---
 
@@ -66,8 +66,8 @@ stateDiagram-v2
 
 ### Critical gap
 
-**Numeric rates, customs tables, and fee formulas are not in the DOCX.**  
-Status: `BLOCKED` for accurate CALC implementation until business provides tables.
+**Numeric rates are DRAFT** in `src/lib/calculator/rates.ts` until business confirms.  
+UI shows an explicit approximate/disclaimer banner.
 
 ---
 

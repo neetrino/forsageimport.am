@@ -5,20 +5,20 @@ Only items that truly block the next delivery phase.
 
 ---
 
-## BLK-001 — Missing calculator business rates/formulas
+## BLK-001 — Official calculator rates not confirmed
 
-- **Why blocking:** CALC-002/003 cannot be correctly finished
-- **Dependency:** Business/ops input (fee tables, customs rules, service fee rule)
-- **Owner:** Product/business (spec lists Սուրեն as responsible contact)
-- **Resolution:** Deliver rate sheet + example worked calculations
-- **Meanwhile:** Build landing sections, form UI shell, i18n, calculator field UI without final numbers (feature-flag results accuracy)
+- **Why blocking:** Production-accurate totals / legal trust
+- **Dependency:** Business/ops official fee + customs sheet + golden examples
+- **Owner:** Product/business (Suren)
+- **Resolution:** Replace DRAFT values in `src/lib/calculator/rates.ts` and update golden tests
+- **Meanwhile:** Engine/UI/PDF work with `DRAFT_PENDING_BUSINESS` disclaimer (implemented)
+- **Status:** Softened — feature works with draft rates; not cleared for “final invoice” claims
 
 ## BLK-002 — FORM-001 scope ambiguity
 
-- **Why blocking:** Cannot implement correct lead form fields/channel
-- **Dependency:** Product owner decision
-- **Resolution:** Document field list + destination (email/Telegram/CRM)
-- **Meanwhile:** Implement CTAs as scroll to placeholder section; landing content; calculator
+- **Status:** RESOLVED (2026-08-10)
+- **Decision:** MVP fields = name + phone + optional message; channel = Resend email (`LEAD_TO_EMAIL`) with log fallback
+- **Evidence:** `src/lib/leads/scope.ts`, `src/app/api/leads/route.ts`
 
 ## BLK-003 — Missing contact & social content
 

@@ -161,11 +161,12 @@ Results must include:
 | Field | Value |
 | --- | --- |
 | Name | Application / lead form |
-| Description | Spec overview and section list require an application form; §7 body duplicates calculator fields |
+| Description | Dedicated lead capture separate from calculator |
 | User role | Visitor |
-| Status note | **Ambiguous** — `NEEDS VERIFICATION` with product owner |
-| Expected behavior (minimum interpretation) | User can request service / leave a lead via dedicated UI beyond calculator |
+| Status note | **LOCKED (2026-08-10)** — MVP fields name + phone + optional message; delivery via `POST /api/leads` (Resend email or log fallback) |
+| Expected behavior | Valid submit delivers lead and shows success feedback |
 | Source section | Overview; sections list «Հայտի ձև»; §7 title |
+| Evidence | `src/lib/leads/scope.ts`, `src/app/api/leads/route.ts`, `ApplicationSection` |
 
 ---
 
