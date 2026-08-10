@@ -64,6 +64,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -73,6 +74,8 @@ body {
   font-optical-sizing: auto;
   text-rendering: auto;
   letter-spacing: -0.01em;
+  min-height: 100%;
+  min-height: -webkit-fill-available;
 }
 
 body::before {
@@ -1795,10 +1798,19 @@ body::before {
   filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5));
 }
 
+/* Viewport height with cascading fallbacks (Yandex / older Chromium may lack svh). */
+.hero-slider,
+.hero-slider-inner {
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: 100svh;
+}
+
 .hero-copy-stage {
   perspective: 1100px;
   perspective-origin: 0% 45%;
   transform-style: preserve-3d;
+  isolation: isolate;
 }
 
 .hero-copy-wall {
@@ -1809,6 +1821,7 @@ body::before {
   will-change: transform;
   padding-left: 0.75rem;
   margin-left: -0.25rem;
+  backface-visibility: hidden;
 }
 
 .hero-copy-wall::before {
