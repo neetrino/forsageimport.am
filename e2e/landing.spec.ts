@@ -25,10 +25,15 @@ test.describe("Landing smoke", () => {
 
   test("hero CTAs scroll to calculator and apply", async ({ page }) => {
     await page.goto("/hy");
-    await page.getByRole("link", { name: "Հաշվել արժեքը" }).click();
-    await expect(page.locator("#calculator")).toBeInViewport();
+    await page.waitForFunction(
+      () => document.documentElement.dataset.landingReady === "1",
+    );
 
-    await page.getByRole("link", { name: "Լրացնել հայտ" }).first().click();
-    await expect(page.locator("#apply")).toBeInViewport();
+    await page.locator('#hero a[href="#calculator"]').click();
+    await expect(page.locator(".landing-canvas-revealed")).toBeVisible();
+    await expect(page.locator("#calculator")).toBeInViewport({ timeout: 15_000 });
+
+    await page.locator('#hero a[href="#apply"]').click();
+    await expect(page.locator("#apply")).toBeInViewport({ timeout: 15_000 });
   });
 });

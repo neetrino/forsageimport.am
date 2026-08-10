@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/config";
 import { LANDING_SECTION_IDS } from "@/types/landing";
-import { localePath, sectionHref } from "@/lib/i18n/paths";
+import { localePath } from "@/lib/i18n/paths";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { MobileNav } from "@/components/landing/MobileNav";
 import { BrandLogo } from "@/components/brand/BrandLogo";
+import {
+  SectionAnchor,
+  useSectionAnchor,
+} from "@/components/landing/LandingRevealContext";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -76,12 +80,13 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
   }, []);
 
   const links = [
-    { href: sectionHref(LANDING_SECTION_IDS.about), label: dict.nav.about },
-    { href: sectionHref(LANDING_SECTION_IDS.services), label: dict.nav.services },
-    { href: sectionHref(LANDING_SECTION_IDS.process), label: dict.nav.process },
-    { href: sectionHref(LANDING_SECTION_IDS.whyUs), label: dict.nav.whyUs },
-    { href: sectionHref(LANDING_SECTION_IDS.apply), label: dict.nav.apply },
+    { id: LANDING_SECTION_IDS.about, label: dict.nav.about },
+    { id: LANDING_SECTION_IDS.services, label: dict.nav.services },
+    { id: LANDING_SECTION_IDS.process, label: dict.nav.process },
+    { id: LANDING_SECTION_IDS.whyUs, label: dict.nav.whyUs },
+    { id: LANDING_SECTION_IDS.apply, label: dict.nav.apply },
   ] as const;
+  const calculatorCta = useSectionAnchor(LANDING_SECTION_IDS.calculator);
 
   const tone = lightText ? "dark" : "light";
 
@@ -113,15 +118,15 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           className={`site-header-nav ${lightText ? "" : "is-light"}`}
         >
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <SectionAnchor
+              key={link.id}
+              sectionId={link.id}
               className={`site-header-nav-link ${
                 lightText ? "is-dark" : "is-light"
               }`}
             >
               {link.label}
-            </a>
+            </SectionAnchor>
           ))}
         </nav>
 
@@ -135,7 +140,8 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           </div>
           <div className="hidden sm:block">
             <ButtonLink
-              href={sectionHref(LANDING_SECTION_IDS.calculator)}
+              href={calculatorCta.href}
+              onClick={calculatorCta.onClick}
               size="sm"
               className="site-header-cta"
             >

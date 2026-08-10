@@ -4,10 +4,13 @@ import { useEffect, useId, useState } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/types";
 import { LANDING_SECTION_IDS } from "@/types/landing";
-import { sectionHref } from "@/lib/i18n/paths";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { BrandLogo } from "@/components/brand/BrandLogo";
+import {
+  SectionAnchor,
+  useSectionAnchor,
+} from "@/components/landing/LandingRevealContext";
 
 type MobileNavProps = {
   locale: Locale;
@@ -19,15 +22,16 @@ export function MobileNav({ locale, dict, tone = "light" }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const isDark = tone === "dark";
+  const calculatorCta = useSectionAnchor(LANDING_SECTION_IDS.calculator);
 
   const links = [
-    { href: sectionHref(LANDING_SECTION_IDS.about), label: dict.nav.about },
-    { href: sectionHref(LANDING_SECTION_IDS.services), label: dict.nav.services },
-    { href: sectionHref(LANDING_SECTION_IDS.process), label: dict.nav.process },
-    { href: sectionHref(LANDING_SECTION_IDS.whyUs), label: dict.nav.whyUs },
-    { href: sectionHref(LANDING_SECTION_IDS.calculator), label: dict.nav.calculator },
-    { href: sectionHref(LANDING_SECTION_IDS.apply), label: dict.nav.apply },
-    { href: sectionHref(LANDING_SECTION_IDS.contact), label: dict.nav.contact },
+    { id: LANDING_SECTION_IDS.about, label: dict.nav.about },
+    { id: LANDING_SECTION_IDS.services, label: dict.nav.services },
+    { id: LANDING_SECTION_IDS.process, label: dict.nav.process },
+    { id: LANDING_SECTION_IDS.whyUs, label: dict.nav.whyUs },
+    { id: LANDING_SECTION_IDS.calculator, label: dict.nav.calculator },
+    { id: LANDING_SECTION_IDS.apply, label: dict.nav.apply },
+    { id: LANDING_SECTION_IDS.contact, label: dict.nav.contact },
   ] as const;
 
   useEffect(() => {
@@ -80,21 +84,25 @@ export function MobileNav({ locale, dict, tone = "light" }: MobileNavProps) {
             </div>
             <nav aria-label={dict.a11y.mainNav} className="grid gap-1">
               {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
+                <SectionAnchor
+                  key={link.id}
+                  sectionId={link.id}
                   className="rounded-md px-3 py-3 text-base text-[var(--ink)] hover:bg-[var(--surface)]"
-                  onClick={() => setOpen(false)}
+                  onNavigate={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </SectionAnchor>
               ))}
             </nav>
             <div className="mt-5 border-t border-[var(--line)] pt-4">
               <LocaleSwitcher locale={locale} label={dict.a11y.language} />
               <div className="mt-4">
                 <ButtonLink
-                  href={sectionHref(LANDING_SECTION_IDS.calculator)}
+                  href={calculatorCta.href}
+                  onClick={(event) => {
+                    calculatorCta.onClick(event);
+                    setOpen(false);
+                  }}
                   className="w-full"
                 >
                   {dict.nav.calculator}

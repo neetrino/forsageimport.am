@@ -11,7 +11,7 @@ import {
 } from "motion/react";
 import type { Dictionary } from "@/lib/i18n/types";
 import { LANDING_SECTION_IDS } from "@/types/landing";
-import { sectionHref } from "@/lib/i18n/paths";
+import { useSectionAnchor } from "@/components/landing/LandingRevealContext";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { HeroCarsCycle } from "@/components/landing/HeroCarsCycle";
@@ -44,6 +44,8 @@ export function HeroSlider({ dict }: HeroSliderProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [direction, setDirection] = useState(1);
+  const calculatorCta = useSectionAnchor(LANDING_SECTION_IDS.calculator);
+  const applyCta = useSectionAnchor(LANDING_SECTION_IDS.apply);
 
   const { scrollYProgress } = useScroll({
     target: mounted ? rootRef : undefined,
@@ -191,23 +193,26 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                   </motion.div>
                 </AnimatePresence>
               </div>
+            </div>
 
-              <div className="mt-10 flex flex-wrap gap-3">
-                <ButtonLink
-                  href={sectionHref(LANDING_SECTION_IDS.calculator)}
-                  className="!px-6 !py-3.5 !text-base"
-                >
-                  {dict.hero.ctaCalculate}
-                </ButtonLink>
-                <ButtonLink
-                  href={sectionHref(LANDING_SECTION_IDS.apply)}
-                  variant="secondary"
-                  tone="dark"
-                  className="!px-6 !py-3.5 !text-base"
-                >
-                  {dict.hero.ctaApply}
-                </ButtonLink>
-              </div>
+            {/* Keep CTAs outside the 3D wall so hit-testing matches the visible buttons. */}
+            <div className="relative z-10 mt-10 flex flex-wrap gap-3">
+              <ButtonLink
+                href={calculatorCta.href}
+                onClick={calculatorCta.onClick}
+                className="!px-6 !py-3.5 !text-base"
+              >
+                {dict.hero.ctaCalculate}
+              </ButtonLink>
+              <ButtonLink
+                href={applyCta.href}
+                onClick={applyCta.onClick}
+                variant="secondary"
+                tone="dark"
+                className="!px-6 !py-3.5 !text-base"
+              >
+                {dict.hero.ctaApply}
+              </ButtonLink>
             </div>
           </motion.div>
 

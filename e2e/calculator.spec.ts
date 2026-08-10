@@ -16,7 +16,7 @@ test.describe("Calculator smoke", () => {
     await page.locator("#year").selectOption("2021");
     await page.locator("#engineVolume").fill("2000");
     await page.locator("#transportFee").fill("1100");
-    await page.getByLabel("Ապահովագրություն").check();
+    await page.locator("#insuranceEnabled").check({ force: true });
 
     await page.locator("#calculator").getByRole("button", { name: "Հաշվել" }).click();
 

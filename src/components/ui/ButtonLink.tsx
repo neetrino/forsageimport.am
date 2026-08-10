@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import type { MouseEventHandler } from "react";
 
 type ButtonLinkProps = {
   href: string;
@@ -7,6 +8,7 @@ type ButtonLinkProps = {
   size?: "md" | "sm";
   tone?: "light" | "dark";
   className?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
 const variants: Record<
@@ -39,10 +41,12 @@ export function ButtonLink({
   size = "md",
   tone = "light",
   className = "",
+  onClick,
 }: ButtonLinkProps) {
   return (
     <a
       href={href}
+      onClick={onClick}
       className={clsx(
         "inline-flex items-center justify-center font-semibold tracking-tight",
         variants[variant][tone],

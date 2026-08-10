@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import {
   motion,
   useScroll,
@@ -11,23 +11,44 @@ import {
   useIsMounted,
   useSafeReducedMotion,
 } from "@/hooks/useSafeReducedMotion";
+import { useLandingReveal } from "@/components/landing/LandingRevealContext";
+import { LANDING_SECTION_IDS } from "@/types/landing";
 
 type LandingBodyProps = {
   children: ReactNode;
 };
 
+const HERO_ID = LANDING_SECTION_IDS.hero;
+
+function hashSectionId(hash: string): string | null {
+  const id = hash.replace(/^#/, "").trim();
+  if (!id || id === HERO_ID) return null;
+  return id;
+}
+
 export function LandingBody({ children }: LandingBodyProps) {
-  const [unlocked, setUnlocked] = useState(false);
+  const { unlocked, unlock, revealSection } = useLandingReveal();
   const rootRef = useRef<HTMLDivElement>(null);
   const reduce = useSafeReducedMotion();
   const mounted = useIsMounted();
 
   useEffect(() => {
-    const unlock = () => setUnlocked(true);
+    document.documentElement.dataset.landingReady = "1";
+
+    const initialId = hashSectionId(window.location.hash);
+    if (initialId) {
+      revealSection(initialId, { behavior: "auto" });
+    }
+
+    const onHashChange = () => {
+      const id = hashSectionId(window.location.hash);
+      if (id) revealSection(id, { behavior: "smooth" });
+    };
 
     window.addEventListener("wheel", unlock, { passive: true, once: true });
     window.addEventListener("touchmove", unlock, { passive: true, once: true });
     window.addEventListener("scroll", unlock, { passive: true, once: true });
+    window.addEventListener("hashchange", onHashChange);
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (
@@ -43,12 +64,14 @@ export function LandingBody({ children }: LandingBodyProps) {
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
+      delete document.documentElement.dataset.landingReady;
       window.removeEventListener("wheel", unlock);
       window.removeEventListener("touchmove", unlock);
       window.removeEventListener("scroll", unlock);
+      window.removeEventListener("hashchange", onHashChange);
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, []);
+  }, [revealSection, unlock]);
 
   const { scrollYProgress } = useScroll({
     target: mounted ? rootRef : undefined,

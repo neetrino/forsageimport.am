@@ -232,11 +232,9 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
             />
           </div>
 
-          <label className="calc-toggle mt-6">
-            <span className="calc-toggle-track" data-on={form.insuranceEnabled}>
-              <span className="calc-toggle-thumb" />
-            </span>
+          <label className="calc-toggle mt-6" htmlFor="insuranceEnabled">
             <input
+              id="insuranceEnabled"
               type="checkbox"
               className="sr-only"
               checked={form.insuranceEnabled}
@@ -244,6 +242,9 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
                 updateField("insuranceEnabled", event.target.checked)
               }
             />
+            <span className="calc-toggle-track" data-on={form.insuranceEnabled} aria-hidden="true">
+              <span className="calc-toggle-thumb" />
+            </span>
             <span>{calculator.insurance}</span>
           </label>
 
