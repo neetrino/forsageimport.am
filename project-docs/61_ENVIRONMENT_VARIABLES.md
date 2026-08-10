@@ -30,11 +30,12 @@ Source of names: `.env.example` (template). Application code currently does **no
 | `UPSTASH_REDIS_REST_TOKEN` | Template | No | Redis auth | Yes |
 | `RESEND_API_KEY` | Template | No | Email API | Yes |
 | `RESEND_FROM_EMAIL` | Template | No | From address | No |
-| `R2_ACCOUNT_ID` | Template | No | R2 account | Yes |
-| `R2_ACCESS_KEY_ID` | Template | No | R2 access key | Yes |
-| `R2_SECRET_ACCESS_KEY` | Template | No | R2 secret | Yes |
-| `R2_BUCKET_NAME` | Template | No | Bucket name | No |
-| `R2_PUBLIC_URL` | Template | No | Public asset base | No |
+| `NEXT_PUBLIC_R2_PUBLIC_URL` | Brand assets / CSP / next/image | Yes (prod) | Public R2/CDN base for WebP images | No |
+| `R2_ACCOUNT_ID` | `pnpm assets:r2` | Upload only | R2 account | Yes |
+| `R2_ACCESS_KEY_ID` | `pnpm assets:r2` | Upload only | R2 access key | Yes |
+| `R2_SECRET_ACCESS_KEY` | `pnpm assets:r2` | Upload only | R2 secret | Yes |
+| `R2_BUCKET_NAME` | `pnpm assets:r2` | Upload only | Bucket name | No |
+| `R2_PUBLIC_URL` | `pnpm assets:r2` fallback | Upload only | Same public base as NEXT_PUBLIC | No |
 | `FIGMA_ACCESS_TOKEN` | Template/MCP | No in app | Design tooling | Yes |
 
 ---

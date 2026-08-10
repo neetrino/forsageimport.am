@@ -31,6 +31,15 @@ export function auditEnv(
       });
     }
 
+    if (!env.NEXT_PUBLIC_R2_PUBLIC_URL?.trim()) {
+      issues.push({
+        code: "MISSING_R2_PUBLIC_URL",
+        level: "error",
+        message:
+          "NEXT_PUBLIC_R2_PUBLIC_URL is required so brand WebP assets can load from R2.",
+      });
+    }
+
     const hasResend = Boolean(env.RESEND_API_KEY?.trim());
     const hasLeadTo = Boolean(
       env.LEAD_TO_EMAIL?.trim() || env.NEXT_PUBLIC_CONTACT_EMAIL?.trim(),

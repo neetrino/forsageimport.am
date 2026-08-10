@@ -44,4 +44,14 @@ describe("auditEnv", () => {
     const issues = auditEnv({ NODE_ENV: "production" } as NodeJS.ProcessEnv);
     expect(issues.some((issue) => issue.code === "MISSING_APP_URL")).toBe(true);
   });
+
+  it("requires NEXT_PUBLIC_R2_PUBLIC_URL in production", () => {
+    const issues = auditEnv({
+      NODE_ENV: "production",
+      APP_URL: "https://example.com",
+    } as NodeJS.ProcessEnv);
+    expect(
+      issues.some((issue) => issue.code === "MISSING_R2_PUBLIC_URL"),
+    ).toBe(true);
+  });
 });

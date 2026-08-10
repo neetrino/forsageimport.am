@@ -34,7 +34,7 @@ Audit date: 2026-08-10
 | JWT_* | No |
 | UPSTASH_* | No |
 | RESEND_* | No |
-| R2_* | No |
+| R2_* / NEXT_PUBLIC_R2_PUBLIC_URL | Yes (brand WebP CDN) |
 | FIGMA_ACCESS_TOKEN | No |
 
 ---

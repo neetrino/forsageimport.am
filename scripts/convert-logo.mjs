@@ -1,9 +1,12 @@
 /**
  * One-shot / repeatable converter:
- * PDF logo → transparent WebP (+ favicon + Next icon PNGs)
+ * PDF logo → transparent WebP staging files for R2 upload.
  *
  * Usage:
  *   node scripts/convert-logo.mjs "C:\path\to\Forsage logo.pdf"
+ *   pnpm assets:r2
+ *
+ * Brand rasters are served from Cloudflare R2, not `public/`.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -72,23 +75,22 @@ const transparent = await sharp(pixels, {
   raw: { width, height, channels: 4 },
 }).png().toBuffer();
 
-const brandDir = path.resolve("public/brand");
-const appDir = path.resolve("src/app");
+const brandDir = path.resolve("tmp/brand-assets");
 fs.mkdirSync(brandDir, { recursive: true });
 
 await sharp(transparent).webp({ quality: 92, effort: 6 }).toFile(path.join(brandDir, "forsage-logo.webp"));
-await sharp(transparent).png().toFile(path.join(brandDir, "forsage-logo.png"));
 await sharp(transparent)
   .resize(512, 512, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
   .webp({ quality: 95 })
   .toFile(path.join(brandDir, "forsage-favicon.webp"));
 await sharp(transparent)
   .resize(32, 32, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
-  .png()
-  .toFile(path.join(appDir, "icon.png"));
+  .webp({ quality: 95 })
+  .toFile(path.join(brandDir, "icon.webp"));
 await sharp(transparent)
   .resize(180, 180, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
-  .png()
-  .toFile(path.join(appDir, "apple-icon.png"));
+  .webp({ quality: 95 })
+  .toFile(path.join(brandDir, "apple-icon.webp"));
 
-console.log("Wrote brand assets from", pathToFileURL(pdfPath).href);
+console.log("Wrote staging WebP assets to tmp/brand-assets from", pathToFileURL(pdfPath).href);
+console.log("Upload with: pnpm assets:r2");

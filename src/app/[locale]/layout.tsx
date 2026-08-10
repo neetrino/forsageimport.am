@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import { locales, type Locale, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { BRAND_LOGO } from "@/lib/brand/assets";
 import { SiteShell } from "@/components/layout/SiteShell";
 
 const bodyHy = Noto_Sans_Armenian({
@@ -76,10 +77,16 @@ export async function generateMetadata({
     description: dict.meta.description,
     icons: {
       icon: [
-        { url: "/brand/forsage-favicon.webp", type: "image/webp" },
-        { url: "/icon.png", type: "image/png", sizes: "32x32" },
+        { url: BRAND_LOGO.faviconWebp, type: "image/webp" },
+        { url: BRAND_LOGO.iconWebp, type: "image/webp", sizes: "32x32" },
       ],
-      apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+      apple: [
+        {
+          url: BRAND_LOGO.appleIconWebp,
+          sizes: "180x180",
+          type: "image/webp",
+        },
+      ],
     },
     alternates: {
       languages: {

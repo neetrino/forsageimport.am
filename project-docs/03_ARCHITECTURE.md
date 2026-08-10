@@ -109,7 +109,7 @@ Only default `public/*.svg` and `favicon.ico`. No upload pipeline.
 | Neon/DB | Yes | No |
 | Upstash Redis | Yes | No |
 | Resend | Yes | No |
-| Cloudflare R2 | Yes | No |
+| Cloudflare R2 | Yes | Yes (brand WebP) |
 | Figma token | Yes | No |
 
 ---

@@ -32,7 +32,7 @@ Rule: versions only when confirmed from package/config.
 | Prisma / Drizzle / SQL DB | Persistence | `NOT FOUND` |
 | Auth.js / Clerk / JWT app logic | Authentication | `NOT FOUND` in code |
 | Upstash Redis | Cache/rate limit | `NOT FOUND` in code (in-process rate limit used) |
-| Cloudflare R2 | File storage | `NOT FOUND` in code |
+| Cloudflare R2 | Brand WebP assets | `USED` (`NEXT_PUBLIC_R2_PUBLIC_URL`, `pnpm assets:r2`) |
 | Stripe / local payment gateways | Payments | `NOT FOUND` (payment docs under `docs/reference` are template KB only) |
 | Docker | Containers | `NOT FOUND` |
 | i18n library (`next-intl`, etc.) | Localization | Custom dictionaries (`src/lib/i18n`) — no next-intl |
