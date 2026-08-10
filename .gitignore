@@ -7,11 +7,21 @@ Thumbs.db
 .env.*
 !.env.example
 
-# Dependencies (if scripts use Node/npm)
+# Dependencies
 node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js
+.next/
+out/
 
 # Build output
-.next/
 dist/
 build/
 coverage/
@@ -19,13 +29,29 @@ coverage/
 # Logs and temp
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 tmp/
 temp/
 .cache/
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
 
 # IDE (optional, uncomment if needed)
 # .idea/
 # .vscode/
 # *.swp
 # *.swo
-#docs/reference/payment integration/Example only
