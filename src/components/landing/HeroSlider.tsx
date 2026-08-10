@@ -221,25 +221,26 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                   </motion.div>
                 </AnimatePresence>
               </div>
+            </div>
 
-              <div className="hero-cta-row mt-10 flex flex-wrap gap-3">
-                <ButtonLink
-                  href={calculatorCta.href}
-                  onClick={calculatorCta.onClick}
-                  className="hero-cta !px-6 !py-3.5 !text-base"
-                >
-                  {dict.hero.ctaCalculate}
-                </ButtonLink>
-                <ButtonLink
-                  href={applyCta.href}
-                  onClick={applyCta.onClick}
-                  variant="secondary"
-                  tone="dark"
-                  className="hero-cta !px-6 !py-3.5 !text-base"
-                >
-                  {dict.hero.ctaApply}
-                </ButtonLink>
-              </div>
+            {/* Keep CTAs outside the 3D wall so hit-testing matches the visible buttons. */}
+            <div className="hero-cta-row relative z-10 mt-10 flex flex-wrap gap-3">
+              <ButtonLink
+                href={calculatorCta.href}
+                onClick={calculatorCta.onClick}
+                className="hero-cta !px-6 !py-3.5 !text-base"
+              >
+                {dict.hero.ctaCalculate}
+              </ButtonLink>
+              <ButtonLink
+                href={applyCta.href}
+                onClick={applyCta.onClick}
+                variant="secondary"
+                tone="dark"
+                className="hero-cta !px-6 !py-3.5 !text-base"
+              >
+                {dict.hero.ctaApply}
+              </ButtonLink>
             </div>
           </motion.div>
 

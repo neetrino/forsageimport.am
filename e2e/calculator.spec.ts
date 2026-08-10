@@ -3,6 +3,10 @@ import { expect, test } from "@playwright/test";
 test.describe("Calculator smoke", () => {
   test("blocks empty submit and calculates valid input", async ({ page }) => {
     await page.goto("/hy#calculator");
+    await page.waitForFunction(
+      () => document.documentElement.dataset.landingReady === "1",
+    );
+    await expect(page.locator(".landing-canvas-revealed")).toBeVisible();
     await page.locator("#calculator").scrollIntoViewIfNeeded();
 
     await page.locator("#calculator").getByRole("button", { name: "Հաշվել" }).click();
@@ -16,7 +20,8 @@ test.describe("Calculator smoke", () => {
     await page.locator("#year").selectOption("2021");
     await page.locator("#engineVolume").fill("2000");
     await page.locator("#transportFee").fill("1100");
-    await page.locator("#insuranceEnabled").check({ force: true });
+    await page.locator('label[for="insuranceEnabled"]').click();
+    await expect(page.locator("#insuranceEnabled")).toBeChecked();
 
     await page.locator("#calculator").getByRole("button", { name: "Հաշվել" }).click();
 
