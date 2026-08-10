@@ -1094,6 +1094,10 @@ body::before {
   border-color: color-mix(in srgb, var(--danger) 70%, white);
 }
 
+.calc-input.calc-input-money {
+  padding-left: 2rem;
+}
+
 .calc-select {
   color: var(--ink);
 }
@@ -1218,6 +1222,35 @@ body::before {
   color: color-mix(in srgb, white 88%, var(--accent));
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+.calc-clear {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid color-mix(in srgb, white 22%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, white 6%, transparent);
+  padding: 0.7rem 1rem;
+  color: color-mix(in srgb, white 88%, transparent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.calc-clear:hover {
+  border-color: color-mix(in srgb, var(--danger) 55%, white);
+  background: color-mix(in srgb, var(--danger) 16%, transparent);
+  color: #fff;
+}
+
+.calc-clear:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--danger) 70%, white);
+  outline-offset: 2px;
 }
 
 .calc-result-card {

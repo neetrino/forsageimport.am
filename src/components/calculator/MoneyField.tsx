@@ -32,7 +32,7 @@ export function MoneyField({
           step="1"
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className={`calc-input w-full pl-8 ${error ? "calc-input-error" : ""}`}
+          className={`calc-input calc-input-money w-full ${error ? "calc-input-error" : ""}`}
           inputMode="decimal"
           aria-invalid={Boolean(error)}
           aria-describedby={error ? `${id}-error` : undefined}

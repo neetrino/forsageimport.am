@@ -264,6 +264,10 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
         result={result}
         locale={numberLocale}
         onDownload={onDownload}
+        onClear={() => {
+          setResult(null);
+          setDownloading(null);
+        }}
         isDownloading={downloading}
       />
     </>

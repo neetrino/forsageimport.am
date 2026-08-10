@@ -12,6 +12,7 @@ type CalculatorResultsProps = {
   result: CalculatorResult | null;
   locale: string;
   onDownload: (variant: VariantKey) => void;
+  onClear: () => void;
   isDownloading: VariantKey | null;
 };
 
@@ -20,6 +21,7 @@ export function CalculatorResults({
   result,
   locale,
   onDownload,
+  onClear,
   isDownloading,
 }: CalculatorResultsProps) {
   return (
@@ -50,7 +52,20 @@ export function CalculatorResults({
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-4"
           >
-            <p className="calc-disclaimer">{dict.calculator.disclaimer}</p>
+            <div className="flex flex-wrap items-stretch gap-3">
+              <p className="calc-disclaimer min-w-0 flex-1">
+                {dict.calculator.disclaimer}
+              </p>
+              <button
+                type="button"
+                className="calc-clear"
+                onClick={onClear}
+                aria-label={dict.calculator.clearResults}
+              >
+                <ClearIcon />
+                <span>{dict.calculator.clearResults}</span>
+              </button>
+            </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
               <ResultCard
@@ -78,6 +93,26 @@ export function CalculatorResults({
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+function ClearIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M3.5 4.5h9M6.5 4.5V3.25A.75.75 0 0 1 7.25 2.5h1.5a.75.75 0 0 1 .75.75V4.5m1.5 0v8.25a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75V4.5"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 

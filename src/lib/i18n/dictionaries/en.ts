@@ -124,6 +124,7 @@ export const en: Dictionary = {
     disclaimer:
       "Approximate estimate. Rates are DRAFT and pending business confirmation — not a final invoice.",
     downloadPdf: "Download",
+    clearResults: "Clear",
     insurance: "Insurance",
     validation: {
       required: "Required field",

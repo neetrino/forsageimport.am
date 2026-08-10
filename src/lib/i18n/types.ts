@@ -69,6 +69,7 @@ export type Dictionary = {
     selectPlaceholder: string;
     disclaimer: string;
     downloadPdf: string;
+    clearResults: string;
     insurance: string;
     validation: {
       required: string;

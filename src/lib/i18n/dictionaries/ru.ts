@@ -124,6 +124,7 @@ export const ru: Dictionary = {
     disclaimer:
       "Приблизительный расчёт. Тарифы DRAFT и требуют подтверждения бизнеса — это не финальный счёт.",
     downloadPdf: "Скачать",
+    clearResults: "Удалить",
     insurance: "Страхование",
     validation: {
       required: "Обязательное поле",
