@@ -15,7 +15,9 @@ import { useSectionAnchor } from "@/components/landing/LandingRevealContext";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { HeroCarsCycle } from "@/components/landing/HeroCarsCycle";
+import { HeroRoadGuard } from "@/components/landing/HeroRoadGuard";
 import {
+  useCanHover,
   useIsMounted,
   useMinWidth,
   useSafeReducedMotion,
@@ -41,6 +43,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
   const slides = dict.hero.slides;
   const reduce = useSafeReducedMotion();
   const isDesktop = useMinWidth(1024);
+  const canHover = useCanHover();
   const scrollFxOff = reduce || !isDesktop;
   const mounted = useIsMounted();
   const rootRef = useRef<HTMLDivElement>(null);
@@ -140,9 +143,13 @@ export function HeroSlider({ dict }: HeroSliderProps) {
   return (
     <div
       ref={rootRef}
-      className="hero-slider relative min-h-svh overflow-hidden bg-[var(--landing-canvas)] text-white"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className="hero-slider relative overflow-hidden bg-[var(--landing-canvas)] text-white"
+      onMouseEnter={() => {
+        if (canHover) setPaused(true);
+      }}
+      onMouseLeave={() => {
+        if (canHover) setPaused(false);
+      }}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
@@ -159,7 +166,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
         progress={scrollYProgress}
       />
 
-      <Container className="relative z-30 flex min-h-svh flex-col !pl-3 !pr-4 pb-16 pt-[calc(var(--header-height)+1.25rem)] sm:!pl-4 sm:!pr-6 sm:pb-20 sm:pt-[calc(var(--header-height)+1.75rem)] lg:!pl-5 lg:!pr-8 lg:pb-24 xl:!pl-6">
+      <Container className="hero-slider-inner relative z-30 flex flex-col !pl-3 !pr-4 pb-16 pt-[calc(var(--header-height)+1.25rem)] sm:!pl-4 sm:!pr-6 sm:pb-20 sm:pt-[calc(var(--header-height)+1.75rem)] lg:!pl-5 lg:!pr-8 lg:pb-24 xl:!pl-6">
         <div className="grid flex-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-4 xl:gap-6">
           <motion.div
             className="hero-copy-stage order-2 w-full max-w-2xl justify-self-start lg:order-1 lg:max-w-3xl lg:-translate-x-2 xl:-translate-x-4"
@@ -180,33 +187,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                   <motion.div
                     key={slide.headline}
                     custom={direction}
-                    variants={
-                      reduce
-                        ? fadeOnly
-                        : {
-                            enter: (dir: number) => ({
-                              opacity: 0,
-                              x: dir > 0 ? 56 : -56,
-                              clipPath:
-                                dir > 0
-                                  ? "inset(0 0 0 28%)"
-                                  : "inset(0 28% 0 0)",
-                            }),
-                            center: {
-                              opacity: 1,
-                              x: 0,
-                              clipPath: "inset(0 0 0 0)",
-                            },
-                            exit: (dir: number) => ({
-                              opacity: 0,
-                              x: dir > 0 ? -40 : 40,
-                              clipPath:
-                                dir > 0
-                                  ? "inset(0 32% 0 0)"
-                                  : "inset(0 0 0 32%)",
-                            }),
-                          }
-                    }
+                    variants={reduce ? fadeOnly : slideCopyVariants}
                     initial="enter"
                     animate="center"
                     exit="exit"
@@ -344,6 +325,22 @@ const fadeOnly = {
   exit: { opacity: 0 },
 };
 
+/** Opacity + x only — clip-path / filter break in some Chromium forks (Yandex). */
+const slideCopyVariants = {
+  enter: (dir: number) => ({
+    opacity: 0,
+    x: dir > 0 ? 56 : -56,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: (dir: number) => ({
+    opacity: 0,
+    x: dir > 0 ? -40 : 40,
+  }),
+};
+
 type HeroVelocityBackdropProps = {
   active: number;
   reduceMotion: boolean;
@@ -432,7 +429,9 @@ function HeroVelocityBackdrop({
         {reduceMotion || !roadReady ? (
           <StaticRoadFallback />
         ) : (
-          <HeroRoad3D active={active} />
+          <HeroRoadGuard fallback={<StaticRoadFallback />}>
+            <HeroRoad3D active={active} />
+          </HeroRoadGuard>
         )}
       </motion.div>
 

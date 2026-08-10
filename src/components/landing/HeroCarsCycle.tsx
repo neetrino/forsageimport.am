@@ -69,23 +69,21 @@ const fadeVariants: Variants = {
   exit: { opacity: 0 },
 };
 
+/** No CSS filter — animated blur fails in Yandex / some Android Chromium builds. */
 const swapVariants: Variants = {
   enter: (dir: number) => ({
     opacity: 0,
     x: dir > 0 ? 40 : -40,
     scale: 0.94,
-    filter: "blur(6px)",
   }),
   center: {
     opacity: 1,
     x: 0,
     scale: 1,
-    filter: "blur(0px)",
   },
   exit: (dir: number) => ({
     opacity: 0,
     x: dir > 0 ? -36 : 36,
     scale: 0.96,
-    filter: "blur(4px)",
   }),
 };

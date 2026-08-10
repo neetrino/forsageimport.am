@@ -29,12 +29,21 @@ export function HeroRoad3D({ active }: HeroRoad3DProps) {
         gl={{
           antialias: false,
           alpha: true,
-          powerPreference: "high-performance",
+          // "default" is more reliable than high-performance in Yandex / low-power modes
+          powerPreference: "default",
+          failIfMajorPerformanceCaveat: false,
           stencil: false,
           depth: true,
         }}
         camera={{ position: [0, 2.4, 8.5], fov: 55, near: 0.1, far: 120 }}
         style={{ width: "100%", height: "100%" }}
+        onCreated={({ gl }) => {
+          const canvas = gl.domElement;
+          const onLost = (event: Event) => {
+            event.preventDefault();
+          };
+          canvas.addEventListener("webglcontextlost", onLost, false);
+        }}
       >
         <color attach="background" args={[tint.fog]} />
         <fog attach="fog" args={[tint.fog, 12, 78]} />

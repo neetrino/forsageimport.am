@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import {
   Exo_2,
@@ -11,6 +11,13 @@ import { locales, type Locale, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { BRAND_LOGO } from "@/lib/brand/assets";
 import { SiteShell } from "@/components/layout/SiteShell";
+
+/** Explicit viewport — Yandex and some Chromium forks mis-scale without it. */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 const bodyHy = Noto_Sans_Armenian({
   variable: "--font-body",
