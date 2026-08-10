@@ -124,6 +124,7 @@ export const hy: Dictionary = {
     disclaimer:
       "Մոտավոր հաշվարկ է։ Սակագները DRAFT են և ենթակա են բիզնես հաստատման․ սա վերջնական հաշիվ չէ։",
     downloadPdf: "Ներբեռնել",
+    clearResults: "Ջնջել",
     insurance: "Ապահովագրություն",
     validation: {
       required: "Պարտադիր դաշտ",

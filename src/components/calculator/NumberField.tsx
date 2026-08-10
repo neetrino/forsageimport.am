@@ -11,6 +11,14 @@ type NumberFieldProps = {
   error?: string;
 };
 
+function normalizeNumberInput(raw: string): string {
+  if (raw === "" || raw === "-" || raw === ".") return raw;
+  if (/^0\d/.test(raw)) {
+    return raw.replace(/^0+/, "") || "0";
+  }
+  return raw;
+}
+
 export function NumberField({
   id,
   name,
@@ -31,7 +39,12 @@ export function NumberField({
         min={min}
         step={step}
         value={value}
-        onChange={(event) => onChange(event.target.value)}
+        onFocus={(event) => {
+          if (value === "0") {
+            event.currentTarget.select();
+          }
+        }}
+        onChange={(event) => onChange(normalizeNumberInput(event.target.value))}
         className={`calc-input w-full ${error ? "calc-input-error" : ""}`}
         inputMode="numeric"
         aria-invalid={Boolean(error)}

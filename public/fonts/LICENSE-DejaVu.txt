@@ -1,0 +1,2 @@
+DejaVu fonts are free fonts.
+See https://dejavu-fonts.github.io/ for license terms (Bitstream Vera + Arev contributions).
