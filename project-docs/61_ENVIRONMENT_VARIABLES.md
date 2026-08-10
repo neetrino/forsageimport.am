@@ -1,0 +1,41 @@
+# 61 — Environment Variables
+
+Audit date: 2026-08-10  
+**Never store real secret values in documentation.**
+
+Source of names: `.env.example` (template). Application code currently does **not** read these (`CONFIRMED` by absence of usage in `src/`).
+
+| Variable | Used By | Required (today) | Purpose | Secret |
+| --- | --- | --- | --- | --- |
+| `NODE_ENV` | Node/Next | No (framework default) | Environment mode | No |
+| `APP_URL` | Template | No in code | Public app URL | No |
+| `NEXT_PUBLIC_API_URL` | Template | No in code | Public API base | No |
+| `DATABASE_URL` | Template | No | DB connection | Yes |
+| `DATABASE_CONNECTION_LIMIT` | Template | No | Pool size | No |
+| `DATABASE_POOL_TIMEOUT` | Template | No | Pool timeout | No |
+| `JWT_SECRET` | Template | No | Auth signing | Yes |
+| `JWT_EXPIRES_IN` | Template | No | Token TTL | No |
+| `UPSTASH_REDIS_REST_URL` | Template | No | Redis REST | Yes |
+| `UPSTASH_REDIS_REST_TOKEN` | Template | No | Redis auth | Yes |
+| `RESEND_API_KEY` | Template | No | Email API | Yes |
+| `RESEND_FROM_EMAIL` | Template | No | From address | No |
+| `R2_ACCOUNT_ID` | Template | No | R2 account | Yes |
+| `R2_ACCESS_KEY_ID` | Template | No | R2 access key | Yes |
+| `R2_SECRET_ACCESS_KEY` | Template | No | R2 secret | Yes |
+| `R2_BUCKET_NAME` | Template | No | Bucket name | No |
+| `R2_PUBLIC_URL` | Template | No | Public asset base | No |
+| `FIGMA_ACCESS_TOKEN` | Template/MCP | No in app | Design tooling | Yes |
+
+---
+
+## MVP guidance
+
+For DOCX-only landing + client calculator, **most variables are unnecessary**.
+
+Likely first real secrets (if lead email added):
+
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
+- maybe `LEAD_TO_EMAIL` (not in example yet — add when implementing)
+
+Update this table when code starts reading env vars.
