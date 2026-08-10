@@ -63,7 +63,6 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
       });
     };
 
-    // Defer first paint probe past mount commit.
     frame = window.requestAnimationFrame(() => {
       frame = 0;
       update();
@@ -84,7 +83,6 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
     { id: LANDING_SECTION_IDS.services, label: dict.nav.services },
     { id: LANDING_SECTION_IDS.process, label: dict.nav.process },
     { id: LANDING_SECTION_IDS.whyUs, label: dict.nav.whyUs },
-    { id: LANDING_SECTION_IDS.apply, label: dict.nav.apply },
   ] as const;
   const calculatorCta = useSectionAnchor(LANDING_SECTION_IDS.calculator);
 
@@ -103,51 +101,46 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           <BrandLogo size="header" priority className="shrink-0" />
           <span className="site-header-brand-copy">
             <span className="site-header-brand-name">{dict.site.brand}</span>
-            <span
-              className={`site-header-brand-tag ${
-                lightText ? "text-white" : "text-[var(--muted)]"
-              }`}
-            >
-              {dict.site.tagline}
-            </span>
           </span>
         </a>
 
-        <nav
-          aria-label={dict.a11y.mainNav}
-          className={`site-header-nav ${lightText ? "" : "is-light"}`}
-        >
-          {links.map((link) => (
-            <SectionAnchor
-              key={link.id}
-              sectionId={link.id}
-              className={`site-header-nav-link ${
-                lightText ? "is-dark" : "is-light"
-              }`}
-            >
-              {link.label}
-            </SectionAnchor>
-          ))}
-        </nav>
+        <div className="site-header-desktop">
+          <nav
+            aria-label={dict.a11y.mainNav}
+            className={`site-header-nav ${lightText ? "" : "is-light"}`}
+          >
+            {links.map((link) => (
+              <SectionAnchor
+                key={link.id}
+                sectionId={link.id}
+                className={`site-header-nav-link ${
+                  lightText ? "is-dark" : "is-light"
+                }`}
+              >
+                {link.label}
+              </SectionAnchor>
+            ))}
+          </nav>
 
-        <div className="site-header-actions">
-          <div className="hidden md:block">
+          <div className="site-header-actions">
             <LocaleSwitcher
               locale={locale}
               label={dict.a11y.language}
               variant={tone}
+              compact
             />
-          </div>
-          <div className="hidden sm:block">
             <ButtonLink
               href={calculatorCta.href}
               onClick={calculatorCta.onClick}
               size="sm"
-              className="site-header-cta"
+              className="site-header-cta hero-cta"
             >
               {dict.nav.calculator}
             </ButtonLink>
           </div>
+        </div>
+
+        <div className="site-header-mobile-actions">
           <MobileNav locale={locale} dict={dict} tone={tone} />
         </div>
       </Container>
