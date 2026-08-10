@@ -61,7 +61,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
 
   return (
     <div
-      className="hero-slider relative isolate min-h-svh overflow-hidden bg-[#090b10] text-white"
+      className="hero-slider relative min-h-svh overflow-hidden bg-[#090b10] text-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -75,7 +75,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
 
       <HeroVelocityBackdrop active={index} reduceMotion={Boolean(reduce)} />
 
-      <Container className="relative z-10 flex min-h-svh flex-col !pl-3 !pr-4 pb-10 pt-[calc(var(--header-height)+1.25rem)] sm:!pl-4 sm:!pr-6 sm:pb-12 sm:pt-[calc(var(--header-height)+1.75rem)] lg:!pl-5 lg:!pr-8 xl:!pl-6">
+      <Container className="relative z-30 flex min-h-svh flex-col !pl-3 !pr-4 pb-16 pt-[calc(var(--header-height)+1.25rem)] sm:!pl-4 sm:!pr-6 sm:pb-20 sm:pt-[calc(var(--header-height)+1.75rem)] lg:!pl-5 lg:!pr-8 lg:pb-24 xl:!pl-6">
         <div className="grid flex-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-4 xl:gap-6">
           <div className="hero-copy-stage order-2 w-full max-w-2xl justify-self-start lg:order-1 lg:max-w-3xl lg:-translate-x-2 xl:-translate-x-4">
             <div className="hero-copy-wall">
@@ -242,7 +242,7 @@ function HeroVelocityBackdrop({ active, reduceMotion }: HeroVelocityBackdropProp
     active === 0 ? "route" : active === 1 ? "cost" : "handover";
 
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className="absolute inset-0 bg-[#07090e]" />
 
       {reduceMotion ? <StaticRoadFallback /> : <HeroRoad3D active={active} />}

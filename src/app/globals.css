@@ -133,42 +133,163 @@ body::before {
   border-bottom: 1px solid transparent;
   background: transparent;
   backdrop-filter: none;
-  transition:
-    background-color 0.28s ease,
-    border-color 0.28s ease,
-    backdrop-filter 0.28s ease,
-    box-shadow 0.28s ease;
-}
-
-.site-header.is-solid {
-  border-bottom-color: color-mix(in srgb, var(--line) 80%, transparent);
-  background: #ffffff;
-  box-shadow: 0 10px 28px rgba(14, 16, 20, 0.06);
+  box-shadow: none;
 }
 
 .site-header::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--accent) 0%,
-    color-mix(in srgb, var(--brand-blue) 70%, var(--accent)) 55%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 0.28s ease;
-}
-
-.site-header.is-solid::after {
-  opacity: 0.85;
+  display: none;
 }
 
 .section-band {
   position: relative;
   isolation: isolate;
+}
+
+.about-manifest-pre-scroll {
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.about-manifest-revealed {
+  max-height: none;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.45s ease,
+    visibility 0.45s ease;
+}
+
+.about-manifest-shell {
+  isolation: isolate;
+  border-radius: 0;
+  box-shadow: none;
+  transition:
+    border-radius 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.55s ease;
+}
+
+.about-manifest-shell.is-curved {
+  border-radius: 1.75rem 1.75rem 0 0;
+  box-shadow:
+    0 -1px 0 rgba(240, 90, 24, 0.45),
+    0 -28px 56px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 640px) {
+  .about-manifest-shell.is-curved {
+    border-radius: 2.5rem 2.5rem 0 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-manifest-shell.is-curved {
+    border-radius: 3.25rem 3.25rem 0 0;
+  }
+}
+
+.about-manifest-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 70%;
+  background:
+    radial-gradient(45% 55% at 12% 30%, rgba(240, 90, 24, 0.22), transparent 70%),
+    radial-gradient(40% 50% at 88% 20%, rgba(26, 74, 120, 0.28), transparent 72%);
+}
+
+.about-manifest-lanes {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background:
+    linear-gradient(
+      108deg,
+      transparent 0%,
+      transparent 58%,
+      rgba(240, 90, 24, 0.08) 58.5%,
+      rgba(240, 90, 24, 0.08) 61%,
+      transparent 61.5%
+    ),
+    linear-gradient(
+      108deg,
+      transparent 0%,
+      transparent 64%,
+      rgba(240, 90, 24, 0.14) 64.4%,
+      rgba(240, 90, 24, 0.14) 67.2%,
+      transparent 67.6%
+    ),
+    repeating-linear-gradient(
+      108deg,
+      transparent 0 18px,
+      rgba(255, 255, 255, 0.025) 18px 19px
+    );
+  mask-image: linear-gradient(90deg, transparent 0%, #000 28%, #000 100%);
+}
+
+.about-manifest-watermark {
+  pointer-events: none;
+  position: absolute;
+  right: -4%;
+  top: 12%;
+  margin: 0;
+  user-select: none;
+  font-family: var(--font-display-hy), var(--font-display-intl), sans-serif;
+  font-size: clamp(4rem, 16vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.035);
+  text-transform: uppercase;
+}
+
+.about-manifest-rail {
+  background: linear-gradient(
+    180deg,
+    var(--accent) 0%,
+    rgba(26, 74, 120, 0.8) 55%,
+    transparent 100%
+  );
+}
+
+.about-manifest-stage:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-manifest-header {
+  position: relative;
+}
+
+.about-manifest-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: min(12rem, 40%);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.about-manifest-tile {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 55%
+  );
+}
+
+.about-manifest-tile:hover {
+  background: linear-gradient(
+    160deg,
+    rgba(240, 90, 24, 0.08) 0%,
+    transparent 60%
+  );
 }
 
 .section-band::before {

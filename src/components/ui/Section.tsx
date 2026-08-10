@@ -8,6 +8,7 @@ type SectionProps = {
   className?: string;
   containerClassName?: string;
   ariaLabelledBy?: string;
+  ariaHidden?: boolean;
 };
 
 export function Section({
@@ -16,11 +17,13 @@ export function Section({
   className = "",
   containerClassName = "",
   ariaLabelledBy,
+  ariaHidden,
 }: SectionProps) {
   return (
     <section
       id={id}
       aria-labelledby={ariaLabelledBy}
+      aria-hidden={ariaHidden || undefined}
       className={`scroll-mt-[var(--scroll-margin)] py-20 sm:py-24 ${className}`}
     >
       <Container className={containerClassName}>{children}</Container>

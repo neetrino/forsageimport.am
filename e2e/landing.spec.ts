@@ -8,6 +8,7 @@ test.describe("Landing smoke", () => {
     await expect(page.getByRole("banner").getByRole("link", { name: "Forsage Import" })).toBeVisible();
     await expect(page.locator("#hero").getByRole("img").first()).toBeVisible();
     await expect(page.locator("#hero")).toContainText("Forsage Import");
+    await page.mouse.wheel(0, 400);
     await expect(page.locator("#about")).toBeVisible();
     await expect(page.locator("#services")).toBeVisible();
     await expect(page.locator("#process")).toBeVisible();
