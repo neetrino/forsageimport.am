@@ -32,7 +32,7 @@ const HeroRoad3D = dynamic(
   },
 );
 
-const AUTO_MS = 1800;
+const AUTO_MS = 4800;
 const TEXT_TRANSITION_S = 0.16;
 
 type HeroSliderProps = {
@@ -202,26 +202,27 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                   </motion.div>
                 </AnimatePresence>
               </div>
-            </div>
 
-            {/* Keep CTAs outside the 3D wall so hit-testing matches the visible buttons. */}
-            <div className="hero-cta-row relative z-10 mt-10 flex flex-wrap gap-3">
-              <ButtonLink
-                href={calculatorCta.href}
-                onClick={calculatorCta.onClick}
-                className="hero-cta !px-6 !py-3.5 !text-base"
-              >
-                {dict.hero.ctaCalculate}
-              </ButtonLink>
-              <ButtonLink
-                href={applyCta.href}
-                onClick={applyCta.onClick}
-                variant="secondary"
-                tone="dark"
-                className="hero-cta !px-6 !py-3.5 !text-base"
-              >
-                {dict.hero.ctaApply}
-              </ButtonLink>
+              <div className="hero-cta-row relative z-10 mt-10 flex flex-wrap gap-3">
+                <ButtonLink
+                  href={calculatorCta.href}
+                  onClick={calculatorCta.onClick}
+                  skew={false}
+                  className="!px-6 !py-3.5 !text-base"
+                >
+                  {dict.hero.ctaCalculate}
+                </ButtonLink>
+                <ButtonLink
+                  href={applyCta.href}
+                  onClick={applyCta.onClick}
+                  variant="secondary"
+                  tone="dark"
+                  skew={false}
+                  className="!px-6 !py-3.5 !text-base"
+                >
+                  {dict.hero.ctaApply}
+                </ButtonLink>
+              </div>
             </div>
           </motion.div>
 

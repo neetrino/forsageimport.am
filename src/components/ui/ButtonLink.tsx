@@ -7,6 +7,8 @@ type ButtonLinkProps = {
   variant?: "primary" | "secondary" | "ghost";
   size?: "md" | "sm";
   tone?: "light" | "dark";
+  /** Parallelogram skew (header Calculator style). Off for hero CTAs. */
+  skew?: boolean;
   className?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
@@ -40,6 +42,7 @@ export function ButtonLink({
   variant = "primary",
   size = "md",
   tone = "light",
+  skew = true,
   className = "",
   onClick,
 }: ButtonLinkProps) {
@@ -51,6 +54,7 @@ export function ButtonLink({
         "inline-flex items-center justify-center font-semibold tracking-tight",
         variants[variant][tone],
         sizes[size],
+        skew && "btn-skew",
         className,
       )}
     >

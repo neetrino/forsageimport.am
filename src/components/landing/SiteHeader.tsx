@@ -133,7 +133,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
               href={calculatorCta.href}
               onClick={calculatorCta.onClick}
               size="sm"
-              className="site-header-cta hero-cta"
+              className="site-header-cta"
             >
               {dict.nav.calculator}
             </ButtonLink>

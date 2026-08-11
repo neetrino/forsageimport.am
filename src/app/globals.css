@@ -1182,7 +1182,7 @@ body::before {
   isolation: isolate;
   overflow: hidden;
   border: 0;
-  border-radius: var(--radius-md);
+  border-radius: 0.4rem;
   background: linear-gradient(135deg, #ff7a38 0%, var(--calc-accent) 48%, #d9480f 100%);
   color: #fff;
   font-size: 1.02rem;
@@ -1192,16 +1192,26 @@ body::before {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.28) inset,
     0 14px 28px rgba(240, 90, 24, 0.32);
+  transform: skewX(-14deg);
   transition:
-    transform 0.18s ease,
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.18s ease,
     box-shadow 0.18s ease;
+}
+
+.calc-submit > span {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transform: skewX(14deg);
 }
 
 .calc-submit::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
   background: linear-gradient(
     115deg,
     transparent 30%,
@@ -1213,8 +1223,8 @@ body::before {
 }
 
 .calc-submit:hover {
-  filter: brightness(1.04);
-  transform: translateY(-1px);
+  filter: brightness(1.06) saturate(1.05);
+  transform: skewX(-14deg) translateY(-3px) scale(1.03);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.3) inset,
     0 18px 34px rgba(240, 90, 24, 0.4);
@@ -1222,6 +1232,11 @@ body::before {
 
 .calc-submit:hover::before {
   transform: translateX(120%);
+}
+
+.calc-submit:active {
+  transform: skewX(-14deg) translateY(-1px) scale(0.99);
+  filter: brightness(0.98);
 }
 
 .calc-submit:focus-visible {
@@ -1232,7 +1247,8 @@ body::before {
 .calc-submit:disabled {
   cursor: not-allowed;
   opacity: 0.65;
-  transform: none;
+  transform: skewX(-14deg);
+  filter: none;
 }
 
 .calc-results-pending {
@@ -1263,22 +1279,34 @@ body::before {
   align-items: center;
   gap: 0.45rem;
   border: 1px solid color-mix(in srgb, white 22%, transparent);
-  border-radius: var(--radius-md);
+  border-radius: 0.4rem;
   background: color-mix(in srgb, white 6%, transparent);
   padding: 0.7rem 1rem;
   color: color-mix(in srgb, white 88%, transparent);
   font-size: 0.9rem;
   font-weight: 600;
+  transform: skewX(-14deg);
   transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.18s ease,
     background 0.18s ease,
     color 0.18s ease;
+}
+
+.calc-clear > * {
+  display: inline-flex;
+  transform: skewX(14deg);
 }
 
 .calc-clear:hover {
   border-color: color-mix(in srgb, var(--danger) 55%, white);
   background: color-mix(in srgb, var(--danger) 16%, transparent);
   color: #fff;
+  transform: skewX(-14deg) translateY(-3px) scale(1.03);
+}
+
+.calc-clear:active {
+  transform: skewX(-14deg) translateY(-1px) scale(0.99);
 }
 
 .calc-clear:focus-visible {
@@ -1588,36 +1616,49 @@ body::before {
   transform: translateY(-1px) scale(0.99);
 }
 
-.hero-cta {
+.btn-skew {
   border-radius: 0.4rem;
   transform: skewX(-14deg);
 }
 
-.hero-cta > span {
+.btn-skew > span {
   display: inline-block;
   transform: skewX(14deg);
 }
 
-.hero-cta.btn-primary:hover,
-.hero-cta.btn-secondary-dark:hover {
+.btn-skew.btn-primary:hover,
+.btn-skew.btn-secondary-dark:hover,
+.btn-skew.btn-secondary:hover {
   transform: skewX(-14deg) translateY(-3px) scale(1.03);
 }
 
-.hero-cta.btn-primary:active,
-.hero-cta.btn-secondary-dark:active {
+.btn-skew.btn-primary:active,
+.btn-skew.btn-secondary-dark:active,
+.btn-skew.btn-secondary:active {
   transform: skewX(-14deg) translateY(-1px) scale(0.99);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-cta,
-  .hero-cta.btn-primary:hover,
-  .hero-cta.btn-secondary-dark:hover,
-  .hero-cta.btn-primary:active,
-  .hero-cta.btn-secondary-dark:active {
+  .btn-skew,
+  .btn-skew.btn-primary:hover,
+  .btn-skew.btn-secondary-dark:hover,
+  .btn-skew.btn-secondary:hover,
+  .btn-skew.btn-primary:active,
+  .btn-skew.btn-secondary-dark:active,
+  .btn-skew.btn-secondary:active,
+  .calc-submit,
+  .calc-submit:hover,
+  .calc-submit:active,
+  .calc-submit:disabled,
+  .calc-clear,
+  .calc-clear:hover,
+  .calc-clear:active {
     transform: skewX(-14deg);
   }
 
-  .hero-cta > span {
+  .btn-skew > span,
+  .calc-submit > span,
+  .calc-clear > * {
     transform: skewX(14deg);
   }
 }
