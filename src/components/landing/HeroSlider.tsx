@@ -34,6 +34,7 @@ const HeroRoad3D = dynamic(
 
 const AUTO_MS = 4800;
 const TEXT_TRANSITION_S = 0.16;
+const TEXT_TRANSITION_MOBILE_S = 0.42;
 
 type HeroSliderProps = {
   dict: Dictionary;
@@ -179,7 +180,9 @@ export function HeroSlider({ dict }: HeroSliderProps) {
               </p>
 
               <div
-                className="relative mt-7 min-h-[13rem] sm:min-h-[14.5rem] lg:min-h-[15.5rem]"
+                className={`relative mt-7 min-h-[13rem] sm:min-h-[14.5rem] lg:min-h-[15.5rem] ${
+                  isDesktop ? "" : "overflow-hidden"
+                }`}
                 aria-live="polite"
                 aria-atomic="true"
               >
@@ -187,11 +190,24 @@ export function HeroSlider({ dict }: HeroSliderProps) {
                   <motion.div
                     key={slide.headline}
                     custom={direction}
-                    variants={reduce ? fadeOnly : slideCopyVariants}
+                    variants={
+                      reduce
+                        ? fadeOnly
+                        : isDesktop
+                          ? slideCopyVariants
+                          : slideCopyMobileVariants
+                    }
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: TEXT_TRANSITION_S, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{
+                      duration: reduce
+                        ? TEXT_TRANSITION_S
+                        : isDesktop
+                          ? TEXT_TRANSITION_S
+                          : TEXT_TRANSITION_MOBILE_S,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                   >
                     <h1 className="max-w-2xl font-display text-[2rem] leading-[1.12] text-white sm:text-[2.6rem] lg:text-[3.15rem] lg:leading-[1.08]">
                       {slide.headline}
@@ -339,6 +355,22 @@ const slideCopyVariants = {
   exit: (dir: number) => ({
     opacity: 0,
     x: dir > 0 ? -40 : 40,
+  }),
+};
+
+/** Mobile: stronger lateral wipe so copy clearly enters from the side. */
+const slideCopyMobileVariants = {
+  enter: (dir: number) => ({
+    opacity: 0,
+    x: dir > 0 ? "72%" : "-72%",
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: (dir: number) => ({
+    opacity: 0,
+    x: dir > 0 ? "-48%" : "48%",
   }),
 };
 
