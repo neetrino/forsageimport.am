@@ -16,7 +16,6 @@ const CalculatorSection = dynamic(
   {
     loading: () => (
       <div
-        id="calculator"
         className="landing-curve scroll-mt-[var(--scroll-margin)] min-h-[32rem]"
         aria-hidden="true"
       />
@@ -32,7 +31,6 @@ const ApplicationSection = dynamic(
   {
     loading: () => (
       <div
-        id="apply"
         className="landing-curve scroll-mt-[var(--scroll-margin)] min-h-[28rem]"
         aria-hidden="true"
       />

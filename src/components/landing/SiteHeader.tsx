@@ -12,6 +12,7 @@ import { MobileNav } from "@/components/landing/MobileNav";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import {
   SectionAnchor,
+  getLandingSectionElement,
   useSectionAnchor,
 } from "@/components/landing/LandingRevealContext";
 
@@ -46,7 +47,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
       );
 
       const overDark = DARK_SECTION_IDS.some((id) => {
-        const section = document.getElementById(id);
+        const section = getLandingSectionElement(id);
         if (!section) return false;
         const rect = section.getBoundingClientRect();
         return rect.top <= probeY && rect.bottom >= probeY;
