@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Lead form smoke", () => {
   test("rejects invalid client input and accepts valid lead", async ({ page }) => {
     await page.goto("/hy#apply");
-    await page.locator("#apply").scrollIntoViewIfNeeded();
+    await page.locator("section#apply").scrollIntoViewIfNeeded();
 
     await page.getByRole("button", { name: "Ուղարկել հայտը" }).click();
     await expect(page.locator("#lead-name")).toHaveAttribute("aria-invalid", "true");

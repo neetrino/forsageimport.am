@@ -31,8 +31,16 @@ const LandingRevealContext = createContext<LandingRevealContextValue | null>(
 
 const HERO_ID = LANDING_SECTION_IDS.hero;
 
+/** Prefer the real <section> so dynamic() loading placeholders never steal the id. */
+export function getLandingSectionElement(id: string): HTMLElement | null {
+  return (
+    document.querySelector(`section#${CSS.escape(id)}`) ??
+    document.getElementById(id)
+  );
+}
+
 function scrollToSection(id: string, behavior: ScrollBehavior) {
-  const el = document.getElementById(id);
+  const el = getLandingSectionElement(id);
   if (!el) return false;
 
   const scrollMargin = Number.parseFloat(
@@ -59,7 +67,8 @@ export function LandingRevealProvider({ children }: { children: ReactNode }) {
         const delay = wasUnlocked ? 0 : 120;
         let attempts = 0;
         const run = () => {
-          if (scrollToSection(sectionId, behavior) || attempts >= 30) return;
+          // Dynamic calc/apply chunks can lag on cold CI; retry ~3s.
+          if (scrollToSection(sectionId, behavior) || attempts >= 60) return;
           attempts += 1;
           window.setTimeout(run, 50);
         };

@@ -7,9 +7,9 @@ test.describe("Calculator smoke", () => {
       () => document.documentElement.dataset.landingReady === "1",
     );
     await expect(page.locator(".landing-canvas-revealed")).toBeVisible();
-    await page.locator("#calculator").scrollIntoViewIfNeeded();
+    await page.locator("section#calculator").scrollIntoViewIfNeeded();
 
-    await page.locator("#calculator").getByRole("button", { name: "Հաշվել" }).click();
+    await page.locator("section#calculator").getByRole("button", { name: "Հաշվել" }).click();
     await expect(page.locator("#vehiclePrice")).toHaveAttribute("aria-invalid", "true");
     await expect(page.getByText("Պարտադիր դաշտ").first()).toBeVisible();
     await expect(page.getByText("Ֆիզիկական անձ")).toHaveCount(0);
@@ -23,7 +23,7 @@ test.describe("Calculator smoke", () => {
     await page.locator('label[for="insuranceEnabled"]').click();
     await expect(page.locator("#insuranceEnabled")).toBeChecked();
 
-    await page.locator("#calculator").getByRole("button", { name: "Հաշվել" }).click();
+    await page.locator("section#calculator").getByRole("button", { name: "Հաշվել" }).click();
 
     await expect(page.getByText("Ֆիզիկական անձ")).toBeVisible();
     await expect(page.getByText("Իրավաբանական անձ")).toBeVisible();

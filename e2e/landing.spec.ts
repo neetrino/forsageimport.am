@@ -14,7 +14,7 @@ test.describe("Landing smoke", () => {
     await expect(page.locator("#process")).toBeVisible();
     await expect(page.locator("#calculator")).toBeVisible();
     await expect(page.locator("#why-us")).toBeVisible();
-    await expect(page.locator("#apply")).toBeVisible();
+    await expect(page.locator("section#apply")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
 
     // eyebrow + 5 body paragraphs live under #about
@@ -31,9 +31,13 @@ test.describe("Landing smoke", () => {
 
     await page.locator('#hero a[href="#calculator"]').click();
     await expect(page.locator(".landing-canvas-revealed")).toBeVisible();
-    await expect(page.locator("#calculator")).toBeInViewport({ timeout: 15_000 });
+    await expect(page.locator("section#calculator")).toBeInViewport({
+      timeout: 15_000,
+    });
 
     await page.locator('#hero a[href="#apply"]').click();
-    await expect(page.locator("#apply")).toBeInViewport({ timeout: 15_000 });
+    await expect(page.locator("section#apply")).toBeInViewport({
+      timeout: 15_000,
+    });
   });
 });
