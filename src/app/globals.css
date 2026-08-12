@@ -1912,6 +1912,28 @@ body::before {
   }
 }
 
+/*
+ * iPad / tablet: viewport ≈ content width, so the desktop 3D left-shift
+ * is clipped by .hero-slider overflow. Keep a mild tilt, no negative X.
+ * min-height excludes phone landscape (~430px tall).
+ */
+@media (min-width: 744px) and (max-width: 1366px) and (min-height: 700px) {
+  .hero-slider-inner {
+    padding-left: 1.75rem !important;
+  }
+
+  .hero-copy-stage {
+    perspective: 1100px;
+    perspective-origin: 0% 45%;
+  }
+
+  .hero-copy-wall {
+    transform: rotateY(12deg) translateX(0) translateZ(8px);
+    margin-left: 0;
+    padding-left: 0.9rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-copy-stage {
     perspective: none;

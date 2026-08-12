@@ -170,7 +170,7 @@ export function HeroSlider({ dict }: HeroSliderProps) {
       <Container className="hero-slider-inner relative z-30 flex flex-col !pl-3 !pr-4 pb-16 pt-[calc(var(--header-height)+1.25rem)] sm:!pl-4 sm:!pr-6 sm:pb-20 sm:pt-[calc(var(--header-height)+1.75rem)] lg:!pl-5 lg:!pr-8 lg:pb-24 xl:!pl-6">
         <div className="grid flex-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-4 xl:gap-6">
           <motion.div
-            className="hero-copy-stage order-2 w-full max-w-2xl justify-self-start lg:order-1 lg:max-w-3xl lg:-translate-x-2 xl:-translate-x-4"
+            className="hero-copy-stage order-2 w-full max-w-2xl justify-self-start lg:order-1 lg:max-w-3xl 2xl:-translate-x-4"
             style={{ y: copyY, x: copyX, opacity: copyOpacity }}
           >
             <div className="hero-copy-wall">
