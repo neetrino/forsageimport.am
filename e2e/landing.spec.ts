@@ -35,6 +35,10 @@ test.describe("Landing smoke", () => {
       timeout: 15_000,
     });
 
+    // Apply is a separate dynamic chunk; wait before CTA so reveal isn't a no-op.
+    await expect(page.locator("section#apply")).toBeAttached({
+      timeout: 15_000,
+    });
     await page.locator('#hero a[href="#apply"]').click();
     await expect(page.locator("section#apply")).toBeInViewport({
       timeout: 15_000,
