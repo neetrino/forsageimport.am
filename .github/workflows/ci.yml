@@ -19,7 +19,7 @@ jobs:
       APP_URL: http://127.0.0.1:3000
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
