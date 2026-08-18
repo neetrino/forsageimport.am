@@ -4,7 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
+  useRef,
   useState,
   type MouseEvent,
   type ReactNode,
@@ -36,6 +38,11 @@ const REVEAL_POLL_MS = 50;
 const REVEAL_SMOOTH_POLL_MS = 250;
 const UNLOCK_LAYOUT_DELAY_MS = 120;
 
+type RevealJob = {
+  generation: number;
+  timer: number;
+};
+
 /** Prefer the real <section> so dynamic() loading placeholders never steal the id. */
 export function getLandingSectionElement(id: string): HTMLElement | null {
   return (
@@ -44,39 +51,98 @@ export function getLandingSectionElement(id: string): HTMLElement | null {
   );
 }
 
+function realizeLandingSectionLayouts() {
+  document.querySelectorAll(".landing-section-paint").forEach((node) => {
+    node.classList.add("landing-section-realized");
+  });
+}
+
 function sectionIntersectsViewport(el: HTMLElement): boolean {
   const rect = el.getBoundingClientRect();
-  return rect.bottom > 0 && rect.top < window.innerHeight;
+  const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+  return visible > 1;
+}
+
+function sectionScrollTop(el: HTMLElement): number {
+  const marginTop = Number.parseFloat(getComputedStyle(el).scrollMarginTop);
+  const offset = Number.isFinite(marginTop) ? marginTop : 0;
+  return Math.max(0, window.scrollY + el.getBoundingClientRect().top - offset);
+}
+
+/**
+ * CSSOM `behavior: "auto"` follows `html { scroll-behavior: smooth }`.
+ * Disable that for corrections so polling does not restart the animation.
+ */
+function scrollWindowTo(top: number, behavior: ScrollBehavior) {
+  if (behavior === "smooth") {
+    window.scrollTo({ top, left: 0, behavior: "smooth" });
+    return;
+  }
+
+  const root = document.documentElement;
+  const previous = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  window.scrollTo(0, top);
+  root.style.scrollBehavior = previous;
 }
 
 function scrollToSection(id: string, behavior: ScrollBehavior) {
   const el = getLandingSectionElement(id);
   if (!el) return false;
-
-  if (behavior === "smooth") {
-    el.scrollIntoView({ block: "start", inline: "nearest", behavior: "smooth" });
-    return true;
-  }
-
-  scrollSectionIntoViewInstant(el);
+  realizeLandingSectionLayouts();
+  scrollWindowTo(sectionScrollTop(el), behavior);
   return true;
 }
 
-/**
- * CSSOM `behavior: "auto"` follows `html { scroll-behavior: smooth }`.
- * Instant window scroll avoids restarting that animation on every poll.
- */
-function scrollSectionIntoViewInstant(el: HTMLElement) {
-  const marginTop = Number.parseFloat(getComputedStyle(el).scrollMarginTop);
-  const offset = Number.isFinite(marginTop) ? marginTop : 0;
-  const top = window.scrollY + el.getBoundingClientRect().top - offset;
-  window.scrollTo(0, Math.max(0, top));
+function scheduleReveal(
+  job: RevealJob,
+  sectionId: string,
+  preferredBehavior: ScrollBehavior,
+  delay: number,
+) {
+  job.generation += 1;
+  const generation = job.generation;
+  window.clearTimeout(job.timer);
+
+  let attempts = 0;
+  const run = () => {
+    if (generation !== job.generation) return;
+
+    const el = getLandingSectionElement(sectionId);
+    if (!el) {
+      if (attempts >= REVEAL_MAX_ATTEMPTS) return;
+      attempts += 1;
+      job.timer = window.setTimeout(run, REVEAL_POLL_MS);
+      return;
+    }
+
+    realizeLandingSectionLayouts();
+    if (sectionIntersectsViewport(el)) {
+      scrollToSection(sectionId, "auto");
+      return;
+    }
+
+    const behavior =
+      attempts === 0 && preferredBehavior === "smooth" ? "smooth" : "auto";
+    scrollToSection(sectionId, behavior);
+    attempts += 1;
+    if (attempts >= REVEAL_MAX_ATTEMPTS) return;
+    job.timer = window.setTimeout(
+      run,
+      behavior === "smooth" ? REVEAL_SMOOTH_POLL_MS : REVEAL_POLL_MS,
+    );
+  };
+
+  job.timer = window.setTimeout(run, delay);
 }
 
 export function LandingRevealProvider({ children }: { children: ReactNode }) {
   const [unlocked, setUnlocked] = useState(false);
+  const unlockedRef = useRef(false);
+  const revealJobRef = useRef<RevealJob>({ generation: 0, timer: 0 });
 
   const unlock = useCallback(() => {
+    unlockedRef.current = true;
     setUnlocked(true);
   }, []);
 
@@ -84,46 +150,26 @@ export function LandingRevealProvider({ children }: { children: ReactNode }) {
     (sectionId: string, options?: RevealSectionOptions) => {
       if (!sectionId || sectionId === HERO_ID) return;
 
-      const preferredBehavior = options?.behavior ?? "smooth";
-      setUnlocked((wasUnlocked) => {
-        const delay = wasUnlocked ? 0 : UNLOCK_LAYOUT_DELAY_MS;
-        let attempts = 0;
-
-        const run = () => {
-          const el = getLandingSectionElement(sectionId);
-          if (!el) {
-            if (attempts >= REVEAL_MAX_ATTEMPTS) return;
-            attempts += 1;
-            window.setTimeout(run, REVEAL_POLL_MS);
-            return;
-          }
-
-          // Element can mount before layout/chunk paint is stable; keep correcting
-          // until it actually intersects (smooth first, then instant).
-          if (sectionIntersectsViewport(el)) {
-            scrollToSection(sectionId, "auto");
-            return;
-          }
-
-          const behavior =
-            attempts === 0 && preferredBehavior === "smooth"
-              ? "smooth"
-              : "auto";
-          scrollToSection(sectionId, behavior);
-          attempts += 1;
-          if (attempts >= REVEAL_MAX_ATTEMPTS) return;
-          window.setTimeout(
-            run,
-            behavior === "smooth" ? REVEAL_SMOOTH_POLL_MS : REVEAL_POLL_MS,
-          );
-        };
-
-        window.setTimeout(run, delay);
-        return true;
-      });
+      const delay = unlockedRef.current ? 0 : UNLOCK_LAYOUT_DELAY_MS;
+      unlockedRef.current = true;
+      setUnlocked(true);
+      scheduleReveal(
+        revealJobRef.current,
+        sectionId,
+        options?.behavior ?? "smooth",
+        delay,
+      );
     },
     [],
   );
+
+  useEffect(() => {
+    const job = revealJobRef.current;
+    return () => {
+      job.generation += 1;
+      window.clearTimeout(job.timer);
+    };
+  }, []);
 
   const value = useMemo(
     () => ({ unlocked, unlock, revealSection }),

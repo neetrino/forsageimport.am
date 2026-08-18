@@ -334,6 +334,11 @@ body::before {
   contain-intrinsic-size: auto 720px;
 }
 
+/* Hash/CTA reveal needs real boxes: skipped sections report IO ratio 0. */
+.landing-section-paint.landing-section-realized {
+  content-visibility: visible;
+}
+
 .site-footer {
   border-top: 0;
 }
