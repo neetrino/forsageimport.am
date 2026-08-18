@@ -71,6 +71,9 @@ export type Dictionary = {
     downloadPdf: string;
     clearResults: string;
     insurance: string;
+    cheaperBadge: string;
+    evExemptionNote: string;
+    locationSearch: string;
     validation: {
       required: string;
       positiveNumber: string;
@@ -86,6 +89,12 @@ export type Dictionary = {
       transportFee: string;
       insuranceFee: string;
       totalBeforeCustoms: string;
+      customsHeading: string;
+      customsDuty: string;
+      vat: string;
+      ecologicalTax: string;
+      brokerage: string;
+      flatRate: string;
       customsFee: string;
       finalTotal: string;
     };
@@ -93,6 +102,7 @@ export type Dictionary = {
       vehiclePrice: string;
       engineType: string;
       auction: string;
+      customAuctionFee: string;
       ageGroup: string;
       year: string;
       auctionLocation: string;
@@ -104,7 +114,6 @@ export type Dictionary = {
       engineTypes: readonly LabeledOption[];
       ageGroups: readonly LabeledOption[];
       vehicleTypes: readonly LabeledOption[];
-      auctionLocations: readonly LabeledOption[];
     };
   };
   whyUs: {

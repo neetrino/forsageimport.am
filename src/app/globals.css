@@ -1323,6 +1323,13 @@ body::before {
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
+.calc-result-card-best {
+  border-color: color-mix(in srgb, var(--calc-accent) 70%, white);
+  box-shadow:
+    4px 4px 16px rgba(0, 0, 0, 0.12),
+    0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
 .apply-shell {
   position: relative;
   overflow: hidden;

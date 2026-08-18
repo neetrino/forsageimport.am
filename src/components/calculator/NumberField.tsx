@@ -8,6 +8,7 @@ type NumberFieldProps = {
   onChange: (value: string) => void;
   min?: number;
   step?: string;
+  disabled?: boolean;
   error?: string;
 };
 
@@ -27,6 +28,7 @@ export function NumberField({
   onChange,
   min = 0,
   step = "1",
+  disabled = false,
   error,
 }: NumberFieldProps) {
   return (
@@ -38,6 +40,7 @@ export function NumberField({
         type="number"
         min={min}
         step={step}
+        disabled={disabled}
         value={value}
         onFocus={(event) => {
           if (value === "0") {
