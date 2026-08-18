@@ -53,9 +53,24 @@ function scrollToSection(id: string, behavior: ScrollBehavior) {
   const el = getLandingSectionElement(id);
   if (!el) return false;
 
-  // Native scroll-margin (scroll-mt-*) is honored by scrollIntoView.
-  el.scrollIntoView({ block: "start", inline: "nearest", behavior });
+  if (behavior === "smooth") {
+    el.scrollIntoView({ block: "start", inline: "nearest", behavior: "smooth" });
+    return true;
+  }
+
+  scrollSectionIntoViewInstant(el);
   return true;
+}
+
+/**
+ * CSSOM `behavior: "auto"` follows `html { scroll-behavior: smooth }`.
+ * Instant window scroll avoids restarting that animation on every poll.
+ */
+function scrollSectionIntoViewInstant(el: HTMLElement) {
+  const marginTop = Number.parseFloat(getComputedStyle(el).scrollMarginTop);
+  const offset = Number.isFinite(marginTop) ? marginTop : 0;
+  const top = window.scrollY + el.getBoundingClientRect().top - offset;
+  window.scrollTo(0, Math.max(0, top));
 }
 
 export function LandingRevealProvider({ children }: { children: ReactNode }) {
