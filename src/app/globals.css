@@ -334,7 +334,13 @@ body::before {
   contain-intrinsic-size: auto 720px;
 }
 
-/* Hash/CTA reveal needs real boxes: skipped sections report IO ratio 0. */
+/*
+ * Once the canvas is unlocked, hash/CTA scroll and Intersection Observer
+ * need real boxes. Skipped `content-visibility: auto` sections report
+ * IO ratio 0 and placeholder heights, so #apply never "arrives".
+ */
+.landing-canvas-revealed .landing-section-paint,
+html[data-landing-unlocked] .landing-section-paint,
 .landing-section-paint.landing-section-realized {
   content-visibility: visible;
 }

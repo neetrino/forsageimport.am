@@ -37,6 +37,7 @@ const REVEAL_MAX_ATTEMPTS = 120;
 const REVEAL_POLL_MS = 50;
 const REVEAL_SMOOTH_POLL_MS = 250;
 const UNLOCK_LAYOUT_DELAY_MS = 120;
+const REVEAL_SETTLE_PX = 8;
 
 type RevealJob = {
   generation: number;
@@ -51,7 +52,12 @@ export function getLandingSectionElement(id: string): HTMLElement | null {
   );
 }
 
+function markLandingUnlocked() {
+  document.documentElement.dataset.landingUnlocked = "1";
+}
+
 function realizeLandingSectionLayouts() {
+  markLandingUnlocked();
   document.querySelectorAll(".landing-section-paint").forEach((node) => {
     node.classList.add("landing-section-realized");
   });
@@ -61,6 +67,11 @@ function sectionIntersectsViewport(el: HTMLElement): boolean {
   const rect = el.getBoundingClientRect();
   const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
   return visible > 1;
+}
+
+function sectionRevealSettled(el: HTMLElement): boolean {
+  if (!sectionIntersectsViewport(el)) return false;
+  return Math.abs(window.scrollY - sectionScrollTop(el)) <= REVEAL_SETTLE_PX;
 }
 
 function sectionScrollTop(el: HTMLElement): number {
@@ -117,10 +128,8 @@ function scheduleReveal(
     }
 
     realizeLandingSectionLayouts();
-    if (sectionIntersectsViewport(el)) {
-      scrollToSection(sectionId, "auto");
-      return;
-    }
+    void el.offsetHeight;
+    if (sectionRevealSettled(el)) return;
 
     const behavior =
       attempts === 0 && preferredBehavior === "smooth" ? "smooth" : "auto";
@@ -143,6 +152,7 @@ export function LandingRevealProvider({ children }: { children: ReactNode }) {
 
   const unlock = useCallback(() => {
     unlockedRef.current = true;
+    markLandingUnlocked();
     setUnlocked(true);
   }, []);
 
@@ -152,6 +162,7 @@ export function LandingRevealProvider({ children }: { children: ReactNode }) {
 
       const delay = unlockedRef.current ? 0 : UNLOCK_LAYOUT_DELAY_MS;
       unlockedRef.current = true;
+      markLandingUnlocked();
       setUnlocked(true);
       scheduleReveal(
         revealJobRef.current,
@@ -168,6 +179,7 @@ export function LandingRevealProvider({ children }: { children: ReactNode }) {
     return () => {
       job.generation += 1;
       window.clearTimeout(job.timer);
+      delete document.documentElement.dataset.landingUnlocked;
     };
   }, []);
 
