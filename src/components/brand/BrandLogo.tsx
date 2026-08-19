@@ -4,7 +4,7 @@ import { BRAND_LOGO } from "@/lib/brand/assets";
 const sizeMap = {
   xs: 28,
   sm: 40,
-  header: 52,
+  header: 72,
   md: 72,
   lg: 128,
   hero: 220,
@@ -31,7 +31,7 @@ export function BrandLogo({
       width={width}
       height={height}
       priority={priority}
-      className={className}
+      className={`brand-logo ${className}`.trim()}
       sizes={`${width}px`}
     />
   );

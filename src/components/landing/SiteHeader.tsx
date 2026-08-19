@@ -43,7 +43,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
       if (!alive) return;
       const headerEl = document.querySelector(".site-header");
       const probeY = Math.round(
-        (headerEl?.getBoundingClientRect().height || 88) * 0.55,
+        (headerEl?.getBoundingClientRect().height || 104) * 0.55,
       );
 
       const overDark = DARK_SECTION_IDS.some((id) => {

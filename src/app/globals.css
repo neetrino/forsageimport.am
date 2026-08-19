@@ -13,8 +13,8 @@
   --brand-blue: #1a4a78;
   --brand-red: #c6281e;
   --danger: #c6281e;
-  --header-height: 5.5rem;
-  --scroll-margin: 7rem;
+  --header-height: 6.5rem;
+  --scroll-margin: 8rem;
   --content-max: 72rem;
   --landing-canvas: #090b10;
   --footer-surface: #0c0f16;
@@ -167,26 +167,27 @@ body::before {
   gap: 1rem;
 }
 
+.brand-logo {
+  filter: brightness(1.28) contrast(1.12) saturate(1.18);
+}
+
 .site-header-brand {
   z-index: 1;
   display: inline-flex;
-  max-width: min(100%, 15.5rem);
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   align-items: center;
-  gap: 0.75rem;
-  overflow: hidden;
-  transition: opacity 0.2s ease;
+  gap: 0.9rem;
 }
 
-.site-header-brand:hover {
-  opacity: 0.92;
+.site-header-brand.text-white .brand-logo {
+  filter:
+    brightness(1.42) contrast(1.14) saturate(1.22)
+    drop-shadow(0 0 10px rgba(255, 210, 170, 0.22));
 }
 
 .site-header-brand-copy {
   display: none;
-  min-width: 0;
   flex-direction: column;
-  overflow: hidden;
 }
 
 @media (min-width: 640px) {
@@ -196,11 +197,9 @@ body::before {
 }
 
 .site-header-brand-name {
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -1873,14 +1872,20 @@ html[data-landing-unlocked] .landing-section-paint,
 }
 
 .hero-copy-wall {
+  --hero-copy-tilt: 20deg;
+  --hero-copy-shift-x: -4%;
+  --hero-copy-shift-z: 16px;
   position: relative;
-  transform: rotateY(20deg) translateX(-4%) translateZ(16px);
+  transform: rotateY(var(--hero-copy-tilt))
+    translateX(var(--hero-copy-shift-x))
+    translateZ(var(--hero-copy-shift-z));
   transform-origin: left center;
   transform-style: preserve-3d;
   will-change: transform;
   padding-left: 0.75rem;
   margin-left: -0.25rem;
   backface-visibility: hidden;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-copy-wall::before {
@@ -1904,7 +1909,9 @@ html[data-landing-unlocked] .landing-section-paint,
 
 @media (min-width: 640px) {
   .hero-copy-wall {
-    transform: rotateY(26deg) translateX(-8%) translateZ(22px);
+    --hero-copy-tilt: 26deg;
+    --hero-copy-shift-x: -8%;
+    --hero-copy-shift-z: 22px;
     padding-left: 0.95rem;
     margin-left: -0.75rem;
   }
@@ -1917,7 +1924,9 @@ html[data-landing-unlocked] .landing-section-paint,
   }
 
   .hero-copy-wall {
-    transform: rotateY(36deg) translateX(-14%) translateZ(36px);
+    --hero-copy-tilt: 36deg;
+    --hero-copy-shift-x: -14%;
+    --hero-copy-shift-z: 36px;
     padding-left: 1.1rem;
     margin-left: -1.5rem;
   }
@@ -1925,7 +1934,9 @@ html[data-landing-unlocked] .landing-section-paint,
 
 @media (min-width: 1280px) {
   .hero-copy-wall {
-    transform: rotateY(38deg) translateX(-18%) translateZ(42px);
+    --hero-copy-tilt: 38deg;
+    --hero-copy-shift-x: -18%;
+    --hero-copy-shift-z: 42px;
     margin-left: -2.25rem;
   }
 }
@@ -1946,9 +1957,18 @@ html[data-landing-unlocked] .landing-section-paint,
   }
 
   .hero-copy-wall {
-    transform: rotateY(12deg) translateX(0) translateZ(8px);
+    --hero-copy-tilt: 12deg;
+    --hero-copy-shift-x: 0;
+    --hero-copy-shift-z: 8px;
     margin-left: 0;
     padding-left: 0.9rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-copy-stage:hover .hero-copy-wall {
+    --hero-copy-tilt: 0deg;
+    --hero-copy-shift-z: 0px;
   }
 }
 
@@ -1961,6 +1981,7 @@ html[data-landing-unlocked] .landing-section-paint,
     transform: none;
     padding-left: 0;
     margin-left: 0;
+    transition: none;
   }
 
   .hero-copy-wall::before {
