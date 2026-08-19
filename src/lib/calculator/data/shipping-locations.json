@@ -1,0 +1,3052 @@
+[
+  {
+    "id": "299",
+    "name": "AL-BIRMINGHAM",
+    "sedan": 2475,
+    "suv": 2575,
+    "pickup": 3115,
+    "motorcycle": 1625,
+    "big_suv": 2815,
+    "van": 2815
+  },
+  {
+    "id": "2",
+    "name": "AL-DOTHAN",
+    "sedan": 2440,
+    "suv": 2540,
+    "pickup": 3080,
+    "motorcycle": 1590,
+    "big_suv": 2780,
+    "van": 2780
+  },
+  {
+    "id": "3",
+    "name": "AL-HUNTSVILLE",
+    "sedan": 2580,
+    "suv": 2680,
+    "pickup": 3220,
+    "motorcycle": 1730,
+    "big_suv": 2920,
+    "van": 2920
+  },
+  {
+    "id": "4",
+    "name": "AL-MOBILE",
+    "sedan": 2475,
+    "suv": 2575,
+    "pickup": 3115,
+    "motorcycle": 1625,
+    "big_suv": 2815,
+    "van": 2815
+  },
+  {
+    "id": "5",
+    "name": "AL-MONTGOMERY",
+    "sedan": 2475,
+    "suv": 2575,
+    "pickup": 3115,
+    "motorcycle": 1625,
+    "big_suv": 2815,
+    "van": 2815
+  },
+  {
+    "id": "6",
+    "name": "AL-TANNER",
+    "sedan": 2475,
+    "suv": 2575,
+    "pickup": 3115,
+    "motorcycle": 1625,
+    "big_suv": 2815,
+    "van": 2815
+  },
+  {
+    "id": "7",
+    "name": "AR-FAYETTEVILLE COPART",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3100,
+    "motorcycle": 1550,
+    "big_suv": 2900,
+    "van": 2900
+  },
+  {
+    "id": "8",
+    "name": "AR-FAYETTEVILLE IAA",
+    "sedan": 2300,
+    "suv": 2400,
+    "pickup": 2850,
+    "motorcycle": 1300,
+    "big_suv": 2650,
+    "van": 2650
+  },
+  {
+    "id": "9",
+    "name": "AR-LITTLE ROCK COPART",
+    "sedan": 2450,
+    "suv": 2550,
+    "pickup": 3000,
+    "motorcycle": 1200,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "10",
+    "name": "AR-LITTLE ROCK IAA",
+    "sedan": 2450,
+    "suv": 2550,
+    "pickup": 3000,
+    "motorcycle": 1450,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "11",
+    "name": "AZ-PHOENIX",
+    "sedan": 2960,
+    "suv": 3060,
+    "pickup": 3670,
+    "motorcycle": 1460,
+    "big_suv": 3270,
+    "van": 3270
+  },
+  {
+    "id": "12",
+    "name": "AZ-TUCSON",
+    "sedan": 3040,
+    "suv": 3140,
+    "pickup": 3750,
+    "motorcycle": 1540,
+    "big_suv": 3350,
+    "van": 3350
+  },
+  {
+    "id": "14",
+    "name": "CA- ACE Carson",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3440,
+    "motorcycle": 1230,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "15",
+    "name": "CA- ACE Perris",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3440,
+    "motorcycle": 1230,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "34",
+    "name": "CA- MANHEIM RIVERSIDE",
+    "sedan": 2690,
+    "suv": 2790,
+    "pickup": 3480,
+    "motorcycle": 1110,
+    "big_suv": 2920,
+    "van": 3080
+  },
+  {
+    "id": "13",
+    "name": "CA-ADELANTO",
+    "sedan": 2810,
+    "suv": 2910,
+    "pickup": 3720,
+    "motorcycle": 1310,
+    "big_suv": 3120,
+    "van": 3320
+  },
+  {
+    "id": "16",
+    "name": "CA-ANAHEIM",
+    "sedan": 2660,
+    "suv": 2760,
+    "pickup": 3290,
+    "motorcycle": 1080,
+    "big_suv": 2890,
+    "van": 2890
+  },
+  {
+    "id": "17",
+    "name": "CA-ANTELOPE",
+    "sedan": 3010,
+    "suv": 3110,
+    "pickup": 3720,
+    "motorcycle": 1510,
+    "big_suv": 3320,
+    "van": 3320
+  },
+  {
+    "id": "18",
+    "name": "CA-BAKERSFIELD",
+    "sedan": 2770,
+    "suv": 2870,
+    "pickup": 3480,
+    "motorcycle": 1110,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "19",
+    "name": "CA-COLTON",
+    "sedan": 2705,
+    "suv": 2805,
+    "pickup": 3305,
+    "motorcycle": 1125,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "20",
+    "name": "CA-EAST BAY",
+    "sedan": 3050,
+    "suv": 3150,
+    "pickup": 3760,
+    "motorcycle": 1550,
+    "big_suv": 3360,
+    "van": 3360
+  },
+  {
+    "id": "21",
+    "name": "CA-FONTANA",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3440,
+    "motorcycle": 1230,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "22",
+    "name": "CA-FREMONT",
+    "sedan": 3050,
+    "suv": 3150,
+    "pickup": 3760,
+    "motorcycle": 1550,
+    "big_suv": 3360,
+    "van": 3360
+  },
+  {
+    "id": "23",
+    "name": "CA-FRESNO",
+    "sedan": 2850,
+    "suv": 2950,
+    "pickup": 3560,
+    "motorcycle": 1350,
+    "big_suv": 3160,
+    "van": 3160
+  },
+  {
+    "id": "24",
+    "name": "CA-HAYWARD",
+    "sedan": 3010,
+    "suv": 3110,
+    "pickup": 3720,
+    "motorcycle": 1510,
+    "big_suv": 3320,
+    "van": 3320
+  },
+  {
+    "id": "25",
+    "name": "CA-HAYWARD DESERT VIEW",
+    "sedan": 3010,
+    "suv": 3110,
+    "pickup": 3720,
+    "motorcycle": 1510,
+    "big_suv": 3320,
+    "van": 3320
+  },
+  {
+    "id": "26",
+    "name": "CA-HIGH DESERT",
+    "sedan": 2770,
+    "suv": 2870,
+    "pickup": 3480,
+    "motorcycle": 1110,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "27",
+    "name": "CA-LONG BEACH",
+    "sedan": 2770,
+    "suv": 2870,
+    "pickup": 3480,
+    "motorcycle": 1190,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "28",
+    "name": "CA-LOS ANGELES",
+    "sedan": 2770,
+    "suv": 2870,
+    "pickup": 3480,
+    "motorcycle": 1270,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "29",
+    "name": "CA-MARTINEZ",
+    "sedan": 2970,
+    "suv": 3070,
+    "pickup": 3680,
+    "motorcycle": 1470,
+    "big_suv": 3280,
+    "van": 3280
+  },
+  {
+    "id": "295",
+    "name": "CA-MENTONE",
+    "sedan": 2755,
+    "suv": 2855,
+    "pickup": 3385,
+    "motorcycle": 1175,
+    "big_suv": 2985,
+    "van": 2985
+  },
+  {
+    "id": "305",
+    "name": "CA-NAPA",
+    "sedan": 3020,
+    "suv": 3120,
+    "pickup": 3730,
+    "motorcycle": 1520,
+    "big_suv": 3330,
+    "van": 3330
+  },
+  {
+    "id": "30",
+    "name": "CA-NORTH HOLLYWOOD",
+    "sedan": 2660,
+    "suv": 2760,
+    "pickup": 3290,
+    "motorcycle": 1080,
+    "big_suv": 2890,
+    "van": 2890
+  },
+  {
+    "id": "31",
+    "name": "CA-RANCHO CUCAMONGA",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3440,
+    "motorcycle": 1230,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "32",
+    "name": "CA-RANCHO-DESERT VIEW",
+    "sedan": 2640,
+    "suv": 2740,
+    "pickup": 3270,
+    "motorcycle": 1060,
+    "big_suv": 2870,
+    "van": 2870
+  },
+  {
+    "id": "33",
+    "name": "CA-REDDING",
+    "sedan": 3170,
+    "suv": 3270,
+    "pickup": 3880,
+    "motorcycle": 1670,
+    "big_suv": 3480,
+    "van": 3480
+  },
+  {
+    "id": "35",
+    "name": "CA-SACRAMENTO",
+    "sedan": 2930,
+    "suv": 3030,
+    "pickup": 3640,
+    "motorcycle": 1430,
+    "big_suv": 3240,
+    "van": 3560
+  },
+  {
+    "id": "36",
+    "name": "CA-SACRAMENTO-DESERT VIEW",
+    "sedan": 2930,
+    "suv": 3030,
+    "pickup": 3640,
+    "motorcycle": 1430,
+    "big_suv": 3240,
+    "van": 3240
+  },
+  {
+    "id": "37",
+    "name": "CA-SAN BERNARDINO",
+    "sedan": 2705,
+    "suv": 2805,
+    "pickup": 3335,
+    "motorcycle": 1125,
+    "big_suv": 2935,
+    "van": 2935
+  },
+  {
+    "id": "38",
+    "name": "CA-SAN DIEGO",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3440,
+    "motorcycle": 1070,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "39",
+    "name": "CA-SAN DIEGO-DESERT VIEW",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3335,
+    "motorcycle": 1125,
+    "big_suv": 2935,
+    "van": 2935
+  },
+  {
+    "id": "40",
+    "name": "CA-SAN JOSE",
+    "sedan": 3050,
+    "suv": 3150,
+    "pickup": 3760,
+    "motorcycle": 1550,
+    "big_suv": 3360,
+    "van": 3360
+  },
+  {
+    "id": "41",
+    "name": "CA-SANTA PAULA-DESERT VIEW",
+    "sedan": 2705,
+    "suv": 2805,
+    "pickup": 3335,
+    "motorcycle": 1125,
+    "big_suv": 2935,
+    "van": 2935
+  },
+  {
+    "id": "42",
+    "name": "CA-SO SACRAMENTO",
+    "sedan": 2930,
+    "suv": 3030,
+    "pickup": 3640,
+    "motorcycle": 1430,
+    "big_suv": 3240,
+    "van": 3240
+  },
+  {
+    "id": "43",
+    "name": "CA-SUN VALLEY",
+    "sedan": 2690,
+    "suv": 2790,
+    "pickup": 3400,
+    "motorcycle": 1190,
+    "big_suv": 3000,
+    "van": 3000
+  },
+  {
+    "id": "44",
+    "name": "CA-VALLEJO",
+    "sedan": 3010,
+    "suv": 3110,
+    "pickup": 3640,
+    "motorcycle": 1510,
+    "big_suv": 3240,
+    "van": 3240
+  },
+  {
+    "id": "45",
+    "name": "CA-VAN NUYS",
+    "sedan": 2730,
+    "suv": 2830,
+    "pickup": 3440,
+    "motorcycle": 1230,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "46",
+    "name": "CO-COLORADO SPRINGS",
+    "sedan": 2870,
+    "suv": 2970,
+    "pickup": 3480,
+    "motorcycle": 1870,
+    "big_suv": 3280,
+    "van": 3280
+  },
+  {
+    "id": "47",
+    "name": "CO-DENVER",
+    "sedan": 2990,
+    "suv": 3090,
+    "pickup": 3600,
+    "motorcycle": 1990,
+    "big_suv": 3400,
+    "van": 3400
+  },
+  {
+    "id": "48",
+    "name": "CO-DENVER CENTRAL",
+    "sedan": 2950,
+    "suv": 3050,
+    "pickup": 3560,
+    "motorcycle": 1950,
+    "big_suv": 3360,
+    "van": 3360
+  },
+  {
+    "id": "49",
+    "name": "CO-DENVER EAST",
+    "sedan": 2870,
+    "suv": 2970,
+    "pickup": 3480,
+    "motorcycle": 1870,
+    "big_suv": 3280,
+    "van": 3280
+  },
+  {
+    "id": "50",
+    "name": "CO-DENVER SOUTH",
+    "sedan": 2950,
+    "suv": 3050,
+    "pickup": 3560,
+    "motorcycle": 1950,
+    "big_suv": 3360,
+    "van": 3360
+  },
+  {
+    "id": "51",
+    "name": "CO-WESTERN COLORADO",
+    "sedan": 3550,
+    "suv": 3650,
+    "pickup": 4160,
+    "motorcycle": 1990,
+    "big_suv": 3960,
+    "van": 3960
+  },
+  {
+    "id": "52",
+    "name": "CT-HARTFORD",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1300,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "53",
+    "name": "CT-HARTFORD SPRINGFIELD",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1300,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "54",
+    "name": "CT-Hartford-South",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1300,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "55",
+    "name": "DC-WASHINGTON DC-MD",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "56",
+    "name": "DE-NEW CASTLE",
+    "sedan": 2200,
+    "suv": 2300,
+    "pickup": 2800,
+    "motorcycle": 1200,
+    "big_suv": 2550,
+    "van": 2550
+  },
+  {
+    "id": "57",
+    "name": "DE-SEAFORD",
+    "sedan": 2250,
+    "suv": 2350,
+    "pickup": 2900,
+    "motorcycle": 1250,
+    "big_suv": 2650,
+    "van": 2650
+  },
+  {
+    "id": "58",
+    "name": "FL-CAT Jacksonville Sub lot",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "59",
+    "name": "FL-CAT Orlando Boggy Creek",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1335,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "61",
+    "name": "FL-CLEARWATER",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "60",
+    "name": "FL-Dover Sublot",
+    "sedan": 2150,
+    "suv": 2250,
+    "pickup": 2790,
+    "motorcycle": 1300,
+    "big_suv": 2490,
+    "van": 2490
+  },
+  {
+    "id": "62",
+    "name": "FL-FORT MYERS",
+    "sedan": 2430,
+    "suv": 2530,
+    "pickup": 3070,
+    "motorcycle": 1580,
+    "big_suv": 2770,
+    "van": 2770
+  },
+  {
+    "id": "63",
+    "name": "FL-FORT PIERCE",
+    "sedan": 2395,
+    "suv": 2495,
+    "pickup": 3035,
+    "motorcycle": 1545,
+    "big_suv": 2735,
+    "van": 2735
+  },
+  {
+    "id": "64",
+    "name": "FL-FT.PIERCE",
+    "sedan": 2150,
+    "suv": 2250,
+    "pickup": 2790,
+    "motorcycle": 1300,
+    "big_suv": 2490,
+    "van": 2490
+  },
+  {
+    "id": "65",
+    "name": "FL-JACKSONVILLE",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "66",
+    "name": "FL-JACKSONVILLE EAST",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "67",
+    "name": "FL-JACKSONVILLE WEST",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "68",
+    "name": "FL-MIAMI",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1370,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "69",
+    "name": "FL-MIAMI CENTRAL",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 2860,
+    "motorcycle": 1370,
+    "big_suv": 2560,
+    "van": 2560
+  },
+  {
+    "id": "70",
+    "name": "FL-MIAMI NORTH",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 2860,
+    "motorcycle": 1370,
+    "big_suv": 2560,
+    "van": 2560
+  },
+  {
+    "id": "71",
+    "name": "FL-MIAMI SOUTH",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 2860,
+    "motorcycle": 1035,
+    "big_suv": 2560,
+    "van": 2560
+  },
+  {
+    "id": "72",
+    "name": "FL-OCALA",
+    "sedan": 2255,
+    "suv": 2355,
+    "pickup": 2895,
+    "motorcycle": 1405,
+    "big_suv": 2595,
+    "van": 2595
+  },
+  {
+    "id": "73",
+    "name": "FL-ORLANDO",
+    "sedan": 2115,
+    "suv": 2215,
+    "pickup": 2755,
+    "motorcycle": 1265,
+    "big_suv": 2455,
+    "van": 2455
+  },
+  {
+    "id": "74",
+    "name": "FL-ORLANDO NORTH",
+    "sedan": 2150,
+    "suv": 2250,
+    "pickup": 2790,
+    "motorcycle": 1300,
+    "big_suv": 2490,
+    "van": 2490
+  },
+  {
+    "id": "75",
+    "name": "FL-ORLANDO SOUTH",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1335,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "76",
+    "name": "FL-PENSACOLA",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1335,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "77",
+    "name": "FL-PUNTA GORDA",
+    "sedan": 2150,
+    "suv": 2250,
+    "pickup": 2790,
+    "motorcycle": 1300,
+    "big_suv": 2490,
+    "van": 2490
+  },
+  {
+    "id": "78",
+    "name": "FL-TALLAHASSEE",
+    "sedan": 2255,
+    "suv": 2355,
+    "pickup": 2895,
+    "motorcycle": 1405,
+    "big_suv": 2595,
+    "van": 2595
+  },
+  {
+    "id": "79",
+    "name": "FL-TAMPA",
+    "sedan": 2115,
+    "suv": 2215,
+    "pickup": 2720,
+    "motorcycle": 1090,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "80",
+    "name": "FL-WEST PALM BEACH",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 2860,
+    "motorcycle": 1230,
+    "big_suv": 2560,
+    "van": 2560
+  },
+  {
+    "id": "81",
+    "name": "GA-ATLANTA",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1335,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "82",
+    "name": "GA-ATLANTA EAST",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 2860,
+    "motorcycle": 1370,
+    "big_suv": 2560,
+    "van": 2560
+  },
+  {
+    "id": "83",
+    "name": "GA-ATLANTA NORTH",
+    "sedan": 2325,
+    "suv": 2425,
+    "pickup": 2965,
+    "motorcycle": 1475,
+    "big_suv": 2665,
+    "van": 2665
+  },
+  {
+    "id": "84",
+    "name": "GA-ATLANTA SOUTH",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1335,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "85",
+    "name": "GA-ATLANTA WEST",
+    "sedan": 2255,
+    "suv": 2355,
+    "pickup": 2895,
+    "motorcycle": 1405,
+    "big_suv": 2595,
+    "van": 2595
+  },
+  {
+    "id": "86",
+    "name": "GA-CARTERSVILLE",
+    "sedan": 2325,
+    "suv": 2425,
+    "pickup": 2965,
+    "motorcycle": 1475,
+    "big_suv": 2665,
+    "van": 2665
+  },
+  {
+    "id": "87",
+    "name": "GA-FAIRBURN",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 3200,
+    "motorcycle": 1300,
+    "big_suv": 2925,
+    "van": 2925
+  },
+  {
+    "id": "88",
+    "name": "GA-MACON",
+    "sedan": 2255,
+    "suv": 2355,
+    "pickup": 2895,
+    "motorcycle": 1405,
+    "big_suv": 2595,
+    "van": 2595
+  },
+  {
+    "id": "89",
+    "name": "GA-SAVANNAH",
+    "sedan": 1940,
+    "suv": 2040,
+    "pickup": 2510,
+    "motorcycle": 1020,
+    "big_suv": 2210,
+    "van": 2210
+  },
+  {
+    "id": "90",
+    "name": "GA-TIFTON",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "303",
+    "name": "IA-CEDAR RAPIDS",
+    "sedan": 2800,
+    "suv": 2900,
+    "pickup": 3450,
+    "motorcycle": 1800,
+    "big_suv": 3100,
+    "van": 3100
+  },
+  {
+    "id": "298",
+    "name": "IA-CEDAR RAPIDS",
+    "sedan": 2800,
+    "suv": 2900,
+    "pickup": 3400,
+    "motorcycle": 1750,
+    "big_suv": 3150,
+    "van": 3150
+  },
+  {
+    "id": "91",
+    "name": "IA-Crashedtoys Eldridge",
+    "sedan": 2700,
+    "suv": 2800,
+    "pickup": 3350,
+    "motorcycle": 1700,
+    "big_suv": 3100,
+    "van": 3100
+  },
+  {
+    "id": "92",
+    "name": "IA-DAVENPORT",
+    "sedan": 2700,
+    "suv": 2800,
+    "pickup": 3300,
+    "motorcycle": 1650,
+    "big_suv": 3050,
+    "van": 3050
+  },
+  {
+    "id": "93",
+    "name": "IA-DES MOINES",
+    "sedan": 2700,
+    "suv": 2800,
+    "pickup": 3350,
+    "motorcycle": 1700,
+    "big_suv": 3100,
+    "van": 3100
+  },
+  {
+    "id": "94",
+    "name": "ID-BOISE",
+    "sedan": 3000,
+    "suv": 3100,
+    "pickup": 3750,
+    "motorcycle": 1300,
+    "big_suv": 3350,
+    "van": 3350
+  },
+  {
+    "id": "95",
+    "name": "IL-CHICAGO NORTH",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3260,
+    "motorcycle": 1300,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "96",
+    "name": "IL-CHICAGO SOUTH",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3260,
+    "motorcycle": 1300,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "97",
+    "name": "IL-CHICAGO WEST",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3190,
+    "motorcycle": 1400,
+    "big_suv": 2940,
+    "van": 2940
+  },
+  {
+    "id": "98",
+    "name": "IL-LINCOLN",
+    "sedan": 2690,
+    "suv": 2790,
+    "pickup": 3330,
+    "motorcycle": 1790,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "100",
+    "name": "IL-PEORIA",
+    "sedan": 2520,
+    "suv": 2620,
+    "pickup": 3300,
+    "motorcycle": 1340,
+    "big_suv": 3050,
+    "van": 3050
+  },
+  {
+    "id": "101",
+    "name": "IL-SOUTHERN ILLINOIS",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "99",
+    "name": "IL-SPECIALTY DIVISION",
+    "sedan": 2480,
+    "suv": 2580,
+    "pickup": 3120,
+    "motorcycle": 1440,
+    "big_suv": 2870,
+    "van": 2870
+  },
+  {
+    "id": "102",
+    "name": "IL-ST. LOUIS",
+    "sedan": 2650,
+    "suv": 2750,
+    "pickup": 3290,
+    "motorcycle": 1650,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "103",
+    "name": "IL-WHEELING",
+    "sedan": 2465,
+    "suv": 2565,
+    "pickup": 3105,
+    "motorcycle": 1425,
+    "big_suv": 2855,
+    "van": 2855
+  },
+  {
+    "id": "104",
+    "name": "IN-CICERO",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "105",
+    "name": "IN-DYER",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3125,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "106",
+    "name": "IN-FORT WAYNE",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2970,
+    "van": 2975
+  },
+  {
+    "id": "107",
+    "name": "IN-INDIANAPOLIS",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3190,
+    "motorcycle": 1650,
+    "big_suv": 2940,
+    "van": 2940
+  },
+  {
+    "id": "108",
+    "name": "IN-SOUTH BEND",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3190,
+    "motorcycle": 1650,
+    "big_suv": 2940,
+    "van": 2940
+  },
+  {
+    "id": "109",
+    "name": "KS-KANSAS CITY",
+    "sedan": 2710,
+    "suv": 2810,
+    "pickup": 3320,
+    "motorcycle": 1710,
+    "big_suv": 3120,
+    "van": 3120
+  },
+  {
+    "id": "110",
+    "name": "KS-WICHITA",
+    "sedan": 2510,
+    "suv": 2610,
+    "pickup": 3120,
+    "motorcycle": 1510,
+    "big_suv": 2920,
+    "van": 2920
+  },
+  {
+    "id": "111",
+    "name": "KY-ASHLAND",
+    "sedan": 2620,
+    "suv": 2720,
+    "pickup": 3260,
+    "motorcycle": 1720,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "112",
+    "name": "KY-BOWLING GREEN",
+    "sedan": 2690,
+    "suv": 2790,
+    "pickup": 3330,
+    "motorcycle": 1790,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "300",
+    "name": "KY-EARLINGTON",
+    "sedan": 2675,
+    "suv": 2775,
+    "pickup": 3400,
+    "motorcycle": 1550,
+    "big_suv": 3150,
+    "van": 3150
+  },
+  {
+    "id": "113",
+    "name": "KY-LEXINGTON EAST",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "114",
+    "name": "KY-LEXINGTON WEST",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "115",
+    "name": "KY-LOUISVILLE",
+    "sedan": 2625,
+    "suv": 2725,
+    "pickup": 3260,
+    "motorcycle": 1720,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "116",
+    "name": "KY-PADUCAH",
+    "sedan": 2830,
+    "suv": 2930,
+    "pickup": 3470,
+    "motorcycle": 1580,
+    "big_suv": 3220,
+    "van": 3220
+  },
+  {
+    "id": "117",
+    "name": "KY-WALTON",
+    "sedan": 2620,
+    "suv": 2720,
+    "pickup": 3260,
+    "motorcycle": 1510,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "121",
+    "name": "LA- LAFAYETTE",
+    "sedan": 2405,
+    "suv": 2505,
+    "pickup": 2995,
+    "motorcycle": 1335,
+    "big_suv": 2795,
+    "van": 2795
+  },
+  {
+    "id": "122",
+    "name": "LA- NEW ORLEANS EAST",
+    "sedan": 2440,
+    "suv": 2540,
+    "pickup": 3030,
+    "motorcycle": 1440,
+    "big_suv": 2830,
+    "van": 2830
+  },
+  {
+    "id": "118",
+    "name": "LA-BATON ROUGE",
+    "sedan": 2475,
+    "suv": 2575,
+    "pickup": 3065,
+    "motorcycle": 1475,
+    "big_suv": 2865,
+    "van": 2865
+  },
+  {
+    "id": "119",
+    "name": "LA-NEW ORLEANS",
+    "sedan": 2350,
+    "suv": 2450,
+    "pickup": 2900,
+    "motorcycle": 1350,
+    "big_suv": 2700,
+    "van": 2700
+  },
+  {
+    "id": "120",
+    "name": "LA-SHREVEPORT",
+    "sedan": 2405,
+    "suv": 2505,
+    "pickup": 2995,
+    "motorcycle": 1265,
+    "big_suv": 2795,
+    "van": 2795
+  },
+  {
+    "id": "123",
+    "name": "MA -TEMPLETON",
+    "sedan": 2305,
+    "suv": 2405,
+    "pickup": 2945,
+    "motorcycle": 1405,
+    "big_suv": 2695,
+    "van": 2695
+  },
+  {
+    "id": "124",
+    "name": "MA-BOSTON SHIRLEY",
+    "sedan": 2305,
+    "suv": 2405,
+    "pickup": 2945,
+    "motorcycle": 1405,
+    "big_suv": 2695,
+    "van": 2695
+  },
+  {
+    "id": "125",
+    "name": "MA-FREETOWN",
+    "sedan": 2350,
+    "suv": 2450,
+    "pickup": 3000,
+    "motorcycle": 1350,
+    "big_suv": 2500,
+    "van": 2750
+  },
+  {
+    "id": "126",
+    "name": "MA-NORTH BOSTON",
+    "sedan": 2305,
+    "suv": 2405,
+    "pickup": 2945,
+    "motorcycle": 1405,
+    "big_suv": 2695,
+    "van": 2695
+  },
+  {
+    "id": "127",
+    "name": "MA-SOUTH BOSTON",
+    "sedan": 2305,
+    "suv": 2405,
+    "pickup": 2945,
+    "motorcycle": 1405,
+    "big_suv": 2695,
+    "van": 2695
+  },
+  {
+    "id": "128",
+    "name": "MA-TAUNTON",
+    "sedan": 2305,
+    "suv": 2405,
+    "pickup": 2945,
+    "motorcycle": 1405,
+    "big_suv": 2695,
+    "van": 2695
+  },
+  {
+    "id": "129",
+    "name": "MA-WEST WARREN",
+    "sedan": 2445,
+    "suv": 2545,
+    "pickup": 3085,
+    "motorcycle": 1545,
+    "big_suv": 2835,
+    "van": 2835
+  },
+  {
+    "id": "135",
+    "name": "MD White Plans Aux Lot",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "130",
+    "name": "MD-BALTIMORE",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "131",
+    "name": "MD-DUNDALK",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "132",
+    "name": "MD-LAUREL",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "133",
+    "name": "MD-METRO DC",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "134",
+    "name": "MD-ROSEDALE",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "136",
+    "name": "ME- Gray Sub lot",
+    "sedan": 2230,
+    "suv": 2330,
+    "pickup": 2910,
+    "motorcycle": 1330,
+    "big_suv": 2580,
+    "van": 2580
+  },
+  {
+    "id": "137",
+    "name": "ME-LYMAN",
+    "sedan": 2520,
+    "suv": 2620,
+    "pickup": 3160,
+    "motorcycle": 1620,
+    "big_suv": 2910,
+    "van": 2910
+  },
+  {
+    "id": "138",
+    "name": "ME-ORONO",
+    "sedan": 2655,
+    "suv": 2755,
+    "pickup": 3435,
+    "motorcycle": 1475,
+    "big_suv": 3185,
+    "van": 3185
+  },
+  {
+    "id": "139",
+    "name": "ME-PORTLAND GORHAM",
+    "sedan": 2515,
+    "suv": 2615,
+    "pickup": 3155,
+    "motorcycle": 1615,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "297",
+    "name": "ME-WINDHAM",
+    "sedan": 2570,
+    "suv": 2670,
+    "pickup": 3210,
+    "motorcycle": 1670,
+    "big_suv": 2960,
+    "van": 2960
+  },
+  {
+    "id": "140",
+    "name": "MI-DETROIT",
+    "sedan": 2875,
+    "suv": 2975,
+    "pickup": 3515,
+    "motorcycle": 1975,
+    "big_suv": 3265,
+    "van": 3265
+  },
+  {
+    "id": "141",
+    "name": "MI-FLINT",
+    "sedan": 2735,
+    "suv": 2835,
+    "pickup": 3375,
+    "motorcycle": 1835,
+    "big_suv": 3125,
+    "van": 3125
+  },
+  {
+    "id": "142",
+    "name": "MI-GRAND RAPIDS",
+    "sedan": 2840,
+    "suv": 2940,
+    "pickup": 3480,
+    "motorcycle": 1940,
+    "big_suv": 3230,
+    "van": 3230
+  },
+  {
+    "id": "143",
+    "name": "MI-GREAT LAKES",
+    "sedan": 2740,
+    "suv": 2840,
+    "pickup": 3520,
+    "motorcycle": 1560,
+    "big_suv": 3270,
+    "van": 3270
+  },
+  {
+    "id": "144",
+    "name": "MI-IONIA",
+    "sedan": 2700,
+    "suv": 2800,
+    "pickup": 3450,
+    "motorcycle": 1800,
+    "big_suv": 3200,
+    "van": 3200
+  },
+  {
+    "id": "145",
+    "name": "MI-KINCHELOE",
+    "sedan": 3015,
+    "suv": 3115,
+    "pickup": 3655,
+    "motorcycle": 2115,
+    "big_suv": 3405,
+    "van": 3405
+  },
+  {
+    "id": "146",
+    "name": "MI-LANSING",
+    "sedan": 2685,
+    "suv": 2785,
+    "pickup": 3465,
+    "motorcycle": 1505,
+    "big_suv": 3215,
+    "van": 3215
+  },
+  {
+    "id": "151",
+    "name": "MN- IAA Faribault",
+    "sedan": 2725,
+    "suv": 2825,
+    "pickup": 3365,
+    "motorcycle": 1825,
+    "big_suv": 3115,
+    "van": 3115
+  },
+  {
+    "id": "147",
+    "name": "MN-Big Lake Sub lot",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "148",
+    "name": "MN-CRASHEDTOYS EAST BETHEL",
+    "sedan": 2535,
+    "suv": 2635,
+    "pickup": 3315,
+    "motorcycle": 1355,
+    "big_suv": 3065,
+    "van": 3065
+  },
+  {
+    "id": "149",
+    "name": "MN-Ham lake Sun lot",
+    "sedan": 2660,
+    "suv": 2760,
+    "pickup": 3300,
+    "motorcycle": 1760,
+    "big_suv": 3050,
+    "van": 3050
+  },
+  {
+    "id": "150",
+    "name": "MN-MINNEAPOLIS",
+    "sedan": 2660,
+    "suv": 2760,
+    "pickup": 3440,
+    "motorcycle": 1480,
+    "big_suv": 3190,
+    "van": 3190
+  },
+  {
+    "id": "152",
+    "name": "MN-MINNEAPOLIS NORTH",
+    "sedan": 2660,
+    "suv": 2760,
+    "pickup": 3300,
+    "motorcycle": 1760,
+    "big_suv": 3050,
+    "van": 3050
+  },
+  {
+    "id": "153",
+    "name": "MN-ST. CLOUD",
+    "sedan": 2760,
+    "suv": 2860,
+    "pickup": 3400,
+    "motorcycle": 1860,
+    "big_suv": 3150,
+    "van": 3150
+  },
+  {
+    "id": "154",
+    "name": "MO-COLUMBIA",
+    "sedan": 2725,
+    "suv": 2825,
+    "pickup": 3365,
+    "motorcycle": 1825,
+    "big_suv": 3115,
+    "van": 3115
+  },
+  {
+    "id": "155",
+    "name": "MO-SIKESTON",
+    "sedan": 2650,
+    "suv": 2750,
+    "pickup": 3240,
+    "motorcycle": 1650,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "156",
+    "name": "MO-SPRINGFIELD",
+    "sedan": 2650,
+    "suv": 2750,
+    "pickup": 3240,
+    "motorcycle": 1650,
+    "big_suv": 3040,
+    "van": 3040
+  },
+  {
+    "id": "157",
+    "name": "MO-ST. LOUIS",
+    "sedan": 2585,
+    "suv": 2685,
+    "pickup": 3225,
+    "motorcycle": 1685,
+    "big_suv": 2975,
+    "van": 2975
+  },
+  {
+    "id": "158",
+    "name": "MS-GRENADA",
+    "sedan": 2545,
+    "suv": 2645,
+    "pickup": 3100,
+    "motorcycle": 1370,
+    "big_suv": 2900,
+    "van": 2900
+  },
+  {
+    "id": "159",
+    "name": "MS-GULF COAST",
+    "sedan": 2440,
+    "suv": 2540,
+    "pickup": 3030,
+    "motorcycle": 1300,
+    "big_suv": 2830,
+    "van": 2830
+  },
+  {
+    "id": "160",
+    "name": "MS-JACKSON",
+    "sedan": 2440,
+    "suv": 2540,
+    "pickup": 3030,
+    "motorcycle": 1440,
+    "big_suv": 2830,
+    "van": 2830
+  },
+  {
+    "id": "161",
+    "name": "MT-BILLINGS",
+    "sedan": 3600,
+    "suv": 3700,
+    "pickup": 4240,
+    "motorcycle": 2700,
+    "big_suv": 3990,
+    "van": 3990
+  },
+  {
+    "id": "162",
+    "name": "MT-HELENA",
+    "sedan": 3570,
+    "suv": 3670,
+    "pickup": 4260,
+    "motorcycle": 2070,
+    "big_suv": 3860,
+    "van": 3860
+  },
+  {
+    "id": "163",
+    "name": "MT-MISSOULA",
+    "sedan": 3460,
+    "suv": 3560,
+    "pickup": 4240,
+    "motorcycle": 2560,
+    "big_suv": 3990,
+    "van": 3990
+  },
+  {
+    "id": "164",
+    "name": "NC-ASHEVILLE",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2930,
+    "motorcycle": 1440,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "165",
+    "name": "NC-CHARLOTTE",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2930,
+    "motorcycle": 1440,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "166",
+    "name": "NC-CHINA GROVE",
+    "sedan": 2430,
+    "suv": 2530,
+    "pickup": 3110,
+    "motorcycle": 1580,
+    "big_suv": 2810,
+    "van": 2810
+  },
+  {
+    "id": "167",
+    "name": "NC-CONCORD",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2920,
+    "motorcycle": 1570,
+    "big_suv": 2620,
+    "van": 2620
+  },
+  {
+    "id": "301",
+    "name": "NC-GASTONIA",
+    "sedan": 2150,
+    "suv": 2150,
+    "pickup": 2750,
+    "motorcycle": 1300,
+    "big_suv": 2450,
+    "van": 2450
+  },
+  {
+    "id": "168",
+    "name": "NC-GREENSBORO",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2930,
+    "motorcycle": 1440,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "296",
+    "name": "NC-HIGH POINT",
+    "sedan": 2250,
+    "suv": 2350,
+    "pickup": 2930,
+    "motorcycle": 1375,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "169",
+    "name": "NC-LUMBERTON",
+    "sedan": 2115,
+    "suv": 2215,
+    "pickup": 2755,
+    "motorcycle": 1265,
+    "big_suv": 2455,
+    "van": 2455
+  },
+  {
+    "id": "170",
+    "name": "NC-MEBANE",
+    "sedan": 2255,
+    "suv": 2355,
+    "pickup": 2885,
+    "motorcycle": 1405,
+    "big_suv": 2585,
+    "van": 2585
+  },
+  {
+    "id": "172",
+    "name": "NC-MOCKSVILLE",
+    "sedan": 2220,
+    "suv": 2320,
+    "pickup": 2840,
+    "motorcycle": 1370,
+    "big_suv": 2540,
+    "van": 2540
+  },
+  {
+    "id": "171",
+    "name": "NC-RALEIGH",
+    "sedan": 2430,
+    "suv": 2530,
+    "pickup": 3110,
+    "motorcycle": 1580,
+    "big_suv": 2810,
+    "van": 2810
+  },
+  {
+    "id": "173",
+    "name": "NC-WILMINGTON",
+    "sedan": 2185,
+    "suv": 2285,
+    "pickup": 2825,
+    "motorcycle": 1335,
+    "big_suv": 2525,
+    "van": 2525
+  },
+  {
+    "id": "174",
+    "name": "ND-BISMARCK",
+    "sedan": 3610,
+    "suv": 3710,
+    "pickup": 4750,
+    "motorcycle": 2390,
+    "big_suv": 4500,
+    "van": 4500
+  },
+  {
+    "id": "175",
+    "name": "ND-FARGO",
+    "sedan": 3210,
+    "suv": 3310,
+    "pickup": 3950,
+    "motorcycle": 2310,
+    "big_suv": 3700,
+    "van": 3700
+  },
+  {
+    "id": "176",
+    "name": "NE-LINCOLN",
+    "sedan": 2690,
+    "suv": 2790,
+    "pickup": 3540,
+    "motorcycle": 1790,
+    "big_suv": 3290,
+    "van": 3290
+  },
+  {
+    "id": "177",
+    "name": "NE-OMAHA",
+    "sedan": 2900,
+    "suv": 3000,
+    "pickup": 3540,
+    "motorcycle": 2000,
+    "big_suv": 3290,
+    "van": 3290
+  },
+  {
+    "id": "178",
+    "name": "NH-CANDIA",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1300,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "179",
+    "name": "NH-MANCHESTER",
+    "sedan": 2375,
+    "suv": 2475,
+    "pickup": 3015,
+    "motorcycle": 1475,
+    "big_suv": 2765,
+    "van": 2765
+  },
+  {
+    "id": "180",
+    "name": "NH-WEBSTER",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1300,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "182",
+    "name": "NJ-AVENEL NEW JERSEY",
+    "sedan": 2025,
+    "suv": 2125,
+    "pickup": 2595,
+    "motorcycle": 1055,
+    "big_suv": 2345,
+    "van": 2345
+  },
+  {
+    "id": "183",
+    "name": "NJ-CENTRAL NEW JERSEY",
+    "sedan": 2020,
+    "suv": 2120,
+    "pickup": 2590,
+    "motorcycle": 1050,
+    "big_suv": 2340,
+    "van": 2340
+  },
+  {
+    "id": "184",
+    "name": "NJ-ENGLISHTOWN",
+    "sedan": 2025,
+    "suv": 2125,
+    "pickup": 2665,
+    "motorcycle": 1125,
+    "big_suv": 2415,
+    "van": 2415
+  },
+  {
+    "id": "185",
+    "name": "NJ-GLASSBORO EAST",
+    "sedan": 2075,
+    "suv": 2175,
+    "pickup": 2715,
+    "motorcycle": 1175,
+    "big_suv": 2465,
+    "van": 2465
+  },
+  {
+    "id": "186",
+    "name": "NJ-GLASSBORO WEST",
+    "sedan": 2075,
+    "suv": 2175,
+    "pickup": 2715,
+    "motorcycle": 1175,
+    "big_suv": 2465,
+    "van": 2465
+  },
+  {
+    "id": "187",
+    "name": "NJ-NORTHERN NEW JERSEY",
+    "sedan": 1990,
+    "suv": 2090,
+    "pickup": 2560,
+    "motorcycle": 1020,
+    "big_suv": 2310,
+    "van": 2310
+  },
+  {
+    "id": "302",
+    "name": "NJ-PORT MURRAY",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2930,
+    "motorcycle": 1250,
+    "big_suv": 2680,
+    "van": 2680
+  },
+  {
+    "id": "181",
+    "name": "NJ-SAYREVILLE",
+    "sedan": 2030,
+    "suv": 2130,
+    "pickup": 2670,
+    "motorcycle": 1130,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "188",
+    "name": "NJ-SOMERVILLE",
+    "sedan": 2030,
+    "suv": 2130,
+    "pickup": 2670,
+    "motorcycle": 1130,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "189",
+    "name": "NJ-SOUTHERN NEW JERSEY",
+    "sedan": 2165,
+    "suv": 2265,
+    "pickup": 2805,
+    "motorcycle": 1265,
+    "big_suv": 2555,
+    "van": 2555
+  },
+  {
+    "id": "190",
+    "name": "NJ-TRENTON",
+    "sedan": 2060,
+    "suv": 2160,
+    "pickup": 2590,
+    "motorcycle": 1160,
+    "big_suv": 2340,
+    "van": 2340
+  },
+  {
+    "id": "191",
+    "name": "NM-ALBUQUERQUE",
+    "sedan": 2860,
+    "suv": 2960,
+    "pickup": 3440,
+    "motorcycle": 1480,
+    "big_suv": 3240,
+    "van": 3240
+  },
+  {
+    "id": "192",
+    "name": "NV-LAS VEGAS",
+    "sedan": 3010,
+    "suv": 3110,
+    "pickup": 3720,
+    "motorcycle": 1510,
+    "big_suv": 3320,
+    "van": 3320
+  },
+  {
+    "id": "193",
+    "name": "NV-RENO",
+    "sedan": 3220,
+    "suv": 3320,
+    "pickup": 3930,
+    "motorcycle": 1720,
+    "big_suv": 3530,
+    "van": 3530
+  },
+  {
+    "id": "194",
+    "name": "NY-ALBANY",
+    "sedan": 2200,
+    "suv": 2300,
+    "pickup": 2840,
+    "motorcycle": 1300,
+    "big_suv": 2590,
+    "van": 2590
+  },
+  {
+    "id": "195",
+    "name": "NY-BUFFALO",
+    "sedan": 2445,
+    "suv": 2545,
+    "pickup": 3085,
+    "motorcycle": 1545,
+    "big_suv": 2835,
+    "van": 2835
+  },
+  {
+    "id": "196",
+    "name": "NY-LONG ISLAND",
+    "sedan": 2165,
+    "suv": 2265,
+    "pickup": 2805,
+    "motorcycle": 1265,
+    "big_suv": 2555,
+    "van": 2555
+  },
+  {
+    "id": "304",
+    "name": "NY-MONTICELLO",
+    "sedan": 2180,
+    "suv": 2280,
+    "pickup": 2820,
+    "motorcycle": 1280,
+    "big_suv": 2570,
+    "van": 2570
+  },
+  {
+    "id": "197",
+    "name": "NY-NEWBURGH",
+    "sedan": 2130,
+    "suv": 2230,
+    "pickup": 2770,
+    "motorcycle": 1230,
+    "big_suv": 2520,
+    "van": 2520
+  },
+  {
+    "id": "198",
+    "name": "NY-ROCHESTER",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2910,
+    "motorcycle": 1440,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "199",
+    "name": "NY-SYRACUSE",
+    "sedan": 2410,
+    "suv": 2510,
+    "pickup": 3050,
+    "motorcycle": 1510,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "206",
+    "name": "OH- IAAI Stimmel Rd Sub lot",
+    "sedan": 2440,
+    "suv": 2540,
+    "pickup": 3080,
+    "motorcycle": 1540,
+    "big_suv": 2830,
+    "van": 3430
+  },
+  {
+    "id": "200",
+    "name": "OH-AKRON CANTON",
+    "sedan": 2445,
+    "suv": 2545,
+    "pickup": 3085,
+    "motorcycle": 1545,
+    "big_suv": 2835,
+    "van": 2835
+  },
+  {
+    "id": "201",
+    "name": "OH-CINCINNATI",
+    "sedan": 2410,
+    "suv": 2510,
+    "pickup": 3050,
+    "motorcycle": 1510,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "202",
+    "name": "OH-CLEVELAND",
+    "sedan": 2515,
+    "suv": 2615,
+    "pickup": 3155,
+    "motorcycle": 1615,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "203",
+    "name": "OH-CLEVELAND EAST",
+    "sedan": 2515,
+    "suv": 2615,
+    "pickup": 3155,
+    "motorcycle": 1615,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "204",
+    "name": "OH-CLEVELAND WEST",
+    "sedan": 2515,
+    "suv": 2615,
+    "pickup": 3155,
+    "motorcycle": 1615,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "205",
+    "name": "OH-COLUMBUS",
+    "sedan": 2480,
+    "suv": 2580,
+    "pickup": 3120,
+    "motorcycle": 1580,
+    "big_suv": 2870,
+    "van": 2870
+  },
+  {
+    "id": "207",
+    "name": "OH-DAYTON",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3190,
+    "motorcycle": 1650,
+    "big_suv": 2940,
+    "van": 2940
+  },
+  {
+    "id": "208",
+    "name": "OK-OKLAHOMA CITY",
+    "sedan": 2425,
+    "suv": 2525,
+    "pickup": 3015,
+    "motorcycle": 1285,
+    "big_suv": 2815,
+    "van": 2815
+  },
+  {
+    "id": "209",
+    "name": "OK-TULSA",
+    "sedan": 2440,
+    "suv": 2540,
+    "pickup": 3030,
+    "motorcycle": 1440,
+    "big_suv": 2830,
+    "van": 2830
+  },
+  {
+    "id": "210",
+    "name": "OR-EUGENE",
+    "sedan": 3250,
+    "suv": 3350,
+    "pickup": 3960,
+    "motorcycle": 1750,
+    "big_suv": 3560,
+    "van": 3560
+  },
+  {
+    "id": "211",
+    "name": "OR-PORTLAND",
+    "sedan": 3410,
+    "suv": 3510,
+    "pickup": 4120,
+    "motorcycle": 1910,
+    "big_suv": 3720,
+    "van": 3720
+  },
+  {
+    "id": "213",
+    "name": "OR-PORTLAND NORTH",
+    "sedan": 3290,
+    "suv": 3390,
+    "pickup": 4000,
+    "motorcycle": 1790,
+    "big_suv": 3600,
+    "van": 3600
+  },
+  {
+    "id": "214",
+    "name": "OR-PORTLAND SOUTH",
+    "sedan": 3290,
+    "suv": 3390,
+    "pickup": 4000,
+    "motorcycle": 1790,
+    "big_suv": 3600,
+    "van": 3600
+  },
+  {
+    "id": "212",
+    "name": "OR-PORTLAND WEST",
+    "sedan": 3330,
+    "suv": 3430,
+    "pickup": 4040,
+    "motorcycle": 1830,
+    "big_suv": 3640,
+    "van": 3640
+  },
+  {
+    "id": "215",
+    "name": "OR-WOODBURN",
+    "sedan": 3170,
+    "suv": 3270,
+    "pickup": 3880,
+    "motorcycle": 1670,
+    "big_suv": 3480,
+    "van": 3480
+  },
+  {
+    "id": "etc",
+    "name": "Other",
+    "sedan": 0,
+    "suv": 0,
+    "pickup": 0,
+    "motorcycle": 0,
+    "big_suv": 0,
+    "van": 0
+  },
+  {
+    "id": "216",
+    "name": "PA-ALTOONA",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1440,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "217",
+    "name": "PA-BRIDGEPORT",
+    "sedan": 2130,
+    "suv": 2230,
+    "pickup": 2770,
+    "motorcycle": 1230,
+    "big_suv": 2520,
+    "van": 2520
+  },
+  {
+    "id": "218",
+    "name": "PA-CHAMBERSBURG",
+    "sedan": 2305,
+    "suv": 2405,
+    "pickup": 2945,
+    "motorcycle": 1405,
+    "big_suv": 2695,
+    "van": 2695
+  },
+  {
+    "id": "219",
+    "name": "PA-ERIE",
+    "sedan": 2515,
+    "suv": 2615,
+    "pickup": 3155,
+    "motorcycle": 1615,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "220",
+    "name": "PA-HARRISBURG",
+    "sedan": 2200,
+    "suv": 2300,
+    "pickup": 2840,
+    "motorcycle": 1300,
+    "big_suv": 2590,
+    "van": 2590
+  },
+  {
+    "id": "221",
+    "name": "PA-PHILADELPHIA",
+    "sedan": 2160,
+    "suv": 2260,
+    "pickup": 2800,
+    "motorcycle": 1260,
+    "big_suv": 2550,
+    "van": 2550
+  },
+  {
+    "id": "222",
+    "name": "PA-PHILADELPHIA EAST",
+    "sedan": 2160,
+    "suv": 2260,
+    "pickup": 2800,
+    "motorcycle": 1260,
+    "big_suv": 2550,
+    "van": 2550
+  },
+  {
+    "id": "223",
+    "name": "PA-PITTSBURGH",
+    "sedan": 2480,
+    "suv": 2580,
+    "pickup": 3120,
+    "motorcycle": 1580,
+    "big_suv": 2870,
+    "van": 2870
+  },
+  {
+    "id": "224",
+    "name": "PA-PITTSBURGH NORTH",
+    "sedan": 2445,
+    "suv": 2545,
+    "pickup": 3085,
+    "motorcycle": 1545,
+    "big_suv": 2835,
+    "van": 2835
+  },
+  {
+    "id": "225",
+    "name": "PA-PITTSBURGH SOUTH",
+    "sedan": 2445,
+    "suv": 2545,
+    "pickup": 3085,
+    "motorcycle": 1545,
+    "big_suv": 2835,
+    "van": 2835
+  },
+  {
+    "id": "226",
+    "name": "PA-PITTSBURGH WEST",
+    "sedan": 2445,
+    "suv": 2545,
+    "pickup": 3085,
+    "motorcycle": 1545,
+    "big_suv": 2835,
+    "van": 2835
+  },
+  {
+    "id": "227",
+    "name": "PA-SCRANTON",
+    "sedan": 2235,
+    "suv": 2335,
+    "pickup": 2875,
+    "motorcycle": 1335,
+    "big_suv": 2625,
+    "van": 2625
+  },
+  {
+    "id": "228",
+    "name": "PA-YORK HAVEN",
+    "sedan": 2240,
+    "suv": 2340,
+    "pickup": 2880,
+    "motorcycle": 1200,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "229",
+    "name": "PA-YORKS SPRINGS",
+    "sedan": 2165,
+    "suv": 2265,
+    "pickup": 2805,
+    "motorcycle": 1125,
+    "big_suv": 2555,
+    "van": 2555
+  },
+  {
+    "id": "230",
+    "name": "RI-EXETER",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1230,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "231",
+    "name": "RI-PROVIDENCE",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1440,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "232",
+    "name": "SC-CHARLESTON",
+    "sedan": 2010,
+    "suv": 2110,
+    "pickup": 2580,
+    "motorcycle": 1090,
+    "big_suv": 2280,
+    "van": 2280
+  },
+  {
+    "id": "233",
+    "name": "SC-COLUMBIA",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "234",
+    "name": "SC-GREENVILLE",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2720,
+    "motorcycle": 1230,
+    "big_suv": 2420,
+    "van": 2420
+  },
+  {
+    "id": "235",
+    "name": "SC-LEXINGTON",
+    "sedan": 2080,
+    "suv": 2180,
+    "pickup": 2650,
+    "motorcycle": 1230,
+    "big_suv": 2350,
+    "van": 2350
+  },
+  {
+    "id": "238",
+    "name": "SC-SPARTANBURG",
+    "sedan": 2150,
+    "suv": 2250,
+    "pickup": 2790,
+    "motorcycle": 1300,
+    "big_suv": 2490,
+    "van": 2490
+  },
+  {
+    "id": "236",
+    "name": "SC-South Gaston Sublot",
+    "sedan": 2115,
+    "suv": 2215,
+    "pickup": 2755,
+    "motorcycle": 1265,
+    "big_suv": 2455,
+    "van": 2455
+  },
+  {
+    "id": "237",
+    "name": "SC-Spartanburg sublot",
+    "sedan": 2150,
+    "suv": 2250,
+    "pickup": 2790,
+    "motorcycle": 1300,
+    "big_suv": 2490,
+    "van": 2490
+  },
+  {
+    "id": "239",
+    "name": "SD-SIOUX FALLS",
+    "sedan": 3210,
+    "suv": 3310,
+    "pickup": 4030,
+    "motorcycle": 1830,
+    "big_suv": 3780,
+    "van": 3780
+  },
+  {
+    "id": "240",
+    "name": "TN-CHATTANOOGA",
+    "sedan": 2330,
+    "suv": 2430,
+    "pickup": 2970,
+    "motorcycle": 1480,
+    "big_suv": 2670,
+    "van": 2670
+  },
+  {
+    "id": "241",
+    "name": "TN-KNOXVILLE",
+    "sedan": 2430,
+    "suv": 2530,
+    "pickup": 3070,
+    "motorcycle": 1580,
+    "big_suv": 2770,
+    "van": 2770
+  },
+  {
+    "id": "242",
+    "name": "TN-MEMPHIS",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2930,
+    "motorcycle": 1440,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "243",
+    "name": "TN-NASHVILLE",
+    "sedan": 2290,
+    "suv": 2390,
+    "pickup": 2930,
+    "motorcycle": 1440,
+    "big_suv": 2630,
+    "van": 2630
+  },
+  {
+    "id": "244",
+    "name": "TX-ABILENE",
+    "sedan": 2430,
+    "suv": 2530,
+    "pickup": 2960,
+    "motorcycle": 1240,
+    "big_suv": 2760,
+    "van": 2760
+  },
+  {
+    "id": "245",
+    "name": "TX-AMARILLO",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3160,
+    "motorcycle": 1550,
+    "big_suv": 2960,
+    "van": 2960
+  },
+  {
+    "id": "246",
+    "name": "TX-ANDREWS",
+    "sedan": 2510,
+    "suv": 2610,
+    "pickup": 3120,
+    "motorcycle": 1510,
+    "big_suv": 2920,
+    "van": 2920
+  },
+  {
+    "id": "247",
+    "name": "TX-AUSTIN",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "248",
+    "name": "TX-CORPUS CHRISTI",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "249",
+    "name": "TX-CRASHEDTOYS DALLAS",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "250",
+    "name": "TX-DALLAS COPART",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "251",
+    "name": "TX-DALLAS SOUTH",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "252",
+    "name": "TX-EL PASO",
+    "sedan": 2510,
+    "suv": 2610,
+    "pickup": 3040,
+    "motorcycle": 1270,
+    "big_suv": 2840,
+    "van": 2840
+  },
+  {
+    "id": "253",
+    "name": "TX-FT. WORTH",
+    "sedan": 2390,
+    "suv": 2490,
+    "pickup": 3000,
+    "motorcycle": 1390,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "254",
+    "name": "TX-HOUSTON",
+    "sedan": 2110,
+    "suv": 2210,
+    "pickup": 2720,
+    "motorcycle": 1110,
+    "big_suv": 2520,
+    "van": 2520
+  },
+  {
+    "id": "255",
+    "name": "TX-LONGVIEW",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "256",
+    "name": "TX-LUBBOCK",
+    "sedan": 2590,
+    "suv": 2690,
+    "pickup": 3070,
+    "motorcycle": 1300,
+    "big_suv": 2870,
+    "van": 2870
+  },
+  {
+    "id": "257",
+    "name": "TX-LUFKIN",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "258",
+    "name": "TX-MCALLEN",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "259",
+    "name": "TX-PERMIAN BASIN",
+    "sedan": 2430,
+    "suv": 2530,
+    "pickup": 3040,
+    "motorcycle": 1270,
+    "big_suv": 2840,
+    "van": 2840
+  },
+  {
+    "id": "260",
+    "name": "TX-SAN ANTONIO",
+    "sedan": 2390,
+    "suv": 2490,
+    "pickup": 3000,
+    "motorcycle": 1390,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "261",
+    "name": "TX-WACO",
+    "sedan": 2310,
+    "suv": 2410,
+    "pickup": 2920,
+    "motorcycle": 1310,
+    "big_suv": 2720,
+    "van": 2720
+  },
+  {
+    "id": "262",
+    "name": "UT-OGDEN",
+    "sedan": 3210,
+    "suv": 3310,
+    "pickup": 3920,
+    "motorcycle": 1710,
+    "big_suv": 3520,
+    "van": 3520
+  },
+  {
+    "id": "263",
+    "name": "UT-SALT LAKE CITY",
+    "sedan": 3210,
+    "suv": 3310,
+    "pickup": 3920,
+    "motorcycle": 1710,
+    "big_suv": 3520,
+    "van": 3520
+  },
+  {
+    "id": "264",
+    "name": "VA-CULPEPER",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1230,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "265",
+    "name": "VA-DANVILLE",
+    "sedan": 2410,
+    "suv": 2510,
+    "pickup": 3050,
+    "motorcycle": 1510,
+    "big_suv": 2800,
+    "van": 2800
+  },
+  {
+    "id": "266",
+    "name": "VA-FREDERICKSBURG",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "267",
+    "name": "VA-FREDERICKSBURG-SOUTH",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1370,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "268",
+    "name": "VA-HAMPTON",
+    "sedan": 2375,
+    "suv": 2475,
+    "pickup": 3015,
+    "motorcycle": 1475,
+    "big_suv": 2765,
+    "van": 2765
+  },
+  {
+    "id": "269",
+    "name": "VA-NORTHERN VIRGINIA",
+    "sedan": 2270,
+    "suv": 2370,
+    "pickup": 2910,
+    "motorcycle": 1230,
+    "big_suv": 2660,
+    "van": 2660
+  },
+  {
+    "id": "270",
+    "name": "VA-PULASKI",
+    "sedan": 2515,
+    "suv": 2615,
+    "pickup": 3155,
+    "motorcycle": 1615,
+    "big_suv": 2905,
+    "van": 2905
+  },
+  {
+    "id": "271",
+    "name": "VA-RICHMOND",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1440,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "272",
+    "name": "VA-ROANOKE",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1440,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "273",
+    "name": "VA-SUFFOLK",
+    "sedan": 2325,
+    "suv": 2425,
+    "pickup": 2965,
+    "motorcycle": 1285,
+    "big_suv": 2715,
+    "van": 2715
+  },
+  {
+    "id": "274",
+    "name": "VA-TIDEWATER",
+    "sedan": 2340,
+    "suv": 2440,
+    "pickup": 2980,
+    "motorcycle": 1440,
+    "big_suv": 2730,
+    "van": 2730
+  },
+  {
+    "id": "278",
+    "name": "VT- Devil's Bowl Sub lot",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3190,
+    "motorcycle": 1650,
+    "big_suv": 2940,
+    "van": 2940
+  },
+  {
+    "id": "275",
+    "name": "VT-BURLINGTON",
+    "sedan": 2620,
+    "suv": 2720,
+    "pickup": 3260,
+    "motorcycle": 1720,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "276",
+    "name": "VT-FAIR HAVEN",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3330,
+    "motorcycle": 1370,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "277",
+    "name": "VT-ORLEANS",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3330,
+    "motorcycle": 1370,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "279",
+    "name": "VT-RUTLAND",
+    "sedan": 2550,
+    "suv": 2650,
+    "pickup": 3330,
+    "motorcycle": 1370,
+    "big_suv": 3080,
+    "van": 3080
+  },
+  {
+    "id": "283",
+    "name": "WA- Seattle Puyallup",
+    "sedan": 3530,
+    "suv": 3630,
+    "pickup": 4240,
+    "motorcycle": 2030,
+    "big_suv": 3840,
+    "van": 3840
+  },
+  {
+    "id": "282",
+    "name": "WA-GRAHAM",
+    "sedan": 3410,
+    "suv": 3510,
+    "pickup": 4120,
+    "motorcycle": 1910,
+    "big_suv": 3720,
+    "van": 3720
+  },
+  {
+    "id": "284",
+    "name": "WA-NORTH SEATTLE",
+    "sedan": 3450,
+    "suv": 3550,
+    "pickup": 4160,
+    "motorcycle": 1950,
+    "big_suv": 3760,
+    "van": 3760
+  },
+  {
+    "id": "285",
+    "name": "WA-PASCO",
+    "sedan": 3570,
+    "suv": 3670,
+    "pickup": 4280,
+    "motorcycle": 2070,
+    "big_suv": 3880,
+    "van": 3880
+  },
+  {
+    "id": "280",
+    "name": "WA-SEATTLE",
+    "sedan": 3280,
+    "suv": 3380,
+    "pickup": 4150,
+    "motorcycle": 1460,
+    "big_suv": 3750,
+    "van": 3750
+  },
+  {
+    "id": "281",
+    "name": "WA-SEATTLE-SOUTH",
+    "sedan": 3330,
+    "suv": 3430,
+    "pickup": 4040,
+    "motorcycle": 1830,
+    "big_suv": 3640,
+    "van": 3640
+  },
+  {
+    "id": "286",
+    "name": "WA-SPOKANE",
+    "sedan": 3650,
+    "suv": 3750,
+    "pickup": 4360,
+    "motorcycle": 2150,
+    "big_suv": 3960,
+    "van": 3960
+  },
+  {
+    "id": "287",
+    "name": "WI-APPLETON",
+    "sedan": 2875,
+    "suv": 2975,
+    "pickup": 3515,
+    "motorcycle": 1850,
+    "big_suv": 3265,
+    "van": 3265
+  },
+  {
+    "id": "288",
+    "name": "WI-MADISON",
+    "sedan": 2805,
+    "suv": 2905,
+    "pickup": 3445,
+    "motorcycle": 1905,
+    "big_suv": 3195,
+    "van": 3195
+  },
+  {
+    "id": "289",
+    "name": "WI-MILWAUKEE",
+    "sedan": 2770,
+    "suv": 2870,
+    "pickup": 3410,
+    "motorcycle": 1870,
+    "big_suv": 3160,
+    "van": 3160
+  },
+  {
+    "id": "290",
+    "name": "WI-PORTAGE",
+    "sedan": 2840,
+    "suv": 2940,
+    "pickup": 3480,
+    "motorcycle": 1940,
+    "big_suv": 3230,
+    "van": 3230
+  },
+  {
+    "id": "291",
+    "name": "WV-BUCKHANNON",
+    "sedan": 2520,
+    "suv": 2620,
+    "pickup": 3300,
+    "motorcycle": 1340,
+    "big_suv": 3050,
+    "van": 3050
+  },
+  {
+    "id": "292",
+    "name": "WV-CHARLESTON",
+    "sedan": 2480,
+    "suv": 2580,
+    "pickup": 3120,
+    "motorcycle": 1440,
+    "big_suv": 2870,
+    "van": 2870
+  },
+  {
+    "id": "293",
+    "name": "WV-SHADY SPRING",
+    "sedan": 2620,
+    "suv": 2720,
+    "pickup": 3260,
+    "motorcycle": 1720,
+    "big_suv": 3010,
+    "van": 3010
+  },
+  {
+    "id": "294",
+    "name": "WY-CASPER",
+    "sedan": 3670,
+    "suv": 3770,
+    "pickup": 4490,
+    "motorcycle": 2455,
+    "big_suv": 4240,
+    "van": 4240
+  }
+]

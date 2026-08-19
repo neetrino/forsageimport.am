@@ -4,23 +4,21 @@ import { useMemo, useState, type FormEvent } from "react";
 import { motion } from "motion/react";
 import type { Dictionary } from "@/lib/i18n/types";
 import type { Locale } from "@/lib/i18n/config";
-import {
-  AuctionPicker,
-  type AuctionValue,
-} from "@/components/calculator/AuctionPicker";
+import { AuctionPicker, type AuctionValue } from "@/components/calculator/AuctionPicker";
 import { CalculatorResults } from "@/components/calculator/CalculatorResults";
 import { MoneyField } from "@/components/calculator/MoneyField";
 import { NumberField } from "@/components/calculator/NumberField";
+import { SearchableSelect } from "@/components/calculator/SearchableSelect";
 import { SelectField } from "@/components/calculator/SelectField";
 import { downloadCalculationPdf } from "@/components/calculator/download-pdf";
 import {
   calculateImportCost,
+  lookupShippingFee,
+  shippingLocationOptions,
   validateCalculatorInput,
+  yearsForAgeGroup,
 } from "@/lib/calculator";
-import type {
-  CalculatorErrors,
-  CalculatorResult,
-} from "@/lib/calculator/types";
+import type { AgeGroupId, CalculatorErrors, CalculatorResult, VehicleTypeId } from "@/lib/calculator/types";
 
 type CalculatorFormProps = {
   dict: Dictionary;
@@ -30,7 +28,8 @@ type CalculatorFormProps = {
 type FormState = {
   vehiclePrice: string;
   engineType: string;
-  auctionLocation: string;
+  customAuctionFee: string;
+  auctionLocationId: string;
   transportFee: string;
   ageGroup: string;
   year: string;
@@ -42,13 +41,14 @@ type FormState = {
 const initialForm: FormState = {
   vehiclePrice: "",
   engineType: "petrol",
-  auctionLocation: "",
+  customAuctionFee: "",
+  auctionLocationId: "",
   transportFee: "",
   ageGroup: "under3",
   year: "",
-  engineVolumeCm3: "0",
+  engineVolumeCm3: "",
   vehicleType: "sedan",
-  insuranceEnabled: false,
+  insuranceEnabled: true,
 };
 
 export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
@@ -57,23 +57,32 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<CalculatorErrors>({});
   const [result, setResult] = useState<CalculatorResult | null>(null);
-  const [downloading, setDownloading] = useState<"physical" | "legal" | null>(
-    null,
+  const [downloading, setDownloading] = useState<"physical" | "legal" | null>(null);
+  const locations = useMemo(() => shippingLocationOptions(), []);
+  const yearOptions = useMemo(
+    () =>
+      yearsForAgeGroup(form.ageGroup as AgeGroupId).map((year) => ({
+        value: String(year),
+        label: String(year),
+      })),
+    [form.ageGroup],
   );
-
-  const yearOptions = useMemo(() => {
-    const currentYear = new Date().getFullYear();
-    const years: { value: string; label: string }[] = [];
-    for (let year = currentYear; year >= 1990; year -= 1) {
-      years.push({ value: String(year), label: String(year) });
-    }
-    return years;
-  }, []);
-
   const numberLocale = locale === "hy" ? "hy-AM" : locale === "ru" ? "ru-RU" : "en-US";
+  const volumeDisabled = form.engineType === "electric";
 
   const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
+    setResult(null);
+  };
+
+  const syncShipping = (locationId: string, vehicleType: string) => {
+    const fee = lookupShippingFee(locationId, vehicleType as VehicleTypeId);
+    setForm((prev) => ({
+      ...prev,
+      auctionLocationId: locationId,
+      vehicleType,
+      transportFee: locationId ? String(fee) : prev.transportFee,
+    }));
     setResult(null);
   };
 
@@ -83,7 +92,8 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
       {
         vehiclePrice: form.vehiclePrice,
         auction,
-        auctionLocation: form.auctionLocation,
+        customAuctionFee: form.customAuctionFee,
+        auctionLocationId: form.auctionLocationId,
         transportFee: form.transportFee,
         engineType: form.engineType,
         ageGroup: form.ageGroup,
@@ -94,30 +104,13 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
       },
       calculator.validation,
     );
-
     if (!validated.ok) {
       setErrors(validated.errors);
       setResult(null);
       return;
     }
-
     setErrors({});
     setResult(calculateImportCost(validated.value));
-  };
-
-  const onDownload = async (variant: "physical" | "legal") => {
-    if (!result) return;
-    setDownloading(variant);
-    try {
-      await downloadCalculationPdf({
-        result,
-        variant,
-        dict,
-        locale: numberLocale,
-      });
-    } finally {
-      setDownloading(null);
-    }
   };
 
   return (
@@ -130,7 +123,7 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
             </p>
             <p className="mt-1 text-sm text-[var(--muted)]">{calculator.subtitle}</p>
           </div>
-          <span className="calc-status-chip">DRAFT</span>
+          <span className="calc-status-chip">USD</span>
         </header>
 
         <div className="calc-card-body">
@@ -150,23 +143,27 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
               placeholder={calculator.selectPlaceholder}
               options={calculator.options.engineTypes}
               value={form.engineType}
-              onChange={(value) => updateField("engineType", value)}
+              onChange={(value) => {
+                updateField("engineType", value);
+                if (value === "electric") updateField("engineVolumeCm3", "");
+              }}
               error={errors.engineType}
             />
 
-            <div>
-              <AuctionPicker
-                label={calculator.fields.auction}
-                value={auction}
-                onChange={(value) => {
-                  setAuction(value);
-                  setResult(null);
-                }}
-              />
-              {errors.auction ? (
-                <p className="mt-1.5 text-xs text-[var(--danger)]">{errors.auction}</p>
-              ) : null}
-            </div>
+            <AuctionPicker
+              label={calculator.fields.auction}
+              customLabel={calculator.fields.customAuctionFee}
+              value={auction}
+              customFee={form.customAuctionFee}
+              onChange={(value) => {
+                setAuction(value);
+                if (value !== "custom") updateField("customAuctionFee", "");
+                setResult(null);
+              }}
+              onCustomFeeChange={(value) => updateField("customAuctionFee", value)}
+              error={errors.auction}
+              customFeeError={errors.customAuctionFee}
+            />
 
             <div className="grid grid-cols-2 gap-3">
               <SelectField
@@ -176,7 +173,10 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
                 placeholder={calculator.selectPlaceholder}
                 options={calculator.options.ageGroups}
                 value={form.ageGroup}
-                onChange={(value) => updateField("ageGroup", value)}
+                onChange={(value) => {
+                  setForm((prev) => ({ ...prev, ageGroup: value, year: "" }));
+                  setResult(null);
+                }}
                 error={errors.ageGroup}
               />
               <SelectField
@@ -191,15 +191,16 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
               />
             </div>
 
-            <SelectField
+            <SearchableSelect
               id="auctionLocation"
               name="auctionLocation"
               label={calculator.fields.auctionLocation}
               placeholder={calculator.selectPlaceholder}
-              options={calculator.options.auctionLocations}
-              value={form.auctionLocation}
-              onChange={(value) => updateField("auctionLocation", value)}
-              error={errors.auctionLocation}
+              searchLabel={calculator.locationSearch}
+              options={locations}
+              value={form.auctionLocationId}
+              onChange={(value) => syncShipping(value, form.vehicleType)}
+              error={errors.auctionLocationId}
             />
             <NumberField
               id="engineVolume"
@@ -209,6 +210,7 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
               onChange={(value) => updateField("engineVolumeCm3", value)}
               min={0}
               step="1"
+              disabled={volumeDisabled}
               error={errors.engineVolumeCm3}
             />
 
@@ -227,7 +229,7 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
               placeholder={calculator.selectPlaceholder}
               options={calculator.options.vehicleTypes}
               value={form.vehicleType}
-              onChange={(value) => updateField("vehicleType", value)}
+              onChange={(value) => syncShipping(form.auctionLocationId, value)}
               error={errors.vehicleType}
             />
           </div>
@@ -238,9 +240,15 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
               type="checkbox"
               className="sr-only"
               checked={form.insuranceEnabled}
-              onChange={(event) =>
-                updateField("insuranceEnabled", event.target.checked)
-              }
+              onChange={(event) => {
+                const enabled = event.target.checked;
+                setForm((prev) => ({ ...prev, insuranceEnabled: enabled }));
+                if (result) {
+                  setResult(
+                    calculateImportCost({ ...result.input, insuranceEnabled: enabled }),
+                  );
+                }
+              }}
             />
             <span className="calc-toggle-track" data-on={form.insuranceEnabled} aria-hidden="true">
               <span className="calc-toggle-thumb" />
@@ -263,7 +271,20 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
         dict={dict}
         result={result}
         locale={numberLocale}
-        onDownload={onDownload}
+        onDownload={async (variant) => {
+          if (!result) return;
+          setDownloading(variant);
+          try {
+            await downloadCalculationPdf({
+              result,
+              variant,
+              dict,
+              locale: numberLocale,
+            });
+          } finally {
+            setDownloading(null);
+          }
+        }}
         onClear={() => {
           setResult(null);
           setDownloading(null);

@@ -16,19 +16,17 @@ test.describe("Calculator smoke", () => {
 
     await page.locator("#vehiclePrice").fill("12000");
     await page.getByRole("button", { name: /IAA/i }).click();
-    await page.locator("#auctionLocation").selectOption("ca");
-    await page.locator("#year").selectOption("2021");
+    await page.locator("#auctionLocation").selectOption("187");
+    await page.locator("#year").selectOption("2025");
     await page.locator("#engineVolume").fill("2000");
-    await page.locator("#transportFee").fill("1100");
-    await page.locator('label[for="insuranceEnabled"]').click();
     await expect(page.locator("#insuranceEnabled")).toBeChecked();
 
     await page.locator("section#calculator").getByRole("button", { name: "Հաշվել" }).click();
 
     await expect(page.getByText("Ֆիզիկական անձ")).toBeVisible();
     await expect(page.getByText("Իրավաբանական անձ")).toBeVisible();
-    await expect(page.getByText("Վերջնական ընդհանուր").first()).toBeVisible();
-    await expect(page.getByText(/Սակագները DRAFT են/)).toBeVisible();
+    await expect(page.getByText("Ընդհանուր գին").first()).toBeVisible();
+    await expect(page.getByText(/Նախնական հաշվարկ է/)).toBeVisible();
 
     const downloadPromise = page.waitForEvent("download");
     await page.getByRole("button", { name: "Ներբեռնել" }).first().click();

@@ -1,15 +1,24 @@
-export type AuctionId = "iaai" | "copart" | "manheim";
+export type AuctionId = "iaai" | "copart" | "custom";
 
 export type EngineTypeId = "petrol" | "diesel" | "hybrid" | "electric";
 
-export type AgeGroupId = "under3" | "3to5" | "over5";
+export type AgeGroupId = "under3" | "3to5" | "5to7" | "over7";
 
-export type VehicleTypeId = "sedan" | "suv" | "pickup" | "minivan" | "other";
+export type VehicleTypeId =
+  | "sedan"
+  | "suv"
+  | "big_suv"
+  | "van"
+  | "pickup"
+  | "motorcycle";
+
+export type RatesStatus = "IAA_PARITY_OBSERVED";
 
 export type CalculatorInput = {
   vehiclePrice: number;
   auction: AuctionId;
-  auctionLocation: string;
+  customAuctionFee: number;
+  auctionLocationId: string;
   transportFee: number;
   engineType: EngineTypeId;
   ageGroup: AgeGroupId;
@@ -19,30 +28,44 @@ export type CalculatorInput = {
   insuranceEnabled: boolean;
 };
 
-export type CostBreakdown = {
+export type SharedCost = {
   vehiclePrice: number;
   auctionFee: number;
   serviceFee: number;
   transportFee: number;
   insuranceFee: number;
+  preCustoms: number;
   totalBeforeCustoms: number;
-  customsFee: number;
+};
+
+export type CustomsBreakdown = {
+  duty: number;
+  vat: number;
+  environmental: number;
+  brokerage: number;
+  flatRate: number;
+  usesFlatRate: boolean;
+  electricExemptionApplied: boolean;
+  customsTotal: number;
   finalTotal: number;
 };
 
 export type CalculatorResult = {
   input: CalculatorInput;
   currency: "USD";
-  ratesStatus: "DRAFT_PENDING_BUSINESS";
-  physical: CostBreakdown;
-  legal: CostBreakdown;
+  ratesStatus: RatesStatus;
+  ageGroup: AgeGroupId;
+  shared: SharedCost;
+  physical: CustomsBreakdown;
+  legal: CustomsBreakdown;
   computedAt: string;
 };
 
 export type CalculatorField =
   | "vehiclePrice"
   | "auction"
-  | "auctionLocation"
+  | "customAuctionFee"
+  | "auctionLocationId"
   | "transportFee"
   | "engineType"
   | "ageGroup"

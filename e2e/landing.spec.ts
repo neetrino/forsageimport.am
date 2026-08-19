@@ -39,7 +39,10 @@ test.describe("Landing smoke", () => {
     await expect(page.locator("section#apply")).toBeAttached({
       timeout: 15_000,
     });
-    await page.locator('#hero a[href="#apply"]').click();
+    const applyLink = page.locator('#hero a[href="#apply"]');
+    await expect(applyLink).toBeVisible();
+    await applyLink.click();
+    await expect(page).toHaveURL(/#apply$/);
     await expect(page.locator("section#apply")).toBeInViewport({
       timeout: 15_000,
     });

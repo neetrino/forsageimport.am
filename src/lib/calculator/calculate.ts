@@ -1,74 +1,71 @@
-import { computeAuctionFee, roundMoney } from "@/lib/calculator/auction-fee";
-import { computeCustomsFee } from "@/lib/calculator/customs";
+import { resolveAgeGroup } from "@/lib/calculator/age";
+import { computeAuctionFee } from "@/lib/calculator/auction-fee";
+import { computeLegalCustoms } from "@/lib/calculator/customs-legal";
+import { computePhysicalCustoms } from "@/lib/calculator/customs-physical";
+import { isElectricExemptionApplied } from "@/lib/calculator/ev-exemption";
+import { percentOf, roundUsd } from "@/lib/calculator/money";
 import { calculatorRates, RATES_STATUS } from "@/lib/calculator/rates";
-import type {
-  CalculatorInput,
-  CalculatorResult,
-  CostBreakdown,
-} from "@/lib/calculator/types";
-
-function buildBreakdown(
-  input: CalculatorInput,
-  auctionFee: number,
-  customsFee: number,
-): CostBreakdown {
-  const serviceFee = roundMoney(
-    ((input.vehiclePrice + auctionFee) * calculatorRates.serviceFeePercent) / 100,
-  );
-  const insuranceFee = input.insuranceEnabled
-    ? roundMoney(
-        ((input.vehiclePrice + input.transportFee) *
-          calculatorRates.insurancePercent) /
-          100,
-      )
-    : 0;
-
-  const totalBeforeCustoms = roundMoney(
-    input.vehiclePrice +
-      auctionFee +
-      serviceFee +
-      input.transportFee +
-      insuranceFee,
-  );
-
-  return {
-    vehiclePrice: roundMoney(input.vehiclePrice),
-    auctionFee,
-    serviceFee,
-    transportFee: roundMoney(input.transportFee),
-    insuranceFee,
-    totalBeforeCustoms,
-    customsFee,
-    finalTotal: roundMoney(totalBeforeCustoms + customsFee),
-  };
-}
+import type { CalculatorInput, CalculatorResult, SharedCost } from "@/lib/calculator/types";
 
 export function calculateImportCost(input: CalculatorInput): CalculatorResult {
-  const auctionFee = computeAuctionFee(input.vehiclePrice, input.auction);
-  const taxableBase = input.vehiclePrice + auctionFee + input.transportFee;
-
-  const physicalCustoms = computeCustomsFee({
-    taxableBase,
+  const ageGroup = resolveAgeGroup(input.year);
+  const auctionFee = computeAuctionFee(
+    input.vehiclePrice,
+    input.auction,
+    input.customAuctionFee,
+  );
+  const transportFee = roundUsd(input.transportFee);
+  const insuranceFee = input.insuranceEnabled
+    ? percentOf(
+        input.vehiclePrice + auctionFee + transportFee,
+        calculatorRates.insurancePercent,
+      )
+    : 0;
+  const serviceFee = Math.max(
+    calculatorRates.serviceFeeMinUsd,
+    percentOf(
+      input.vehiclePrice + auctionFee,
+      calculatorRates.serviceFeePercent,
+    ),
+  );
+  const preCustoms = roundUsd(
+    input.vehiclePrice + auctionFee + transportFee + insuranceFee,
+  );
+  const shared: SharedCost = {
+    vehiclePrice: roundUsd(input.vehiclePrice),
+    auctionFee,
+    serviceFee,
+    transportFee,
+    insuranceFee,
+    preCustoms,
+    totalBeforeCustoms: preCustoms + serviceFee,
+  };
+  const electricExemptionApplied = isElectricExemptionApplied(
+    input.engineType,
+    input.year,
+  );
+  const customsInput = {
+    preCustoms,
+    totalBeforeCustoms: shared.totalBeforeCustoms,
     engineVolumeCm3: input.engineVolumeCm3,
-    ageGroup: input.ageGroup,
-    engineType: input.engineType,
-    personType: "physical",
-  });
-
-  const legalCustoms = computeCustomsFee({
-    taxableBase,
-    engineVolumeCm3: input.engineVolumeCm3,
-    ageGroup: input.ageGroup,
-    engineType: input.engineType,
-    personType: "legal",
-  });
+    ageGroup,
+    vehicleType: input.vehicleType,
+    electricExemptionApplied,
+  };
 
   return {
     input,
     currency: calculatorRates.currency,
     ratesStatus: RATES_STATUS,
-    physical: buildBreakdown(input, auctionFee, physicalCustoms),
-    legal: buildBreakdown(input, auctionFee, legalCustoms),
+    ageGroup,
+    shared,
+    physical: computePhysicalCustoms({
+      ...customsInput,
+      vehiclePrice: shared.vehiclePrice,
+      auctionFee,
+      engineType: input.engineType,
+    }),
+    legal: computeLegalCustoms(customsInput),
     computedAt: new Date().toISOString(),
   };
 }

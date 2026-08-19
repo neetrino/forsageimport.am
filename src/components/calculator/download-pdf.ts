@@ -1,5 +1,5 @@
 import type { Dictionary } from "@/lib/i18n/types";
-import type { CalculatorResult, CostBreakdown } from "@/lib/calculator/types";
+import type { CalculatorResult, CustomsBreakdown, SharedCost } from "@/lib/calculator/types";
 import { formatUsd } from "@/lib/calculator/format";
 import type { jsPDF } from "jspdf";
 
@@ -28,7 +28,6 @@ export async function downloadCalculationPdf({
   const doc = new jsPDF();
   await registerUnicodeFont(doc);
 
-  const breakdown = result[variant];
   const title =
     variant === "physical"
       ? dict.calculator.results.physicalTitle
@@ -44,10 +43,9 @@ export async function downloadCalculationPdf({
   y += 7;
   doc.text(title, 14, y);
   y += 10;
-
   doc.setFontSize(10);
-  const lines = buildLines(dict, breakdown, locale);
-  for (const line of lines) {
+
+  for (const line of buildLines(dict, result.shared, result[variant], locale)) {
     doc.text(line, 14, y);
     y += 7;
     if (y > 280) {
@@ -59,9 +57,7 @@ export async function downloadCalculationPdf({
 
   y += 4;
   doc.setFontSize(9);
-  const disclaimerLines = doc.splitTextToSize(dict.calculator.disclaimer, 180);
-  doc.text(disclaimerLines, 14, y);
-
+  doc.text(doc.splitTextToSize(dict.calculator.disclaimer, 180), 14, y);
   doc.save(`forsage-estimate-${variant}.pdf`);
 }
 
@@ -94,26 +90,36 @@ function arrayBufferToBinaryString(buffer: ArrayBuffer): string {
   const chunkSize = 0x2000;
   let binary = "";
   for (let offset = 0; offset < bytes.length; offset += chunkSize) {
-    const chunk = bytes.subarray(offset, offset + chunkSize);
-    binary += String.fromCharCode(...chunk);
+    binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
   }
   return binary;
 }
 
 function buildLines(
   dict: Dictionary,
-  breakdown: CostBreakdown,
+  shared: SharedCost,
+  breakdown: CustomsBreakdown,
   locale: string,
 ): string[] {
   const labels = dict.calculator.results;
-  return [
-    `${labels.vehiclePrice}: ${formatUsd(breakdown.vehiclePrice, locale)}`,
-    `${labels.auctionFee}: ${formatUsd(breakdown.auctionFee, locale)}`,
-    `${labels.serviceFee}: ${formatUsd(breakdown.serviceFee, locale)}`,
-    `${labels.transportFee}: ${formatUsd(breakdown.transportFee, locale)}`,
-    `${labels.insuranceFee}: ${formatUsd(breakdown.insuranceFee, locale)}`,
-    `${labels.totalBeforeCustoms}: ${formatUsd(breakdown.totalBeforeCustoms, locale)}`,
-    `${labels.customsFee}: ${formatUsd(breakdown.customsFee, locale)}`,
-    `${labels.finalTotal}: ${formatUsd(breakdown.finalTotal, locale)}`,
+  const lines = [
+    `${labels.vehiclePrice}: ${formatUsd(shared.vehiclePrice, locale)}`,
+    `${labels.auctionFee}: ${formatUsd(shared.auctionFee, locale)}`,
+    `${labels.serviceFee}: ${formatUsd(shared.serviceFee, locale)}`,
+    `${labels.transportFee}: ${formatUsd(shared.transportFee, locale)}`,
+    `${labels.insuranceFee}: ${formatUsd(shared.insuranceFee, locale)}`,
+    `${labels.totalBeforeCustoms}: ${formatUsd(shared.totalBeforeCustoms, locale)}`,
   ];
+  if (breakdown.usesFlatRate) {
+    lines.push(`${labels.flatRate}: ${formatUsd(breakdown.flatRate, locale)}`);
+  } else {
+    lines.push(`${labels.customsDuty}: ${formatUsd(breakdown.duty, locale)}`);
+    lines.push(`${labels.vat}: ${formatUsd(breakdown.vat, locale)}`);
+  }
+  lines.push(`${labels.ecologicalTax}: ${formatUsd(breakdown.environmental, locale)}`);
+  if (breakdown.brokerage > 0) {
+    lines.push(`${labels.brokerage}: ${formatUsd(breakdown.brokerage, locale)}`);
+  }
+  lines.push(`${labels.finalTotal}: ${formatUsd(breakdown.finalTotal, locale)}`);
+  return lines;
 }

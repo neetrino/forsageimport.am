@@ -31,7 +31,7 @@ export function CalculatorSection({ dict, locale }: CalculatorSectionProps) {
             tone="dark"
           />
           <p className="max-w-xs font-mono text-[0.7rem] leading-5 tracking-[0.14em] text-white/40 uppercase lg:pb-1 lg:text-right">
-            USD · Copart / IAAI / Manheim
+            USD · Copart / IAAI
           </p>
         </div>
       </Reveal>

@@ -334,6 +334,17 @@ body::before {
   contain-intrinsic-size: auto 720px;
 }
 
+/*
+ * Once the canvas is unlocked, hash/CTA scroll and Intersection Observer
+ * need real boxes. Skipped `content-visibility: auto` sections report
+ * IO ratio 0 and placeholder heights, so #apply never "arrives".
+ */
+.landing-canvas-revealed .landing-section-paint,
+html[data-landing-unlocked] .landing-section-paint,
+.landing-section-paint.landing-section-realized {
+  content-visibility: visible;
+}
+
 .site-footer {
   border-top: 0;
 }
@@ -1321,6 +1332,13 @@ body::before {
   background: linear-gradient(180deg, #ffffff 0%, #f6f7fa 100%);
   padding: 1.25rem 1.35rem 1.4rem;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.calc-result-card-best {
+  border-color: color-mix(in srgb, var(--calc-accent) 70%, white);
+  box-shadow:
+    4px 4px 16px rgba(0, 0, 0, 0.12),
+    0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
 .apply-shell {
