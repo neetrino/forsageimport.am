@@ -17,7 +17,7 @@ type SiteFooterProps = {
 };
 
 export function SiteFooter({ locale, dict }: SiteFooterProps) {
-  const contact = getSiteContact();
+  const contact = getSiteContact(dict.footer.addresses);
   const hasContact = Boolean(
     contact.phones.length > 0 || contact.email || contact.addresses.length > 0,
   );
@@ -81,13 +81,13 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                       <div className="mt-1 space-y-2 text-white/80">
                         {contact.addresses.map((address) => (
                           <a
-                            key={address}
-                            href={buildMapsSearchUrl(address)}
+                            key={address.mapsQuery}
+                            href={buildMapsSearchUrl(address.mapsQuery)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="site-footer-link site-footer-address block"
                           >
-                            {address}
+                            {address.label}
                           </a>
                         ))}
                       </div>

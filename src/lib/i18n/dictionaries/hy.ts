@@ -238,6 +238,10 @@ export const hy: Dictionary = {
     phoneLabel: "Հեռախոս",
     emailLabel: "Էլ․ փոստ",
     addressLabel: "Հասցե",
+    addresses: [
+      "ք. Գյումրի, Թբիլիսյան խճ. 3/28",
+      "ք. Երևան, Մազմանյան 1, Գարաժ mall, 65 տաղավար",
+    ],
     contactsPending: "Կոնտակտային տվյալները կլրացվեն",
     socialPending: "Սոցիալական հղումները կլրացվեն",
     rights: "Forsage Import",
