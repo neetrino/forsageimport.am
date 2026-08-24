@@ -1145,6 +1145,19 @@ html[data-landing-unlocked] .landing-section-paint,
   color: var(--ink);
 }
 
+.calc-field-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 0.75rem;
+  grid-template-rows: auto auto auto;
+}
+
+.calc-field-pair > .calc-field {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 1 / -1;
+}
+
 .calc-toggle {
   display: inline-flex;
   cursor: pointer;
