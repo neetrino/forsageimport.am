@@ -1,3 +1,4 @@
+import { Resend } from "resend";
 import type { LeadPayload } from "@/lib/leads/types";
 
 export type LeadDeliveryResult =
@@ -34,27 +35,19 @@ export async function deliverLead(payload: LeadPayload): Promise<LeadDeliveryRes
     `ReceivedAt: ${new Date().toISOString()}`,
   ].join("\n");
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: fromEmail,
-      to: [toEmail],
-      subject,
-      text,
-    }),
+  const resend = new Resend(apiKey);
+  const { data, error } = await resend.emails.send({
+    from: fromEmail,
+    to: [toEmail],
+    subject,
+    text,
   });
 
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Resend failed (${response.status}): ${body.slice(0, 200)}`);
+  if (error) {
+    throw new Error(`Resend failed: ${error.message}`);
   }
 
-  const data = (await response.json()) as { id?: string };
-  return { mode: "email", messageId: data.id ?? "unknown" };
+  return { mode: "email", messageId: data?.id ?? "unknown" };
 }
 
 function maskPhone(phone: string): string {

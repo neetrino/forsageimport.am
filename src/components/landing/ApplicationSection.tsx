@@ -8,7 +8,6 @@ import { LANDING_SECTION_IDS } from "@/types/landing";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { ApplyRoutePanel } from "@/components/landing/ApplyRoutePanel";
 import { validateLeadInput } from "@/lib/leads/validate";
 import type { LeadErrors } from "@/lib/leads/types";
 
@@ -121,7 +120,7 @@ export function ApplicationSection({ dict, locale }: ApplicationSectionProps) {
         />
       </Reveal>
 
-      <div className="relative z-[1] mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8 xl:gap-10">
+      <div className="relative z-[1] mt-10 mx-auto max-w-2xl">
         <Reveal variant="up" delay={0.06}>
           <div className="apply-shell">
             <div className="apply-shell-glow" aria-hidden="true" />
@@ -234,14 +233,6 @@ export function ApplicationSection({ dict, locale }: ApplicationSectionProps) {
               </div>
             </form>
           </div>
-        </Reveal>
-
-        <Reveal variant="right" delay={0.1} className="hidden lg:block">
-          <ApplyRoutePanel
-            eyebrow={dict.apply.eyebrow}
-            responseNote={dict.apply.responseNote}
-            steps={dict.apply.steps}
-          />
         </Reveal>
       </div>
     </Section>

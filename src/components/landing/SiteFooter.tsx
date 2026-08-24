@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { LANDING_SECTION_IDS } from "@/types/landing";
 import { sectionHref } from "@/lib/i18n/paths";
 import { getSiteContact } from "@/lib/site/contact";
+import { buildMapsSearchUrl } from "@/lib/site/maps";
 import { Container } from "@/components/ui/Container";
 import { LocaleSwitcher } from "@/components/i18n/LocaleSwitcher";
 import { BrandLogo } from "@/components/brand/BrandLogo";
@@ -79,9 +80,15 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                       <span className="site-footer-label">{dict.footer.addressLabel}</span>
                       <div className="mt-1 space-y-2 text-white/80">
                         {contact.addresses.map((address) => (
-                          <p key={address} className="site-footer-address">
+                          <a
+                            key={address}
+                            href={buildMapsSearchUrl(address)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="site-footer-link site-footer-address block"
+                          >
                             {address}
-                          </p>
+                          </a>
                         ))}
                       </div>
                     </li>
