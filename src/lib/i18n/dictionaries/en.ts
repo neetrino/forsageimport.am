@@ -217,11 +217,6 @@ export const en: Dictionary = {
     title: "Submit a request",
     subtitle: "Leave your name, phone, and a short message. We will get back to you.",
     responseNote: "We usually reply within 1 business day",
-    steps: [
-      "Share your name and phone",
-      "Add a short message",
-      "We get back to you",
-    ],
     name: "Name",
     phone: "Phone",
     message: "Message",

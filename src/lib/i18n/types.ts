@@ -127,7 +127,6 @@ export type Dictionary = {
     title: string;
     subtitle: string;
     responseNote: string;
-    steps: readonly string[];
     name: string;
     phone: string;
     message: string;
