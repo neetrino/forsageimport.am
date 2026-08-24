@@ -238,6 +238,10 @@ export const en: Dictionary = {
     phoneLabel: "Phone",
     emailLabel: "Email",
     addressLabel: "Address",
+    addresses: [
+      "Gyumri, Tbilisi Highway 3/28",
+      "Yerevan, Mazmanyan 1, Garage mall, pavilion 65",
+    ],
     contactsPending: "Contact details will be added",
     socialPending: "Social links will be added",
     rights: "Forsage Import",

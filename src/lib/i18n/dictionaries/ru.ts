@@ -239,6 +239,10 @@ export const ru: Dictionary = {
     phoneLabel: "Телефон",
     emailLabel: "Email",
     addressLabel: "Адрес",
+    addresses: [
+      "г. Гюмри, Тбилисское шоссе 3/28",
+      "г. Ереван, ул. Мазманяна 1, Garage mall, павильон 65",
+    ],
     contactsPending: "Контактные данные будут добавлены",
     socialPending: "Ссылки на соцсети будут добавлены",
     rights: "Forsage Import",
