@@ -23,7 +23,7 @@ export function SelectField({
   error,
 }: SelectFieldProps) {
   return (
-    <div>
+    <div className="calc-field min-w-0">
       <FieldLabel htmlFor={id}>{label}</FieldLabel>
       <div className="relative">
         <select

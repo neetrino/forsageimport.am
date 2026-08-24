@@ -442,6 +442,11 @@ html[data-landing-unlocked] .landing-section-paint,
   text-transform: uppercase;
 }
 
+.site-footer-address {
+  max-width: 16rem;
+  text-wrap: pretty;
+}
+
 .site-footer-label {
   display: block;
   margin-bottom: 0.2rem;
@@ -1143,6 +1148,55 @@ html[data-landing-unlocked] .landing-section-paint,
 
 .calc-select {
   color: var(--ink);
+}
+
+.calc-searchable-select {
+  position: relative;
+}
+
+.calc-searchable-list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  max-height: 14rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  border: 1px solid var(--calc-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow:
+    0 16px 36px rgba(15, 23, 42, 0.12),
+    0 0 0 1px color-mix(in srgb, var(--calc-accent) 8%, transparent);
+}
+
+.calc-searchable-option {
+  padding: 0.65rem 1rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.calc-searchable-option:hover,
+.calc-searchable-option[data-selected="true"] {
+  background: color-mix(in srgb, var(--calc-accent) 10%, white);
+}
+
+.calc-field-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 0.75rem;
+  grid-template-rows: auto auto auto;
+}
+
+.calc-field-pair > .calc-field {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 1 / -1;
 }
 
 .calc-toggle {

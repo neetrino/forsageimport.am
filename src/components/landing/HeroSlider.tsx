@@ -32,7 +32,7 @@ const HeroRoad3D = dynamic(
   },
 );
 
-const AUTO_MS = 4800;
+const AUTO_MS = 7800;
 const TEXT_TRANSITION_S = 0.16;
 const TEXT_TRANSITION_MOBILE_S = 0.42;
 

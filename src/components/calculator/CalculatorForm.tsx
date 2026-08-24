@@ -165,7 +165,7 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
               customFeeError={errors.customAuctionFee}
             />
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="calc-field-pair">
               <SelectField
                 id="ageGroup"
                 name="ageGroup"

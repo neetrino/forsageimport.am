@@ -17,7 +17,9 @@ type SiteFooterProps = {
 
 export function SiteFooter({ locale, dict }: SiteFooterProps) {
   const contact = getSiteContact();
-  const hasContact = Boolean(contact.phone || contact.email || contact.address);
+  const hasContact = Boolean(
+    contact.phones.length > 0 || contact.email || contact.addresses.length > 0,
+  );
   const hasSocial = contact.social.length > 0;
   const year = new Date().getFullYear();
 
@@ -52,12 +54,16 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
               <h2 className="site-footer-heading">{dict.footer.title}</h2>
               {hasContact ? (
                 <ul className="mt-5 space-y-4 text-sm text-white/80">
-                  {contact.phone ? (
+                  {contact.phones.length > 0 ? (
                     <li>
                       <span className="site-footer-label">{dict.footer.phoneLabel}</span>
-                      <a className="site-footer-link" href={`tel:${contact.phone}`}>
-                        {contact.phone}
-                      </a>
+                      <div className="mt-1 space-y-2 text-white/80">
+                        {contact.phones.map((phone) => (
+                          <a key={phone} className="site-footer-link block" href={`tel:${phone}`}>
+                            {phone}
+                          </a>
+                        ))}
+                      </div>
                     </li>
                   ) : null}
                   {contact.email ? (
@@ -68,10 +74,16 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                       </a>
                     </li>
                   ) : null}
-                  {contact.address ? (
+                  {contact.addresses.length > 0 ? (
                     <li>
                       <span className="site-footer-label">{dict.footer.addressLabel}</span>
-                      <span className="text-white/80">{contact.address}</span>
+                      <div className="mt-1 space-y-2 text-white/80">
+                        {contact.addresses.map((address) => (
+                          <p key={address} className="site-footer-address">
+                            {address}
+                          </p>
+                        ))}
+                      </div>
                     </li>
                   ) : null}
                 </ul>

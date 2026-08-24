@@ -16,7 +16,8 @@ test.describe("Calculator smoke", () => {
 
     await page.locator("#vehiclePrice").fill("12000");
     await page.getByRole("button", { name: /IAA/i }).click();
-    await page.locator("#auctionLocation").selectOption("187");
+    await page.locator("#auctionLocation").fill("NJ-NORTHERN");
+    await page.getByRole("option", { name: "NJ-NORTHERN NEW JERSEY" }).click();
     await page.locator("#year").selectOption("2025");
     await page.locator("#engineVolume").fill("2000");
     await expect(page.locator("#insuranceEnabled")).toBeChecked();
