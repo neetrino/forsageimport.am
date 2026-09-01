@@ -148,7 +148,14 @@ export type Dictionary = {
     phoneLabel: string;
     emailLabel: string;
     addressLabel: string;
-    addresses: readonly string[];
+    branches: {
+      yerevan: string;
+      gyumri: string;
+    };
+    addresses: {
+      yerevan: readonly string[];
+      gyumri: readonly string[];
+    };
     contactsPending: string;
     socialPending: string;
     rights: string;

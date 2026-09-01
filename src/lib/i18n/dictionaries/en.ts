@@ -238,10 +238,17 @@ export const en: Dictionary = {
     phoneLabel: "Phone",
     emailLabel: "Email",
     addressLabel: "Address",
-    addresses: [
-      "Gyumri, Tbilisi Highway 3/28",
-      "Yerevan, Mazmanyan 1, Garage mall, pavilion 65",
-    ],
+    branches: {
+      yerevan: "Yerevan branch",
+      gyumri: "Gyumri branch",
+    },
+    addresses: {
+      yerevan: [
+        "Yerevan, Mazmanyan 1, Garage mall, pavilion 65",
+        "Sebastia 1",
+      ],
+      gyumri: ["Gyumri, Tbilisi Highway 3/28"],
+    },
     contactsPending: "Contact details will be added",
     socialPending: "Social links will be added",
     rights: "Forsage Import",
