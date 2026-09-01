@@ -442,8 +442,75 @@ html[data-landing-unlocked] .landing-section-paint,
   text-transform: uppercase;
 }
 
+.site-footer-branches {
+  display: grid;
+  gap: 1.35rem;
+  color: color-mix(in srgb, white 80%, transparent);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .site-footer-branches {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.75rem;
+  }
+
+  .site-footer-branch + .site-footer-branch {
+    border-inline-start: 1px solid color-mix(in srgb, white 10%, transparent);
+    padding-inline-start: 1.75rem;
+  }
+}
+
+.site-footer-branch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.site-footer-branch-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.site-footer-branch-title::before {
+  content: "";
+  width: 0.38rem;
+  height: 0.38rem;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #ff8a45 0%, var(--accent) 48%, #c94812 100%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+  rotate: 45deg;
+}
+
+.site-footer-branch-group {
+  display: grid;
+  grid-template-columns: 0.9rem minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0.5rem;
+}
+
+.site-footer-branch-glyph {
+  margin-top: 0.18rem;
+  color: var(--accent);
+}
+
+.site-footer-branch-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+}
+
 .site-footer-address {
-  max-width: 16rem;
   text-wrap: pretty;
 }
 
@@ -462,6 +529,12 @@ html[data-landing-unlocked] .landing-section-paint,
 
 .site-footer-link:hover {
   color: #fff;
+}
+
+.site-footer-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .site-footer-social-link {
