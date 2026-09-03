@@ -252,10 +252,7 @@ export const en: Dictionary = {
       gyumri: "Gyumri branch",
     },
     addresses: {
-      yerevan: [
-        "Yerevan, Mazmanyan 1, Garage mall, pavilion 65",
-        "Sebastia 1",
-      ],
+      yerevan: ["Yerevan, Sebastia 1/1"],
       gyumri: ["Gyumri, Tbilisi Highway 3/28"],
     },
     contactsPending: "Contact details will be added",

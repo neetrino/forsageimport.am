@@ -33,10 +33,7 @@ const YEREVAN_PHONES = [
 
 const GYUMRI_PHONES = ["+37477080558"] as const;
 
-const YEREVAN_ADDRESS_QUERIES = [
-  "ք. Երևան, Մազմանյան 1, Գարաժ mall, 65 տաղավար",
-  "ք. Երևան, Սեբաստյա 1",
-] as const;
+const YEREVAN_ADDRESS_QUERIES = ["ք․ Երևան Սեբաստյա 1/1"] as const;
 
 const GYUMRI_ADDRESS_QUERIES = ["ք. Գյումրի, Թբիլիսյան խճ. 3/28"] as const;
 
@@ -85,10 +82,6 @@ function buildYerevanBranch(
         readContactValue(
           process.env.NEXT_PUBLIC_CONTACT_ADDRESS_2,
           YEREVAN_ADDRESS_QUERIES[0],
-        ),
-        readContactValue(
-          process.env.NEXT_PUBLIC_CONTACT_ADDRESS_3,
-          YEREVAN_ADDRESS_QUERIES[1],
         ),
       ],
       labels,
