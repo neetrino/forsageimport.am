@@ -74,6 +74,14 @@ export type Dictionary = {
     cheaperBadge: string;
     evExemptionNote: string;
     locationSearch: string;
+    callForPrice: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      cityLabel: string;
+      callAction: string;
+      close: string;
+    };
     validation: {
       required: string;
       positiveNumber: string;

@@ -1,9 +1,28 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { useIsMounted } from "@/hooks/useSafeReducedMotion";
 import type { AuctionId } from "@/lib/calculator/types";
+
+const AUCTION_LOGOS = {
+  iaai: {
+    src: "/auctions/iaai-mark.webp",
+    alt: "IAAI",
+    width: 1024,
+    height: 610,
+    className: "h-7 w-auto object-contain",
+  },
+  copart: {
+    src: "/auctions/copart-mark.webp",
+    alt: "Copart",
+    width: 1024,
+    height: 382,
+    className:
+      "h-6 w-auto object-contain [filter:drop-shadow(0_0_0.6px_#111)_drop-shadow(0_1px_1px_rgba(0,0,0,0.28))]",
+  },
+} as const;
 
 export type AuctionValue = AuctionId;
 
@@ -118,18 +137,17 @@ function AuctionButton({
 }
 
 function AuctionMark({ mark }: { mark: "iaai" | "copart" }) {
-  if (mark === "iaai") {
-    return (
-      <span className="text-sm font-extrabold tracking-tight text-[#e10600]">
-        IAA<span className="align-super text-[0.65em]">I</span>
-      </span>
-    );
-  }
+  const logo = AUCTION_LOGOS[mark];
 
   return (
-    <span className="text-sm font-extrabold tracking-tight">
-      <span className="text-[#1f4e79]">Co</span>
-      <span className="text-[#c41230]">part</span>
-    </span>
+    <Image
+      src={logo.src}
+      alt={logo.alt}
+      width={logo.width}
+      height={logo.height}
+      className={logo.className}
+      sizes="96px"
+      unoptimized
+    />
   );
 }
