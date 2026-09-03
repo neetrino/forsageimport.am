@@ -66,6 +66,7 @@ export function AuctionPicker({
         <AuctionButton
           selected={value === "copart"}
           mounted={mounted}
+          surface="copart"
           onClick={() => onChange("copart")}
         >
           <AuctionMark mark="copart" />
@@ -100,17 +101,28 @@ export function AuctionPicker({
   );
 }
 
+const SELECTED_PILL_SURFACE = {
+  default:
+    "border border-[var(--calc-accent)] bg-white shadow-[0_8px_18px_rgba(240,90,24,0.18)]",
+  copart:
+    "border border-[var(--calc-accent)] bg-[#0a2748] shadow-[0_8px_18px_rgba(10,39,72,0.35)]",
+} as const;
+
 function AuctionButton({
   selected,
   mounted,
+  surface = "default",
   onClick,
   children,
 }: {
   selected: boolean;
   mounted: boolean;
+  surface?: keyof typeof SELECTED_PILL_SURFACE;
   onClick: () => void;
   children: ReactNode;
 }) {
+  const pillClassName = `absolute inset-0 rounded-[calc(var(--radius-md)-2px)] ${SELECTED_PILL_SURFACE[surface]}`;
+
   return (
     <button
       type="button"
@@ -124,11 +136,11 @@ function AuctionButton({
         mounted ? (
           <motion.span
             layoutId="auction-pill"
-            className="absolute inset-0 rounded-[calc(var(--radius-md)-2px)] border border-[var(--calc-accent)] bg-white shadow-[0_8px_18px_rgba(240,90,24,0.18)]"
+            className={pillClassName}
             transition={{ type: "spring", stiffness: 420, damping: 34 }}
           />
         ) : (
-          <span className="absolute inset-0 rounded-[calc(var(--radius-md)-2px)] border border-[var(--calc-accent)] bg-white shadow-[0_8px_18px_rgba(240,90,24,0.18)]" />
+          <span className={pillClassName} />
         )
       ) : null}
       <span className="relative z-[1]">{children}</span>
