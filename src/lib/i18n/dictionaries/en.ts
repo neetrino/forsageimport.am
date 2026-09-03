@@ -130,6 +130,15 @@ export const en: Dictionary = {
     evExemptionNote:
       "From 1 February through 31 December 2026 for electric vehicles manufactured after 31 December 2023. The 0% customs duty is subject to the approved quota; final eligibility must be confirmed by customs.",
     locationSearch: "Search location",
+    callForPrice: {
+      eyebrow: "Call for price",
+      title: "Shipping price must be confirmed by phone",
+      description:
+        "Shipping for “{location}” is marked Call for price. Choose a branch and call to get the final rate.",
+      cityLabel: "Branch",
+      callAction: "Call",
+      close: "Close",
+    },
     validation: {
       required: "Required field",
       positiveNumber: "Enter a positive number",

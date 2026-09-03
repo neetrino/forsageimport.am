@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { calculateImportCost } from "@/lib/calculator/calculate";
 import { computeAuctionFee } from "@/lib/calculator/auction-fee";
 import { resolveAgeGroup } from "@/lib/calculator/age";
-import { lookupShippingFee } from "@/lib/calculator/shipping";
+import { lookupShippingFee, requiresShippingCall } from "@/lib/calculator/shipping";
 import { validateCalculatorInput } from "@/lib/calculator/validate";
 import type { CalculatorInput } from "@/lib/calculator/types";
 
@@ -28,6 +28,15 @@ describe("computeAuctionFee", () => {
     expect(computeAuctionFee(10000, "copart")).toBe(1119);
     expect(computeAuctionFee(20000, "iaai")).toBe(1575);
     expect(computeAuctionFee(500, "custom", 400)).toBe(400);
+  });
+});
+
+describe("requiresShippingCall", () => {
+  it("flags AuctionAuto Call for price yards", () => {
+    expect(requiresShippingCall("73", "sedan")).toBe(true);
+    expect(requiresShippingCall("73", "motorcycle")).toBe(true);
+    expect(requiresShippingCall("73", "suv")).toBe(false);
+    expect(requiresShippingCall("187", "sedan")).toBe(false);
   });
 });
 
@@ -100,16 +109,16 @@ describe("calculateImportCost", () => {
     const result = calculateImportCost(baseInput);
     expect(result.ratesStatus).toBe("IAA_PARITY_OBSERVED");
     expect(result.shared.auctionFee).toBe(1225);
-    expect(result.shared.transportFee).toBe(1990);
-    expect(result.shared.insuranceFee).toBe(132);
+    expect(result.shared.transportFee).toBe(2325);
+    expect(result.shared.insuranceFee).toBe(136);
     expect(result.shared.serviceFee).toBe(300);
-    expect(result.shared.preCustoms).toBe(13347);
-    expect(result.shared.totalBeforeCustoms).toBe(13647);
-    expect(result.legal.duty).toBe(2002);
-    expect(result.legal.vat).toBe(3070);
-    expect(result.legal.environmental).toBe(267);
+    expect(result.shared.preCustoms).toBe(13686);
+    expect(result.shared.totalBeforeCustoms).toBe(13986);
+    expect(result.legal.duty).toBe(2053);
+    expect(result.legal.vat).toBe(3148);
+    expect(result.legal.environmental).toBe(274);
     expect(result.legal.brokerage).toBe(75);
-    expect(result.legal.finalTotal).toBe(19061);
+    expect(result.legal.finalTotal).toBe(19536);
     expect(result.physical.usesFlatRate).toBe(true);
     expect(result.physical.flatRate).toBeGreaterThanOrEqual(8075);
     expect(result.physical.flatRate).toBeLessThanOrEqual(8076);
@@ -129,7 +138,7 @@ describe("calculateImportCost", () => {
     expect(result.legal.vat).toBe(0);
     expect(result.physical.duty).toBe(0);
     expect(result.physical.vat).toBe(0);
-    expect(result.legal.environmental).toBe(267);
+    expect(result.legal.environmental).toBe(274);
   });
 
   it("keeps duty on a 2023 electric car", () => {

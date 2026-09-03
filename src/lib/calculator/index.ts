@@ -5,7 +5,9 @@ export { calculatorRates, RATES_STATUS } from "@/lib/calculator/rates";
 export { yearsForAgeGroup } from "@/lib/calculator/age";
 export {
   lookupShippingFee,
+  requiresShippingCall,
   shippingLocationOptions,
+  findShippingLocation,
 } from "@/lib/calculator/shipping";
 export type {
   CalculatorInput,

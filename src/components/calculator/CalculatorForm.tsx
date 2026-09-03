@@ -13,12 +13,15 @@ import { SelectField } from "@/components/calculator/SelectField";
 import { downloadCalculationPdf } from "@/components/calculator/download-pdf";
 import {
   calculateImportCost,
+  findShippingLocation,
   lookupShippingFee,
+  requiresShippingCall,
   shippingLocationOptions,
   validateCalculatorInput,
   yearsForAgeGroup,
 } from "@/lib/calculator";
 import type { AgeGroupId, CalculatorErrors, CalculatorResult, VehicleTypeId } from "@/lib/calculator/types";
+import { CallForPriceDialog } from "@/components/calculator/CallForPriceDialog";
 
 type CalculatorFormProps = {
   dict: Dictionary;
@@ -58,7 +61,12 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
   const [errors, setErrors] = useState<CalculatorErrors>({});
   const [result, setResult] = useState<CalculatorResult | null>(null);
   const [downloading, setDownloading] = useState<"physical" | "legal" | null>(null);
+  const [callDialogOpen, setCallDialogOpen] = useState(false);
   const locations = useMemo(() => shippingLocationOptions(), []);
+  const selectedLocationLabel = useMemo(() => {
+    const location = findShippingLocation(form.auctionLocationId);
+    return location?.name ?? form.auctionLocationId;
+  }, [form.auctionLocationId]);
   const yearOptions = useMemo(
     () =>
       yearsForAgeGroup(form.ageGroup as AgeGroupId).map((year) => ({
@@ -107,6 +115,17 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
     if (!validated.ok) {
       setErrors(validated.errors);
       setResult(null);
+      return;
+    }
+    if (
+      requiresShippingCall(
+        validated.value.auctionLocationId,
+        validated.value.vehicleType,
+      )
+    ) {
+      setErrors({});
+      setResult(null);
+      setCallDialogOpen(true);
       return;
     }
     setErrors({});
@@ -290,6 +309,13 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
           setDownloading(null);
         }}
         isDownloading={downloading}
+      />
+
+      <CallForPriceDialog
+        open={callDialogOpen}
+        locationLabel={selectedLocationLabel}
+        dict={dict}
+        onClose={() => setCallDialogOpen(false)}
       />
     </>
   );

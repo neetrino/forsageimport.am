@@ -1388,6 +1388,247 @@ html[data-landing-unlocked] .landing-section-paint,
   filter: none;
 }
 
+.calc-call-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--ink) 48%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.calc-call-dialog {
+  position: relative;
+  width: min(100%, 28.5rem);
+  border-radius: 1rem;
+  border: 1px solid var(--calc-border);
+  border-left: 4px solid var(--calc-accent);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 22px 48px rgba(14, 16, 20, 0.22);
+  padding: 1.35rem 1.4rem 1.4rem;
+}
+
+.calc-call-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.calc-call-dialog-intro {
+  min-width: 0;
+}
+
+.calc-call-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--calc-accent) 30%, var(--calc-border));
+  background: color-mix(in srgb, var(--calc-accent) 10%, white);
+  color: var(--calc-accent);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem 0.35rem 0.5rem;
+}
+
+.calc-call-title {
+  margin-top: 0.7rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.calc-call-close {
+  display: inline-grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--calc-border);
+  background: var(--calc-field-bg);
+  color: var(--muted);
+  border-radius: 0.55rem;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.calc-call-close:hover {
+  background: #fff;
+  border-color: var(--calc-border-strong);
+  color: var(--ink);
+}
+
+.calc-call-copy {
+  margin-top: 0.95rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.calc-call-location {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.calc-call-branch-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  padding: 0.3rem;
+  border-radius: 0.75rem;
+  background: var(--calc-field-bg);
+  border: 1px solid var(--calc-border);
+}
+
+.calc-call-branch-tab {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: var(--calc-label);
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 0.78rem 0.65rem;
+  transition: color 0.15s ease;
+}
+
+.calc-call-branch-tab[data-active="true"] {
+  color: var(--ink);
+}
+
+.calc-call-branch-pill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--calc-accent) 35%, var(--calc-border));
+  box-shadow: 0 4px 12px rgba(14, 16, 20, 0.06);
+}
+
+.calc-call-branch-tab-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.calc-call-glyph {
+  flex-shrink: 0;
+}
+
+.calc-call-phones {
+  margin-top: 1.15rem;
+}
+
+.calc-call-phones-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.calc-call-phone-list {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.calc-call-phone-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border: 1px solid var(--calc-border);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 0.85rem 0.95rem;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.calc-call-phone-link:hover {
+  border-color: color-mix(in srgb, var(--calc-accent) 45%, var(--calc-border));
+  background: color-mix(in srgb, var(--calc-accent) 6%, white);
+}
+
+.calc-call-phone-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.calc-call-phone-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.6rem;
+  background: color-mix(in srgb, var(--calc-accent) 12%, white);
+  color: var(--calc-accent);
+  border: 1px solid color-mix(in srgb, var(--calc-accent) 22%, var(--calc-border));
+}
+
+.calc-call-phone-action {
+  flex-shrink: 0;
+  border-radius: 0.45rem;
+  background: var(--calc-accent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.42rem 0.75rem;
+}
+
+.calc-call-dismiss {
+  margin-top: 1.15rem;
+  width: 100%;
+  border: 1px solid var(--calc-border);
+  border-radius: 0.65rem;
+  background: var(--calc-field-bg);
+  color: var(--calc-label);
+  font-weight: 600;
+  padding: 0.82rem 1rem;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.calc-call-dismiss:hover {
+  border-color: var(--calc-border-strong);
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .calc-call-overlay,
+  .calc-call-dialog,
+  .calc-call-phone-link {
+    transition: none;
+  }
+}
+
 .calc-results-pending {
   border: 1px dashed color-mix(in srgb, white 22%, transparent);
   border-radius: var(--radius-lg);
