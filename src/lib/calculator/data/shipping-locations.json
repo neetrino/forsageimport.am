@@ -5,7 +5,7 @@
     "sedan": 2525,
     "suv": 2575,
     "pickup": 3115,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2815,
     "van": 2815
   },
@@ -15,7 +15,7 @@
     "sedan": 2525,
     "suv": 2540,
     "pickup": 3080,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2780,
     "van": 2780
   },
@@ -25,7 +25,7 @@
     "sedan": 2600,
     "suv": 2680,
     "pickup": 3220,
-    "motorcycle": 2550,
+    "motorcycle": 300,
     "big_suv": 2920,
     "van": 2920
   },
@@ -35,7 +35,7 @@
     "sedan": 2550,
     "suv": 2575,
     "pickup": 3115,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2815,
     "van": 2815
   },
@@ -45,7 +45,7 @@
     "sedan": 2550,
     "suv": 2575,
     "pickup": 3115,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2815,
     "van": 2815
   },
@@ -55,7 +55,7 @@
     "sedan": 2575,
     "suv": 2575,
     "pickup": 3115,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2815,
     "van": 2815
   },
@@ -65,7 +65,7 @@
     "sedan": 2750,
     "suv": 2650,
     "pickup": 3100,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 2900,
     "van": 2900
   },
@@ -75,7 +75,7 @@
     "sedan": 2750,
     "suv": 2400,
     "pickup": 2850,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 2650,
     "van": 2650
   },
@@ -85,7 +85,7 @@
     "sedan": 2725,
     "suv": 2550,
     "pickup": 3000,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -95,7 +95,7 @@
     "sedan": 2725,
     "suv": 2550,
     "pickup": 3000,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -105,7 +105,7 @@
     "sedan": 3200,
     "suv": 3060,
     "pickup": 3670,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3270,
     "van": 3270
   },
@@ -115,17 +115,17 @@
     "sedan": 3250,
     "suv": 3140,
     "pickup": 3750,
-    "motorcycle": 3200,
+    "motorcycle": 300,
     "big_suv": 3350,
     "van": 3350
   },
   {
     "id": "14",
     "name": "CA- ACE Carson",
-    "sedan": 3010,
+    "sedan": 3000,
     "suv": 2830,
     "pickup": 3440,
-    "motorcycle": 3010,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -135,7 +135,7 @@
     "sedan": 3125,
     "suv": 2830,
     "pickup": 3440,
-    "motorcycle": 3125,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -145,7 +145,7 @@
     "sedan": 3070,
     "suv": 2790,
     "pickup": 3480,
-    "motorcycle": 1110,
+    "motorcycle": 300,
     "big_suv": 2920,
     "van": 3080
   },
@@ -155,17 +155,17 @@
     "sedan": 3150,
     "suv": 2910,
     "pickup": 3720,
-    "motorcycle": 3100,
+    "motorcycle": 300,
     "big_suv": 3120,
     "van": 3320
   },
   {
     "id": "16",
     "name": "CA-ANAHEIM",
-    "sedan": 3050,
+    "sedan": 2975,
     "suv": 2760,
     "pickup": 3290,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 2890,
     "van": 2890
   },
@@ -175,7 +175,7 @@
     "sedan": 3250,
     "suv": 3110,
     "pickup": 3720,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3320,
     "van": 3320
   },
@@ -185,7 +185,7 @@
     "sedan": 3200,
     "suv": 2870,
     "pickup": 3480,
-    "motorcycle": 3100,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -195,7 +195,7 @@
     "sedan": 3050,
     "suv": 2805,
     "pickup": 3305,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -205,7 +205,7 @@
     "sedan": 3250,
     "suv": 3150,
     "pickup": 3760,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3360,
     "van": 3360
   },
@@ -215,7 +215,7 @@
     "sedan": 3050,
     "suv": 2830,
     "pickup": 3440,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -225,7 +225,7 @@
     "sedan": 3250,
     "suv": 3150,
     "pickup": 3760,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3360,
     "van": 3360
   },
@@ -235,7 +235,7 @@
     "sedan": 3225,
     "suv": 2950,
     "pickup": 3560,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3160,
     "van": 3160
   },
@@ -245,7 +245,7 @@
     "sedan": 3250,
     "suv": 3110,
     "pickup": 3720,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3320,
     "van": 3320
   },
@@ -255,7 +255,7 @@
     "sedan": 3250,
     "suv": 3110,
     "pickup": 3720,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3320,
     "van": 3320
   },
@@ -265,7 +265,7 @@
     "sedan": 3150,
     "suv": 2870,
     "pickup": 3480,
-    "motorcycle": 3100,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -275,17 +275,17 @@
     "sedan": 3000,
     "suv": 2870,
     "pickup": 3480,
-    "motorcycle": 3000,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
   {
     "id": "28",
     "name": "CA-LOS ANGELES",
-    "sedan": 3010,
+    "sedan": 3000,
     "suv": 2870,
     "pickup": 3480,
-    "motorcycle": 3010,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -295,7 +295,7 @@
     "sedan": 3250,
     "suv": 3070,
     "pickup": 3680,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3280,
     "van": 3280
   },
@@ -305,7 +305,7 @@
     "sedan": 3150,
     "suv": 2855,
     "pickup": 3385,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 2985,
     "van": 2985
   },
@@ -315,7 +315,7 @@
     "sedan": 3325,
     "suv": 3120,
     "pickup": 3730,
-    "motorcycle": 1520,
+    "motorcycle": 300,
     "big_suv": 3330,
     "van": 3330
   },
@@ -325,7 +325,7 @@
     "sedan": 3050,
     "suv": 2760,
     "pickup": 3290,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 2890,
     "van": 2890
   },
@@ -335,7 +335,7 @@
     "sedan": 3050,
     "suv": 2830,
     "pickup": 3440,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -345,7 +345,7 @@
     "sedan": 2640,
     "suv": 2740,
     "pickup": 3270,
-    "motorcycle": 1060,
+    "motorcycle": 300,
     "big_suv": 2870,
     "van": 2870
   },
@@ -355,7 +355,7 @@
     "sedan": 3650,
     "suv": 3270,
     "pickup": 3880,
-    "motorcycle": 3500,
+    "motorcycle": 300,
     "big_suv": 3480,
     "van": 3480
   },
@@ -365,7 +365,7 @@
     "sedan": 3250,
     "suv": 3030,
     "pickup": 3640,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3240,
     "van": 3560
   },
@@ -375,7 +375,7 @@
     "sedan": 3250,
     "suv": 3030,
     "pickup": 3640,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3240,
     "van": 3240
   },
@@ -385,7 +385,7 @@
     "sedan": 3050,
     "suv": 2805,
     "pickup": 3335,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 2935,
     "van": 2935
   },
@@ -395,7 +395,7 @@
     "sedan": 3150,
     "suv": 2830,
     "pickup": 3440,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -405,7 +405,7 @@
     "sedan": 3150,
     "suv": 2830,
     "pickup": 3335,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 2935,
     "van": 2935
   },
@@ -415,7 +415,7 @@
     "sedan": 3250,
     "suv": 3150,
     "pickup": 3760,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3360,
     "van": 3360
   },
@@ -425,7 +425,7 @@
     "sedan": 2705,
     "suv": 2805,
     "pickup": 3335,
-    "motorcycle": 1125,
+    "motorcycle": 300,
     "big_suv": 2935,
     "van": 2935
   },
@@ -435,7 +435,7 @@
     "sedan": 3250,
     "suv": 3030,
     "pickup": 3640,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3240,
     "van": 3240
   },
@@ -445,7 +445,7 @@
     "sedan": 3050,
     "suv": 2790,
     "pickup": 3400,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 3000,
     "van": 3000
   },
@@ -455,7 +455,7 @@
     "sedan": 3250,
     "suv": 3110,
     "pickup": 3640,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3240,
     "van": 3240
   },
@@ -465,7 +465,7 @@
     "sedan": 3050,
     "suv": 2830,
     "pickup": 3440,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -475,7 +475,7 @@
     "sedan": 3025,
     "suv": 2970,
     "pickup": 3480,
-    "motorcycle": 2875,
+    "motorcycle": 300,
     "big_suv": 3280,
     "van": 3280
   },
@@ -485,7 +485,7 @@
     "sedan": 3025,
     "suv": 3090,
     "pickup": 3600,
-    "motorcycle": 2875,
+    "motorcycle": 300,
     "big_suv": 3400,
     "van": 3400
   },
@@ -495,7 +495,7 @@
     "sedan": 3025,
     "suv": 3050,
     "pickup": 3560,
-    "motorcycle": 2875,
+    "motorcycle": 300,
     "big_suv": 3360,
     "van": 3360
   },
@@ -505,7 +505,7 @@
     "sedan": 3025,
     "suv": 2970,
     "pickup": 3480,
-    "motorcycle": 2875,
+    "motorcycle": 300,
     "big_suv": 3280,
     "van": 3280
   },
@@ -515,17 +515,17 @@
     "sedan": 3025,
     "suv": 3050,
     "pickup": 3560,
-    "motorcycle": 2875,
+    "motorcycle": 300,
     "big_suv": 3360,
     "van": 3360
   },
   {
     "id": "51",
     "name": "CO-WESTERN COLORADO",
-    "sedan": 3550,
+    "sedan": 3250,
     "suv": 3650,
     "pickup": 4160,
-    "motorcycle": 1990,
+    "motorcycle": 300,
     "big_suv": 3960,
     "van": 3960
   },
@@ -535,7 +535,7 @@
     "sedan": 2425,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2375,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -545,17 +545,17 @@
     "sedan": 2450,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
   {
     "id": "54",
     "name": "CT-Hartford-South",
-    "sedan": 2425,
+    "sedan": 2450,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2375,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -565,7 +565,7 @@
     "sedan": 2500,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -575,7 +575,7 @@
     "sedan": 2450,
     "suv": 2300,
     "pickup": 2800,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2550,
     "van": 2550
   },
@@ -585,7 +585,7 @@
     "sedan": 2525,
     "suv": 2350,
     "pickup": 2900,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2650,
     "van": 2650
   },
@@ -595,7 +595,7 @@
     "sedan": 2375,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -605,7 +605,7 @@
     "sedan": 2185,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 1335,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
@@ -615,7 +615,7 @@
     "sedan": 2450,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -625,7 +625,7 @@
     "sedan": 2150,
     "suv": 2250,
     "pickup": 2790,
-    "motorcycle": 1300,
+    "motorcycle": 300,
     "big_suv": 2490,
     "van": 2490
   },
@@ -635,7 +635,7 @@
     "sedan": 2450,
     "suv": 2530,
     "pickup": 3070,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2770,
     "van": 2770
   },
@@ -645,7 +645,7 @@
     "sedan": 2400,
     "suv": 2495,
     "pickup": 3035,
-    "motorcycle": 2380,
+    "motorcycle": 300,
     "big_suv": 2735,
     "van": 2735
   },
@@ -655,7 +655,7 @@
     "sedan": 2400,
     "suv": 2250,
     "pickup": 2790,
-    "motorcycle": 2380,
+    "motorcycle": 300,
     "big_suv": 2490,
     "van": 2490
   },
@@ -665,7 +665,7 @@
     "sedan": 2375,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -675,7 +675,7 @@
     "sedan": 2375,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -685,7 +685,7 @@
     "sedan": 2375,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -695,7 +695,7 @@
     "sedan": 2325,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
@@ -705,7 +705,7 @@
     "sedan": 2325,
     "suv": 2320,
     "pickup": 2860,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2560,
     "van": 2560
   },
@@ -715,17 +715,17 @@
     "sedan": 2325,
     "suv": 2320,
     "pickup": 2860,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2560,
     "van": 2560
   },
   {
     "id": "71",
     "name": "FL-MIAMI SOUTH",
-    "sedan": 2350,
+    "sedan": 2325,
     "suv": 2320,
     "pickup": 2860,
-    "motorcycle": 2350,
+    "motorcycle": 300,
     "big_suv": 2560,
     "van": 2560
   },
@@ -735,37 +735,37 @@
     "sedan": 2500,
     "suv": 2355,
     "pickup": 2895,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2595,
     "van": 2595
   },
   {
     "id": "73",
     "name": "FL-ORLANDO",
-    "sedan": 2115,
+    "sedan": 2450,
     "suv": 2215,
     "pickup": 2755,
-    "motorcycle": 1265,
+    "motorcycle": 300,
     "big_suv": 2455,
     "van": 2455
   },
   {
     "id": "74",
     "name": "FL-ORLANDO NORTH",
-    "sedan": 2150,
+    "sedan": 2450,
     "suv": 2250,
     "pickup": 2790,
-    "motorcycle": 1300,
+    "motorcycle": 300,
     "big_suv": 2490,
     "van": 2490
   },
   {
     "id": "75",
     "name": "FL-ORLANDO SOUTH",
-    "sedan": 2185,
+    "sedan": 2450,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 1335,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
@@ -775,17 +775,17 @@
     "sedan": 2600,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
   {
     "id": "77",
     "name": "FL-PUNTA GORDA",
-    "sedan": 2150,
+    "sedan": 2500,
     "suv": 2250,
     "pickup": 2790,
-    "motorcycle": 1300,
+    "motorcycle": 300,
     "big_suv": 2490,
     "van": 2490
   },
@@ -795,47 +795,47 @@
     "sedan": 2475,
     "suv": 2355,
     "pickup": 2895,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2595,
     "van": 2595
   },
   {
     "id": "79",
     "name": "FL-TAMPA",
-    "sedan": 2115,
+    "sedan": 2475,
     "suv": 2215,
     "pickup": 2720,
-    "motorcycle": 1090,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
   {
     "id": "80",
     "name": "FL-WEST PALM BEACH",
-    "sedan": 2220,
+    "sedan": 2475,
     "suv": 2320,
     "pickup": 2860,
-    "motorcycle": 1230,
+    "motorcycle": 300,
     "big_suv": 2560,
     "van": 2560
   },
   {
     "id": "81",
     "name": "GA-ATLANTA",
-    "sedan": 2450,
+    "sedan": 2425,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
   {
     "id": "82",
     "name": "GA-ATLANTA EAST",
-    "sedan": 2475,
+    "sedan": 2450,
     "suv": 2320,
     "pickup": 2860,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2560,
     "van": 2560
   },
@@ -845,7 +845,7 @@
     "sedan": 2450,
     "suv": 2425,
     "pickup": 2965,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2665,
     "van": 2665
   },
@@ -855,7 +855,7 @@
     "sedan": 2450,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
@@ -865,7 +865,7 @@
     "sedan": 2450,
     "suv": 2355,
     "pickup": 2895,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2595,
     "van": 2595
   },
@@ -875,7 +875,7 @@
     "sedan": 2450,
     "suv": 2425,
     "pickup": 2965,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2665,
     "van": 2665
   },
@@ -885,17 +885,17 @@
     "sedan": 2425,
     "suv": 2320,
     "pickup": 3200,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2925,
     "van": 2925
   },
   {
     "id": "88",
     "name": "GA-MACON",
-    "sedan": 2425,
+    "sedan": 2400,
     "suv": 2355,
     "pickup": 2895,
-    "motorcycle": 2350,
+    "motorcycle": 300,
     "big_suv": 2595,
     "van": 2595
   },
@@ -905,7 +905,7 @@
     "sedan": 2275,
     "suv": 2040,
     "pickup": 2510,
-    "motorcycle": 2275,
+    "motorcycle": 300,
     "big_suv": 2210,
     "van": 2210
   },
@@ -915,7 +915,7 @@
     "sedan": 2425,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2375,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -925,7 +925,7 @@
     "sedan": 2800,
     "suv": 2900,
     "pickup": 3450,
-    "motorcycle": 1800,
+    "motorcycle": 300,
     "big_suv": 3100,
     "van": 3100
   },
@@ -935,17 +935,17 @@
     "sedan": 2800,
     "suv": 2900,
     "pickup": 3400,
-    "motorcycle": 1750,
+    "motorcycle": 300,
     "big_suv": 3150,
     "van": 3150
   },
   {
     "id": "91",
     "name": "IA-Crashedtoys Eldridge",
-    "sedan": 2700,
+    "sedan": 2850,
     "suv": 2800,
     "pickup": 3350,
-    "motorcycle": 1700,
+    "motorcycle": 300,
     "big_suv": 3100,
     "van": 3100
   },
@@ -955,7 +955,7 @@
     "sedan": 2700,
     "suv": 2800,
     "pickup": 3300,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 3050,
     "van": 3050
   },
@@ -965,7 +965,7 @@
     "sedan": 2775,
     "suv": 2800,
     "pickup": 3350,
-    "motorcycle": 2675,
+    "motorcycle": 300,
     "big_suv": 3100,
     "van": 3100
   },
@@ -975,7 +975,7 @@
     "sedan": 3350,
     "suv": 3100,
     "pickup": 3750,
-    "motorcycle": 3350,
+    "motorcycle": 300,
     "big_suv": 3350,
     "van": 3350
   },
@@ -985,7 +985,7 @@
     "sedan": 2555,
     "suv": 2650,
     "pickup": 3260,
-    "motorcycle": 2555,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
@@ -995,7 +995,7 @@
     "sedan": 2555,
     "suv": 2650,
     "pickup": 3260,
-    "motorcycle": 2555,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
@@ -1005,17 +1005,17 @@
     "sedan": 2555,
     "suv": 2650,
     "pickup": 3190,
-    "motorcycle": 2555,
+    "motorcycle": 300,
     "big_suv": 2940,
     "van": 2940
   },
   {
     "id": "98",
     "name": "IL-LINCOLN",
-    "sedan": 2675,
+    "sedan": 2825,
     "suv": 2790,
     "pickup": 3330,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -1025,7 +1025,7 @@
     "sedan": 2675,
     "suv": 2620,
     "pickup": 3300,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 3050,
     "van": 3050
   },
@@ -1035,7 +1035,7 @@
     "sedan": 2725,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
@@ -1045,7 +1045,7 @@
     "sedan": 2480,
     "suv": 2580,
     "pickup": 3120,
-    "motorcycle": 1440,
+    "motorcycle": 300,
     "big_suv": 2870,
     "van": 2870
   },
@@ -1055,7 +1055,7 @@
     "sedan": 2725,
     "suv": 2750,
     "pickup": 3290,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -1065,7 +1065,7 @@
     "sedan": 2555,
     "suv": 2565,
     "pickup": 3105,
-    "motorcycle": 2555,
+    "motorcycle": 300,
     "big_suv": 2855,
     "van": 2855
   },
@@ -1075,7 +1075,7 @@
     "sedan": 2675,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
@@ -1085,7 +1085,7 @@
     "sedan": 2555,
     "suv": 2685,
     "pickup": 3125,
-    "motorcycle": 2555,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
@@ -1095,7 +1095,7 @@
     "sedan": 2675,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2970,
     "van": 2975
   },
@@ -1105,7 +1105,7 @@
     "sedan": 2675,
     "suv": 2650,
     "pickup": 3190,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2940,
     "van": 2940
   },
@@ -1115,7 +1115,7 @@
     "sedan": 2625,
     "suv": 2650,
     "pickup": 3190,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2940,
     "van": 2940
   },
@@ -1125,7 +1125,7 @@
     "sedan": 2775,
     "suv": 2810,
     "pickup": 3320,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 3120,
     "van": 3120
   },
@@ -1135,27 +1135,27 @@
     "sedan": 2825,
     "suv": 2610,
     "pickup": 3120,
-    "motorcycle": 2725,
+    "motorcycle": 300,
     "big_suv": 2920,
     "van": 2920
   },
   {
     "id": "111",
     "name": "KY-ASHLAND",
-    "sedan": 2620,
+    "sedan": 2875,
     "suv": 2720,
     "pickup": 3260,
-    "motorcycle": 1720,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
   {
     "id": "112",
     "name": "KY-BOWLING GREEN",
-    "sedan": 2690,
+    "sedan": 2725,
     "suv": 2790,
     "pickup": 3330,
-    "motorcycle": 1790,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -1165,7 +1165,7 @@
     "sedan": 2700,
     "suv": 2775,
     "pickup": 3400,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 3150,
     "van": 3150
   },
@@ -1175,7 +1175,7 @@
     "sedan": 2700,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
@@ -1185,7 +1185,7 @@
     "sedan": 2700,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
@@ -1195,17 +1195,17 @@
     "sedan": 2700,
     "suv": 2725,
     "pickup": 3260,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
   {
     "id": "116",
     "name": "KY-PADUCAH",
-    "sedan": 2830,
+    "sedan": 2950,
     "suv": 2930,
     "pickup": 3470,
-    "motorcycle": 1580,
+    "motorcycle": 300,
     "big_suv": 3220,
     "van": 3220
   },
@@ -1215,7 +1215,7 @@
     "sedan": 2700,
     "suv": 2720,
     "pickup": 3260,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
@@ -1225,7 +1225,7 @@
     "sedan": 2550,
     "suv": 2505,
     "pickup": 2995,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2795,
     "van": 2795
   },
@@ -1235,17 +1235,17 @@
     "sedan": 2575,
     "suv": 2540,
     "pickup": 3030,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2830,
     "van": 2830
   },
   {
     "id": "118",
     "name": "LA-BATON ROUGE",
-    "sedan": 2625,
+    "sedan": 2575,
     "suv": 2575,
     "pickup": 3065,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2865,
     "van": 2865
   },
@@ -1255,17 +1255,17 @@
     "sedan": 2575,
     "suv": 2450,
     "pickup": 2900,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2700,
     "van": 2700
   },
   {
     "id": "120",
     "name": "LA-SHREVEPORT",
-    "sedan": 2590,
+    "sedan": 2600,
     "suv": 2505,
     "pickup": 2995,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2795,
     "van": 2795
   },
@@ -1275,17 +1275,17 @@
     "sedan": 2575,
     "suv": 2405,
     "pickup": 2945,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2695,
     "van": 2695
   },
   {
     "id": "124",
     "name": "MA-BOSTON SHIRLEY",
-    "sedan": 2575,
+    "sedan": 2650,
     "suv": 2405,
     "pickup": 2945,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2695,
     "van": 2695
   },
@@ -1295,7 +1295,7 @@
     "sedan": 2575,
     "suv": 2450,
     "pickup": 3000,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2500,
     "van": 2750
   },
@@ -1305,7 +1305,7 @@
     "sedan": 2575,
     "suv": 2405,
     "pickup": 2945,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2695,
     "van": 2695
   },
@@ -1315,7 +1315,7 @@
     "sedan": 2575,
     "suv": 2405,
     "pickup": 2945,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2695,
     "van": 2695
   },
@@ -1325,7 +1325,7 @@
     "sedan": 2575,
     "suv": 2405,
     "pickup": 2945,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2695,
     "van": 2695
   },
@@ -1335,7 +1335,7 @@
     "sedan": 2575,
     "suv": 2545,
     "pickup": 3085,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2835,
     "van": 2835
   },
@@ -1345,17 +1345,17 @@
     "sedan": 2270,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 1370,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
   {
     "id": "130",
     "name": "MD-BALTIMORE",
-    "sedan": 2550,
+    "sedan": 2525,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -1365,7 +1365,7 @@
     "sedan": 2500,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -1375,7 +1375,7 @@
     "sedan": 2500,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -1385,7 +1385,7 @@
     "sedan": 2500,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -1395,7 +1395,7 @@
     "sedan": 2550,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -1405,7 +1405,7 @@
     "sedan": 2230,
     "suv": 2330,
     "pickup": 2910,
-    "motorcycle": 1330,
+    "motorcycle": 300,
     "big_suv": 2580,
     "van": 2580
   },
@@ -1415,7 +1415,7 @@
     "sedan": 2675,
     "suv": 2620,
     "pickup": 3160,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2910,
     "van": 2910
   },
@@ -1425,7 +1425,7 @@
     "sedan": 2655,
     "suv": 2755,
     "pickup": 3435,
-    "motorcycle": 1475,
+    "motorcycle": 300,
     "big_suv": 3185,
     "van": 3185
   },
@@ -1435,7 +1435,7 @@
     "sedan": 2675,
     "suv": 2615,
     "pickup": 3155,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -1445,7 +1445,7 @@
     "sedan": 2675,
     "suv": 2670,
     "pickup": 3210,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2960,
     "van": 2960
   },
@@ -1455,7 +1455,7 @@
     "sedan": 2775,
     "suv": 2975,
     "pickup": 3515,
-    "motorcycle": 2675,
+    "motorcycle": 300,
     "big_suv": 3265,
     "van": 3265
   },
@@ -1465,7 +1465,7 @@
     "sedan": 2825,
     "suv": 2835,
     "pickup": 3375,
-    "motorcycle": 2700,
+    "motorcycle": 300,
     "big_suv": 3125,
     "van": 3125
   },
@@ -1475,7 +1475,7 @@
     "sedan": 2775,
     "suv": 2940,
     "pickup": 3480,
-    "motorcycle": 2675,
+    "motorcycle": 300,
     "big_suv": 3230,
     "van": 3230
   },
@@ -1485,7 +1485,7 @@
     "sedan": 2825,
     "suv": 2840,
     "pickup": 3520,
-    "motorcycle": 2775,
+    "motorcycle": 300,
     "big_suv": 3270,
     "van": 3270
   },
@@ -1495,7 +1495,7 @@
     "sedan": 2775,
     "suv": 2800,
     "pickup": 3450,
-    "motorcycle": 2675,
+    "motorcycle": 300,
     "big_suv": 3200,
     "van": 3200
   },
@@ -1505,7 +1505,7 @@
     "sedan": 3125,
     "suv": 3115,
     "pickup": 3655,
-    "motorcycle": 3025,
+    "motorcycle": 300,
     "big_suv": 3405,
     "van": 3405
   },
@@ -1515,7 +1515,7 @@
     "sedan": 2775,
     "suv": 2785,
     "pickup": 3465,
-    "motorcycle": 2675,
+    "motorcycle": 300,
     "big_suv": 3215,
     "van": 3215
   },
@@ -1525,7 +1525,7 @@
     "sedan": 2725,
     "suv": 2825,
     "pickup": 3365,
-    "motorcycle": 1825,
+    "motorcycle": 300,
     "big_suv": 3115,
     "van": 3115
   },
@@ -1535,17 +1535,17 @@
     "sedan": 2585,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 1685,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
   {
     "id": "148",
     "name": "MN-CRASHEDTOYS EAST BETHEL",
-    "sedan": 2535,
+    "sedan": 2650,
     "suv": 2635,
     "pickup": 3315,
-    "motorcycle": 1355,
+    "motorcycle": 300,
     "big_suv": 3065,
     "van": 3065
   },
@@ -1555,7 +1555,7 @@
     "sedan": 2660,
     "suv": 2760,
     "pickup": 3300,
-    "motorcycle": 1760,
+    "motorcycle": 300,
     "big_suv": 3050,
     "van": 3050
   },
@@ -1565,17 +1565,17 @@
     "sedan": 2825,
     "suv": 2760,
     "pickup": 3440,
-    "motorcycle": 2725,
+    "motorcycle": 300,
     "big_suv": 3190,
     "van": 3190
   },
   {
     "id": "152",
     "name": "MN-MINNEAPOLIS NORTH",
-    "sedan": 2825,
+    "sedan": 2850,
     "suv": 2760,
     "pickup": 3300,
-    "motorcycle": 2725,
+    "motorcycle": 300,
     "big_suv": 3050,
     "van": 3050
   },
@@ -1585,17 +1585,17 @@
     "sedan": 2875,
     "suv": 2860,
     "pickup": 3400,
-    "motorcycle": 2775,
+    "motorcycle": 300,
     "big_suv": 3150,
     "van": 3150
   },
   {
     "id": "154",
     "name": "MO-COLUMBIA",
-    "sedan": 2425,
+    "sedan": 2775,
     "suv": 2825,
     "pickup": 3365,
-    "motorcycle": 2350,
+    "motorcycle": 300,
     "big_suv": 3115,
     "van": 3115
   },
@@ -1605,7 +1605,7 @@
     "sedan": 2850,
     "suv": 2750,
     "pickup": 3240,
-    "motorcycle": 2775,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -1615,7 +1615,7 @@
     "sedan": 2775,
     "suv": 2750,
     "pickup": 3240,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 3040,
     "van": 3040
   },
@@ -1625,7 +1625,7 @@
     "sedan": 2725,
     "suv": 2685,
     "pickup": 3225,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2975,
     "van": 2975
   },
@@ -1635,7 +1635,7 @@
     "sedan": 2575,
     "suv": 2645,
     "pickup": 3100,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2900,
     "van": 2900
   },
@@ -1645,7 +1645,7 @@
     "sedan": 2550,
     "suv": 2540,
     "pickup": 3030,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2830,
     "van": 2830
   },
@@ -1655,7 +1655,7 @@
     "sedan": 2575,
     "suv": 2540,
     "pickup": 3030,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2830,
     "van": 2830
   },
@@ -1665,7 +1665,7 @@
     "sedan": 3750,
     "suv": 3700,
     "pickup": 4240,
-    "motorcycle": 3750,
+    "motorcycle": 300,
     "big_suv": 3990,
     "van": 3990
   },
@@ -1675,7 +1675,7 @@
     "sedan": 3650,
     "suv": 3670,
     "pickup": 4260,
-    "motorcycle": 3650,
+    "motorcycle": 300,
     "big_suv": 3860,
     "van": 3860
   },
@@ -1685,17 +1685,17 @@
     "sedan": 3500,
     "suv": 3560,
     "pickup": 4240,
-    "motorcycle": 3500,
+    "motorcycle": 300,
     "big_suv": 3990,
     "van": 3990
   },
   {
     "id": "164",
     "name": "NC-ASHEVILLE",
-    "sedan": 2600,
+    "sedan": 2700,
     "suv": 2390,
     "pickup": 2930,
-    "motorcycle": 2550,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
@@ -1705,7 +1705,7 @@
     "sedan": 2500,
     "suv": 2390,
     "pickup": 2930,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
@@ -1715,7 +1715,7 @@
     "sedan": 2500,
     "suv": 2530,
     "pickup": 3110,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2810,
     "van": 2810
   },
@@ -1725,7 +1725,7 @@
     "sedan": 2500,
     "suv": 2390,
     "pickup": 2920,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2620,
     "van": 2620
   },
@@ -1735,7 +1735,7 @@
     "sedan": 2150,
     "suv": 2150,
     "pickup": 2750,
-    "motorcycle": 1300,
+    "motorcycle": 300,
     "big_suv": 2450,
     "van": 2450
   },
@@ -1745,7 +1745,7 @@
     "sedan": 2500,
     "suv": 2390,
     "pickup": 2930,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
@@ -1755,17 +1755,17 @@
     "sedan": 2500,
     "suv": 2350,
     "pickup": 2930,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
   {
     "id": "169",
     "name": "NC-LUMBERTON",
-    "sedan": 2115,
+    "sedan": 2500,
     "suv": 2215,
     "pickup": 2755,
-    "motorcycle": 1265,
+    "motorcycle": 300,
     "big_suv": 2455,
     "van": 2455
   },
@@ -1775,7 +1775,7 @@
     "sedan": 2500,
     "suv": 2355,
     "pickup": 2885,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2585,
     "van": 2585
   },
@@ -1785,7 +1785,7 @@
     "sedan": 2500,
     "suv": 2320,
     "pickup": 2840,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2540,
     "van": 2540
   },
@@ -1795,17 +1795,17 @@
     "sedan": 2500,
     "suv": 2530,
     "pickup": 3110,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2810,
     "van": 2810
   },
   {
     "id": "173",
     "name": "NC-WILMINGTON",
-    "sedan": 2185,
+    "sedan": 2575,
     "suv": 2285,
     "pickup": 2825,
-    "motorcycle": 1335,
+    "motorcycle": 300,
     "big_suv": 2525,
     "van": 2525
   },
@@ -1815,7 +1815,7 @@
     "sedan": 3610,
     "suv": 3710,
     "pickup": 4750,
-    "motorcycle": 2390,
+    "motorcycle": 300,
     "big_suv": 4500,
     "van": 4500
   },
@@ -1825,7 +1825,7 @@
     "sedan": 3025,
     "suv": 3310,
     "pickup": 3950,
-    "motorcycle": 2925,
+    "motorcycle": 300,
     "big_suv": 3700,
     "van": 3700
   },
@@ -1835,7 +1835,7 @@
     "sedan": 2825,
     "suv": 2790,
     "pickup": 3540,
-    "motorcycle": 2725,
+    "motorcycle": 300,
     "big_suv": 3290,
     "van": 3290
   },
@@ -1845,7 +1845,7 @@
     "sedan": 2825,
     "suv": 3000,
     "pickup": 3540,
-    "motorcycle": 2725,
+    "motorcycle": 300,
     "big_suv": 3290,
     "van": 3290
   },
@@ -1855,7 +1855,7 @@
     "sedan": 2600,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -1865,7 +1865,7 @@
     "sedan": 2600,
     "suv": 2475,
     "pickup": 3015,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2765,
     "van": 2765
   },
@@ -1875,7 +1875,7 @@
     "sedan": 2600,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -1885,7 +1885,7 @@
     "sedan": 2325,
     "suv": 2125,
     "pickup": 2595,
-    "motorcycle": 2275,
+    "motorcycle": 300,
     "big_suv": 2345,
     "van": 2345
   },
@@ -1895,7 +1895,7 @@
     "sedan": 2350,
     "suv": 2120,
     "pickup": 2590,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2340,
     "van": 2340
   },
@@ -1905,7 +1905,7 @@
     "sedan": 2350,
     "suv": 2125,
     "pickup": 2665,
-    "motorcycle": 2300,
+    "motorcycle": 300,
     "big_suv": 2415,
     "van": 2415
   },
@@ -1915,7 +1915,7 @@
     "sedan": 2400,
     "suv": 2175,
     "pickup": 2715,
-    "motorcycle": 2365,
+    "motorcycle": 300,
     "big_suv": 2465,
     "van": 2465
   },
@@ -1925,7 +1925,7 @@
     "sedan": 2400,
     "suv": 2175,
     "pickup": 2715,
-    "motorcycle": 2365,
+    "motorcycle": 300,
     "big_suv": 2465,
     "van": 2465
   },
@@ -1935,7 +1935,7 @@
     "sedan": 2325,
     "suv": 2090,
     "pickup": 2560,
-    "motorcycle": 2275,
+    "motorcycle": 300,
     "big_suv": 2310,
     "van": 2310
   },
@@ -1945,7 +1945,7 @@
     "sedan": 2375,
     "suv": 2390,
     "pickup": 2930,
-    "motorcycle": 2345,
+    "motorcycle": 300,
     "big_suv": 2680,
     "van": 2680
   },
@@ -1955,7 +1955,7 @@
     "sedan": 2350,
     "suv": 2130,
     "pickup": 2670,
-    "motorcycle": 2300,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -1965,7 +1965,7 @@
     "sedan": 2350,
     "suv": 2130,
     "pickup": 2670,
-    "motorcycle": 2300,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -1975,7 +1975,7 @@
     "sedan": 2400,
     "suv": 2265,
     "pickup": 2805,
-    "motorcycle": 2365,
+    "motorcycle": 300,
     "big_suv": 2555,
     "van": 2555
   },
@@ -1985,7 +1985,7 @@
     "sedan": 2350,
     "suv": 2160,
     "pickup": 2590,
-    "motorcycle": 2300,
+    "motorcycle": 300,
     "big_suv": 2340,
     "van": 2340
   },
@@ -1995,17 +1995,17 @@
     "sedan": 2875,
     "suv": 2960,
     "pickup": 3440,
-    "motorcycle": 2675,
+    "motorcycle": 300,
     "big_suv": 3240,
     "van": 3240
   },
   {
     "id": "192",
     "name": "NV-LAS VEGAS",
-    "sedan": 3225,
+    "sedan": 3175,
     "suv": 3110,
     "pickup": 3720,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3320,
     "van": 3320
   },
@@ -2015,7 +2015,7 @@
     "sedan": 3400,
     "suv": 3320,
     "pickup": 3930,
-    "motorcycle": 3350,
+    "motorcycle": 300,
     "big_suv": 3530,
     "van": 3530
   },
@@ -2025,7 +2025,7 @@
     "sedan": 2475,
     "suv": 2300,
     "pickup": 2840,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2590,
     "van": 2590
   },
@@ -2035,7 +2035,7 @@
     "sedan": 2700,
     "suv": 2545,
     "pickup": 3085,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2835,
     "van": 2835
   },
@@ -2045,7 +2045,7 @@
     "sedan": 2450,
     "suv": 2265,
     "pickup": 2805,
-    "motorcycle": 2390,
+    "motorcycle": 300,
     "big_suv": 2555,
     "van": 2555
   },
@@ -2055,7 +2055,7 @@
     "sedan": 2775,
     "suv": 2280,
     "pickup": 2820,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2570,
     "van": 2570
   },
@@ -2065,7 +2065,7 @@
     "sedan": 2425,
     "suv": 2230,
     "pickup": 2770,
-    "motorcycle": 2375,
+    "motorcycle": 300,
     "big_suv": 2520,
     "van": 2520
   },
@@ -2075,7 +2075,7 @@
     "sedan": 2650,
     "suv": 2440,
     "pickup": 2910,
-    "motorcycle": 2550,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -2085,7 +2085,7 @@
     "sedan": 2525,
     "suv": 2510,
     "pickup": 3050,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -2095,17 +2095,17 @@
     "sedan": 2440,
     "suv": 2540,
     "pickup": 3080,
-    "motorcycle": 1540,
+    "motorcycle": 300,
     "big_suv": 2830,
     "van": 3430
   },
   {
     "id": "200",
     "name": "OH-AKRON CANTON",
-    "sedan": 2750,
+    "sedan": 2675,
     "suv": 2545,
     "pickup": 3085,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2835,
     "van": 2835
   },
@@ -2115,7 +2115,7 @@
     "sedan": 2750,
     "suv": 2510,
     "pickup": 3050,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -2125,7 +2125,7 @@
     "sedan": 2750,
     "suv": 2615,
     "pickup": 3155,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -2135,7 +2135,7 @@
     "sedan": 2750,
     "suv": 2615,
     "pickup": 3155,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -2145,7 +2145,7 @@
     "sedan": 2750,
     "suv": 2615,
     "pickup": 3155,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -2155,7 +2155,7 @@
     "sedan": 2750,
     "suv": 2580,
     "pickup": 3120,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2870,
     "van": 2870
   },
@@ -2165,7 +2165,7 @@
     "sedan": 2750,
     "suv": 2650,
     "pickup": 3190,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 2940,
     "van": 2940
   },
@@ -2175,7 +2175,7 @@
     "sedan": 2675,
     "suv": 2525,
     "pickup": 3015,
-    "motorcycle": 1285,
+    "motorcycle": 300,
     "big_suv": 2815,
     "van": 2815
   },
@@ -2185,7 +2185,7 @@
     "sedan": 2750,
     "suv": 2540,
     "pickup": 3030,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 2830,
     "van": 2830
   },
@@ -2195,7 +2195,7 @@
     "sedan": 3275,
     "suv": 3350,
     "pickup": 3960,
-    "motorcycle": 3200,
+    "motorcycle": 300,
     "big_suv": 3560,
     "van": 3560
   },
@@ -2205,7 +2205,7 @@
     "sedan": 3150,
     "suv": 3510,
     "pickup": 4120,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3720,
     "van": 3720
   },
@@ -2215,7 +2215,7 @@
     "sedan": 3150,
     "suv": 3390,
     "pickup": 4000,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3600,
     "van": 3600
   },
@@ -2225,7 +2225,7 @@
     "sedan": 3200,
     "suv": 3390,
     "pickup": 4000,
-    "motorcycle": 3175,
+    "motorcycle": 300,
     "big_suv": 3600,
     "van": 3600
   },
@@ -2235,7 +2235,7 @@
     "sedan": 3150,
     "suv": 3430,
     "pickup": 4040,
-    "motorcycle": 3150,
+    "motorcycle": 300,
     "big_suv": 3640,
     "van": 3640
   },
@@ -2245,7 +2245,7 @@
     "sedan": 3170,
     "suv": 3270,
     "pickup": 3880,
-    "motorcycle": 1670,
+    "motorcycle": 300,
     "big_suv": 3480,
     "van": 3480
   },
@@ -2255,7 +2255,7 @@
     "sedan": 0,
     "suv": 0,
     "pickup": 0,
-    "motorcycle": 0,
+    "motorcycle": 300,
     "big_suv": 0,
     "van": 0
   },
@@ -2265,7 +2265,7 @@
     "sedan": 2650,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -2275,7 +2275,7 @@
     "sedan": 2400,
     "suv": 2230,
     "pickup": 2770,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2520,
     "van": 2520
   },
@@ -2285,7 +2285,7 @@
     "sedan": 2550,
     "suv": 2405,
     "pickup": 2945,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2695,
     "van": 2695
   },
@@ -2295,7 +2295,7 @@
     "sedan": 2700,
     "suv": 2615,
     "pickup": 3155,
-    "motorcycle": 2550,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -2305,7 +2305,7 @@
     "sedan": 2475,
     "suv": 2300,
     "pickup": 2840,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2590,
     "van": 2590
   },
@@ -2315,7 +2315,7 @@
     "sedan": 2400,
     "suv": 2260,
     "pickup": 2800,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2550,
     "van": 2550
   },
@@ -2325,7 +2325,7 @@
     "sedan": 2400,
     "suv": 2260,
     "pickup": 2800,
-    "motorcycle": 2325,
+    "motorcycle": 300,
     "big_suv": 2550,
     "van": 2550
   },
@@ -2335,7 +2335,7 @@
     "sedan": 2600,
     "suv": 2580,
     "pickup": 3120,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2870,
     "van": 2870
   },
@@ -2345,7 +2345,7 @@
     "sedan": 2650,
     "suv": 2545,
     "pickup": 3085,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2835,
     "van": 2835
   },
@@ -2355,7 +2355,7 @@
     "sedan": 2650,
     "suv": 2545,
     "pickup": 3085,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2835,
     "van": 2835
   },
@@ -2365,7 +2365,7 @@
     "sedan": 2650,
     "suv": 2545,
     "pickup": 3085,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2835,
     "van": 2835
   },
@@ -2375,7 +2375,7 @@
     "sedan": 2450,
     "suv": 2335,
     "pickup": 2875,
-    "motorcycle": 2375,
+    "motorcycle": 300,
     "big_suv": 2625,
     "van": 2625
   },
@@ -2385,7 +2385,7 @@
     "sedan": 2475,
     "suv": 2340,
     "pickup": 2880,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
@@ -2395,7 +2395,7 @@
     "sedan": 2165,
     "suv": 2265,
     "pickup": 2805,
-    "motorcycle": 1125,
+    "motorcycle": 300,
     "big_suv": 2555,
     "van": 2555
   },
@@ -2405,7 +2405,7 @@
     "sedan": 2550,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -2415,7 +2415,7 @@
     "sedan": 2550,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -2425,7 +2425,7 @@
     "sedan": 2825,
     "suv": 2110,
     "pickup": 2580,
-    "motorcycle": 2700,
+    "motorcycle": 300,
     "big_suv": 2280,
     "van": 2280
   },
@@ -2435,7 +2435,7 @@
     "sedan": 2425,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2350,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -2445,7 +2445,7 @@
     "sedan": 2450,
     "suv": 2180,
     "pickup": 2720,
-    "motorcycle": 2425,
+    "motorcycle": 300,
     "big_suv": 2420,
     "van": 2420
   },
@@ -2455,7 +2455,7 @@
     "sedan": 2700,
     "suv": 2180,
     "pickup": 2650,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2350,
     "van": 2350
   },
@@ -2465,7 +2465,7 @@
     "sedan": 2450,
     "suv": 2250,
     "pickup": 2790,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2490,
     "van": 2490
   },
@@ -2475,7 +2475,7 @@
     "sedan": 2115,
     "suv": 2215,
     "pickup": 2755,
-    "motorcycle": 1265,
+    "motorcycle": 300,
     "big_suv": 2455,
     "van": 2455
   },
@@ -2485,7 +2485,7 @@
     "sedan": 2450,
     "suv": 2250,
     "pickup": 2790,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2490,
     "van": 2490
   },
@@ -2495,7 +2495,7 @@
     "sedan": 3025,
     "suv": 3310,
     "pickup": 4030,
-    "motorcycle": 2925,
+    "motorcycle": 300,
     "big_suv": 3780,
     "van": 3780
   },
@@ -2505,7 +2505,7 @@
     "sedan": 2625,
     "suv": 2430,
     "pickup": 2970,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2670,
     "van": 2670
   },
@@ -2515,7 +2515,7 @@
     "sedan": 2550,
     "suv": 2530,
     "pickup": 3070,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2770,
     "van": 2770
   },
@@ -2525,7 +2525,7 @@
     "sedan": 2650,
     "suv": 2390,
     "pickup": 2930,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
@@ -2535,7 +2535,7 @@
     "sedan": 2550,
     "suv": 2390,
     "pickup": 2930,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2630,
     "van": 2630
   },
@@ -2545,7 +2545,7 @@
     "sedan": 2625,
     "suv": 2530,
     "pickup": 2960,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2760,
     "van": 2760
   },
@@ -2555,7 +2555,7 @@
     "sedan": 2800,
     "suv": 2650,
     "pickup": 3160,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 2960,
     "van": 2960
   },
@@ -2565,7 +2565,7 @@
     "sedan": 2700,
     "suv": 2610,
     "pickup": 3120,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2920,
     "van": 2920
   },
@@ -2575,7 +2575,7 @@
     "sedan": 2525,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2585,7 +2585,7 @@
     "sedan": 2550,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2500,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2595,7 +2595,7 @@
     "sedan": 2550,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2460,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2605,7 +2605,7 @@
     "sedan": 2550,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2460,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2615,7 +2615,7 @@
     "sedan": 2550,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2460,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2625,7 +2625,7 @@
     "sedan": 2700,
     "suv": 2610,
     "pickup": 3040,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 2840,
     "van": 2840
   },
@@ -2635,7 +2635,7 @@
     "sedan": 2550,
     "suv": 2490,
     "pickup": 3000,
-    "motorcycle": 2460,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -2645,7 +2645,7 @@
     "sedan": 2455,
     "suv": 2210,
     "pickup": 2720,
-    "motorcycle": 2375,
+    "motorcycle": 300,
     "big_suv": 2520,
     "van": 2520
   },
@@ -2655,7 +2655,7 @@
     "sedan": 2550,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2665,7 +2665,7 @@
     "sedan": 2725,
     "suv": 2690,
     "pickup": 3070,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2870,
     "van": 2870
   },
@@ -2675,7 +2675,7 @@
     "sedan": 2550,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2685,7 +2685,7 @@
     "sedan": 2625,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2560,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2695,7 +2695,7 @@
     "sedan": 2725,
     "suv": 2530,
     "pickup": 3040,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 2840,
     "van": 2840
   },
@@ -2705,7 +2705,7 @@
     "sedan": 2575,
     "suv": 2490,
     "pickup": 3000,
-    "motorcycle": 2475,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -2715,7 +2715,7 @@
     "sedan": 2600,
     "suv": 2410,
     "pickup": 2920,
-    "motorcycle": 2525,
+    "motorcycle": 300,
     "big_suv": 2720,
     "van": 2720
   },
@@ -2725,7 +2725,7 @@
     "sedan": 3400,
     "suv": 3310,
     "pickup": 3920,
-    "motorcycle": 3350,
+    "motorcycle": 300,
     "big_suv": 3520,
     "van": 3520
   },
@@ -2735,7 +2735,7 @@
     "sedan": 3400,
     "suv": 3310,
     "pickup": 3920,
-    "motorcycle": 3350,
+    "motorcycle": 300,
     "big_suv": 3520,
     "van": 3520
   },
@@ -2745,7 +2745,7 @@
     "sedan": 2450,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -2755,7 +2755,7 @@
     "sedan": 2500,
     "suv": 2510,
     "pickup": 3050,
-    "motorcycle": 2450,
+    "motorcycle": 300,
     "big_suv": 2800,
     "van": 2800
   },
@@ -2765,7 +2765,7 @@
     "sedan": 2450,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -2775,7 +2775,7 @@
     "sedan": 2450,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -2785,7 +2785,7 @@
     "sedan": 2350,
     "suv": 2475,
     "pickup": 3015,
-    "motorcycle": 2350,
+    "motorcycle": 300,
     "big_suv": 2765,
     "van": 2765
   },
@@ -2795,7 +2795,7 @@
     "sedan": 2450,
     "suv": 2370,
     "pickup": 2910,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2660,
     "van": 2660
   },
@@ -2805,7 +2805,7 @@
     "sedan": 2600,
     "suv": 2615,
     "pickup": 3155,
-    "motorcycle": 2575,
+    "motorcycle": 300,
     "big_suv": 2905,
     "van": 2905
   },
@@ -2815,7 +2815,7 @@
     "sedan": 2400,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 2400,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -2825,7 +2825,7 @@
     "sedan": 2575,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 2550,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -2835,17 +2835,17 @@
     "sedan": 2350,
     "suv": 2425,
     "pickup": 2965,
-    "motorcycle": 2350,
+    "motorcycle": 300,
     "big_suv": 2715,
     "van": 2715
   },
   {
     "id": "274",
     "name": "VA-TIDEWATER",
-    "sedan": 550,
+    "sedan": 2550,
     "suv": 2440,
     "pickup": 2980,
-    "motorcycle": 550,
+    "motorcycle": 300,
     "big_suv": 2730,
     "van": 2730
   },
@@ -2855,7 +2855,7 @@
     "sedan": 2550,
     "suv": 2650,
     "pickup": 3190,
-    "motorcycle": 1650,
+    "motorcycle": 300,
     "big_suv": 2940,
     "van": 2940
   },
@@ -2865,7 +2865,7 @@
     "sedan": 2700,
     "suv": 2720,
     "pickup": 3260,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
@@ -2875,7 +2875,7 @@
     "sedan": 2550,
     "suv": 2650,
     "pickup": 3330,
-    "motorcycle": 1370,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -2885,7 +2885,7 @@
     "sedan": 2550,
     "suv": 2650,
     "pickup": 3330,
-    "motorcycle": 1370,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -2895,7 +2895,7 @@
     "sedan": 2700,
     "suv": 2650,
     "pickup": 3330,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 3080,
     "van": 3080
   },
@@ -2905,7 +2905,7 @@
     "sedan": 3075,
     "suv": 3630,
     "pickup": 4240,
-    "motorcycle": 3075,
+    "motorcycle": 300,
     "big_suv": 3840,
     "van": 3840
   },
@@ -2915,7 +2915,7 @@
     "sedan": 3050,
     "suv": 3510,
     "pickup": 4120,
-    "motorcycle": 3050,
+    "motorcycle": 300,
     "big_suv": 3720,
     "van": 3720
   },
@@ -2925,7 +2925,7 @@
     "sedan": 3125,
     "suv": 3550,
     "pickup": 4160,
-    "motorcycle": 3125,
+    "motorcycle": 300,
     "big_suv": 3760,
     "van": 3760
   },
@@ -2935,7 +2935,7 @@
     "sedan": 3250,
     "suv": 3670,
     "pickup": 4280,
-    "motorcycle": 3175,
+    "motorcycle": 300,
     "big_suv": 3880,
     "van": 3880
   },
@@ -2945,17 +2945,17 @@
     "sedan": 3075,
     "suv": 3380,
     "pickup": 4150,
-    "motorcycle": 3075,
+    "motorcycle": 300,
     "big_suv": 3750,
     "van": 3750
   },
   {
     "id": "281",
     "name": "WA-SEATTLE-SOUTH",
-    "sedan": 3075,
+    "sedan": 3100,
     "suv": 3430,
     "pickup": 4040,
-    "motorcycle": 3075,
+    "motorcycle": 300,
     "big_suv": 3640,
     "van": 3640
   },
@@ -2965,7 +2965,7 @@
     "sedan": 3250,
     "suv": 3750,
     "pickup": 4360,
-    "motorcycle": 3175,
+    "motorcycle": 300,
     "big_suv": 3960,
     "van": 3960
   },
@@ -2975,7 +2975,7 @@
     "sedan": 2700,
     "suv": 2975,
     "pickup": 3515,
-    "motorcycle": 2650,
+    "motorcycle": 300,
     "big_suv": 3265,
     "van": 3265
   },
@@ -2985,7 +2985,7 @@
     "sedan": 2675,
     "suv": 2905,
     "pickup": 3445,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 3195,
     "van": 3195
   },
@@ -2995,7 +2995,7 @@
     "sedan": 2600,
     "suv": 2870,
     "pickup": 3410,
-    "motorcycle": 2600,
+    "motorcycle": 300,
     "big_suv": 3160,
     "van": 3160
   },
@@ -3005,7 +3005,7 @@
     "sedan": 2675,
     "suv": 2940,
     "pickup": 3480,
-    "motorcycle": 2625,
+    "motorcycle": 300,
     "big_suv": 3230,
     "van": 3230
   },
@@ -3015,7 +3015,7 @@
     "sedan": 2825,
     "suv": 2620,
     "pickup": 3300,
-    "motorcycle": 2700,
+    "motorcycle": 300,
     "big_suv": 3050,
     "van": 3050
   },
@@ -3025,7 +3025,7 @@
     "sedan": 2825,
     "suv": 2580,
     "pickup": 3120,
-    "motorcycle": 2700,
+    "motorcycle": 300,
     "big_suv": 2870,
     "van": 2870
   },
@@ -3035,17 +3035,17 @@
     "sedan": 2825,
     "suv": 2720,
     "pickup": 3260,
-    "motorcycle": 2700,
+    "motorcycle": 300,
     "big_suv": 3010,
     "van": 3010
   },
   {
     "id": "294",
     "name": "WY-CASPER",
-    "sedan": 3670,
+    "sedan": 4175,
     "suv": 3770,
     "pickup": 4490,
-    "motorcycle": 2455,
+    "motorcycle": 300,
     "big_suv": 4240,
     "van": 4240
   }

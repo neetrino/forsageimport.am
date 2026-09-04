@@ -32,11 +32,20 @@ describe("computeAuctionFee", () => {
 });
 
 describe("requiresShippingCall", () => {
-  it("flags AuctionAuto Call for price yards", () => {
-    expect(requiresShippingCall("73", "sedan")).toBe(true);
-    expect(requiresShippingCall("73", "motorcycle")).toBe(true);
-    expect(requiresShippingCall("73", "suv")).toBe(false);
+  it("flags Call for price only for ND-BISMARCK sedan", () => {
+    expect(requiresShippingCall("174", "sedan")).toBe(true);
+    expect(requiresShippingCall("174", "motorcycle")).toBe(false);
+    expect(requiresShippingCall("73", "sedan")).toBe(false);
+    expect(requiresShippingCall("73", "motorcycle")).toBe(false);
     expect(requiresShippingCall("187", "sedan")).toBe(false);
+  });
+});
+
+describe("lookupShippingFee", () => {
+  it("uses a flat $300 motorcycle shipping fee", () => {
+    expect(lookupShippingFee("187", "motorcycle")).toBe(300);
+    expect(lookupShippingFee("174", "motorcycle")).toBe(300);
+    expect(lookupShippingFee("73", "motorcycle")).toBe(300);
   });
 });
 

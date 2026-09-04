@@ -53,7 +53,7 @@
 | Boston - Massachusetts - Adesa | New York | 2575 | 2450 | — | — | — |
 | Buffalo - New Jersey - Adesa | New York | 2700 | 2575 | — | — | — |
 | Calgary - Alberta - Adesa | Toronto | Call for price | Call for price | — | — | — |
-| Chicago - Illinois - Adesa | Chicago | 2555 | Call for price | — | — | — |
+| Chicago - Illinois - Adesa | Chicago | 2555 | 2555 | — | — | — |
 | Cleveland - Ohio - Adesa | Norfolk | 2750 | 2600 | — | — | — |
 | Concord - Massachusetts - Adesa | New York | 2575 | 2450 | — | — | — |
 | Dallas - Texas - Adesa | Houston | 2550 | 2460 | — | — | — |
@@ -61,7 +61,7 @@
 | East Tennessee - Tennessee - A | Savannah | 2600 | Call for price | — | — | — |
 | Edmonton - Alberta - Adesa | Toronto | Call for price | Call for price | — | — | — |
 | Fargo - North Dakota - Adesa | Chicago | 3025 | 2875 | — | — | — |
-| Flint - Michigan - Adesa | Chicago | 2825 | Call for price | — | — | — |
+| Flint - Michigan - Adesa | Chicago | 2825 | 2700 | — | — | — |
 | Fresno - California - Adesa | Los Angeles | 3200 | 3100 | — | — | — |
 | Golden Gate - California - Adesa | Los Angeles | 800 | 700 | — | — | — |
 | Great Lakes - Michigan - Adesa | Chicago | 2825 | 2775 | — | — | — |
@@ -72,7 +72,7 @@
 | Jacksonville - Florida - Adesa | Savannah | 2375 | 2325 | — | — | — |
 | Kansas City - Missouri - Adesa | Savannah | 2775 | 2600 | — | — | — |
 | Kitchener - Ontario - Adesa | Toronto | Call for price | Call for price | — | — | — |
-| Knoxville - Tennessee - Adesa | Savannah | 2550 | Call for price | — | — | — |
+| Knoxville - Tennessee - Adesa | Savannah | 2550 | 2500 | — | — | — |
 | Lansing - Michigan - Adesa | Chicago | 2775 | 2675 | — | — | — |
 | Las Vegas - Nevada - Adesa | Los Angeles | 3175 | 3100 | — | — | — |
 | Lexington - Kentucky - Adesa | Savannah | 2700 | 2525 | — | — | — |
@@ -86,20 +86,20 @@
 | Montreal - Quebec - Adesa | Toronto | Call for price | Call for price | — | — | — |
 | NORTHWEST - Oregon - Adesa | Seattle | 3275 | 3275 | — | — | — |
 | Nashville - Tennessee - Adesa | Savannah | 2550 | 2500 | — | — | — |
-| New Jersey - New Jersey - Ade | New York | 2350 | Call for price | — | — | — |
+| New Jersey - New Jersey - Ade | New York | 2350 | 2300 | — | — | — |
 | Ocala - Florida - Adesa | Miami | 2500 | 2475 | — | — | — |
 | Orlando - Florida - Adesa | Miami | 2450 | Call for price | — | — | — |
 | Ottawa - Ontario - Adesa | Toronto | Call for price | Call for price | — | — | — |
 | Phoenix - Arizona - Adesa | Los Angeles | 3200 | 3150 | — | — | — |
 | Pittsburgh - Pennsylvania - Ade | New York | 2600 | 2500 | — | — | — |
-| Portland - Oregon - Adesa | Seattle | 3225 | Call for price | — | — | — |
+| Portland - Oregon - Adesa | Seattle | 3225 | 3150 | — | — | — |
 | Quebec - Quebec - Adesa | Toronto | Call for price | Call for price | — | — | — |
 | Québec City - Quebec - Adesa | Toronto | Call for price | Call for price | — | — | — |
 | Queen City - Ohio - Adesa | Norfolk | 2750 | 2600 | — | — | — |
 | Raleigh - North Carolina - Adesa | Norfolk | 2500 | 2450 | — | — | — |
-| Reno - deleted - Nevada - Adesa | Los Angeles | 3300 | Call for price | — | — | — |
+| Reno - deleted - Nevada - Adesa | Los Angeles | 3300 | 3350 | — | — | — |
 | Sacramento - California - Adesa | Los Angeles | 3250 | 3150 | — | — | — |
-| Salt Lake City - Utah - Adesa | Los Angeles | 3450 | Call for price | — | — | — |
+| Salt Lake City - Utah - Adesa | Los Angeles | 3450 | 3400 | — | — | — |
 | San Antonio - Texas - Adesa | Houston | 2575 | 2475 | — | — | — |
 | San Diego - California - Adesa | Los Angeles | 3080 | 3000 | — | — | — |
 | Sarasota - Florida - Adesa | Miami | 2450 | 2425 | — | — | — |
@@ -107,7 +107,7 @@
 | Shreveport - LA - Adesa - Louisi | Houston | 2590 | 2500 | — | — | — |
 | Sioux Falls - SD - Adesa - South | Chicago | 3025 | 2925 | — | — | — |
 | St. John's - Adesa - Newfoundla | Toronto | Call for price | Call for price | 1950 | 1850 | — |
-| St. Louis - MO - Adesa - Missouri | Savannah | 2725 | Call for price | — | — | — |
+| St. Louis - MO - Adesa - Missouri | Savannah | 2725 | 2575 | — | — | — |
 | Syracuse - NY - Adesa - New Yo | New York | 2525 | 2475 | — | — | — |
 | Tampa - FL - Adesa - Florida | Miami | 2450 | 2425 | — | — | — |
 | Toronto - Adesa - Ontario - Ade | Toronto | Call for price | Call for price | 325 | 225 | — |
@@ -246,7 +246,7 @@
 | OCALA - Florida - Copart | Miami | 2500 | 2475 | — | — | — |
 | OGDEN - Utah - Copart | Los Angeles | 3400 | 3350 | — | — | — |
 | Copart OKLAHOMA CITY - Oklahoma | Houston | 2675 | — | — | — | — |
-| ORLANDO - Florida - Copart | Savannah | Call for price | Call for price | — | — | — |
+| ORLANDO - Florida - Copart | Savannah | 2450 | Call for price | — | — | — |
 | ORLANDO NORTH - Florida - Co | Savannah | Call for price | Call for price | — | — | — |
 | ORLANDO SOUTH - Florida - Co | Savannah | Call for price | Call for price | — | — | — |
 | OTTAWA - Ontario - Copart | Toronto | Call for price | Call for price | 575 | 475 | — |
@@ -282,7 +282,7 @@
 | SYRACUSE - New York - Copart | New York | 2525 | 2475 | — | — | — |
 | Southern Illinois - Illinois - Cop | Savannah | 2725 | 2575 | — | — | — |
 | TALLAHASSEE - Florida - Copart | Savannah | 2475 | 2400 | — | — | — |
-| TAMPA SOUTH - Florida - Copart | Savannah | Call for price | Call for price | — | — | — |
+| TAMPA SOUTH - Florida - Copart | Savannah | 2475 | 2450 | — | — | — |
 | TANNER - Alabama - Copart | Savannah | 2575 | 2500 | — | — | — |
 | TIFTON - Georgia - Copart | Savannah | 2425 | 2375 | — | — | — |
 | TORONTO - Ontario - Copart | Toronto | Call for price | Call for price | 325 | 225 | — |
@@ -420,7 +420,7 @@
 | NEWBURGH - New York - IAAI | New York | 2425 | 2375 | — | — | — |
 | OKLAHOMA CITY - Oklahoma - I | Houston | 2675 | 2575 | — | — | — |
 | OMAHA - Nebraska - IAAI | Chicago | 2825 | 2725 | — | — | — |
-| ORLANDO - Florida - IAAI | Savannah | Call for price | Call for price | — | — | — |
+| ORLANDO - Florida - IAAI | Savannah | 2450 | Call for price | — | — | — |
 | ORLANDO - NORTH - Florida - IAAI | Savannah | Call for price | Call for price | — | — | — |
 | PADUCAH - Kentucky - IAAI | Chicago | Call for price | Call for price | — | — | — |
 | PENSACOLA - Florida - IAAI | Miami | 2600 | 2575 | — | — | — |
@@ -459,7 +459,7 @@
 | SYRACUSE - New York - IAAI | New York | 2525 | 2475 | — | — | — |
 | Sayreville - New Jersey - IAAI | New York | 2350 | 2300 | — | — | — |
 | Suffolk - Virginia - IAAI | Norfolk | 2350 | 2350 | — | — | — |
-| TAMPA - Florida - IAAI | Savannah | Call for price | Call for price | — | — | — |
+| TAMPA - Florida - IAAI | Savannah | 2450 | 2425 | — | — | — |
 | TAUNTON - Massachusetts - IAAI | New York | 2575 | 2450 | — | — | — |
 | TIDEWATER - Virginia - IAAI | Norfolk | 550 | 550 | — | — | — |
 | TIFTON - Georgia - IAAI | Savannah | 2425 | 2375 | — | — | — |
@@ -509,7 +509,7 @@
 | EL PASO - Texas - Manheim | Houston | 2700 | 2650 | — | — | — |
 | Manheim FLINT - Michigan - Manheim | Chicago | 2825 | Call for price | — | — | — |
 | FORT MYERS - Florida - Manheim | Miami | 2425 | 2400 | — | — | — |
-| Fresno - California - Manheim | Los Angeles | 3225 | Call for price | — | — | — |
+| Fresno - California - Manheim | Los Angeles | 3225 | 3150 | — | — | — |
 | GEORGIA - Georgia - Manheim | Savannah | 2450 | 2375 | — | — | — |
 | GREER - South Carolina - Manhe | Savannah | 2425 | 2350 | — | — | — |
 | HALIFAX - Nova Scotia - Manhe | Toronto | Call for price | Call for price | 1300 | 1200 | — |
@@ -538,7 +538,7 @@
 | Manheim NEW YORK - New York - Manhe | New York | 2450 | 2375 | — | — | — |
 | OHIO - Ohio - Manheim | Norfolk | 2750 | 2600 | — | — | — |
 | OMAHA - Nebraska - Manheim | Chicago | 2825 | 2725 | — | — | — |
-| ORLANDO - Florida - Manheim | Savannah | Call for price | Call for price | — | — | — |
+| ORLANDO - Florida - Manheim | Savannah | 2450 | Call for price | — | — | — |
 | PALM BEACH - Florida - Manheim | Miami | 2370 | 2370 | — | — | — |
 | PENSACOLA - Florida - Manheim | Miami | 2600 | 2575 | — | — | — |
 | PHOENIX - Arizona - Manheim | Los Angeles | 3200 | 3150 | — | — | — |
@@ -585,7 +585,7 @@
 | FLINT - Michigan - Total Resour | Chicago | 2825 | 2700 | — | — | — |
 | FT. LAUDERDALE - Florida - Total | Miami | 2350 | 2350 | — | — | — |
 | FT. MYERS - Florida - Total Resou | Miami | 2425 | 2400 | — | — | — |
-| GEORGIA - Georgia - Total Reso | Savannah | 2425 | Call for price | — | — | — |
+| GEORGIA - Georgia - Total Reso | Savannah | 2425 | 2375 | — | — | — |
 | HARRISONBURG - Virginia - Total | Norfolk | 2550 | 2525 | — | — | — |
 | HOUSTON NORTH - Texas - Total | Houston | 2455 | 2375 | — | — | — |
 | HOUSTON SOUTH - Texas - Total | Houston | 2455 | 2375 | — | — | — |
@@ -597,7 +597,7 @@
 | MILWAUKEE - Wisconsin - Total | Chicago | 2600 | 2600 | — | — | — |
 | MINNEAPOLIS - Minnesota - Total | Chicago | 2825 | 2725 | — | — | — |
 | MISSISSIPPI - Mississippi - Total | Savannah | 2550 | Call for price | — | — | — |
-| NASHVILLE - Tennessee - Total | Savannah | 2550 | Call for price | — | — | — |
+| NASHVILLE - Tennessee - Total | Savannah | 2550 | 2500 | — | — | — |
 | Total Resource AuNEVADA - Nevada - Total Resourc | Los Angeles | 3150 | 3100 | — | — | — |
 | NEW JERSEY - New Jersey - Tot | New York | 2350 | 2300 | — | — | — |
 | NEW ORLEANS - Louisiana - Total | Savannah | 2575 | 2525 | — | — | — |
@@ -697,7 +697,7 @@
 | GREENVILLE - South Carolina | Savannah | 2450 | 2425 | — | — | — |
 | HARTFORD - SOUTH - Connecticut | New York | 2425 | 2375 | — | — | — |
 | LEE'S TOWING KAUAI - Hawaii | Los Angeles | 5600 | Call for price | 3150 | 2950 | — |
-| LEE'S TOWING KAUAI - Hawaii | Honolulu | Call for price | Call for price | 2250 | 1900 | — |
+| LEE'S TOWING KAUAI - Hawaii | Honolulu | 5600 | Call for price | 2250 | 1900 | — |
 | LOUISVILLE NORTH - Kentucky | Savannah | 2700 | 2525 | — | — | — |
 | Los Angeles South - California | Los Angeles | 3000 | 3000 | — | — | — |
 | MINNEAPOLIS/ST. PAUL - Minne | Chicago | 2825 | 2725 | — | — | — |
@@ -751,7 +751,7 @@
 | FREDERICKSBURG - Virginia - To | Norfolk | 2450 | 2400 | — | — | — |
 | NEW ENGLAND - Massachusetts | New York | 2525 | 2475 | — | — | — |
 | NEW MEXICO - New Mexico - To | Houston | 2925 | 2675 | — | — | — |
-| PENNSYLVANIA - Pennsylvania | New York | 2450 | Call for price | — | — | — |
+| PENNSYLVANIA - Pennsylvania | New York | 2450 | 2325 | — | — | — |
 | PHILADELPHIA - Pennsylvania | New York | 2375 | 2325 | — | — | — |
 | NAPA - ca | Los Angeles | 3325 | — | — | — | — |
 

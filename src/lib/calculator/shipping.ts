@@ -4,9 +4,12 @@ import type { VehicleTypeId } from "@/lib/calculator/types";
 
 /**
  * Per-yard shipping to Gyumri (USD).
- * Base table from CarMark/IAA; numeric Car/Motorcycle(/eligible Pickup/SUV)
- * cells from `docs/auctionauto-shipping-rates-2024-11-03.md` override when present.
- * `Call for price` / empty MD cells keep the previous yard price.
+ * Base table from CarMark/IAA; numeric Car(/eligible Pickup/SUV) cells from
+ * `docs/auctionauto-shipping-rates-2024-11-03.md` and sedan alignment from
+ * `docs/gyumri-shipping-rates-2026-09-03.md` when the yard matches.
+ * Motorcycle shipping is a flat $300 for every yard.
+ * `Call for price` is kept only for yards without a usable sedan rate
+ * (currently ND-BISMARCK). See `docs/auctionauto-call-for-price-2024-11-03.md`.
  */
 export type ShippingLocation = {
   id: string;
