@@ -58,18 +58,20 @@ auctionFee     = IAAI/Copart աղյուսակ(price)   կամ   օգտատիրո
 shipping       = price_shippings[location][auto_type]
 insuranceFee   = insurance ? 1% × (price + auctionFee + shipping) : 0
 preCustoms     = price + auctionFee + shipping + insuranceFee
-serviceFee     = max(300, 1.5% × (price + auctionFee))
 
-առանց մաքսի   = preCustoms + serviceFee
+առանց մաքսի   = preCustoms
 ```
 
-`preCustoms`-ը API-ում `total` դաշտն է։ UI-ում «ընդհանուր գին՝ առանց մաքսազերծման» = `total + servicePrice`։
+`preCustoms`-ը API-ում `total` դաշտն է և այս նախագծում հավասար է «ընդհանուր գին՝ առանց
+մաքսազերծման»-ին։
 
 ### 3.1 Ծառայության վճար
 
-Հաստատուն **$300**, բայց եթե `1.5% × (price + auctionFee) > 300`՝ վերցվում է տոկոսը։
+IAA.am-ը ավելացնում է ծառայության վճար՝ `max(300, 1.5% × (price + auctionFee))`
+(API-ում `servicePrice`), և UI-ում ցույց է տալիս `total + servicePrice`։
 
-Շեմը մոտ **$16–17k** հայտից (կախված աճուրդի վճարից)։ $20,000 IAAI օրինակ՝ `(20000 + 1575) × 0.015 = $324`։
+Այս նախագիծը ծառայության վճար չի գանձում, ուստի բանաձևերում, արդյունքներում և PDF-ում
+այդ տողը չկա։
 
 ### 3.2 Ապահովագրություն
 
@@ -185,9 +187,11 @@ Ad valorem (տոկոսը արժեքից) ֆիզիկական «մինչև 3 տա�
 duty       = տոկոս կամ €/սմ³  (տես աղյուսակը)
 vat        = 20% × (preCustoms + duty)     // EV արտոնությամբ՝ 0
 eco        = ecoRate × preCustoms
-broker     = 75                            // միշտ
-legalTotal = preCustoms + serviceFee + duty + vat + eco + broker
+legalTotal = preCustoms + duty + vat + eco
 ```
+
+> IAA.am-ը այս գումարին ավելացնում է $75 բրոքերական ձևակերպումների տող։
+> Այս նախագիծը այդ վճարը չի գանձում, ուստի բանաձևում և արդյունքներում այն չկա։
 
 API դաշտեր՝ `customs_clearance`, `vat`, `environmental`, `tax`, `total_price2`։
 
@@ -240,7 +244,7 @@ API դաշտեր՝ `customs_clearance`, `vat`, `environmental`, `tax`, `total_pr
 ```text
 flatRate   = EAEU ֆիզիկական սակագին (բաժին 6.1)
 eco        = ecoRate × (price + auctionFee)    // առանց shipping/insurance
-fizTotal   = preCustoms + serviceFee + flatRate + eco
+fizTotal   = preCustoms + flatRate + eco
 ```
 
 API՝ `customs_clearance2` = flat rate, `vat2 = 0`, `environmental2`, `total_price_fiz`։
@@ -345,7 +349,7 @@ API դրոշ՝ `electric_exemption_applied`։
 |---|---|
 | `price` | հայտ |
 | `copart_price` | աճուրդի վճար (անունը մոլորեցնող է՝ օգտագործվում է նաև IAAI-ի համար) |
-| `servicePrice` | ծառայության վճար |
+| `servicePrice` | ծառայության վճար (այս նախագծում չի օգտագործվում) |
 | `auction_location_price` | shipping |
 | `insurance_price` | ապահովագրություն |
 | `total` | `preCustoms` |
@@ -370,23 +374,23 @@ auctionFee     = 1 225
 shipping       = 2 325   // AuctionAuto overlay
 insurance      = 0.01 × (10000 + 1225 + 2325) = 136
 preCustoms     = 10000 + 1225 + 2325 + 136 = 13 686
-serviceFee     = max(300, 0.015 × 11225) = 300
-առանց մաքսի   = 13 986
+առանց մաքսի   = 13 686
 
 իրավաբանական
   duty   = 0.15 × 13686 = 2 053
   vat    = 0.20 × (13686 + 2053) = 3 148
   eco    = 0.02 × 13686 = 274
-  broker = 75
-  ընդամենը = 13686 + 300 + 2053 + 3148 + 274 + 75 = 19 536
+  ընդամենը = 13686 + 2053 + 3148 + 274 = 19 161
 
 ֆիզիկական (մարդատար, մինչև 3)
   flat     = 3.5 × 2000 × 1.1537 ≈ 8 075
   eco      = 0.02 × (10000 + 1225) = 225
-  ընդամենը = 13686 + 300 + 8075 + 225 = 22 286
+  ընդամենը = 13686 + 8075 + 225 = 21 986
 ```
 
-API պատասխանը համընկնում է այս թվերի հետ։
+IAA.am-ի API-ն վերադարձնում է ավելի բարձր ընդհանուրներ՝ `19 536` իրավաբանական և `22 286`
+ֆիզիկական, քանի որ ավելացնում է $300 ծառայության և $75 բրոքերական վճարները։ Այս նախագիծը
+այդ երկուսը չի գանձում. մնացած բոլոր դաշտերը համընկնում են։
 
 ---
 

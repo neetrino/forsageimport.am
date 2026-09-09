@@ -32,8 +32,10 @@ describe("computeAuctionFee", () => {
 });
 
 describe("requiresShippingCall", () => {
-  it("flags Call for price only for ND-BISMARCK sedan", () => {
+  it("flags Call for price for ND-BISMARCK sedan and the body types billed off it", () => {
     expect(requiresShippingCall("174", "sedan")).toBe(true);
+    expect(requiresShippingCall("174", "suv")).toBe(true);
+    expect(requiresShippingCall("174", "big_suv")).toBe(true);
     expect(requiresShippingCall("174", "motorcycle")).toBe(false);
     expect(requiresShippingCall("73", "sedan")).toBe(false);
     expect(requiresShippingCall("73", "motorcycle")).toBe(false);
@@ -46,6 +48,14 @@ describe("lookupShippingFee", () => {
     expect(lookupShippingFee("187", "motorcycle")).toBe(300);
     expect(lookupShippingFee("174", "motorcycle")).toBe(300);
     expect(lookupShippingFee("73", "motorcycle")).toBe(300);
+  });
+
+  it("ships an SUV at the sedan rate and a large SUV at sedan plus $300", () => {
+    for (const yard of ["187", "299", "73"]) {
+      const sedan = lookupShippingFee(yard, "sedan");
+      expect(lookupShippingFee(yard, "suv")).toBe(sedan);
+      expect(lookupShippingFee(yard, "big_suv")).toBe(sedan + 300);
+    }
   });
 });
 
@@ -120,14 +130,12 @@ describe("calculateImportCost", () => {
     expect(result.shared.auctionFee).toBe(1225);
     expect(result.shared.transportFee).toBe(2325);
     expect(result.shared.insuranceFee).toBe(136);
-    expect(result.shared.serviceFee).toBe(300);
     expect(result.shared.preCustoms).toBe(13686);
-    expect(result.shared.totalBeforeCustoms).toBe(13986);
+    expect(result.shared.totalBeforeCustoms).toBe(13686);
     expect(result.legal.duty).toBe(2053);
     expect(result.legal.vat).toBe(3148);
     expect(result.legal.environmental).toBe(274);
-    expect(result.legal.brokerage).toBe(75);
-    expect(result.legal.finalTotal).toBe(19536);
+    expect(result.legal.finalTotal).toBe(19161);
     expect(result.physical.usesFlatRate).toBe(true);
     expect(result.physical.flatRate).toBeGreaterThanOrEqual(8075);
     expect(result.physical.flatRate).toBeLessThanOrEqual(8076);
@@ -162,13 +170,14 @@ describe("calculateImportCost", () => {
     expect(result.physical.vat).toBe(2582);
   });
 
-  it("uses 6% + 375 IAAI fee and the service-fee floor lift", () => {
+  it("uses the 6% + 375 IAAI fee above the percent threshold", () => {
     const result = calculateImportCost({
       ...baseInput,
       vehiclePrice: 20000,
       insuranceEnabled: false,
     });
     expect(result.shared.auctionFee).toBe(1575);
-    expect(result.shared.serviceFee).toBe(324);
+    expect(result.shared.insuranceFee).toBe(0);
+    expect(result.shared.totalBeforeCustoms).toBe(23900);
   });
 });

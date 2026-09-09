@@ -26,14 +26,12 @@ export function computeLegalCustoms(params: LegalParams): CustomsBreakdown {
     ageGroup: params.ageGroup,
     vehicleType: params.vehicleType,
   });
-  const brokerage = calculatorRates.legalBrokerageUsd;
-  const customsTotal = duty + vat + environmental + brokerage;
+  const customsTotal = duty + vat + environmental;
 
   return {
     duty,
     vat,
     environmental,
-    brokerage,
     flatRate: 0,
     usesFlatRate: false,
     electricExemptionApplied: params.electricExemptionApplied,

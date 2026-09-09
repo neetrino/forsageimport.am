@@ -17,19 +17,19 @@ export function ServicesSection({ dict }: ServicesSectionProps) {
     >
       <Reveal variant="clip">
         <div className="grid gap-6 border-b border-white/15 pb-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-12 lg:pb-12">
-          <div>
+          <div className="min-w-0">
             <p className="inline-flex items-center gap-3 font-mono text-[0.72rem] tracking-[0.28em] text-[var(--accent)] uppercase">
               <span className="h-px w-10 bg-[var(--accent)]" aria-hidden="true" />
               {dict.services.eyebrow}
             </p>
             <h2
               id="services-title"
-              className="mt-4 font-display text-[2.6rem] leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem]"
+              className="mt-4 font-display text-[clamp(1.9rem,8.5vw,2.6rem)] leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem]"
             >
               {dict.services.title}
             </h2>
           </div>
-          <p className="max-w-xl text-lg font-medium leading-8 text-white/65 sm:text-xl sm:leading-9 lg:justify-self-end lg:text-right">
+          <p className="min-w-0 max-w-xl text-lg font-medium leading-8 text-white/65 sm:text-xl sm:leading-9 lg:justify-self-end lg:text-right">
             {dict.services.subtitle}
           </p>
         </div>
