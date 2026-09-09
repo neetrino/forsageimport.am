@@ -21,24 +21,16 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
         calculatorRates.insurancePercent,
       )
     : 0;
-  const serviceFee = Math.max(
-    calculatorRates.serviceFeeMinUsd,
-    percentOf(
-      input.vehiclePrice + auctionFee,
-      calculatorRates.serviceFeePercent,
-    ),
-  );
   const preCustoms = roundUsd(
     input.vehiclePrice + auctionFee + transportFee + insuranceFee,
   );
   const shared: SharedCost = {
     vehiclePrice: roundUsd(input.vehiclePrice),
     auctionFee,
-    serviceFee,
     transportFee,
     insuranceFee,
     preCustoms,
-    totalBeforeCustoms: preCustoms + serviceFee,
+    totalBeforeCustoms: preCustoms,
   };
   const electricExemptionApplied = isElectricExemptionApplied(
     input.engineType,

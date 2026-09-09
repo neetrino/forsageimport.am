@@ -108,7 +108,6 @@ function SharedCard({
   const rows = [
     [labels.vehiclePrice, shared.vehiclePrice],
     [labels.auctionFee, shared.auctionFee],
-    [labels.serviceFee, shared.serviceFee],
     [labels.transportFee, shared.transportFee],
     [labels.insuranceFee, shared.insuranceFee],
   ] as const;
@@ -213,8 +212,5 @@ function customsRows(
     { label: labels.customsDuty, value: breakdown.duty },
     { label: labels.vat, value: breakdown.vat },
     { label: labels.ecologicalTax, value: breakdown.environmental },
-    ...(breakdown.brokerage > 0
-      ? [{ label: labels.brokerage, value: breakdown.brokerage }]
-      : []),
   ];
 }

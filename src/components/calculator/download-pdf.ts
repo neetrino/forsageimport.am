@@ -105,7 +105,6 @@ function buildLines(
   const lines = [
     `${labels.vehiclePrice}: ${formatUsd(shared.vehiclePrice, locale)}`,
     `${labels.auctionFee}: ${formatUsd(shared.auctionFee, locale)}`,
-    `${labels.serviceFee}: ${formatUsd(shared.serviceFee, locale)}`,
     `${labels.transportFee}: ${formatUsd(shared.transportFee, locale)}`,
     `${labels.insuranceFee}: ${formatUsd(shared.insuranceFee, locale)}`,
     `${labels.totalBeforeCustoms}: ${formatUsd(shared.totalBeforeCustoms, locale)}`,
@@ -117,9 +116,6 @@ function buildLines(
     lines.push(`${labels.vat}: ${formatUsd(breakdown.vat, locale)}`);
   }
   lines.push(`${labels.ecologicalTax}: ${formatUsd(breakdown.environmental, locale)}`);
-  if (breakdown.brokerage > 0) {
-    lines.push(`${labels.brokerage}: ${formatUsd(breakdown.brokerage, locale)}`);
-  }
   lines.push(`${labels.finalTotal}: ${formatUsd(breakdown.finalTotal, locale)}`);
   return lines;
 }

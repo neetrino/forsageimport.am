@@ -31,7 +31,6 @@ export type CalculatorInput = {
 export type SharedCost = {
   vehiclePrice: number;
   auctionFee: number;
-  serviceFee: number;
   transportFee: number;
   insuranceFee: number;
   preCustoms: number;
@@ -42,7 +41,6 @@ export type CustomsBreakdown = {
   duty: number;
   vat: number;
   environmental: number;
-  brokerage: number;
   flatRate: number;
   usesFlatRate: boolean;
   electricExemptionApplied: boolean;

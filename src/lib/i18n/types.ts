@@ -93,7 +93,6 @@ export type Dictionary = {
       legalTitle: string;
       vehiclePrice: string;
       auctionFee: string;
-      serviceFee: string;
       transportFee: string;
       insuranceFee: string;
       totalBeforeCustoms: string;
@@ -101,7 +100,6 @@ export type Dictionary = {
       customsDuty: string;
       vat: string;
       ecologicalTax: string;
-      brokerage: string;
       flatRate: string;
       customsFee: string;
       finalTotal: string;

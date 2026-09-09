@@ -132,7 +132,6 @@ function finishPhysical(
     parts.duty + parts.vat + parts.environmental + parts.flatRate;
   return {
     ...parts,
-    brokerage: 0,
     electricExemptionApplied: params.electricExemptionApplied,
     customsTotal,
     finalTotal: params.totalBeforeCustoms + customsTotal,
