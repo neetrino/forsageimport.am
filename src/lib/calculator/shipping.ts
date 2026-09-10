@@ -8,9 +8,9 @@ import type { VehicleTypeId } from "@/lib/calculator/types";
  * `docs/auctionauto-shipping-rates-2024-11-03.md` and sedan alignment from
  * `docs/gyumri-shipping-rates-2026-09-03.md` when the yard matches.
  * Motorcycle shipping is a flat $300 for every yard.
- * SUV ships at the sedan rate, large SUV at the sedan rate plus $300, and EV at
- * the sedan rate plus $100, so the `suv` and `big_suv` columns in the table are
- * kept only as source reference.
+ * SUV ships at the sedan rate, large SUV at the sedan rate plus $300, and EV
+ * and hybrid at the sedan rate plus $100, so the `suv` and `big_suv` columns
+ * in the table are kept only as source reference.
  * `Call for price` is kept only for yards without a usable sedan rate
  * (currently ND-BISMARCK). See `docs/auctionauto-call-for-price-2024-11-03.md`.
  */
@@ -48,6 +48,7 @@ type ShippingRateColumn = Exclude<keyof ShippingLocation, "id" | "name">;
 const BODY_SURCHARGE_USD: Partial<Record<VehicleTypeId, number>> = {
   big_suv: 300,
   ev: 100,
+  hybrid: 100,
 };
 
 /**
@@ -60,6 +61,7 @@ function rateColumn(vehicleType: VehicleTypeId): ShippingRateColumn {
     case "suv":
     case "big_suv":
     case "ev":
+    case "hybrid":
       return "sedan";
     case "pickup":
     case "van":

@@ -23,6 +23,7 @@ const FLAT_RATE_VEHICLES = new Set<VehicleTypeId>([
   "big_suv",
   "van",
   "ev",
+  "hybrid",
 ]);
 
 type PhysicalParams = {

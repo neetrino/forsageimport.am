@@ -34,7 +34,7 @@ Vue ձև  →  POST https://www.iaa.am/calculator-store-new  →  JSON արդյ�
 | `year` | Տարիքի խումբ (UI ֆիլտր) | `1` մինչև 3 · `2` 3–5 · `3` 5–7 · `4` 7+ |
 | `year2` | Արտադրության տարի | սերվերը տարիքը վերցնում է **այստեղից** |
 | `engine_volume` | Ծավալ, սմ³ | EV + motorcycle-ում դաշտը disabled է |
-| `auto_type` | Թափք | `sedan` · `suv` · `big_suv` · `van` · `pickup` · `motorcycle` · `ev` |
+| `auto_type` | Թափք | `sedan` · `suv` · `big_suv` · `van` · `pickup` · `motorcycle` · `ev` · `hybrid` |
 | `insurance` | Ապահովագրություն | default `true` |
 | `checkbox` | Բարձր անցողականություն | SUV / big SUV, **2026-08-18-ին արդյունքի վրա չի ազդում** |
 
@@ -158,7 +158,7 @@ sedan · suv · pickup · motorcycle · big_suv · van
 
 Թափքը փոխելիս shipping-ը վերցվում է նույն հրապարակի համապատասխան սյունակից։ Օգտատերը կարող է գինը ձեռքով փոխել։
 
-Forsage-ում հաշվարկը չի վերցնում `suv`/`big_suv` սյունակները որպես վերջնական գին․ SUV-ը գնում է սեդանի սակագնով, մեծ SUV-ը՝ սեդան + $300, իսկ `ev` (էլեկտրոմոբիլ)՝ սեդան + $100։
+Forsage-ում հաշվարկը չի վերցնում `suv`/`big_suv` սյունակները որպես վերջնական գին․ SUV-ը գնում է սեդանի սակագնով, մեծ SUV-ը՝ սեդան + $300, իսկ `ev` (էլեկտրոմոբիլ) և `hybrid` (հիբրիդ)՝ սեդան + $100։
 
 ---
 
@@ -239,7 +239,7 @@ API դաշտեր՝ `customs_clearance`, `vat`, `environmental`, `tax`, `total_pr
 
 Երկու ռեժիմ կա։
 
-### 6.A Մարդատար (sedan / suv / big_suv / van / ev)
+### 6.A Մարդատար (sedan / suv / big_suv / van / ev / hybrid)
 
 Միասնական դրույքաչափ (duty + ԱԱՀ մեկ գումարով)։ ԱԱՀ-ն UI-ում չի ցուցադրվում։
 

@@ -194,6 +194,7 @@ export const ru: Dictionary = {
         { value: "pickup", label: "Пикап" },
         { value: "motorcycle", label: "Мотоцикл" },
         { value: "ev", label: "Электромобиль" },
+        { value: "hybrid", label: "Гибрид" },
       ],
     },
   },

@@ -194,6 +194,7 @@ export const en: Dictionary = {
         { value: "pickup", label: "Pickup" },
         { value: "motorcycle", label: "Motorcycle" },
         { value: "ev", label: "Electric vehicle" },
+        { value: "hybrid", label: "Hybrid" },
       ],
     },
   },

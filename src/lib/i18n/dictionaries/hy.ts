@@ -194,6 +194,7 @@ export const hy: Dictionary = {
         { value: "pickup", label: "Պիկապ" },
         { value: "motorcycle", label: "Մոտոցիկլ" },
         { value: "ev", label: "Էլեկտրոմոբիլ" },
+        { value: "hybrid", label: "Հիբրիդ" },
       ],
     },
   },

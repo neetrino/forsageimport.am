@@ -31,6 +31,7 @@ const vehicleTypes = new Set<VehicleTypeId>([
   "pickup",
   "motorcycle",
   "ev",
+  "hybrid",
 ]);
 
 export type RawCalculatorValues = {
