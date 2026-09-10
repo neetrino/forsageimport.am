@@ -1,7 +1,14 @@
 import type { Dictionary } from "@/lib/i18n/types";
-import type { CalculatorResult, CustomsBreakdown, SharedCost } from "@/lib/calculator/types";
-import { formatUsd } from "@/lib/calculator/format";
+import type { CalculatorResult } from "@/lib/calculator/types";
 import type { jsPDF } from "jspdf";
+import { buildEstimatePdfRows } from "@/components/calculator/estimate-pdf-rows";
+import {
+  PDF_FONT_NAME,
+  drawEstimateTable,
+  drawPdfTitleBlock,
+  loadPdfWatermark,
+  paintPdfWatermark,
+} from "@/components/calculator/estimate-pdf-layout";
 
 type VariantKey = "physical" | "legal";
 
@@ -12,7 +19,6 @@ type DownloadPdfArgs = {
   locale: string;
 };
 
-const PDF_FONT_NAME = "DejaVuSans";
 const PDF_FONT_FILE = "DejaVuSans.ttf";
 const PDF_FONT_URL = `/fonts/${PDF_FONT_FILE}`;
 
@@ -24,40 +30,29 @@ export async function downloadCalculationPdf({
   dict,
   locale,
 }: DownloadPdfArgs): Promise<void> {
-  const { jsPDF } = await import("jspdf");
-  const doc = new jsPDF();
+  const [{ jsPDF }, watermark] = await Promise.all([
+    import("jspdf"),
+    loadPdfWatermark(),
+  ]);
+  const doc = new jsPDF({ unit: "mm", format: "a4" });
   await registerUnicodeFont(doc);
+  paintPdfWatermark(doc, watermark);
 
-  const title =
-    variant === "physical"
-      ? dict.calculator.results.physicalTitle
-      : dict.calculator.results.legalTitle;
-
-  let y = 18;
-  doc.setFont(PDF_FONT_NAME, "normal");
-  doc.setFontSize(16);
-  doc.text("Forsage Import", 14, y);
-  y += 8;
-  doc.setFontSize(12);
-  doc.text(dict.calculator.resultsTitle, 14, y);
-  y += 7;
-  doc.text(title, 14, y);
-  y += 10;
-  doc.setFontSize(10);
-
-  for (const line of buildLines(dict, result.shared, result[variant], locale)) {
-    doc.text(line, 14, y);
-    y += 7;
-    if (y > 280) {
-      doc.addPage();
-      doc.setFont(PDF_FONT_NAME, "normal");
-      y = 18;
-    }
-  }
-
-  y += 4;
-  doc.setFontSize(9);
-  doc.text(doc.splitTextToSize(dict.calculator.disclaimer, 180), 14, y);
+  const labels = dict.calculator.results;
+  const variantTitle =
+    variant === "physical" ? labels.physicalTitle : labels.legalTitle;
+  const tableTop = drawPdfTitleBlock(doc, {
+    brand: dict.site.brand,
+    resultsTitle: dict.calculator.resultsTitle,
+    variantTitle,
+  });
+  drawEstimateTable(
+    doc,
+    buildEstimatePdfRows(labels, result.shared, result[variant], locale),
+    { item: labels.columnItem, amount: labels.columnAmount },
+    tableTop,
+    watermark,
+  );
   doc.save(`forsage-estimate-${variant}.pdf`);
 }
 
@@ -93,29 +88,4 @@ function arrayBufferToBinaryString(buffer: ArrayBuffer): string {
     binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
   }
   return binary;
-}
-
-function buildLines(
-  dict: Dictionary,
-  shared: SharedCost,
-  breakdown: CustomsBreakdown,
-  locale: string,
-): string[] {
-  const labels = dict.calculator.results;
-  const lines = [
-    `${labels.vehiclePrice}: ${formatUsd(shared.vehiclePrice, locale)}`,
-    `${labels.auctionFee}: ${formatUsd(shared.auctionFee, locale)}`,
-    `${labels.transportFee}: ${formatUsd(shared.transportFee, locale)}`,
-    `${labels.insuranceFee}: ${formatUsd(shared.insuranceFee, locale)}`,
-    `${labels.totalBeforeCustoms}: ${formatUsd(shared.totalBeforeCustoms, locale)}`,
-  ];
-  if (breakdown.usesFlatRate) {
-    lines.push(`${labels.flatRate}: ${formatUsd(breakdown.flatRate, locale)}`);
-  } else {
-    lines.push(`${labels.customsDuty}: ${formatUsd(breakdown.duty, locale)}`);
-    lines.push(`${labels.vat}: ${formatUsd(breakdown.vat, locale)}`);
-  }
-  lines.push(`${labels.ecologicalTax}: ${formatUsd(breakdown.environmental, locale)}`);
-  lines.push(`${labels.finalTotal}: ${formatUsd(breakdown.finalTotal, locale)}`);
-  return lines;
 }

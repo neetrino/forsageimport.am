@@ -127,8 +127,6 @@ export const en: Dictionary = {
     clearResults: "Clear",
     insurance: "Insurance",
     cheaperBadge: "Lower total",
-    evExemptionNote:
-      "From 1 February through 31 December 2026 for electric vehicles manufactured after 31 December 2023. The 0% customs duty is subject to the approved quota; final eligibility must be confirmed by customs.",
     locationSearch: "Search location",
     callForPrice: {
       eyebrow: "Call for price",
@@ -160,6 +158,8 @@ export const en: Dictionary = {
       flatRate: "Flat rate",
       customsFee: "Customs fees",
       finalTotal: "Total price",
+      columnItem: "Item",
+      columnAmount: "Amount",
     },
     fields: {
       vehiclePrice: "Car price",
@@ -193,6 +193,7 @@ export const en: Dictionary = {
         { value: "van", label: "Van" },
         { value: "pickup", label: "Pickup" },
         { value: "motorcycle", label: "Motorcycle" },
+        { value: "ev", label: "Electric vehicle" },
       ],
     },
   },

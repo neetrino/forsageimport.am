@@ -10,7 +10,8 @@ export type VehicleTypeId =
   | "big_suv"
   | "van"
   | "pickup"
-  | "motorcycle";
+  | "motorcycle"
+  | "ev";
 
 export type RatesStatus = "IAA_PARITY_OBSERVED";
 

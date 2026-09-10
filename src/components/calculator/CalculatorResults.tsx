@@ -70,7 +70,6 @@ export function CalculatorResults({
                 locale={locale}
                 highlighted={result.legal.finalTotal < result.physical.finalTotal}
                 cheaperLabel={dict.calculator.cheaperBadge}
-                evNote={dict.calculator.evExemptionNote}
                 downloadLabel={dict.calculator.downloadPdf}
                 downloading={isDownloading === "legal"}
                 onDownload={() => onDownload("legal")}
@@ -82,7 +81,6 @@ export function CalculatorResults({
                 locale={locale}
                 highlighted={result.physical.finalTotal < result.legal.finalTotal}
                 cheaperLabel={dict.calculator.cheaperBadge}
-                evNote={dict.calculator.evExemptionNote}
                 downloadLabel={dict.calculator.downloadPdf}
                 downloading={isDownloading === "physical"}
                 onDownload={() => onDownload("physical")}
@@ -139,7 +137,6 @@ function CustomsCard({
   locale,
   highlighted,
   cheaperLabel,
-  evNote,
   downloadLabel,
   downloading,
   onDownload,
@@ -150,7 +147,6 @@ function CustomsCard({
   locale: string;
   highlighted: boolean;
   cheaperLabel: string;
-  evNote: string;
   downloadLabel: string;
   downloading: boolean;
   onDownload: () => void;
@@ -183,9 +179,6 @@ function CustomsCard({
           </dd>
         </div>
       </dl>
-      {breakdown.electricExemptionApplied ? (
-        <p className="mt-3 text-xs leading-5 text-[var(--muted)]">{evNote}</p>
-      ) : null}
       <button
         type="button"
         className="calc-submit mt-5 w-full"

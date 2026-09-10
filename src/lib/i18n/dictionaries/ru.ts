@@ -127,8 +127,6 @@ export const ru: Dictionary = {
     clearResults: "Удалить",
     insurance: "Страховка",
     cheaperBadge: "Выгоднее",
-    evExemptionNote:
-      "С 1 февраля по 31 декабря 2026 года — для электромобилей, произведённых после 31 декабря 2023 года. Нулевая пошлина действует в пределах утверждённой квоты; окончательное право подтверждает таможня.",
     locationSearch: "Найти площадку",
     callForPrice: {
       eyebrow: "Call for price",
@@ -160,6 +158,8 @@ export const ru: Dictionary = {
       flatRate: "Единая ставка",
       customsFee: "Таможенные платежи",
       finalTotal: "Общая цена",
+      columnItem: "Статья",
+      columnAmount: "Сумма",
     },
     fields: {
       vehiclePrice: "Стоимость автомобиля",
@@ -193,6 +193,7 @@ export const ru: Dictionary = {
         { value: "van", label: "Фургон" },
         { value: "pickup", label: "Пикап" },
         { value: "motorcycle", label: "Мотоцикл" },
+        { value: "ev", label: "Электромобиль" },
       ],
     },
   },
