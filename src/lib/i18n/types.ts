@@ -72,7 +72,6 @@ export type Dictionary = {
     clearResults: string;
     insurance: string;
     cheaperBadge: string;
-    evExemptionNote: string;
     locationSearch: string;
     callForPrice: {
       eyebrow: string;
@@ -103,6 +102,8 @@ export type Dictionary = {
       flatRate: string;
       customsFee: string;
       finalTotal: string;
+      columnItem: string;
+      columnAmount: string;
     };
     fields: {
       vehiclePrice: string;

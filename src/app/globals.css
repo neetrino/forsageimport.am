@@ -1641,16 +1641,6 @@ html[data-landing-unlocked] .landing-section-paint,
   padding: 1.35rem 1.4rem;
 }
 
-.calc-disclaimer {
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  padding: 0.85rem 1rem;
-  color: color-mix(in srgb, white 88%, var(--accent));
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
 .calc-clear {
   display: inline-flex;
   flex-shrink: 0;

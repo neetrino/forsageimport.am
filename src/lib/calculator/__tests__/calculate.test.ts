@@ -36,6 +36,8 @@ describe("requiresShippingCall", () => {
     expect(requiresShippingCall("174", "sedan")).toBe(true);
     expect(requiresShippingCall("174", "suv")).toBe(true);
     expect(requiresShippingCall("174", "big_suv")).toBe(true);
+    expect(requiresShippingCall("174", "ev")).toBe(true);
+    expect(requiresShippingCall("174", "hybrid")).toBe(true);
     expect(requiresShippingCall("174", "motorcycle")).toBe(false);
     expect(requiresShippingCall("73", "sedan")).toBe(false);
     expect(requiresShippingCall("73", "motorcycle")).toBe(false);
@@ -50,11 +52,13 @@ describe("lookupShippingFee", () => {
     expect(lookupShippingFee("73", "motorcycle")).toBe(300);
   });
 
-  it("ships an SUV at the sedan rate and a large SUV at sedan plus $300", () => {
+  it("ships an SUV at the sedan rate, a large SUV at sedan plus $300, and EV or hybrid at sedan plus $100", () => {
     for (const yard of ["187", "299", "73"]) {
       const sedan = lookupShippingFee(yard, "sedan");
       expect(lookupShippingFee(yard, "suv")).toBe(sedan);
       expect(lookupShippingFee(yard, "big_suv")).toBe(sedan + 300);
+      expect(lookupShippingFee(yard, "ev")).toBe(sedan + 100);
+      expect(lookupShippingFee(yard, "hybrid")).toBe(sedan + 100);
     }
   });
 });

@@ -127,8 +127,6 @@ export const hy: Dictionary = {
     clearResults: "Ջնջել",
     insurance: "Ապահովագրություն",
     cheaperBadge: "Ավելի մատչելի",
-    evExemptionNote:
-      "2026 թ. փետրվարի 1-ից դեկտեմբերի 31-ը՝ 2023 թ. դեկտեմբերի 31-ից հետո արտադրված էլեկտրական մեքենաների համար։ 0% մաքսատուրքը կիրառվում է հաստատված քվոտայի շրջանակում․ վերջնական իրավասությունը հաստատում է մաքսային մարմինը։",
     locationSearch: "Որոնել հրապարակ",
     callForPrice: {
       eyebrow: "Call for price",
@@ -160,6 +158,8 @@ export const hy: Dictionary = {
       flatRate: "Միասնական դրույքաչափ",
       customsFee: "Մաքսային վճարներ",
       finalTotal: "Ընդհանուր գին",
+      columnItem: "Հոդված",
+      columnAmount: "Գումար",
     },
     fields: {
       vehiclePrice: "Մեքենայի արժեք",
@@ -193,6 +193,8 @@ export const hy: Dictionary = {
         { value: "van", label: "Մինիվեն" },
         { value: "pickup", label: "Պիկապ" },
         { value: "motorcycle", label: "Մոտոցիկլ" },
+        { value: "ev", label: "Էլեկտրոմոբիլ" },
+        { value: "hybrid", label: "Հիբրիդ" },
       ],
     },
   },
