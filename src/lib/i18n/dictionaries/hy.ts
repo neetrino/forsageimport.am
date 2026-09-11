@@ -252,7 +252,7 @@ export const hy: Dictionary = {
       gyumri: "Գյումրու մասնաճյուղ",
     },
     addresses: {
-      yerevan: ["ք․ Երևան Սեբաստյա 1/1"],
+      yerevan: ["ք․ Երևան, Մազմանյան 1, Գարաժ mall, 65 տաղավար 3"],
       gyumri: ["ք. Գյումրի, Թբիլիսյան խճ. 3/28"],
     },
     contactsPending: "Կոնտակտային տվյալները կլրացվեն",

@@ -33,7 +33,9 @@ const YEREVAN_PHONES = [
 
 const GYUMRI_PHONES = ["+37477080558"] as const;
 
-const YEREVAN_ADDRESS_QUERIES = ["ք․ Երևան Սեբաստյա 1/1"] as const;
+const YEREVAN_ADDRESS_QUERIES = [
+  "ք․ Երևան, Մազմանյան 1, Գարաժ mall, 65 տաղավար 3",
+] as const;
 
 const GYUMRI_ADDRESS_QUERIES = ["ք. Գյումրի, Թբիլիսյան խճ. 3/28"] as const;
 
