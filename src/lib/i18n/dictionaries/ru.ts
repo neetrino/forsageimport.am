@@ -253,7 +253,7 @@ export const ru: Dictionary = {
       gyumri: "Филиал в Гюмри",
     },
     addresses: {
-      yerevan: ["г. Ереван, Себастия 1/1"],
+      yerevan: ["г. Ереван, Мазманян 1, Гараж mall, 65 павильон 3"],
       gyumri: ["г. Гюмри, Тбилисское шоссе 3/28"],
     },
     contactsPending: "Контактные данные будут добавлены",
