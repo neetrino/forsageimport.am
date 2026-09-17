@@ -8,10 +8,11 @@ const labels = hy.calculator.results;
 const shared: SharedCost = {
   vehiclePrice: 10000,
   auctionFee: 1119,
+  companyFee: 250,
   transportFee: 2625,
   insuranceFee: 137,
   preCustoms: 13881,
-  totalBeforeCustoms: 13881,
+  totalBeforeCustoms: 14131,
 };
 
 const legal: CustomsBreakdown = {
@@ -29,7 +30,10 @@ describe("buildEstimatePdfRows", () => {
   it("builds a two-column estimate with customs as a section", () => {
     const rows = buildEstimatePdfRows(labels, shared, legal, "hy-AM");
 
-    expect(rows.filter((row) => row.kind === "item")).toHaveLength(9);
+    expect(rows.filter((row) => row.kind === "item")).toHaveLength(10);
+    expect(
+      rows.some((row) => row.kind === "item" && row.label === labels.companyFee),
+    ).toBe(true);
     expect(rows).toContainEqual({
       kind: "section",
       label: labels.customsHeading,

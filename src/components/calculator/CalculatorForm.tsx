@@ -15,6 +15,7 @@ import {
   calculateImportCost,
   findShippingLocation,
   lookupShippingFee,
+  requiresCompanyFeeCall,
   requiresShippingCall,
   shippingLocationOptions,
   validateCalculatorInput,
@@ -62,6 +63,7 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
   const [result, setResult] = useState<CalculatorResult | null>(null);
   const [downloading, setDownloading] = useState<"physical" | "legal" | null>(null);
   const [callDialogOpen, setCallDialogOpen] = useState(false);
+  const [callReason, setCallReason] = useState<"shipping" | "companyFee">("shipping");
   const locations = useMemo(() => shippingLocationOptions(), []);
   const selectedLocationLabel = useMemo(() => {
     const location = findShippingLocation(form.auctionLocationId);
@@ -125,6 +127,14 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
     ) {
       setErrors({});
       setResult(null);
+      setCallReason("shipping");
+      setCallDialogOpen(true);
+      return;
+    }
+    if (requiresCompanyFeeCall(validated.value.vehiclePrice)) {
+      setErrors({});
+      setResult(null);
+      setCallReason("companyFee");
       setCallDialogOpen(true);
       return;
     }
@@ -315,6 +325,11 @@ export function CalculatorForm({ dict, locale }: CalculatorFormProps) {
         open={callDialogOpen}
         locationLabel={selectedLocationLabel}
         dict={dict}
+        copy={
+          callReason === "companyFee"
+            ? dict.calculator.callOffice
+            : dict.calculator.callForPrice
+        }
         onClose={() => setCallDialogOpen(false)}
       />
     </>

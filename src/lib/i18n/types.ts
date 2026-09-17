@@ -3,6 +3,15 @@ export type LabeledOption = {
   label: string;
 };
 
+export type CallDialogCopy = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  cityLabel: string;
+  callAction: string;
+  close: string;
+};
+
 export type Dictionary = {
   meta: {
     title: string;
@@ -73,14 +82,8 @@ export type Dictionary = {
     insurance: string;
     cheaperBadge: string;
     locationSearch: string;
-    callForPrice: {
-      eyebrow: string;
-      title: string;
-      description: string;
-      cityLabel: string;
-      callAction: string;
-      close: string;
-    };
+    callForPrice: CallDialogCopy;
+    callOffice: CallDialogCopy;
     validation: {
       required: string;
       positiveNumber: string;
@@ -92,6 +95,7 @@ export type Dictionary = {
       legalTitle: string;
       vehiclePrice: string;
       auctionFee: string;
+      companyFee: string;
       transportFee: string;
       insuranceFee: string;
       totalBeforeCustoms: string;

@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
-import type { Dictionary } from "@/lib/i18n/types";
+import type { CallDialogCopy, Dictionary } from "@/lib/i18n/types";
 import {
   getSiteContact,
   type SiteBranchId,
@@ -15,6 +15,7 @@ type CallForPriceDialogProps = {
   open: boolean;
   locationLabel: string;
   dict: Dictionary;
+  copy?: CallDialogCopy;
   onClose: () => void;
 };
 
@@ -78,6 +79,7 @@ export function CallForPriceDialog({
   open,
   locationLabel,
   dict,
+  copy: copyOverride,
   onClose,
 }: CallForPriceDialogProps) {
   const titleId = useId();
@@ -92,7 +94,7 @@ export function CallForPriceDialog({
   const [branchId, setBranchId] = useState<SiteBranchId>(
     branches[0]?.id ?? "yerevan",
   );
-  const copy = dict.calculator.callForPrice;
+  const copy = copyOverride ?? dict.calculator.callForPrice;
   const selectedBranch: SiteContactBranch | undefined =
     branches.find((branch) => branch.id === branchId) ?? branches[0];
 

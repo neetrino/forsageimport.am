@@ -16,10 +16,11 @@ import {
 const shared: SharedCost = {
   vehiclePrice: 10000,
   auctionFee: 1119,
+  companyFee: 250,
   transportFee: 2625,
   insuranceFee: 137,
   preCustoms: 13881,
-  totalBeforeCustoms: 13881,
+  totalBeforeCustoms: 14131,
 };
 
 const legal: CustomsBreakdown = {

@@ -137,6 +137,15 @@ export const hy: Dictionary = {
       callAction: "Զանգել",
       close: "Փակել",
     },
+    callOffice: {
+      eyebrow: "Call office",
+      title: "Միջնորդավճարը պետք է ճշտել գրասենյակում",
+      description:
+        "52 000 $-ից բարձր գնի համար ֆիրմայի միջնորդավճարը հաշվարկվում է անհատական։ Ընտրեք մասնաճյուղ և զանգահարեք՝ վերջնական գումարը իմանալու համար։",
+      cityLabel: "Մասնաճյուղ",
+      callAction: "Զանգել",
+      close: "Փակել",
+    },
     validation: {
       required: "Պարտադիր դաշտ",
       positiveNumber: "Մուտքագրեք դրական թիվ",
@@ -148,6 +157,7 @@ export const hy: Dictionary = {
       legalTitle: "Իրավաբանական անձ",
       vehiclePrice: "Վերջնական հայտը աճուրդում",
       auctionFee: "Աճուրդի միջնորդավճար",
+      companyFee: "Ֆիրմայի միջնորդավճար",
       transportFee: "Տեղափոխում (ՀՀ, ք. Գյումրի)",
       insuranceFee: "Ապահովագրություն",
       totalBeforeCustoms: "Ընդհանուր գին՝ առանց մաքսազերծման",
