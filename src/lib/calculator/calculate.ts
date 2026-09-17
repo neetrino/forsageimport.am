@@ -1,5 +1,6 @@
 import { resolveAgeGroup } from "@/lib/calculator/age";
 import { computeAuctionFee } from "@/lib/calculator/auction-fee";
+import { computeCompanyFee } from "@/lib/calculator/company-fee";
 import { computeLegalCustoms } from "@/lib/calculator/customs-legal";
 import { computePhysicalCustoms } from "@/lib/calculator/customs-physical";
 import { isElectricExemptionApplied } from "@/lib/calculator/ev-exemption";
@@ -14,6 +15,7 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     input.auction,
     input.customAuctionFee,
   );
+  const companyFee = computeCompanyFee(input.vehiclePrice);
   const transportFee = roundUsd(input.transportFee);
   const insuranceFee = input.insuranceEnabled
     ? percentOf(
@@ -27,10 +29,11 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
   const shared: SharedCost = {
     vehiclePrice: roundUsd(input.vehiclePrice),
     auctionFee,
+    companyFee,
     transportFee,
     insuranceFee,
     preCustoms,
-    totalBeforeCustoms: preCustoms,
+    totalBeforeCustoms: roundUsd(preCustoms + companyFee),
   };
   const electricExemptionApplied = isElectricExemptionApplied(
     input.engineType,

@@ -43,6 +43,7 @@ export function buildEstimatePdfRows(
   return [
     item(labels.vehiclePrice, shared.vehiclePrice),
     item(labels.auctionFee, shared.auctionFee),
+    item(labels.companyFee, shared.companyFee),
     item(labels.transportFee, shared.transportFee),
     item(labels.insuranceFee, shared.insuranceFee),
     item(labels.totalBeforeCustoms, shared.totalBeforeCustoms, true),

@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { calculateImportCost } from "@/lib/calculator/calculate";
 import { computeAuctionFee } from "@/lib/calculator/auction-fee";
+import {
+  computeCompanyFee,
+  requiresCompanyFeeCall,
+} from "@/lib/calculator/company-fee";
 import { resolveAgeGroup } from "@/lib/calculator/age";
 import { lookupShippingFee, requiresShippingCall } from "@/lib/calculator/shipping";
 import { validateCalculatorInput } from "@/lib/calculator/validate";
@@ -28,6 +32,27 @@ describe("computeAuctionFee", () => {
     expect(computeAuctionFee(10000, "copart")).toBe(1119);
     expect(computeAuctionFee(20000, "iaai")).toBe(1575);
     expect(computeAuctionFee(500, "custom", 400)).toBe(400);
+  });
+});
+
+describe("computeCompanyFee", () => {
+  it("uses the confirmed hammer-price tiers", () => {
+    expect(computeCompanyFee(1)).toBe(250);
+    expect(computeCompanyFee(12000)).toBe(250);
+    expect(computeCompanyFee(12001)).toBe(450);
+    expect(computeCompanyFee(22000)).toBe(450);
+    expect(computeCompanyFee(22001)).toBe(650);
+    expect(computeCompanyFee(32000)).toBe(650);
+    expect(computeCompanyFee(32001)).toBe(800);
+    expect(computeCompanyFee(42000)).toBe(800);
+    expect(computeCompanyFee(42001)).toBe(1150);
+    expect(computeCompanyFee(52000)).toBe(1150);
+  });
+
+  it("requires an office quote above $52,000", () => {
+    expect(requiresCompanyFeeCall(52000)).toBe(false);
+    expect(requiresCompanyFeeCall(52001)).toBe(true);
+    expect(computeCompanyFee(52001)).toBe(0);
   });
 });
 
@@ -132,14 +157,15 @@ describe("calculateImportCost", () => {
     const result = calculateImportCost(baseInput);
     expect(result.ratesStatus).toBe("IAA_PARITY_OBSERVED");
     expect(result.shared.auctionFee).toBe(1225);
+    expect(result.shared.companyFee).toBe(250);
     expect(result.shared.transportFee).toBe(2325);
     expect(result.shared.insuranceFee).toBe(136);
     expect(result.shared.preCustoms).toBe(13686);
-    expect(result.shared.totalBeforeCustoms).toBe(13686);
+    expect(result.shared.totalBeforeCustoms).toBe(13936);
     expect(result.legal.duty).toBe(2053);
     expect(result.legal.vat).toBe(3148);
     expect(result.legal.environmental).toBe(274);
-    expect(result.legal.finalTotal).toBe(19161);
+    expect(result.legal.finalTotal).toBe(19411);
     expect(result.physical.usesFlatRate).toBe(true);
     expect(result.physical.flatRate).toBeGreaterThanOrEqual(8075);
     expect(result.physical.flatRate).toBeLessThanOrEqual(8076);
@@ -181,7 +207,8 @@ describe("calculateImportCost", () => {
       insuranceEnabled: false,
     });
     expect(result.shared.auctionFee).toBe(1575);
+    expect(result.shared.companyFee).toBe(450);
     expect(result.shared.insuranceFee).toBe(0);
-    expect(result.shared.totalBeforeCustoms).toBe(23900);
+    expect(result.shared.totalBeforeCustoms).toBe(24350);
   });
 });

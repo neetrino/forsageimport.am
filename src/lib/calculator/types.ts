@@ -33,6 +33,7 @@ export type CalculatorInput = {
 export type SharedCost = {
   vehiclePrice: number;
   auctionFee: number;
+  companyFee: number;
   transportFee: number;
   insuranceFee: number;
   preCustoms: number;
