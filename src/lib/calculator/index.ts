@@ -9,10 +9,7 @@ export {
   shippingLocationOptions,
   findShippingLocation,
 } from "@/lib/calculator/shipping";
-export {
-  computeCompanyFee,
-  requiresCompanyFeeCall,
-} from "@/lib/calculator/company-fee";
+export { computeCompanyFee } from "@/lib/calculator/company-fee";
 export type {
   CalculatorInput,
   CalculatorResult,

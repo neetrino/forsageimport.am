@@ -26,7 +26,10 @@ export const calculatorRates = {
   physicalCommercialDutyPercent: 15,
   physicalMotorcycleDutyPercent: 10,
   copartDiscountUsd: 106,
-  iaaiPercentFromPrice: 16_000,
+  companyFeePercent: 1.5,
+  companyFeeMinimumUsd: 300,
+  /** Hammer at which iaa.am switches to `6% + $375` (Copart: `6% + $269`). */
+  iaaiPercentFromPrice: 15_000,
   iaaiPercent: 6,
   iaaiPercentFlatUsd: 375,
   evExemptionFromYear: 2024,

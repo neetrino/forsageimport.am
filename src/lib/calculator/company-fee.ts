@@ -1,22 +1,16 @@
-import { roundUsd } from "@/lib/calculator/money";
+import { calculatorRates } from "@/lib/calculator/rates";
 
-/** Inclusive ceilings on vehicle (hammer) price. Above 52000 the office quotes the fee. */
-const COMPANY_FEE_TIERS: readonly { maxPrice: number; fee: number }[] = [
-  { maxPrice: 12000, fee: 250 },
-  { maxPrice: 22000, fee: 450 },
-  { maxPrice: 32000, fee: 650 },
-  { maxPrice: 42000, fee: 800 },
-  { maxPrice: 52000, fee: 1150 },
-];
-
-export const COMPANY_FEE_CALL_ABOVE = 52000;
-
-export function requiresCompanyFeeCall(vehiclePrice: number): boolean {
-  return vehiclePrice > COMPANY_FEE_CALL_ABOVE;
+/**
+ * CarMark / IAA.am service charge (`servicePrice`), observed 2026-09-23.
+ * `max(300, ceil(1.5% × (hammer + auction fee)))`, whole dollars, rounded up.
+ */
+export function computeCompanyFee(vehiclePrice: number, auctionFee: number): number {
+  const base = Math.max(0, vehiclePrice) + Math.max(0, auctionFee);
+  const percentFee = ceilUsdPercent(base, calculatorRates.companyFeePercent);
+  return Math.max(calculatorRates.companyFeeMinimumUsd, percentFee);
 }
 
-export function computeCompanyFee(vehiclePrice: number): number {
-  if (requiresCompanyFeeCall(vehiclePrice)) return 0;
-  const tier = COMPANY_FEE_TIERS.find((item) => vehiclePrice <= item.maxPrice);
-  return roundUsd(tier?.fee ?? 0);
+function ceilUsdPercent(base: number, percent: number): number {
+  const thousandths = Math.round(base * percent * 10);
+  return Math.ceil(thousandths / 1000);
 }

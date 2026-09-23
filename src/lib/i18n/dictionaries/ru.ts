@@ -137,15 +137,6 @@ export const ru: Dictionary = {
       callAction: "Позвонить",
       close: "Закрыть",
     },
-    callOffice: {
-      eyebrow: "Call office",
-      title: "Комиссию фирмы нужно уточнить",
-      description:
-        "При цене выше $52 000 комиссия фирмы рассчитывается индивидуально. Выберите филиал и позвоните, чтобы узнать итоговую сумму.",
-      cityLabel: "Филиал",
-      callAction: "Позвонить",
-      close: "Закрыть",
-    },
     validation: {
       required: "Обязательное поле",
       positiveNumber: "Введите положительное число",
