@@ -157,7 +157,7 @@ export const ru: Dictionary = {
       legalTitle: "Юридическое лицо",
       vehiclePrice: "Окончательная ставка на аукционе",
       auctionFee: "Аукционный сбор",
-      companyFee: "Комиссия фирмы",
+      companyFee: "Налог фирмы",
       transportFee: "Доставка (Армения, г. Гюмри)",
       insuranceFee: "Страховка",
       totalBeforeCustoms: "Общая стоимость без растаможки",

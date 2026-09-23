@@ -157,7 +157,7 @@ export const hy: Dictionary = {
       legalTitle: "Իրավաբանական անձ",
       vehiclePrice: "Վերջնական հայտը աճուրդում",
       auctionFee: "Աճուրդի միջնորդավճար",
-      companyFee: "Ֆիրմայի միջնորդավճար",
+      companyFee: "Ֆիրմայի հարկ",
       transportFee: "Տեղափոխում (ՀՀ, ք. Գյումրի)",
       insuranceFee: "Ապահովագրություն",
       totalBeforeCustoms: "Ընդհանուր գին՝ առանց մաքսազերծման",

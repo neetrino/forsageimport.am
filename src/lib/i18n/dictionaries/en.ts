@@ -157,7 +157,7 @@ export const en: Dictionary = {
       legalTitle: "Legal entity",
       vehiclePrice: "Final bid at auction",
       auctionFee: "Auction fee",
-      companyFee: "Company commission",
+      companyFee: "Company tax",
       transportFee: "Shipping (Gyumri, RA)",
       insuranceFee: "Insurance",
       totalBeforeCustoms: "Total excluding customs clearance",
