@@ -83,7 +83,6 @@ export type Dictionary = {
     cheaperBadge: string;
     locationSearch: string;
     callForPrice: CallDialogCopy;
-    callOffice: CallDialogCopy;
     validation: {
       required: string;
       positiveNumber: string;

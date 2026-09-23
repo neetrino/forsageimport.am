@@ -24,7 +24,7 @@ test.describe("Calculator smoke", () => {
 
     await page.locator("section#calculator").getByRole("button", { name: "Հաշվել" }).click();
 
-    await expect(page.getByText("Ֆիրմայի միջնորդավճար")).toBeVisible();
+    await expect(page.getByText("Ֆիրմայի հարկ")).toBeVisible();
     await expect(page.getByText("Ֆիզիկական անձ")).toBeVisible();
     await expect(page.getByText("Իրավաբանական անձ")).toBeVisible();
     await expect(page.getByText("Ընդհանուր գին").first()).toBeVisible();

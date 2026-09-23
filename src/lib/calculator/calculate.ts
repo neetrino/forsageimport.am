@@ -15,7 +15,7 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     input.auction,
     input.customAuctionFee,
   );
-  const companyFee = computeCompanyFee(input.vehiclePrice);
+  const companyFee = computeCompanyFee(input.vehiclePrice, auctionFee);
   const transportFee = roundUsd(input.transportFee);
   const insuranceFee = input.insuranceEnabled
     ? percentOf(

@@ -137,15 +137,6 @@ export const en: Dictionary = {
       callAction: "Call",
       close: "Close",
     },
-    callOffice: {
-      eyebrow: "Call office",
-      title: "Company commission must be confirmed by phone",
-      description:
-        "For prices above $52,000 the company commission is quoted individually. Choose a branch and call to get the final amount.",
-      cityLabel: "Branch",
-      callAction: "Call",
-      close: "Close",
-    },
     validation: {
       required: "Required field",
       positiveNumber: "Enter a positive number",
@@ -157,7 +148,7 @@ export const en: Dictionary = {
       legalTitle: "Legal entity",
       vehiclePrice: "Final bid at auction",
       auctionFee: "Auction fee",
-      companyFee: "Company commission",
+      companyFee: "Company tax",
       transportFee: "Shipping (Gyumri, RA)",
       insuranceFee: "Insurance",
       totalBeforeCustoms: "Total excluding customs clearance",

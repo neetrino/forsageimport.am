@@ -90,6 +90,11 @@ body::before {
   background-size: 180px 180px;
 }
 
+.font-locale-hy {
+  --font-body: var(--font-hy-armenian), var(--font-hy-latin-ext), var(--font-hy-latin);
+  --font-display: var(--font-hy-armenian), var(--font-hy-latin-ext), var(--font-hy-latin);
+}
+
 .font-display {
   font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
   font-weight: 800;

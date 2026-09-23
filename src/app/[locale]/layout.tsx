@@ -1,15 +1,11 @@
 import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import {
-  Exo_2,
-  IBM_Plex_Mono,
-  Noto_Sans_Armenian,
-  Rubik,
-} from "next/font/google";
+import { Exo_2, IBM_Plex_Mono, Rubik } from "next/font/google";
 import { locales, type Locale, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { BRAND_LOGO } from "@/lib/brand/assets";
+import { hyFontClassName } from "@/lib/fonts/noto-sans-armenian";
 import { SiteShell } from "@/components/layout/SiteShell";
 
 /** Explicit viewport — Yandex and some Chromium forks mis-scale without it. */
@@ -18,22 +14,6 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
 };
-
-const bodyHy = Noto_Sans_Armenian({
-  variable: "--font-body",
-  subsets: ["armenian", "latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-});
-
-const displayHy = Noto_Sans_Armenian({
-  variable: "--font-display",
-  subsets: ["armenian", "latin"],
-  weight: ["700", "800"],
-  display: "swap",
-  preload: true,
-});
 
 const bodyIntl = Rubik({
   variable: "--font-body",
@@ -108,7 +88,7 @@ export async function generateMetadata({
 function fontClassName(locale: Locale): string {
   const pair =
     locale === "hy"
-      ? `${bodyHy.variable} ${displayHy.variable}`
+      ? hyFontClassName
       : `${bodyIntl.variable} ${displayIntl.variable}`;
   return `${pair} ${monoFont.variable}`;
 }
