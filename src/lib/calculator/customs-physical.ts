@@ -8,7 +8,9 @@ import { percentOf, roundUsd } from "@/lib/calculator/money";
 import {
   PHYSICAL_3_TO_5_BANDS,
   PHYSICAL_5_PLUS_BANDS,
+  PHYSICAL_UNDER3_VALUE_TIERS,
   euroPerCm3ForVolume,
+  type ValueTier,
 } from "@/lib/calculator/volume-rate";
 import type {
   AgeGroupId,
@@ -33,6 +35,7 @@ type PhysicalParams = {
   totalBeforeCustoms: number;
   engineVolumeCm3: number;
   ageGroup: AgeGroupId;
+  productionYear: number;
   vehicleType: VehicleTypeId;
   engineType: EngineTypeId;
   electricExemptionApplied: boolean;
@@ -43,6 +46,7 @@ export function computePhysicalCustoms(params: PhysicalParams): CustomsBreakdown
   const environmental = computeEcoFee({
     base: hammerBase,
     ageGroup: params.ageGroup,
+    productionYear: params.productionYear,
     vehicleType: params.vehicleType,
   });
 
@@ -105,22 +109,26 @@ function passengerFlatRate(params: PhysicalParams, hammerBase: number): number {
 }
 
 function under3FlatRate(hammerBase: number, volumeCm3: number): number {
-  const adValorem = roundUsd(
-    (hammerBase * calculatorRates.under3AdValoremPercent) /
-      100 *
-      (calculatorRates.workingEurUsd / cbaEurUsd()),
-  );
   const valueEur = hammerBase / calculatorRates.workingEurUsd;
-  const euroRate = under3EuroPerCm3(valueEur);
-  const specific = roundUsd(euroToUsd(euroRate * volumeCm3));
+  const tier = under3ValueTier(valueEur);
+  const adValorem = eurAdValoremUsd(hammerBase, tier.adValoremPercent);
+  const specific = roundUsd(euroToUsd(tier.euroPerCm3 * volumeCm3));
   return Math.max(adValorem, specific);
 }
 
-function under3EuroPerCm3(valueEur: number): number {
-  const [low, mid, high] = calculatorRates.under3EuroPerCm3;
-  if (valueEur <= calculatorRates.under3ValueEurTier1Max) return low;
-  if (valueEur <= calculatorRates.under3ValueEurTier2Max) return mid;
-  return high;
+function under3ValueTier(valueEur: number): ValueTier {
+  const tier = PHYSICAL_UNDER3_VALUE_TIERS.find((item) => valueEur <= item.maxValueEur);
+  const fallback = PHYSICAL_UNDER3_VALUE_TIERS.at(-1);
+  if (!fallback) {
+    throw new Error("Physical under-3 value table is empty");
+  }
+  return tier ?? fallback;
+}
+
+/** Percent of an EUR customs value, converted back with the working USD rate. */
+function eurAdValoremUsd(hammerBase: number, percent: number): number {
+  const fx = calculatorRates.workingEurUsd / cbaEurUsd();
+  return roundUsd((hammerBase * percent * fx) / 100);
 }
 
 function finishPhysical(
