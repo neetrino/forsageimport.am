@@ -44,6 +44,7 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     totalBeforeCustoms: shared.totalBeforeCustoms,
     engineVolumeCm3: input.engineVolumeCm3,
     ageGroup,
+    productionYear: input.year,
     vehicleType: input.vehicleType,
     electricExemptionApplied,
   };

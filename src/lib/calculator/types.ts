@@ -14,7 +14,7 @@ export type VehicleTypeId =
   | "ev"
   | "hybrid";
 
-export type RatesStatus = "IAA_PARITY_OBSERVED";
+export type RatesStatus = "FORSAGE_SHEET_2026_09_23";
 
 export type CalculatorInput = {
   vehiclePrice: number;

@@ -167,7 +167,7 @@ describe("validateCalculatorInput", () => {
 describe("calculateImportCost", () => {
   it("matches the IAA $10k sedan / NJ / 2000cm3 snapshot", () => {
     const result = calculateImportCost(baseInput);
-    expect(result.ratesStatus).toBe("IAA_PARITY_OBSERVED");
+    expect(result.ratesStatus).toBe("FORSAGE_SHEET_2026_09_23");
     expect(result.shared.auctionFee).toBe(1225);
     expect(result.shared.companyFee).toBe(300);
     expect(result.shared.transportFee).toBe(2325);
