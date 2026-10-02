@@ -19,6 +19,7 @@ const shared: SharedCost = {
   companyFee: 250,
   transportFee: 2625,
   insuranceFee: 137,
+  customsValue: 13744,
   preCustoms: 13881,
   totalBeforeCustoms: 14131,
 };
