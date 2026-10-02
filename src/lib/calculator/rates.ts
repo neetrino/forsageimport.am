@@ -10,8 +10,6 @@ export const RATES_STATUS: RatesStatus = "FORSAGE_SHEET_2026_09_23";
 export const calculatorRates = {
   currency: "USD" as const,
   workingEurUsd: 1.1537,
-  cbaUsdAmd: 365.25,
-  cbaEurAmd: 422.81,
   insurancePercent: 1,
   legalVatPercent: 20,
   legalMotorcycleDutyPercent: 10,
@@ -29,10 +27,6 @@ export const calculatorRates = {
 } as const;
 
 export type CalculatorRates = typeof calculatorRates;
-
-export function cbaEurUsd(): number {
-  return calculatorRates.cbaEurAmd / calculatorRates.cbaUsdAmd;
-}
 
 export function euroToUsd(euroAmount: number): number {
   return euroAmount * calculatorRates.workingEurUsd;

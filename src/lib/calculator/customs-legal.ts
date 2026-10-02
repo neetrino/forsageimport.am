@@ -17,7 +17,8 @@ import {
 import type { AgeGroupId, CustomsBreakdown, VehicleTypeId } from "@/lib/calculator/types";
 
 type LegalParams = {
-  preCustoms: number;
+  customsValue: number;
+  vehiclePrice: number;
   totalBeforeCustoms: number;
   engineVolumeCm3: number;
   ageGroup: AgeGroupId;
@@ -30,9 +31,9 @@ export function computeLegalCustoms(params: LegalParams): CustomsBreakdown {
   const duty = params.electricExemptionApplied ? 0 : legalDuty(params);
   const vat = params.electricExemptionApplied
     ? 0
-    : percentOf(params.preCustoms + duty, calculatorRates.legalVatPercent);
+    : percentOf(params.customsValue + duty, calculatorRates.legalVatPercent);
   const environmental = computeEcoFee({
-    base: params.preCustoms,
+    base: params.vehiclePrice,
     ageGroup: params.ageGroup,
     productionYear: params.productionYear,
     vehicleType: params.vehicleType,
@@ -53,13 +54,13 @@ export function computeLegalCustoms(params: LegalParams): CustomsBreakdown {
 
 function legalDuty(params: LegalParams): number {
   if (params.vehicleType === "motorcycle") {
-    return percentOf(params.preCustoms, calculatorRates.legalMotorcycleDutyPercent);
+    return percentOf(params.customsValue, calculatorRates.legalMotorcycleDutyPercent);
   }
   if (params.ageGroup === "over7") {
     return specificUsd(params.engineVolumeCm3, LEGAL_OVER_7_BANDS);
   }
   if (params.ageGroup === "under3") {
-    return percentOf(params.preCustoms, legalUnder3Percent(params));
+    return percentOf(params.customsValue, legalUnder3Percent(params));
   }
   return legalMidAgeDuty(params);
 }
@@ -82,7 +83,7 @@ function highClearanceUnder3Percent(volumeCm3: number): number {
 }
 
 function legalMidAgeDuty(params: LegalParams): number {
-  const adValorem = percentOf(params.preCustoms, LEGAL_MID_AGE_PERCENT);
+  const adValorem = percentOf(params.customsValue, LEGAL_MID_AGE_PERCENT);
   const floor = specificUsd(params.engineVolumeCm3, LEGAL_MID_AGE_FLOORS);
   return Math.max(adValorem, floor);
 }

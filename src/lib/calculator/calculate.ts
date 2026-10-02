@@ -16,22 +16,23 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     input.customAuctionFee,
   );
   const companyFee = computeCompanyFee(input.vehiclePrice, auctionFee);
+  const vehiclePrice = roundUsd(input.vehiclePrice);
   const transportFee = roundUsd(input.transportFee);
   const insuranceFee = input.insuranceEnabled
     ? percentOf(
-        input.vehiclePrice + auctionFee + transportFee,
+        vehiclePrice + auctionFee + transportFee,
         calculatorRates.insurancePercent,
       )
     : 0;
-  const preCustoms = roundUsd(
-    input.vehiclePrice + auctionFee + transportFee + insuranceFee,
-  );
+  const customsValue = roundUsd(vehiclePrice + auctionFee + transportFee);
+  const preCustoms = roundUsd(customsValue + insuranceFee);
   const shared: SharedCost = {
-    vehiclePrice: roundUsd(input.vehiclePrice),
+    vehiclePrice,
     auctionFee,
     companyFee,
     transportFee,
     insuranceFee,
+    customsValue,
     preCustoms,
     totalBeforeCustoms: roundUsd(preCustoms + companyFee),
   };
@@ -40,7 +41,7 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     input.year,
   );
   const customsInput = {
-    preCustoms,
+    customsValue,
     totalBeforeCustoms: shared.totalBeforeCustoms,
     engineVolumeCm3: input.engineVolumeCm3,
     ageGroup,
@@ -57,11 +58,14 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     shared,
     physical: computePhysicalCustoms({
       ...customsInput,
-      vehiclePrice: shared.vehiclePrice,
+      vehiclePrice,
       auctionFee,
       engineType: input.engineType,
     }),
-    legal: computeLegalCustoms(customsInput),
+    legal: computeLegalCustoms({
+      ...customsInput,
+      vehiclePrice,
+    }),
     computedAt: new Date().toISOString(),
   };
 }

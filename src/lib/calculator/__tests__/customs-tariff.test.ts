@@ -34,8 +34,10 @@ describe("legal under-3 duty", () => {
   it("keeps 15% through 2,800 cm³ and 12.5% above it", () => {
     const atCap = calculateImportCost({ ...baseInput, engineVolumeCm3: 2800 });
     const above = calculateImportCost({ ...baseInput, engineVolumeCm3: 2801 });
-    expect(atCap.legal.duty).toBe(percentOf(atCap.shared.preCustoms, 15));
-    expect(above.legal.duty).toBe(percentOf(above.shared.preCustoms, 12.5));
+    expect(atCap.legal.duty).toBe(percentOf(atCap.shared.customsValue, 15));
+    expect(atCap.legal.vat).toBe(percentOf(atCap.shared.customsValue + atCap.legal.duty, 20));
+    expect(above.legal.duty).toBe(percentOf(above.shared.customsValue, 12.5));
+    expect(above.legal.vat).toBe(percentOf(above.shared.customsValue + above.legal.duty, 20));
   });
 
   it("uses the high-clearance schedule for a large SUV", () => {
@@ -49,8 +51,8 @@ describe("legal under-3 duty", () => {
       vehicleType: "big_suv",
       engineVolumeCm3: 4200,
     });
-    expect(throughGap.legal.duty).toBe(percentOf(throughGap.shared.preCustoms, 15));
-    expect(from4200.legal.duty).toBe(percentOf(from4200.shared.preCustoms, 10));
+    expect(throughGap.legal.duty).toBe(percentOf(throughGap.shared.customsValue, 15));
+    expect(from4200.legal.duty).toBe(percentOf(from4200.shared.customsValue, 10));
   });
 });
 
@@ -72,7 +74,7 @@ describe("physical under-3 flat rate", () => {
     const result = calculateImportCost(
       priced({ vehiclePrice: 8000, engineVolumeCm3: 1000, year: 2025 }),
     );
-    expect(result.physical.flatRate).toBe(4305);
+    expect(result.physical.flatRate).toBe(percentOf(8000, 54));
   });
 
   it("steps from 3.5 to 5.5 EUR/cm³ at 16,700 EUR", () => {
@@ -102,17 +104,11 @@ describe("environmental tax by production year", () => {
     const year2018 = calculateImportCost({ ...baseInput, year: 2018 });
     const year2015 = calculateImportCost({ ...baseInput, year: 2015 });
     const year2009 = calculateImportCost({ ...baseInput, year: 2009 });
-    expect(year2018.legal.environmental).toBe(
-      percentOf(year2018.shared.preCustoms, 6),
-    );
-    expect(year2015.legal.environmental).toBe(
-      percentOf(year2015.shared.preCustoms, 12),
-    );
-    expect(year2009.legal.environmental).toBe(
-      percentOf(year2009.shared.preCustoms, 24),
-    );
-    expect(year2018.physical.environmental).toBe(percentOf(11225, 6));
-    expect(year2009.physical.environmental).toBe(percentOf(11225, 24));
+    expect(year2018.legal.environmental).toBe(percentOf(year2018.shared.vehiclePrice, 6));
+    expect(year2015.legal.environmental).toBe(percentOf(year2015.shared.vehiclePrice, 12));
+    expect(year2009.legal.environmental).toBe(percentOf(year2009.shared.vehiclePrice, 24));
+    expect(year2018.physical.environmental).toBe(percentOf(10000, 6));
+    expect(year2009.physical.environmental).toBe(percentOf(10000, 24));
   });
 
   it("keeps 3–5 years at 4% and a 2021 car in the 5–7 group at 6%", () => {
