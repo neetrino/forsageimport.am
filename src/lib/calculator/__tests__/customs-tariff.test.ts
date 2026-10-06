@@ -99,34 +99,102 @@ describe("physical under-3 flat rate", () => {
   });
 });
 
+describe("customs transport", () => {
+  it("assesses duty and VAT on a fixed 2200 USD transport and keeps the real fee in the total", () => {
+    const realTransport = 5000;
+    const result = calculateImportCost({
+      ...baseInput,
+      transportFee: realTransport,
+      insuranceEnabled: false,
+    });
+    const customsValue =
+      result.shared.vehiclePrice + result.shared.auctionFee + 2200;
+
+    expect(result.shared.transportFee).toBe(realTransport);
+    expect(result.shared.customsValue).toBe(customsValue);
+    expect(result.shared.totalBeforeCustoms).toBe(
+      result.shared.vehiclePrice +
+        result.shared.auctionFee +
+        realTransport +
+        result.shared.companyFee,
+    );
+    expect(result.legal.duty).toBe(percentOf(customsValue, 15));
+    expect(result.legal.vat).toBe(
+      percentOf(customsValue + result.legal.duty, 20),
+    );
+    expect(result.legal.finalTotal).toBe(
+      result.shared.totalBeforeCustoms +
+        result.legal.duty +
+        result.legal.vat +
+        result.legal.environmental,
+    );
+  });
+});
+
 describe("environmental tax by production year", () => {
-  it("charges 6% for 2017–2018, 12% for 2010–2016, and 24% before 2010", () => {
-    const year2018 = calculateImportCost({ ...baseInput, year: 2018 });
+  const assessedYears = [
+    [2026, 2],
+    [2025, 2],
+    [2024, 2],
+    [2023, 4],
+    [2022, 4],
+    [2021, 6],
+    [2020, 6],
+    [2019, 6],
+    [2018, 6],
+    [2017, 6],
+  ] as const;
+
+  it("uses vehicle price + FOB + 2200 at the year rate for 2017 and newer", () => {
+    for (const [year, percent] of assessedYears) {
+      const result = calculateImportCost({
+        ...baseInput,
+        year,
+        transportFee: 5000,
+      });
+      const base = result.shared.vehiclePrice + result.shared.auctionFee + 2200;
+      expect(result.legal.environmental).toBe(percentOf(base, percent));
+      expect(result.physical.environmental).toBe(percentOf(base, percent));
+    }
+  });
+
+  it("keeps 2016 and older on the vehicle price", () => {
+    const year2016 = calculateImportCost({ ...baseInput, year: 2016 });
     const year2015 = calculateImportCost({ ...baseInput, year: 2015 });
+    const year2010 = calculateImportCost({ ...baseInput, year: 2010 });
     const year2009 = calculateImportCost({ ...baseInput, year: 2009 });
-    expect(year2018.legal.environmental).toBe(percentOf(year2018.shared.vehiclePrice, 6));
+    expect(year2016.legal.environmental).toBe(percentOf(10000, 12));
+    expect(year2016.physical.environmental).toBe(percentOf(10000, 12));
     expect(year2015.legal.environmental).toBe(percentOf(year2015.shared.vehiclePrice, 12));
+    expect(year2010.legal.environmental).toBe(percentOf(10000, 12));
     expect(year2009.legal.environmental).toBe(percentOf(year2009.shared.vehiclePrice, 24));
-    expect(year2018.physical.environmental).toBe(percentOf(10000, 6));
     expect(year2009.physical.environmental).toBe(percentOf(10000, 24));
   });
 
-  it("keeps 3–5 years at 4% and a 2021 car in the 5–7 group at 6%", () => {
+  it("ignores FOB on a 2015 car and includes it from 2017", () => {
     expect(
       computeEcoFee({
-        base: 10000,
-        ageGroup: "3to5",
+        vehiclePrice: 10000,
+        fob: 500,
+        productionYear: 2015,
+        vehicleType: "sedan",
+      }),
+    ).toBe(percentOf(10000, 12));
+    expect(
+      computeEcoFee({
+        vehiclePrice: 10000,
+        fob: 500,
         productionYear: 2022,
         vehicleType: "sedan",
       }),
-    ).toBe(400);
+    ).toBe(percentOf(10000 + 500 + 2200, 4));
     expect(
       computeEcoFee({
-        base: 10000,
-        ageGroup: "5to7",
+        vehiclePrice: 10000,
+        fob: 500,
         productionYear: 2021,
         vehicleType: "sedan",
       }),
-    ).toBe(600);
+    ).toBe(percentOf(10000 + 500 + 2200, 6));
   });
 });

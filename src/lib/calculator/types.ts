@@ -36,7 +36,10 @@ export type SharedCost = {
   companyFee: number;
   transportFee: number;
   insuranceFee: number;
-  /** Car price + auction fee + transport. Sheet cost base. Insurance stays outside. */
+  /**
+   * Customs assessment base: vehicle price + auction fee (FOB) + fixed customs transport.
+   * Payable shipping stays on `transportFee` and in `preCustoms`.
+   */
   customsValue: number;
   preCustoms: number;
   totalBeforeCustoms: number;

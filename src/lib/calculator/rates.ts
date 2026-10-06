@@ -24,6 +24,11 @@ export const calculatorRates = {
   iaaiPercentFlatUsd: 375,
   evExemptionFromYear: 2024,
   evExemptionThroughYear: 2026,
+  /**
+   * Transport substituted into customs duty, VAT, and the 2017+ environmental base.
+   * The location shipping fee stays payable and is not replaced by this amount.
+   */
+  customsTransportUsd: 2200,
 } as const;
 
 export type CalculatorRates = typeof calculatorRates;

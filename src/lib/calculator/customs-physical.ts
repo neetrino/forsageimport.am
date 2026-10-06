@@ -39,8 +39,8 @@ type PhysicalParams = {
 export function computePhysicalCustoms(params: PhysicalParams): CustomsBreakdown {
   const hammerBase = params.vehiclePrice + params.auctionFee;
   const environmental = computeEcoFee({
-    base: params.vehiclePrice,
-    ageGroup: params.ageGroup,
+    vehiclePrice: params.vehiclePrice,
+    fob: params.auctionFee,
     productionYear: params.productionYear,
     vehicleType: params.vehicleType,
   });

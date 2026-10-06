@@ -19,6 +19,7 @@ import type { AgeGroupId, CustomsBreakdown, VehicleTypeId } from "@/lib/calculat
 type LegalParams = {
   customsValue: number;
   vehiclePrice: number;
+  auctionFee: number;
   totalBeforeCustoms: number;
   engineVolumeCm3: number;
   ageGroup: AgeGroupId;
@@ -33,8 +34,8 @@ export function computeLegalCustoms(params: LegalParams): CustomsBreakdown {
     ? 0
     : percentOf(params.customsValue + duty, calculatorRates.legalVatPercent);
   const environmental = computeEcoFee({
-    base: params.vehiclePrice,
-    ageGroup: params.ageGroup,
+    vehiclePrice: params.vehiclePrice,
+    fob: params.auctionFee,
     productionYear: params.productionYear,
     vehicleType: params.vehicleType,
   });
