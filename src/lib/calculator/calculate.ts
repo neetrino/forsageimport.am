@@ -24,8 +24,11 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
         calculatorRates.insurancePercent,
       )
     : 0;
-  const customsValue = roundUsd(vehiclePrice + auctionFee + transportFee);
-  const preCustoms = roundUsd(customsValue + insuranceFee);
+  const payableValue = roundUsd(vehiclePrice + auctionFee + transportFee);
+  const customsValue = roundUsd(
+    vehiclePrice + auctionFee + calculatorRates.customsTransportUsd,
+  );
+  const preCustoms = roundUsd(payableValue + insuranceFee);
   const shared: SharedCost = {
     vehiclePrice,
     auctionFee,
@@ -65,6 +68,7 @@ export function calculateImportCost(input: CalculatorInput): CalculatorResult {
     legal: computeLegalCustoms({
       ...customsInput,
       vehiclePrice,
+      auctionFee,
     }),
     computedAt: new Date().toISOString(),
   };

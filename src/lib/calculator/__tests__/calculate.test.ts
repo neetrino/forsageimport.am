@@ -173,20 +173,20 @@ describe("calculateImportCost", () => {
     expect(result.shared.companyFee).toBe(300);
     expect(result.shared.transportFee).toBe(2325);
     expect(result.shared.insuranceFee).toBe(136);
-    expect(result.shared.customsValue).toBe(13550);
+    expect(result.shared.customsValue).toBe(13425);
     expect(result.shared.preCustoms).toBe(13686);
     expect(result.shared.totalBeforeCustoms).toBe(13986);
-    expect(result.legal.duty).toBe(2033);
-    expect(result.legal.vat).toBe(3117);
+    expect(result.legal.duty).toBe(2014);
+    expect(result.legal.vat).toBe(3088);
     expect(result.legal.vat).toBe(
       percentOf(result.shared.customsValue + result.legal.duty, 20),
     );
-    expect(result.legal.environmental).toBe(200);
-    expect(result.legal.finalTotal).toBe(19336);
+    expect(result.legal.environmental).toBe(269);
+    expect(result.legal.finalTotal).toBe(19357);
     expect(result.physical.usesFlatRate).toBe(true);
     expect(result.physical.flatRate).toBeGreaterThanOrEqual(8075);
     expect(result.physical.flatRate).toBeLessThanOrEqual(8076);
-    expect(result.physical.environmental).toBe(200);
+    expect(result.physical.environmental).toBe(269);
     expect(result.physical.finalTotal).toBeGreaterThan(21000);
   });
 
@@ -202,7 +202,7 @@ describe("calculateImportCost", () => {
     expect(result.legal.vat).toBe(0);
     expect(result.physical.duty).toBe(0);
     expect(result.physical.vat).toBe(0);
-    expect(result.legal.environmental).toBe(200);
+    expect(result.legal.environmental).toBe(269);
   });
 
   it("keeps duty on a 2023 electric car", () => {
